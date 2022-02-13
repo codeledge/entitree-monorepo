@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "pkg",
+  "type": "minor",
+  "comment": "Change files",
   "packageName": "@entitree/wikipedia",
   "email": "orlando.groppo@gmail.com",
   "dependentChangeType": "patch"
