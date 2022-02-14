@@ -36,9 +36,10 @@ type Response = {
 
 export async function getWikipediaArticle(
   wikipediaSlug: string,
-  langCode: string
+  langCode: string = "en"
 ) {
-  return axios.get<Response>(
+  const { data } = await axios.get<Response>(
     `https://${langCode}.wikipedia.org/api/rest_v1/page/summary/${wikipediaSlug}` //encodeURIComponent
   );
+  return data;
 }

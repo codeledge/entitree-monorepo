@@ -14,7 +14,8 @@
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "TIMING=1 eslint src --fix",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "prepublish": "pnpm build"
+    "prepublish": "pnpm build",
+    "test": "jest"
   },
   "devDependencies": {
     "config": "workspace:*",
