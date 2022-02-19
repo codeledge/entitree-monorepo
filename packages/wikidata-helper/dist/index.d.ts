@@ -1,5 +1,3 @@
-import * as axios from 'axios';
-
 declare type Response = {
     type: string;
     title: string;
@@ -39,6 +37,8 @@ declare type Response = {
     extract: string;
     extract_html: string;
 };
-declare function getWikipediaArticle(wikipediaSlug: string, langCode: string): Promise<axios.AxiosResponse<Response, any>>;
+declare function getWikipediaArticle(wikipediaSlug: string, langCode?: string): Promise<Response>;
 
-export { getWikipediaArticle };
+declare function getWikipediaDescription(wikipediaSlug: string, langCode?: string): Promise<string>;
+
+export { getWikipediaArticle, getWikipediaDescription };

@@ -29,16 +29,25 @@ var __toCommonJS = /* @__PURE__ */ ((cache) => {
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  getWikipediaArticle: () => getWikipediaArticle
+  getWikipediaArticle: () => getWikipediaArticle,
+  getWikipediaDescription: () => getWikipediaDescription
 });
 
 // src/getWikipediaArticle.ts
 var import_axios = __toESM(require("axios"));
-async function getWikipediaArticle(wikipediaSlug, langCode) {
-  return import_axios.default.get(`https://${langCode}.wikipedia.org/api/rest_v1/page/summary/${wikipediaSlug}`);
+async function getWikipediaArticle(wikipediaSlug, langCode = "en") {
+  const { data } = await import_axios.default.get(`https://${langCode}.wikipedia.org/api/rest_v1/page/summary/${wikipediaSlug}`);
+  return data;
+}
+
+// src/getWikipediaDescription.ts
+async function getWikipediaDescription(wikipediaSlug, langCode = "en") {
+  const { extract } = await getWikipediaArticle(wikipediaSlug, langCode);
+  return extract;
 }
 module.exports = __toCommonJS(src_exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  getWikipediaArticle
+  getWikipediaArticle,
+  getWikipediaDescription
 });

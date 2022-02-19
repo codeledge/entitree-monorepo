@@ -1,5 +1,5 @@
 {
-  "name": "@entitree/wikipedia",
+  "name": "@entitree/wikidata-helper",
   "version": "0.1.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

@@ -1,4 +1,4 @@
-import { getWikipediaArticle } from ".";
+import { getWikipediaArticle } from "..";
 
 export async function getWikipediaDescription(
   wikipediaSlug: string,
