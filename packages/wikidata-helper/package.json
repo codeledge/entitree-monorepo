@@ -1,6 +1,6 @@
 {
   "name": "@mshd/wikidata-helper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -25,8 +25,10 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.20.0",
-    "@types/axios": "^0.14.0",
+    "@types/luxon": "^2.0.9",
     "axios": "^0.26.0",
+    "luxon": "^2.3.0",
+    "ordinalize": "^1.0.2",
     "wikibase-edit": "^4.16.0",
     "wikidata-sdk": "^7.14.2"
   },

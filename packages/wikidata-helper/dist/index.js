@@ -2,8 +2,22 @@ var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __export = (target, all) => {
   for (var name in all)
@@ -36,6 +50,9 @@ __export(src_exports, {
   DEFAULT_LANG_CODE: () => DEFAULT_LANG_CODE,
   EYE_AND_HAIR_COLORS: () => EYE_AND_HAIR_COLORS,
   FAMILY_TREE_PROP_TRANSLATIONS: () => FAMILY_TREE_PROP_TRANSLATIONS,
+  IMAGE_SERVER_BASE_URL: () => IMAGE_SERVER_BASE_URL,
+  IMAGE_SERVER_OVERFLOW: () => IMAGE_SERVER_OVERFLOW,
+  IMAGE_SERVER_TYPES: () => IMAGE_SERVER_TYPES,
   LANGS: () => LANGS,
   OCCUPATIONS: () => OCCUPATIONS,
   OCCUPATION_MAP: () => OCCUPATION_MAP,
@@ -2855,6 +2872,7 @@ __export(src_exports, {
   WD_EPHE_ID: () => WD_EPHE_ID,
   WD_EPIC_GAMES_STORE_ID: () => WD_EPIC_GAMES_STORE_ID,
   WD_EPIGRAPH_LITERATURE_: () => WD_EPIGRAPH_LITERATURE_,
+  WD_EPISODE_TYPE_MATCH: () => WD_EPISODE_TYPE_MATCH,
   WD_EPISTEMONIKOS_ID: () => WD_EPISTEMONIKOS_ID,
   WD_EPITAFIER_SE_ID: () => WD_EPITAFIER_SE_ID,
   WD_EPITHET: () => WD_EPITHET,
@@ -2989,6 +3007,7 @@ __export(src_exports, {
   WD_EXPANSION_OF: () => WD_EXPANSION_OF,
   WD_EXPECTED_COMPLETENESS: () => WD_EXPECTED_COMPLETENESS,
   WD_EXPEDIA_HOTEL_ID: () => WD_EXPEDIA_HOTEL_ID,
+  WD_EXPLICIT_EPISODE: () => WD_EXPLICIT_EPISODE,
   WD_EXPLOITATION_VISA_NUMBER: () => WD_EXPLOITATION_VISA_NUMBER,
   WD_EXPLOREPATRAILS_ID: () => WD_EXPLOREPATRAILS_ID,
   WD_EXPLOSIVE_ENERGY_EQUIVALENT: () => WD_EXPLOSIVE_ENERGY_EQUIVALENT,
@@ -4331,6 +4350,9 @@ __export(src_exports, {
   WD_INE_MUNICIPALITY_CODE: () => WD_INE_MUNICIPALITY_CODE,
   WD_INFAMES_ROMANI_ID: () => WD_INFAMES_ROMANI_ID,
   WD_INFERRED_FROM: () => WD_INFERRED_FROM,
+  WD_INFERRED_FROM_PODCAST_DESCRIPTION: () => WD_INFERRED_FROM_PODCAST_DESCRIPTION,
+  WD_INFERRED_FROM_TITLE: () => WD_INFERRED_FROM_TITLE,
+  WD_INFERRED_FROM_YOUTUBE_DESCRIPTION: () => WD_INFERRED_FROM_YOUTUBE_DESCRIPTION,
   WD_INFLATION_RATE: () => WD_INFLATION_RATE,
   WD_INFLORESCENCE: () => WD_INFLORESCENCE,
   WD_INFLOWS: () => WD_INFLOWS,
@@ -6974,6 +6996,7 @@ __export(src_exports, {
   WD_PMSA_ID: () => WD_PMSA_ID,
   WD_POCKET_CASTS_SHOW_ID: () => WD_POCKET_CASTS_SHOW_ID,
   WD_PODBEAN_SHOW_ID: () => WD_PODBEAN_SHOW_ID,
+  WD_PODCAST: () => WD_PODCAST,
   WD_PODCAST_ADDICT_SHOW_ID: () => WD_PODCAST_ADDICT_SHOW_ID,
   WD_PODCAST_EPISODE: () => WD_PODCAST_EPISODE,
   WD_PODCAST_LOGO_URL: () => WD_PODCAST_LOGO_URL,
@@ -7826,6 +7849,7 @@ __export(src_exports, {
   WD_SEASON_STARTS: () => WD_SEASON_STARTS,
   WD_SEATTLE_ART_MUSEUM_ID: () => WD_SEATTLE_ART_MUSEUM_ID,
   WD_SEA_SLUG_FORUM_ID: () => WD_SEA_SLUG_FORUM_ID,
+  WD_SECOND: () => WD_SECOND,
   WD_SECONDARY_ARCHIVE_ARTIST_ID: () => WD_SECONDARY_ARCHIVE_ARTIST_ID,
   WD_SECONDARY_NOTE: () => WD_SECONDARY_NOTE,
   WD_SECONDED_BY: () => WD_SECONDED_BY,
@@ -9650,9 +9674,15 @@ __export(src_exports, {
   WD__STERREICHISCHES_MUSIKLEXIKON_ONLINE_ID: () => WD__STERREICHISCHES_MUSIKLEXIKON_ONLINE_ID,
   WD__TONNANTS_VOYAGEURS_PARTICIPANT_ID: () => WD__TONNANTS_VOYAGEURS_PARTICIPANT_ID,
   WD__VVIR_TOPIC_ID: () => WD__VVIR_TOPIC_ID,
+  getDateClaimISO: () => getDateClaimISO,
+  getEntitreeImages: () => getEntitreeImages,
+  getItunesShowEpisodes: () => getItunesShowEpisodes,
+  getWikidataEntities: () => getWikidataEntities,
   getWikidataSparql: () => getWikidataSparql,
   getWikipediaArticle: () => getWikipediaArticle,
   getWikipediaDescription: () => getWikipediaDescription,
+  imageServer: () => imageServer,
+  missingImagesLink: () => missingImagesLink,
   searchTerm: () => searchTerm
 });
 
@@ -9681,9 +9711,20 @@ var WD_ANIMAL_MALE = "Q44148";
 var WD_HUMAN_FEMALE = "Q6581072";
 var WD_ANIMAL_FEMALE = "Q43445";
 var WD_ENGLISH = "Q1860";
-var WD_PODCAST_EPISODE = "Q61855877";
 var WD_CIRCA = "Q5727902";
 var WD_PRESUMABLY = "Q18122778";
+var WD_EXPLICIT_EPISODE = "Q109501804";
+var WD_PODCAST = "Q24634210";
+var WD_PODCAST_EPISODE = "Q61855877";
+var WD_SECOND = "Q11574";
+var WD_INFERRED_FROM_YOUTUBE_DESCRIPTION = "Q110039923";
+var WD_INFERRED_FROM_PODCAST_DESCRIPTION = "Q110068003";
+var WD_INFERRED_FROM_TITLE = "Q69652283";
+var WD_EPISODE_TYPE_MATCH = {
+  full: WD_PODCAST_EPISODE,
+  trailer: "Q106677532",
+  bonus: "Q110730867"
+};
 
 // src/wikidata/properties.ts
 var WD_HEAD_OF_GOVERNMENT = "P6";
@@ -19300,6 +19341,45 @@ async function getWikidataSparql(query) {
   });
 }
 
+// src/wikidata/getWikidataEntities.ts
+var import_wikidata_sdk2 = __toESM(require("wikidata-sdk"));
+
+// src/wikidata/getWikibaseEntities.ts
+var import_axios3 = __toESM(require("axios"));
+async function getWikibaseEntities({
+  ids,
+  languages = ["en"],
+  props = ["labels", "descriptions", "claims", "sitelinks/urls"],
+  dataSource
+}) {
+  if (ids.length === 0) {
+    return {};
+  }
+  ids = ids.filter((id) => !!id);
+  const urls = await new Promise((resolve, reject) => {
+    try {
+      resolve(dataSource.getManyEntities({
+        ids,
+        languages,
+        props
+      }));
+    } catch (error) {
+      reject(error);
+    }
+  });
+  const responses = await import_axios3.default.all(urls.map((url) => import_axios3.default.get(url)));
+  let allentities = {};
+  responses.forEach(({ data: { entities } }) => {
+    allentities = __spreadValues(__spreadValues({}, allentities), entities);
+  });
+  return allentities;
+}
+
+// src/wikidata/getWikidataEntities.ts
+async function getWikidataEntities(ids, languages = ["en"], props = ["labels", "descriptions", "claims", "sitelinks/urls"]) {
+  return await getWikibaseEntities({ ids, languages, props, dataSource: import_wikidata_sdk2.default });
+}
+
 // src/wikidata/prefetched/countries.ts
 var COUNTRIES = [
   {
@@ -22513,8 +22593,8 @@ var RELIGIONS = [
 ];
 
 // src/wikidata/services/wikidataService.ts
-var import_axios3 = __toESM(require("axios"));
-var wikidataService = import_axios3.default.create({
+var import_axios4 = __toESM(require("axios"));
+var wikidataService = import_axios4.default.create({
   baseURL: "https://www.wikidata.org"
 });
 wikidataService.interceptors.response.use((res) => res.data);
@@ -22533,6 +22613,103 @@ var searchTerm = async (term, languageCode) => {
     throw error;
   return search;
 };
+
+// src/wikidata/format/getBestClaim.ts
+function getBestClaim(claims) {
+  if (!claims)
+    return;
+  const cleanClaims = [];
+  claims.forEach((c) => {
+    if (c.rank === "normal")
+      cleanClaims.push(c);
+    if (c.rank === "preferred")
+      cleanClaims.unshift(c);
+  });
+  const bestClaim = cleanClaims[0];
+  return bestClaim;
+}
+function getBestClaimValue(claims) {
+  var _a;
+  if (!claims)
+    return;
+  const bestClaim = getBestClaim(claims);
+  const bestClaimValue = (_a = bestClaim == null ? void 0 : bestClaim.mainsnak.datavalue) == null ? void 0 : _a.value;
+  return bestClaimValue;
+}
+
+// src/wikidata/format/formatDateClaim.ts
+var import_luxon = require("luxon");
+var import_wikidata_sdk3 = __toESM(require("wikidata-sdk"));
+var import_ordinalize = __toESM(require("ordinalize"));
+var getDateClaimISO = (dateClaim) => {
+  const bestClaimValue = getBestClaimValue(dateClaim);
+  if (bestClaimValue)
+    return import_wikidata_sdk3.default.wikibaseTimeToISOString(bestClaimValue.time);
+};
+
+// src/itunes/getEpisodes.ts
+var import_axios5 = __toESM(require("axios"));
+async function getItunesShowEpisodes(itunesId) {
+  const results = (await import_axios5.default.get("https://itunes.apple.com/lookup?id=" + itunesId + "&country=US&media=podcast&entity=podcastEpisode&limit=100000")).data.results.filter((episode) => episode.wrapperType === "podcastEpisode");
+  return results;
+}
+
+// src/entitree-images/getImages.ts
+var import_axios6 = __toESM(require("axios"));
+var IMAGE_SERVER_BASE_URL = "https://images.entitree.com";
+var IMAGE_SERVER_TYPES = [
+  { code: "transparent_face" },
+  { code: "transparent_head" },
+  { code: "face" }
+];
+var IMAGE_SERVER_OVERFLOW = [
+  { code: "no", label: "no" },
+  { code: "yes", label: "yes" },
+  { code: "both_sides", label: "cut sides" },
+  { code: "left_side", label: "cut left side" },
+  {
+    code: "left_shoulder",
+    label: "cut left shoulder"
+  }
+];
+var missingImagesLink = (extra = {}) => {
+  const params = new URLSearchParams({
+    source: JSON.stringify(extra)
+  });
+  return IMAGE_SERVER_BASE_URL + "/#/images/create?" + params.toString();
+};
+var imageServer = import_axios6.default.create({
+  baseURL: IMAGE_SERVER_BASE_URL,
+  timeout: 3e3
+});
+var getEntitreeImages = (numericId) => {
+  return imageServer.get(`/api/v1/image/info/wikidata/${numericId}`).then(({ images }) => {
+    return images.map((dpImg) => {
+      let descr = `${dpImg.uploadSite}
+Image Database`;
+      if (dpImg.comment) {
+        descr += `
+${dpImg.comment}`;
+      }
+      if (dpImg.recordedDate) {
+        descr += `
+Photo taken in ${dpImg.recordedDate.substr(0, 4)}`;
+      }
+      if (dpImg.sourceUrl) {
+        descr += `
+
+${dpImg.sourceUrl}`;
+      }
+      return {
+        url: dpImg.url.transparent_face,
+        urlByType: dpImg.url,
+        title: descr,
+        imageDb: true,
+        sourceUrl: IMAGE_SERVER_BASE_URL + "/#/images/" + dpImg.id + "/show"
+      };
+    });
+  });
+};
 module.exports = __toCommonJS(src_exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -22543,6 +22720,9 @@ module.exports = __toCommonJS(src_exports);
   DEFAULT_LANG_CODE,
   EYE_AND_HAIR_COLORS,
   FAMILY_TREE_PROP_TRANSLATIONS,
+  IMAGE_SERVER_BASE_URL,
+  IMAGE_SERVER_OVERFLOW,
+  IMAGE_SERVER_TYPES,
   LANGS,
   OCCUPATIONS,
   OCCUPATION_MAP,
@@ -25362,6 +25542,7 @@ module.exports = __toCommonJS(src_exports);
   WD_EPHE_ID,
   WD_EPIC_GAMES_STORE_ID,
   WD_EPIGRAPH_LITERATURE_,
+  WD_EPISODE_TYPE_MATCH,
   WD_EPISTEMONIKOS_ID,
   WD_EPITAFIER_SE_ID,
   WD_EPITHET,
@@ -25496,6 +25677,7 @@ module.exports = __toCommonJS(src_exports);
   WD_EXPANSION_OF,
   WD_EXPECTED_COMPLETENESS,
   WD_EXPEDIA_HOTEL_ID,
+  WD_EXPLICIT_EPISODE,
   WD_EXPLOITATION_VISA_NUMBER,
   WD_EXPLOREPATRAILS_ID,
   WD_EXPLOSIVE_ENERGY_EQUIVALENT,
@@ -26838,6 +27020,9 @@ module.exports = __toCommonJS(src_exports);
   WD_INE_MUNICIPALITY_CODE,
   WD_INFAMES_ROMANI_ID,
   WD_INFERRED_FROM,
+  WD_INFERRED_FROM_PODCAST_DESCRIPTION,
+  WD_INFERRED_FROM_TITLE,
+  WD_INFERRED_FROM_YOUTUBE_DESCRIPTION,
   WD_INFLATION_RATE,
   WD_INFLORESCENCE,
   WD_INFLOWS,
@@ -29481,6 +29666,7 @@ module.exports = __toCommonJS(src_exports);
   WD_PMSA_ID,
   WD_POCKET_CASTS_SHOW_ID,
   WD_PODBEAN_SHOW_ID,
+  WD_PODCAST,
   WD_PODCAST_ADDICT_SHOW_ID,
   WD_PODCAST_EPISODE,
   WD_PODCAST_LOGO_URL,
@@ -30333,6 +30519,7 @@ module.exports = __toCommonJS(src_exports);
   WD_SEASON_STARTS,
   WD_SEATTLE_ART_MUSEUM_ID,
   WD_SEA_SLUG_FORUM_ID,
+  WD_SECOND,
   WD_SECONDARY_ARCHIVE_ARTIST_ID,
   WD_SECONDARY_NOTE,
   WD_SECONDED_BY,
@@ -32157,8 +32344,14 @@ module.exports = __toCommonJS(src_exports);
   WD__STERREICHISCHES_MUSIKLEXIKON_ONLINE_ID,
   WD__TONNANTS_VOYAGEURS_PARTICIPANT_ID,
   WD__VVIR_TOPIC_ID,
+  getDateClaimISO,
+  getEntitreeImages,
+  getItunesShowEpisodes,
+  getWikidataEntities,
   getWikidataSparql,
   getWikipediaArticle,
   getWikipediaDescription,
+  imageServer,
+  missingImagesLink,
   searchTerm
 });

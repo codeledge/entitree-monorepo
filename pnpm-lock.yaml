@@ -75,9 +75,11 @@ importers:
   packages/wikidata-helper:
     specifiers:
       '@changesets/cli': ^2.20.0
-      '@types/axios': ^0.14.0
+      '@types/luxon': ^2.0.9
       axios: ^0.26.0
       config: workspace:*
+      luxon: ^2.3.0
+      ordinalize: ^1.0.2
       tsconfig: workspace:*
       tsup: ^5.11.13
       typescript: ^4.5.3
@@ -85,29 +87,12 @@ importers:
       wikidata-sdk: ^7.14.2
     dependencies:
       '@changesets/cli': 2.20.0
-      '@types/axios': 0.14.0
+      '@types/luxon': 2.0.9
       axios: 0.26.0
+      luxon: 2.3.0
+      ordinalize: 1.0.2
       wikibase-edit: 4.16.0
       wikidata-sdk: 7.14.2
-    devDependencies:
-      config: link:../config
-      tsconfig: link:../tsconfig
-      tsup: 5.11.13_typescript@4.5.5
-      typescript: 4.5.5
-
-  packages/wikipedia:
-    specifiers:
-      '@changesets/cli': ^2.20.0
-      '@types/axios': ^0.14.0
-      axios: ^0.26.0
-      config: workspace:*
-      tsconfig: workspace:*
-      tsup: ^5.11.13
-      typescript: ^4.5.3
-    dependencies:
-      '@changesets/cli': 2.20.0
-      '@types/axios': 0.14.0
-      axios: 0.26.0
     devDependencies:
       config: link:../config
       tsconfig: link:../tsconfig
@@ -1157,15 +1142,6 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /@types/axios/0.14.0:
-    resolution: {integrity: sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=}
-    deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
-    dependencies:
-      axios: 0.26.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /@types/babel__core/7.1.18:
     resolution: {integrity: sha512-S7unDjm/C7z2A2R9NzfKCK1I+BAALDtxEmsJBwlB3EzNfb929ykjL++1CK9LO++EIp2fQrC8O+BwjKvz6UeDyQ==}
     dependencies:
@@ -1232,6 +1208,10 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
+    dev: false
+
+  /@types/luxon/2.0.9:
+    resolution: {integrity: sha512-ZuzIc7aN+i2ZDMWIiSmMdubR9EMMSTdEzF6R+FckP4p6xdnOYKqknTo/k+xXQvciSXlNGIwA4OPU5X7JIFzYdA==}
     dev: false
 
   /@types/minimist/1.2.2:
@@ -4503,6 +4483,11 @@ packages:
     dependencies:
       yallist: 4.0.0
 
+  /luxon/2.3.0:
+    resolution: {integrity: sha512-gv6jZCV+gGIrVKhO90yrsn8qXPKD8HYZJtrUDSfEbow8Tkw84T9OnCyJhWvnJIaIF/tBuiAjZuQHUt1LddX2mg==}
+    engines: {node: '>=12'}
+    dev: false
+
   /make-dir/3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
@@ -4924,6 +4909,10 @@ packages:
       type-check: 0.4.0
       word-wrap: 1.2.3
     dev: true
+
+  /ordinalize/1.0.2:
+    resolution: {integrity: sha512-X9rR5EbZNAXFAruuNJPbsiylMjDRbt4/wSWyI4DPsMsuGFWwjEfbLHT2rDqf/NFhwz0wbohGY2H4j5ZFph1hcQ==}
+    dev: false
 
   /os-tmpdir/1.0.2:
     resolution: {integrity: sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=}
