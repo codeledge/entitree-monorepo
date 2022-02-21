@@ -82,11 +82,13 @@ importers:
       tsup: ^5.11.13
       typescript: ^4.5.3
       wikibase-edit: ^4.16.0
+      wikidata-sdk: ^7.14.2
     dependencies:
       '@changesets/cli': 2.20.0
       '@types/axios': 0.14.0
       axios: 0.26.0
       wikibase-edit: 4.16.0
+      wikidata-sdk: 7.14.2
     devDependencies:
       config: link:../config
       tsconfig: link:../tsconfig
@@ -6423,6 +6425,13 @@ packages:
   /wikibase-sdk/7.14.2:
     resolution: {integrity: sha512-s+U23nKhP+ZA9yfxH/fe5mjZRvcb8/YtinMoKUkr/05MNNWbofUPRZAgQa1B3i0xvQ37zbkhaOP5K3HkC1apwQ==}
     engines: {node: '>= 6.4'}
+    dev: false
+
+  /wikidata-sdk/7.14.2:
+    resolution: {integrity: sha512-+7cVBKAqaJAfnCTfJZ3rs55mn56TykNh7tm1V17jUtp6yMTt6PoS+GDW0sDaL60fIl+qOHnca4oknHMaTmcBVg==}
+    engines: {node: '>= 6.4'}
+    dependencies:
+      wikibase-sdk: 7.14.2
     dev: false
 
   /word-wrap/1.2.3:

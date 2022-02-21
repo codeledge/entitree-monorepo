@@ -27,7 +27,8 @@
     "@changesets/cli": "^2.20.0",
     "@types/axios": "^0.14.0",
     "axios": "^0.26.0",
-    "wikibase-edit": "^4.16.0"
+    "wikibase-edit": "^4.16.0",
+    "wikidata-sdk": "^7.14.2"
   },
   "publishConfig": {
     "access": "public"
