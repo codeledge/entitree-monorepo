@@ -1,13 +1,13 @@
-import { DataSource, getWikibaseInstance } from "wikibase/getWikibaseInstance";
-
+//@ts-nocheck
+import wdk from "wikidata-sdk";
 import axios from "axios";
 
-export default async function getUpIds(
+export default async function getWikibaseSourceIds(
   entityId: string,
   propId: string,
-  dataSource: DataSource,
+  dataSource?: string
 ): Promise<string[]> {
-  const wikibaseInstance = getWikibaseInstance(dataSource);
+  const wikibaseInstance = wdk;
 
   const url = wikibaseInstance.getReverseClaims(propId, entityId);
   const { data } = await axios.get(url);

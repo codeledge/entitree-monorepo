@@ -1,8 +1,8 @@
-import { Claim } from "types/Claim";
-import formatDateClaim from "./formatDateClaim";
+import { Claim } from "../src/types/Claim";
+import formatDateClaim from "../src/wikidata/format/formatDateClaim";
 
 test("JESUS birth date", () => {
-  const claim = ([
+  const claim = [
     {
       mainsnak: {
         datavalue: {
@@ -30,13 +30,13 @@ test("JESUS birth date", () => {
       },
       rank: "normal",
     },
-  ] as unknown) as Claim[];
+  ] as unknown as Claim[];
   const formatted = formatDateClaim(claim, "en");
   expect(formatted).toBe("7 BCE");
 });
 
 test("JESUS death date", () => {
-  const claim = ([
+  const claim = [
     {
       mainsnak: {
         datavalue: {
@@ -63,13 +63,13 @@ test("JESUS death date", () => {
       },
       rank: "normal",
     },
-  ] as unknown) as Claim[];
+  ] as unknown as Claim[];
   const formatted = formatDateClaim(claim, "en");
   expect(formatted).toBe("30");
 });
 
 test("NAPOLEON birth date deprecated first", () => {
-  const claim = ([
+  const claim = [
     {
       mainsnak: {
         snaktype: "value",
@@ -113,13 +113,13 @@ test("NAPOLEON birth date deprecated first", () => {
       type: "statement",
       rank: "normal",
     },
-  ] as unknown) as Claim[];
+  ] as unknown as Claim[];
   const formatted = formatDateClaim(claim, "en");
   expect(formatted).toBe("15 Aug 1769");
 });
 
 test("test born in the 20th century", () => {
-  const claim = ([
+  const claim = [
     {
       mainsnak: {
         snaktype: "value",
@@ -142,13 +142,13 @@ test("test born in the 20th century", () => {
       id: "Q15840139$55B101EE-CBF7-4117-A2C2-84E6D72A273B",
       rank: "normal",
     },
-  ] as unknown) as Claim[];
+  ] as unknown as Claim[];
   const formatted = formatDateClaim(claim, "en");
   expect(formatted).toBe("20th cent.");
 });
 
 test("1940s", () => {
-  const claim = ([
+  const claim = [
     {
       mainsnak: {
         snaktype: "value",
@@ -171,7 +171,7 @@ test("1940s", () => {
       id: "Q35723119$d9342525-4d64-b1d7-b2e9-88e734c2c5a8",
       rank: "normal",
     },
-  ] as unknown) as Claim[];
+  ] as unknown as Claim[];
   const formatted = formatDateClaim(claim, "en");
   expect(formatted).toBe("1940s");
 });

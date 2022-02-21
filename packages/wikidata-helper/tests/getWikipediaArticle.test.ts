@@ -1,4 +1,4 @@
-import { getWikipediaArticle, getWikipediaDescription } from "..";
+import { getWikipediaArticle, getWikipediaDescription } from "../src";
 
 test("WikipediaARticle", async () => {
   const wikipedia = await getWikipediaArticle("Anthoni_Salim", "en");
