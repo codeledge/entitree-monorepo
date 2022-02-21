@@ -2,9 +2,7 @@ import { getWikipediaArticle, getWikipediaDescription } from "..";
 
 test("WikipediaARticle", async () => {
   const wikipedia = await getWikipediaArticle("Anthoni_Salim", "en");
-  expect(wikipedia.extract).toBe(
-    "Anthoni Salim, also known as Liem Hong Sien, is an Indonesian businessman. He is the head of the Salim Group and the chairman of First Pacific. As of 2019, he is the sixth wealthiest person in Indonesia, with a net worth of 5.5 billion dollars)."
-  );
+  expect(wikipedia.extract).toContain("Indonesian businessman");
   expect(wikipedia.description).toBe("Chinese-Indonesian businessman");
 });
 // test("it should give the correct name", async () => {
