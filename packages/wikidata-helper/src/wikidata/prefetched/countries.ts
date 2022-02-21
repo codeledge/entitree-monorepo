@@ -1,525 +1,905 @@
 export type Country = {
-  name: string;
-  code: string;
-  text?: string;
+  item: string;
+  itemLabel: string;
+  code?: string;
 };
 
-export const COUNTRIES: Record<string, Country> = {
-  Q16: { name: "Canada", code: "CA", text: "Citizen of Canada (Wikidata)" },
-  Q17: { name: "Japan", code: "JP", text: "Citizen of Japan (Wikidata)" },
-  Q20: { name: "Norway", code: "NO", text: "Citizen of Norway (Wikidata)" },
-  Q27: { name: "Ireland", code: "IE", text: "Citizen of Ireland (Wikidata)" },
-  Q28: { name: "Hungary", code: "HU", text: "Citizen of Hungary (Wikidata)" },
-  Q30: {
-    name: "United States of America",
+export const COUNTRIES: Country[] = [
+  {
+    item: "http://www.wikidata.org/entity/Q16",
+    itemLabel: "Canada",
+    code: "CA",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q17",
+    itemLabel: "Japan",
+    code: "JP",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q20",
+    itemLabel: "Norway",
+    code: "NO",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q27",
+    itemLabel: "Republic of Ireland",
+    code: "IE",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q28",
+    itemLabel: "Hungary",
+    code: "HU",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q30",
+    itemLabel: "United States of America",
     code: "US",
-    text: "Citizen of United States of America (Wikidata)",
   },
-  Q33: { name: "Finland", code: "FI", text: "Citizen of Finland (Wikidata)" },
-  Q34: { name: "Sweden", code: "SE", text: "Citizen of Sweden (Wikidata)" },
-  Q35: { name: "Denmark", code: "DK", text: "Citizen of Denmark (Wikidata)" },
-  Q36: { name: "Poland", code: "PL", text: "Citizen of Poland (Wikidata)" },
-  Q38: { name: "Italy", code: "IT", text: "Citizen of Italy (Wikidata)" },
-  Q39: {
-    name: "Switzerland",
+  {
+    item: "http://www.wikidata.org/entity/Q33",
+    itemLabel: "Finland",
+    code: "FI",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q34",
+    itemLabel: "Sweden",
+    code: "SE",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q35",
+    itemLabel: "Denmark",
+    code: "DK",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q36",
+    itemLabel: "Poland",
+    code: "PL",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q37",
+    itemLabel: "Lithuania",
+    code: "LT",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q38",
+    itemLabel: "Italy",
+    code: "IT",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q39",
+    itemLabel: "Switzerland",
     code: "CH",
-    text: "Citizen of Switzerland (Wikidata)",
   },
-  Q40: { name: "Austria", code: "AT", text: "Citizen of Austria (Wikidata)" },
-  Q41: { name: "Greece", code: "GR", text: "Citizen of Greece (Wikidata)" },
-  Q43: { name: "Turkey", code: "TR", text: "Citizen of Turkey (Wikidata)" },
-  Q45: { name: "Portugal", code: "PT", text: "Citizen of Portugal (Wikidata)" },
-  Q55: {
-    name: "Netherlands",
+  {
+    item: "http://www.wikidata.org/entity/Q40",
+    itemLabel: "Austria",
+    code: "AT",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q41",
+    itemLabel: "Greece",
+    code: "GR",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q43",
+    itemLabel: "Turkey",
+    code: "TR",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q45",
+    itemLabel: "Portugal",
+    code: "PT",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q55",
+    itemLabel: "Netherlands",
     code: "NL",
-    text: "Citizen of Netherlands (Wikidata)",
   },
-  Q77: { name: "Uruguay", code: "UY", text: "Citizen of Uruguay (Wikidata)" },
-  Q79: { name: "Egypt", code: "EG", text: "Citizen of Egypt (Wikidata)" },
-  Q96: { name: "Mexico", code: "MX", text: "Citizen of Mexico (Wikidata)" },
-  Q114: { name: "Kenya", code: "KE", text: "Citizen of Kenya (Wikidata)" },
-  Q115: {
-    name: "Ethiopia",
+  {
+    item: "http://www.wikidata.org/entity/Q77",
+    itemLabel: "Uruguay",
+    code: "UY",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q79",
+    itemLabel: "Egypt",
+    code: "EG",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q96",
+    itemLabel: "Mexico",
+    code: "MX",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q114",
+    itemLabel: "Kenya",
+    code: "KE",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q115",
+    itemLabel: "Ethiopia",
     code: "ET",
-    text: "Citizen of Ethiopia (Wikidata)",
   },
-  Q117: { name: "Ghana", code: "GH", text: "Citizen of Ghana (Wikidata)" },
-  Q142: { name: "France", code: "FR", text: "Citizen of France (Wikidata)" },
-  Q145: {
-    name: "United Kingdom",
+  {
+    item: "http://www.wikidata.org/entity/Q117",
+    itemLabel: "Ghana",
+    code: "GH",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q142",
+    itemLabel: "France",
+    code: "FR",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q145",
+    itemLabel: "United Kingdom",
     code: "GB",
-    text: "Citizen of United Kingdom (Wikidata)",
   },
-  Q148: {
-    name: "People's Republic of China",
+  {
+    item: "http://www.wikidata.org/entity/Q148",
+    itemLabel: "People's Republic of China",
     code: "CN",
-    text: "Citizen of People's Republic of China (Wikidata)",
   },
-  Q155: { name: "Brazil", code: "BR", text: "Citizen of Brazil (Wikidata)" },
-  Q183: { name: "Germany", code: "DE", text: "Citizen of Germany (Wikidata)" },
-  Q184: { name: "Belarus", code: "BY", text: "Citizen of Belarus (Wikidata)" },
-  Q211: { name: "Latvia", code: "LV", text: "Citizen of Latvia (Wikidata)" },
-  Q213: {
-    name: "Czech Republic",
+  {
+    item: "http://www.wikidata.org/entity/Q155",
+    itemLabel: "Brazil",
+    code: "BR",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q183",
+    itemLabel: "Germany",
+    code: "DE",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q184",
+    itemLabel: "Belarus",
+    code: "BY",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q189",
+    itemLabel: "Iceland",
+    code: "IS",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q191",
+    itemLabel: "Estonia",
+    code: "EE",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q211",
+    itemLabel: "Latvia",
+    code: "LV",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q213",
+    itemLabel: "Czech Republic",
     code: "CZ",
-    text: "Citizen of Czech Republic (Wikidata)",
   },
-  Q214: {
-    name: "Slovakia",
+  {
+    item: "http://www.wikidata.org/entity/Q214",
+    itemLabel: "Slovakia",
     code: "SK",
-    text: "Citizen of Slovakia (Wikidata)",
   },
-  Q218: { name: "Romania", code: "RO", text: "Citizen of Romania (Wikidata)" },
-  Q219: {
-    name: "Bulgaria",
+  {
+    item: "http://www.wikidata.org/entity/Q215",
+    itemLabel: "Slovenia",
+    code: "SI",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q218",
+    itemLabel: "Romania",
+    code: "RO",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q219",
+    itemLabel: "Bulgaria",
     code: "BG",
-    text: "Citizen of Bulgaria (Wikidata)",
   },
-  Q222: { name: "Albania", code: "AL", text: "Citizen of Albania (Wikidata)" },
-  Q224: { name: "Croatia", code: "HR", text: "Citizen of Croatia (Wikidata)" },
-  Q228: { name: "Andorra", code: "AD", text: "Citizen of Andorra (Wikidata)" },
-  Q229: { name: "Cyprus", code: "CY", text: "Citizen of Cyprus (Wikidata)" },
-  Q232: {
-    name: "Kazakhstan",
+  {
+    item: "http://www.wikidata.org/entity/Q222",
+    itemLabel: "Albania",
+    code: "AL",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q224",
+    itemLabel: "Croatia",
+    code: "HR",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q228",
+    itemLabel: "Andorra",
+    code: "AD",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q229",
+    itemLabel: "Cyprus",
+    code: "CY",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q232",
+    itemLabel: "Kazakhstan",
     code: "KZ",
-    text: "Citizen of Kazakhstan (Wikidata)",
   },
-  Q233: { name: "Malta", code: "MT", text: "Citizen of Malta (Wikidata)" },
-  Q236: {
-    name: "Montenegro",
+  {
+    item: "http://www.wikidata.org/entity/Q233",
+    itemLabel: "Malta",
+    code: "MT",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q236",
+    itemLabel: "Montenegro",
     code: "ME",
-    text: "Citizen of Montenegro (Wikidata)",
   },
-  Q241: { name: "Cuba", code: "CU", text: "Citizen of Cuba (Wikidata)" },
-  Q244: {
-    name: "Barbados",
-    code: "BB",
-    text: "Citizen of Barbados (Wikidata)",
+  {
+    item: "http://www.wikidata.org/entity/Q241",
+    itemLabel: "Cuba",
+    code: "CU",
   },
-  Q252: {
-    name: "Indonesia",
+  {
+    item: "http://www.wikidata.org/entity/Q252",
+    itemLabel: "Indonesia",
     code: "ID",
-    text: "Citizen of Indonesia (Wikidata)",
   },
-  Q258: {
-    name: "South Africa",
+  {
+    item: "http://www.wikidata.org/entity/Q258",
+    itemLabel: "South Africa",
     code: "ZA",
-    text: "Citizen of South Africa (Wikidata)",
   },
-  Q262: { name: "Algeria", code: "DZ", text: "Citizen of Algeria (Wikidata)" },
-  Q265: {
-    name: "Uzbekistan",
+  {
+    item: "http://www.wikidata.org/entity/Q262",
+    itemLabel: "Algeria",
+    code: "DZ",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q265",
+    itemLabel: "Uzbekistan",
     code: "UZ",
-    text: "Citizen of Uzbekistan (Wikidata)",
   },
-  Q298: { name: "Chile", code: "CL", text: "Citizen of Chile (Wikidata)" },
-  Q334: {
-    name: "Singapore",
+  {
+    item: "http://www.wikidata.org/entity/Q298",
+    itemLabel: "Chile",
+    code: "CL",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q334",
+    itemLabel: "Singapore",
     code: "SG",
-    text: "Citizen of Singapore (Wikidata)",
   },
-  Q347: {
-    name: "Liechtenstein",
+  {
+    item: "http://www.wikidata.org/entity/Q347",
+    itemLabel: "Liechtenstein",
     code: "LI",
-    text: "Citizen of Liechtenstein (Wikidata)",
   },
-  Q398: { name: "Bahrain", code: "BH", text: "Citizen of Bahrain (Wikidata)" },
-  Q408: {
-    name: "Australia",
+  {
+    item: "http://www.wikidata.org/entity/Q398",
+    itemLabel: "Bahrain",
+    code: "BH",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q408",
+    itemLabel: "Australia",
     code: "AU",
-    text: "Citizen of Australia (Wikidata)",
   },
-  Q414: {
-    name: "Argentina",
+  {
+    item: "http://www.wikidata.org/entity/Q414",
+    itemLabel: "Argentina",
     code: "AR",
-    text: "Citizen of Argentina (Wikidata)",
   },
-  Q419: { name: "Peru", code: "PE", text: "Citizen of Peru (Wikidata)" },
-  Q423: {
-    name: "North Korea",
+  {
+    item: "http://www.wikidata.org/entity/Q419",
+    itemLabel: "Peru",
+    code: "PE",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q423",
+    itemLabel: "North Korea",
     code: "KP",
-    text: "Citizen of North Korea (Wikidata)",
   },
-  Q424: {
-    name: "Cambodia",
+  {
+    item: "http://www.wikidata.org/entity/Q424",
+    itemLabel: "Cambodia",
     code: "KH",
-    text: "Citizen of Cambodia (Wikidata)",
   },
-  Q574: {
-    name: "East Timor",
+  {
+    item: "http://www.wikidata.org/entity/Q574",
+    itemLabel: "East Timor",
     code: "TL",
-    text: "Citizen of East Timor (Wikidata)",
   },
-  Q657: { name: "Chad", code: "TD", text: "Citizen of Chad (Wikidata)" },
-  Q664: {
-    name: "New Zealand",
+  {
+    item: "http://www.wikidata.org/entity/Q657",
+    itemLabel: "Chad",
+    code: "TD",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q664",
+    itemLabel: "New Zealand",
     code: "NZ",
-    text: "Citizen of New Zealand (Wikidata)",
   },
-  Q668: { name: "India", code: "IN", text: "Citizen of India (Wikidata)" },
-  Q672: { name: "Tuvalu", code: "TV", text: "Citizen of Tuvalu (Wikidata)" },
-  Q683: { name: "Samoa", code: "WS", text: "Citizen of Samoa (Wikidata)" },
-  Q685: {
-    name: "Solomon Islands",
+  {
+    item: "http://www.wikidata.org/entity/Q668",
+    itemLabel: "India",
+    code: "IN",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q672",
+    itemLabel: "Tuvalu",
+    code: "TV",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q683",
+    itemLabel: "Samoa",
+    code: "WS",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q685",
+    itemLabel: "Solomon Islands",
     code: "SB",
-    text: "Citizen of Solomon Islands (Wikidata)",
   },
-  Q686: { name: "Vanuatu", code: "VU", text: "Citizen of Vanuatu (Wikidata)" },
-  Q691: {
-    name: "Papua New Guinea",
+  {
+    item: "http://www.wikidata.org/entity/Q686",
+    itemLabel: "Vanuatu",
+    code: "VU",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q691",
+    itemLabel: "Papua New Guinea",
     code: "PG",
-    text: "Citizen of Papua New Guinea (Wikidata)",
   },
-  Q695: { name: "Palau", code: "PW", text: "Citizen of Palau (Wikidata)" },
-  Q697: { name: "Nauru", code: "NR", text: "Citizen of Nauru (Wikidata)" },
-  Q702: {
-    name: "Federated States of Micronesia",
+  {
+    item: "http://www.wikidata.org/entity/Q695",
+    itemLabel: "Palau",
+    code: "PW",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q697",
+    itemLabel: "Nauru",
+    code: "NR",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q702",
+    itemLabel: "Federated States of Micronesia",
     code: "FM",
-    text: "Citizen of Federated States of Micronesia (Wikidata)",
   },
-  Q709: {
-    name: "Marshall Islands",
+  {
+    item: "http://www.wikidata.org/entity/Q709",
+    itemLabel: "Marshall Islands",
     code: "MH",
-    text: "Citizen of Marshall Islands (Wikidata)",
   },
-  Q710: {
-    name: "Kiribati",
+  {
+    item: "http://www.wikidata.org/entity/Q710",
+    itemLabel: "Kiribati",
     code: "KI",
-    text: "Citizen of Kiribati (Wikidata)",
   },
-  Q711: {
-    name: "Mongolia",
+  {
+    item: "http://www.wikidata.org/entity/Q711",
+    itemLabel: "Mongolia",
     code: "MN",
-    text: "Citizen of Mongolia (Wikidata)",
   },
-  Q712: { name: "Fiji", code: "FJ", text: "Citizen of Fiji (Wikidata)" },
-  Q717: {
-    name: "Venezuela",
+  {
+    item: "http://www.wikidata.org/entity/Q712",
+    itemLabel: "Fiji",
+    code: "FJ",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q717",
+    itemLabel: "Venezuela",
     code: "VE",
-    text: "Citizen of Venezuela (Wikidata)",
   },
-  Q733: {
-    name: "Paraguay",
+  {
+    item: "http://www.wikidata.org/entity/Q733",
+    itemLabel: "Paraguay",
     code: "PY",
-    text: "Citizen of Paraguay (Wikidata)",
   },
-  Q734: { name: "Guyana", code: "GY", text: "Citizen of Guyana (Wikidata)" },
-  Q736: { name: "Ecuador", code: "EC", text: "Citizen of Ecuador (Wikidata)" },
-  Q739: {
-    name: "Colombia",
+  {
+    item: "http://www.wikidata.org/entity/Q734",
+    itemLabel: "Guyana",
+    code: "GY",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q736",
+    itemLabel: "Ecuador",
+    code: "EC",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q739",
+    itemLabel: "Colombia",
     code: "CO",
-    text: "Citizen of Colombia (Wikidata)",
   },
-  Q750: { name: "Bolivia", code: "BO", text: "Citizen of Bolivia (Wikidata)" },
-  Q754: {
-    name: "Trinidad and Tobago",
+  {
+    item: "http://www.wikidata.org/entity/Q750",
+    itemLabel: "Bolivia",
+    code: "BO",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q754",
+    itemLabel: "Trinidad and Tobago",
     code: "TT",
-    text: "Citizen of Trinidad and Tobago (Wikidata)",
   },
-  Q757: {
-    name: "Saint Vincent and the Grenadines",
+  {
+    item: "http://www.wikidata.org/entity/Q757",
+    itemLabel: "Saint Vincent and the Grenadines",
     code: "VC",
-    text: "Citizen of Saint Vincent and the Grenadines (Wikidata)",
   },
-  Q760: {
-    name: "Saint Lucia",
+  {
+    item: "http://www.wikidata.org/entity/Q760",
+    itemLabel: "Saint Lucia",
     code: "LC",
-    text: "Citizen of Saint Lucia (Wikidata)",
   },
-  Q763: {
-    name: "Saint Kitts and Nevis",
+  {
+    item: "http://www.wikidata.org/entity/Q763",
+    itemLabel: "Saint Kitts and Nevis",
     code: "KN",
-    text: "Citizen of Saint Kitts and Nevis (Wikidata)",
   },
-  Q766: { name: "Jamaica", code: "JM", text: "Citizen of Jamaica (Wikidata)" },
-  Q769: { name: "Grenada", code: "GD", text: "Citizen of Grenada (Wikidata)" },
-  Q774: {
-    name: "Guatemala",
+  {
+    item: "http://www.wikidata.org/entity/Q766",
+    itemLabel: "Jamaica",
+    code: "JM",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q769",
+    itemLabel: "Grenada",
+    code: "GD",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q774",
+    itemLabel: "Guatemala",
     code: "GT",
-    text: "Citizen of Guatemala (Wikidata)",
   },
-  Q778: {
-    name: "The Bahamas",
+  {
+    item: "http://www.wikidata.org/entity/Q778",
+    itemLabel: "The Bahamas",
     code: "BS",
-    text: "Citizen of The Bahamas (Wikidata)",
   },
-  Q781: {
-    name: "Antigua and Barbuda",
+  {
+    item: "http://www.wikidata.org/entity/Q781",
+    itemLabel: "Antigua and Barbuda",
     code: "AG",
-    text: "Citizen of Antigua and Barbuda (Wikidata)",
   },
-  Q783: {
-    name: "Honduras",
+  {
+    item: "http://www.wikidata.org/entity/Q783",
+    itemLabel: "Honduras",
     code: "HN",
-    text: "Citizen of Honduras (Wikidata)",
   },
-  Q784: {
-    name: "Dominica",
+  {
+    item: "http://www.wikidata.org/entity/Q784",
+    itemLabel: "Dominica",
     code: "DM",
-    text: "Citizen of Dominica (Wikidata)",
   },
-  Q786: {
-    name: "Dominican Republic",
+  {
+    item: "http://www.wikidata.org/entity/Q786",
+    itemLabel: "Dominican Republic",
     code: "DO",
-    text: "Citizen of Dominican Republic (Wikidata)",
   },
-  Q790: { name: "Haiti", code: "HT", text: "Citizen of Haiti (Wikidata)" },
-  Q792: {
-    name: "El Salvador",
+  {
+    item: "http://www.wikidata.org/entity/Q790",
+    itemLabel: "Haiti",
+    code: "HT",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q792",
+    itemLabel: "El Salvador",
     code: "SV",
-    text: "Citizen of El Salvador (Wikidata)",
   },
-  Q794: { name: "Iran", code: "IR", text: "Citizen of Iran (Wikidata)" },
-  Q796: { name: "Iraq", code: "IQ", text: "Citizen of Iraq (Wikidata)" },
-  Q800: {
-    name: "Costa Rica",
+  {
+    item: "http://www.wikidata.org/entity/Q794",
+    itemLabel: "Iran",
+    code: "IR",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q796",
+    itemLabel: "Iraq",
+    code: "IQ",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q800",
+    itemLabel: "Costa Rica",
     code: "CR",
-    text: "Citizen of Costa Rica (Wikidata)",
   },
-  Q801: { name: "Israel", code: "IL", text: "Citizen of Israel (Wikidata)" },
-  Q805: { name: "Yemen", code: "YE", text: "Citizen of Yemen (Wikidata)" },
-  Q810: { name: "Jordan", code: "JO", text: "Citizen of Jordan (Wikidata)" },
-  Q811: {
-    name: "Nicaragua",
+  {
+    item: "http://www.wikidata.org/entity/Q801",
+    itemLabel: "Israel",
+    code: "IL",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q805",
+    itemLabel: "Yemen",
+    code: "YE",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q810",
+    itemLabel: "Jordan",
+    code: "JO",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q811",
+    itemLabel: "Nicaragua",
     code: "NI",
-    text: "Citizen of Nicaragua (Wikidata)",
   },
-  Q813: {
-    name: "Kyrgyzstan",
+  {
+    item: "http://www.wikidata.org/entity/Q813",
+    itemLabel: "Kyrgyzstan",
     code: "KG",
-    text: "Citizen of Kyrgyzstan (Wikidata)",
   },
-  Q819: { name: "Laos", code: "LA", text: "Citizen of Laos (Wikidata)" },
-  Q822: { name: "Lebanon", code: "LB", text: "Citizen of Lebanon (Wikidata)" },
-  Q826: {
-    name: "Maldives",
+  {
+    item: "http://www.wikidata.org/entity/Q819",
+    itemLabel: "Laos",
+    code: "LA",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q822",
+    itemLabel: "Lebanon",
+    code: "LB",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q826",
+    itemLabel: "Maldives",
     code: "MV",
-    text: "Citizen of Maldives (Wikidata)",
   },
-  Q833: {
-    name: "Malaysia",
+  {
+    item: "http://www.wikidata.org/entity/Q833",
+    itemLabel: "Malaysia",
     code: "MY",
-    text: "Citizen of Malaysia (Wikidata)",
   },
-  Q836: { name: "Myanmar", code: "MM", text: "Citizen of Myanmar (Wikidata)" },
-  Q837: { name: "Nepal", code: "NP", text: "Citizen of Nepal (Wikidata)" },
-  Q842: { name: "Oman", code: "OM", text: "Citizen of Oman (Wikidata)" },
-  Q843: {
-    name: "Pakistan",
+  {
+    item: "http://www.wikidata.org/entity/Q836",
+    itemLabel: "Myanmar",
+    code: "MM",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q837",
+    itemLabel: "Nepal",
+    code: "NP",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q842",
+    itemLabel: "Oman",
+    code: "OM",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q843",
+    itemLabel: "Pakistan",
     code: "PK",
-    text: "Citizen of Pakistan (Wikidata)",
   },
-  Q846: { name: "Qatar", code: "QA", text: "Citizen of Qatar (Wikidata)" },
-  Q851: {
-    name: "Saudi Arabia",
+  {
+    item: "http://www.wikidata.org/entity/Q846",
+    itemLabel: "Qatar",
+    code: "QA",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q851",
+    itemLabel: "Saudi Arabia",
     code: "SA",
-    text: "Citizen of Saudi Arabia (Wikidata)",
   },
-  Q854: {
-    name: "Sri Lanka",
+  {
+    item: "http://www.wikidata.org/entity/Q854",
+    itemLabel: "Sri Lanka",
     code: "LK",
-    text: "Citizen of Sri Lanka (Wikidata)",
   },
-  Q858: { name: "Syria", code: "SY", text: "Citizen of Syria (Wikidata)" },
-  Q863: {
-    name: "Tajikistan",
+  {
+    item: "http://www.wikidata.org/entity/Q858",
+    itemLabel: "Syria",
+    code: "SY",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q863",
+    itemLabel: "Tajikistan",
     code: "TJ",
-    text: "Citizen of Tajikistan (Wikidata)",
   },
-  Q865: { name: "Taiwan", code: "TW", text: "Citizen of Taiwan (Wikidata)" },
-  Q869: {
-    name: "Thailand",
+  {
+    item: "http://www.wikidata.org/entity/Q865",
+    itemLabel: "Taiwan",
+    code: "TW",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q869",
+    itemLabel: "Thailand",
     code: "TH",
-    text: "Citizen of Thailand (Wikidata)",
   },
-  Q874: {
-    name: "Turkmenistan",
+  {
+    item: "http://www.wikidata.org/entity/Q874",
+    itemLabel: "Turkmenistan",
     code: "TM",
-    text: "Citizen of Turkmenistan (Wikidata)",
   },
-  Q878: {
-    name: "United Arab Emirates",
+  {
+    item: "http://www.wikidata.org/entity/Q878",
+    itemLabel: "United Arab Emirates",
     code: "AE",
-    text: "Citizen of United Arab Emirates (Wikidata)",
   },
-  Q881: { name: "Vietnam", code: "VN", text: "Citizen of Vietnam (Wikidata)" },
-  Q884: {
-    name: "South Korea",
+  {
+    item: "http://www.wikidata.org/entity/Q881",
+    itemLabel: "Vietnam",
+    code: "VN",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q884",
+    itemLabel: "South Korea",
     code: "KR",
-    text: "Citizen of South Korea (Wikidata)",
   },
-  Q889: {
-    name: "Afghanistan",
+  {
+    item: "http://www.wikidata.org/entity/Q889",
+    itemLabel: "Afghanistan",
     code: "AF",
-    text: "Citizen of Afghanistan (Wikidata)",
   },
-  Q902: {
-    name: "Bangladesh",
+  {
+    item: "http://www.wikidata.org/entity/Q902",
+    itemLabel: "Bangladesh",
     code: "BD",
-    text: "Citizen of Bangladesh (Wikidata)",
   },
-  Q912: { name: "Mali", code: "ML", text: "Citizen of Mali (Wikidata)" },
-  Q916: { name: "Angola", code: "AO", text: "Citizen of Angola (Wikidata)" },
-  Q917: { name: "Bhutan", code: "BT", text: "Citizen of Bhutan (Wikidata)" },
-  Q921: { name: "Brunei", code: "BN", text: "Citizen of Brunei (Wikidata)" },
-  Q924: {
-    name: "Tanzania",
+  {
+    item: "http://www.wikidata.org/entity/Q912",
+    itemLabel: "Mali",
+    code: "ML",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q916",
+    itemLabel: "Angola",
+    code: "AO",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q917",
+    itemLabel: "Bhutan",
+    code: "BT",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q921",
+    itemLabel: "Brunei",
+    code: "BN",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q924",
+    itemLabel: "Tanzania",
     code: "TZ",
-    text: "Citizen of Tanzania (Wikidata)",
   },
-  Q928: {
-    name: "Philippines",
+  {
+    item: "http://www.wikidata.org/entity/Q928",
+    itemLabel: "Philippines",
     code: "PH",
-    text: "Citizen of Philippines (Wikidata)",
   },
-  Q929: {
-    name: "Central African Republic",
+  {
+    item: "http://www.wikidata.org/entity/Q929",
+    itemLabel: "Central African Republic",
     code: "CF",
-    text: "Citizen of Central African Republic (Wikidata)",
   },
-  Q945: { name: "Togo", code: "TG", text: "Citizen of Togo (Wikidata)" },
-  Q948: { name: "Tunisia", code: "TN", text: "Citizen of Tunisia (Wikidata)" },
-  Q953: { name: "Zambia", code: "ZM", text: "Citizen of Zambia (Wikidata)" },
-  Q954: {
-    name: "Zimbabwe",
+  {
+    item: "http://www.wikidata.org/entity/Q945",
+    itemLabel: "Togo",
+    code: "TG",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q948",
+    itemLabel: "Tunisia",
+    code: "TN",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q953",
+    itemLabel: "Zambia",
+    code: "ZM",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q954",
+    itemLabel: "Zimbabwe",
     code: "ZW",
-    text: "Citizen of Zimbabwe (Wikidata)",
   },
-  Q958: {
-    name: "South Sudan",
+  {
+    item: "http://www.wikidata.org/entity/Q958",
+    itemLabel: "South Sudan",
     code: "SS",
-    text: "Citizen of South Sudan (Wikidata)",
   },
-  Q962: { name: "Benin", code: "BJ", text: "Citizen of Benin (Wikidata)" },
-  Q963: {
-    name: "Botswana",
+  {
+    item: "http://www.wikidata.org/entity/Q962",
+    itemLabel: "Benin",
+    code: "BJ",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q963",
+    itemLabel: "Botswana",
     code: "BW",
-    text: "Citizen of Botswana (Wikidata)",
   },
-  Q965: {
-    name: "Burkina Faso",
+  {
+    item: "http://www.wikidata.org/entity/Q965",
+    itemLabel: "Burkina Faso",
     code: "BF",
-    text: "Citizen of Burkina Faso (Wikidata)",
   },
-  Q967: { name: "Burundi", code: "BI", text: "Citizen of Burundi (Wikidata)" },
-  Q970: { name: "Comoros", code: "KM", text: "Citizen of Comoros (Wikidata)" },
-  Q971: {
-    name: "Republic of the Congo",
+  {
+    item: "http://www.wikidata.org/entity/Q967",
+    itemLabel: "Burundi",
+    code: "BI",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q970",
+    itemLabel: "Comoros",
+    code: "KM",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q971",
+    itemLabel: "Republic of the Congo",
     code: "CG",
-    text: "Citizen of Republic of the Congo (Wikidata)",
   },
-  Q974: {
-    name: "Democratic Republic of the Congo",
+  {
+    item: "http://www.wikidata.org/entity/Q974",
+    itemLabel: "Democratic Republic of the Congo",
     code: "CD",
-    text: "Citizen of Democratic Republic of the Congo (Wikidata)",
   },
-  Q977: {
-    name: "Djibouti",
+  {
+    item: "http://www.wikidata.org/entity/Q977",
+    itemLabel: "Djibouti",
     code: "DJ",
-    text: "Citizen of Djibouti (Wikidata)",
   },
-  Q986: { name: "Eritrea", code: "ER", text: "Citizen of Eritrea (Wikidata)" },
-  Q1005: {
-    name: "The Gambia",
+  {
+    item: "http://www.wikidata.org/entity/Q986",
+    itemLabel: "Eritrea",
+    code: "ER",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1005",
+    itemLabel: "The Gambia",
     code: "GM",
-    text: "Citizen of The Gambia (Wikidata)",
   },
-  Q1006: { name: "Guinea", code: "GN", text: "Citizen of Guinea (Wikidata)" },
-  Q1007: {
-    name: "Guinea-Bissau",
+  {
+    item: "http://www.wikidata.org/entity/Q1006",
+    itemLabel: "Guinea",
+    code: "GN",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1007",
+    itemLabel: "Guinea-Bissau",
     code: "GW",
-    text: "Citizen of Guinea-Bissau (Wikidata)",
   },
-  Q1008: {
-    name: "Ivory Coast",
+  {
+    item: "http://www.wikidata.org/entity/Q1008",
+    itemLabel: "Côte d'Ivoire",
     code: "CI",
-    text: "Citizen of Ivory Coast (Wikidata)",
   },
-  Q1009: {
-    name: "Cameroon",
+  {
+    item: "http://www.wikidata.org/entity/Q1009",
+    itemLabel: "Cameroon",
     code: "CM",
-    text: "Citizen of Cameroon (Wikidata)",
   },
-  Q1011: {
-    name: "Cape Verde",
+  {
+    item: "http://www.wikidata.org/entity/Q1011",
+    itemLabel: "Cape Verde",
     code: "CV",
-    text: "Citizen of Cape Verde (Wikidata)",
   },
-  Q1013: { name: "Lesotho", code: "LS", text: "Citizen of Lesotho (Wikidata)" },
-  Q1014: { name: "Liberia", code: "LR", text: "Citizen of Liberia (Wikidata)" },
-  Q1016: { name: "Libya", code: "LY", text: "Citizen of Libya (Wikidata)" },
-  Q1019: {
-    name: "Madagascar",
+  {
+    item: "http://www.wikidata.org/entity/Q1013",
+    itemLabel: "Lesotho",
+    code: "LS",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1014",
+    itemLabel: "Liberia",
+    code: "LR",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1016",
+    itemLabel: "Libya",
+    code: "LY",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1019",
+    itemLabel: "Madagascar",
     code: "MG",
-    text: "Citizen of Madagascar (Wikidata)",
   },
-  Q1020: { name: "Malawi", code: "MW", text: "Citizen of Malawi (Wikidata)" },
-  Q1025: {
-    name: "Mauritania",
+  {
+    item: "http://www.wikidata.org/entity/Q1020",
+    itemLabel: "Malawi",
+    code: "MW",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1025",
+    itemLabel: "Mauritania",
     code: "MR",
-    text: "Citizen of Mauritania (Wikidata)",
   },
-  Q1027: {
-    name: "Mauritius",
+  {
+    item: "http://www.wikidata.org/entity/Q1027",
+    itemLabel: "Mauritius",
     code: "MU",
-    text: "Citizen of Mauritius (Wikidata)",
   },
-  Q1028: { name: "Morocco", code: "MA", text: "Citizen of Morocco (Wikidata)" },
-  Q1029: {
-    name: "Mozambique",
+  {
+    item: "http://www.wikidata.org/entity/Q1028",
+    itemLabel: "Morocco",
+    code: "MA",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1029",
+    itemLabel: "Mozambique",
     code: "MZ",
-    text: "Citizen of Mozambique (Wikidata)",
   },
-  Q1030: { name: "Namibia", code: "NA", text: "Citizen of Namibia (Wikidata)" },
-  Q1032: { name: "Niger", code: "NE", text: "Citizen of Niger (Wikidata)" },
-  Q1033: { name: "Nigeria", code: "NG", text: "Citizen of Nigeria (Wikidata)" },
-  Q1036: { name: "Uganda", code: "UG", text: "Citizen of Uganda (Wikidata)" },
-  Q1037: { name: "Rwanda", code: "RW", text: "Citizen of Rwanda (Wikidata)" },
-  Q1039: {
-    name: "São Tomé and Príncipe",
+  {
+    item: "http://www.wikidata.org/entity/Q1030",
+    itemLabel: "Namibia",
+    code: "NA",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1032",
+    itemLabel: "Niger",
+    code: "NE",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1033",
+    itemLabel: "Nigeria",
+    code: "NG",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1036",
+    itemLabel: "Uganda",
+    code: "UG",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1037",
+    itemLabel: "Rwanda",
+    code: "RW",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1039",
+    itemLabel: "São Tomé and Príncipe",
     code: "ST",
-    text: "Citizen of São Tomé and Príncipe (Wikidata)",
   },
-  Q1041: { name: "Senegal", code: "SN", text: "Citizen of Senegal (Wikidata)" },
-  Q1042: {
-    name: "Seychelles",
+  {
+    item: "http://www.wikidata.org/entity/Q1041",
+    itemLabel: "Senegal",
+    code: "SN",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1042",
+    itemLabel: "Seychelles",
     code: "SC",
-    text: "Citizen of Seychelles (Wikidata)",
   },
-  Q1044: {
-    name: "Sierra Leone",
+  {
+    item: "http://www.wikidata.org/entity/Q1044",
+    itemLabel: "Sierra Leone",
     code: "SL",
-    text: "Citizen of Sierra Leone (Wikidata)",
   },
-  Q1045: { name: "Somalia", code: "SO", text: "Citizen of Somalia (Wikidata)" },
-  Q1049: { name: "Sudan", code: "SD", text: "Citizen of Sudan (Wikidata)" },
-  Q16641: {
-    name: "American Samoa",
+  {
+    item: "http://www.wikidata.org/entity/Q1045",
+    itemLabel: "Somalia",
+    code: "SO",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1049",
+    itemLabel: "Sudan",
+    code: "SD",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q1246",
+    itemLabel: "Kosovo",
+    code: "XK",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q16641",
+    itemLabel: "American Samoa",
     code: "AS",
-    text: "Citizen of American Samoa (Wikidata)",
   },
-  Q16644: {
-    name: "Northern Mariana Islands",
+  {
+    item: "http://www.wikidata.org/entity/Q16644",
+    itemLabel: "Northern Mariana Islands",
     code: "MP",
-    text: "Citizen of Northern Mariana Islands (Wikidata)",
   },
-  Q21203: { name: "Aruba", code: "AW", text: "Citizen of Aruba (Wikidata)" },
-  Q26273: {
-    name: "Sint Maarten",
+  {
+    item: "http://www.wikidata.org/entity/Q21203",
+    itemLabel: "Aruba",
+    code: "AW",
+  },
+  {
+    item: "http://www.wikidata.org/entity/Q26273",
+    itemLabel: "Sint Maarten",
     code: "SX",
-    text: "Citizen of Sint Maarten (Wikidata)",
   },
-  Q26988: {
-    name: "Cook Islands",
+  {
+    item: "http://www.wikidata.org/entity/Q26988",
+    itemLabel: "Cook Islands",
     code: "CK",
-    text: "Citizen of Cook Islands (Wikidata)",
   },
-  Q29999: {
-    name: "Kingdom of the Netherlands",
+  {
+    item: "http://www.wikidata.org/entity/Q29999",
+    itemLabel: "Kingdom of the Netherlands",
     code: "NL",
-    text: "Citizen of Kingdom of the Netherlands (Wikidata)",
   },
-  Q34020: { name: "Niue", code: "NU", text: "Citizen of Niue (Wikidata)" },
-};
+  {
+    item: "http://www.wikidata.org/entity/Q34020",
+    itemLabel: "Niue",
+    code: "NU",
+  },
+];
 
 //https://query.wikidata.org/#%23Countries%20with%20country%20code%0ASELECT%20%3Fitem%20%3Fname%20%3Fcode%0AWHERE%20%0A%7B%0A%20%20%3Fitem%20wdt%3AP31%20wd%3AQ6256.%0A%20%20%3Fitem%20wdt%3AP297%20%3Fcode.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D

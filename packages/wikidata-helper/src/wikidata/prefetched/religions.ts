@@ -1,4 +1,4 @@
-import { SparqlEmoji } from "types/SparqlEmoji";
+import { SparqlEmoji } from "../../types/SparqlEmoji";
 
 export const RELIGIONS: SparqlEmoji[] = [
   {

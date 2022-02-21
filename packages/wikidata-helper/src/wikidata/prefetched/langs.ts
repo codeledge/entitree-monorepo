@@ -1,4 +1,4 @@
-import { Lang, LangCode } from "types/Lang";
+import { Lang, LangCode } from "../../types/Lang";
 
 const DISAMBIGUATION_PAGE_DESC: { [key: string]: string } = {
   ar: "صفحة توضيح لويكيميديا",

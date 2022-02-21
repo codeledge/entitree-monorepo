@@ -1,7 +1,8 @@
-import axios from 'axios';
-import wdk from 'wikidata-sdk';
+import axios from "axios";
+//@ts-ignore
+import wdk from "wikidata-sdk";
 
-export async function getSparql(query: string) {
+export async function getWikidataSparql(query: string) {
   const url = await new Promise<string>((resolve, reject) => {
     try {
       const url = wdk.sparqlQuery(query);

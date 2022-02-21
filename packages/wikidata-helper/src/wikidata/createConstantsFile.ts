@@ -1,6 +1,6 @@
-import fs from 'fs';
-import { getSparql } from './getSparql';
-import path from 'path';
+import fs from "fs";
+import { getWikidataSparql } from "./getWikidataSparql";
+import path from "path";
 
 export async function createConstants() {
   const query = `SELECT ?p ?pt ?pLabel  WHERE {
@@ -11,17 +11,17 @@ export async function createConstants() {
     bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". 
     }}
 `;
-  const data = await getSparql(query);
-  let output = '';
+  const data = await getWikidataSparql(query);
+  let output = "";
   data.forEach((item: any) => {
     output += `export const WD_${item.p.label
-      .replaceAll(/\W+/g, '_')
+      .replaceAll(/\W+/g, "_")
       .toUpperCase()} = "${item.p.value}";\n`;
   });
   console.log(output);
 
   fs.writeFileSync(
-    path.resolve(__dirname, '../../../../../src/wikidata/properties.ts'),
-    output,
+    path.resolve(__dirname, "../../../../../src/wikidata/properties.ts"),
+    output
   );
 }
