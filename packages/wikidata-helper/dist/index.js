@@ -9677,6 +9677,7 @@ __export(src_exports, {
   getDateClaimISO: () => getDateClaimISO,
   getEntitreeImages: () => getEntitreeImages,
   getItunesShowEpisodes: () => getItunesShowEpisodes,
+  getSimplifiedWikidataEntities: () => getSimplifiedWikidataEntities,
   getSpotifyShowEpisodes: () => getSpotifyShowEpisodes,
   getWikidataEntities: () => getWikidataEntities,
   getWikidataSparql: () => getWikidataSparql,
@@ -19381,6 +19382,13 @@ async function getWikibaseEntities({
 // src/wikidata/getWikidataEntities.ts
 async function getWikidataEntities(ids, languages = ["en"], props = ["labels", "descriptions", "claims", "sitelinks/urls"]) {
   return await getWikibaseEntities({ ids, languages, props, dataSource: import_wikidata_sdk2.default });
+}
+async function getSimplifiedWikidataEntities(ids, languages = ["en"], props = ["labels", "descriptions", "claims", "sitelinks/urls"]) {
+  const entities = await getWikidataEntities(ids, languages, props);
+  return import_wikidata_sdk2.default.simplify.entities(entities, {
+    keepQualifiers: true,
+    addUrl: true
+  });
 }
 
 // src/wikidata/prefetched/countries.ts
@@ -32456,6 +32464,7 @@ module.exports = __toCommonJS(src_exports);
   getDateClaimISO,
   getEntitreeImages,
   getItunesShowEpisodes,
+  getSimplifiedWikidataEntities,
   getSpotifyShowEpisodes,
   getWikidataEntities,
   getWikidataSparql,
