@@ -9677,10 +9677,13 @@ __export(src_exports, {
   getDateClaimISO: () => getDateClaimISO,
   getEntitreeImages: () => getEntitreeImages,
   getItunesShowEpisodes: () => getItunesShowEpisodes,
+  getSpotifyShowEpisodes: () => getSpotifyShowEpisodes,
   getWikidataEntities: () => getWikidataEntities,
   getWikidataSparql: () => getWikidataSparql,
   getWikipediaArticle: () => getWikipediaArticle,
   getWikipediaDescription: () => getWikipediaDescription,
+  getYoutubePlaylistVideoIds: () => getYoutubePlaylistVideoIds,
+  getYoutubePlaylistVideos: () => getYoutubePlaylistVideos,
   imageServer: () => imageServer,
   missingImagesLink: () => missingImagesLink,
   searchTerm: () => searchTerm
@@ -22654,8 +22657,114 @@ async function getItunesShowEpisodes(itunesId) {
   return results;
 }
 
-// src/entitree-images/getImages.ts
+// src/spotify/getEpisodes.ts
+var import_luxon2 = require("luxon");
 var import_axios6 = __toESM(require("axios"));
+async function getSpotifyShowEpisodes(playlistId, access_token, afterDate) {
+  let items = [];
+  let offset = 0;
+  let nextPageToken = "start";
+  do {
+    const page = (await import_axios6.default.get("https://api.spotify.com/v1/shows/" + playlistId + "/episodes", {
+      headers: {
+        Authorization: "Bearer " + access_token,
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      params: {
+        limit: 50,
+        offset
+      }
+    })).data;
+    offset += 50;
+    nextPageToken = page.next;
+    for (const item of page.items) {
+      items.push(item);
+    }
+  } while (nextPageToken && import_luxon2.DateTime.fromISO(items[items.length - 1].pubDate) > afterDate);
+  return items;
+}
+
+// src/youtube/getVideosByPlaylist.ts
+var import_axios7 = __toESM(require("axios"));
+
+// src/youtube/youtube-helper.ts
+function simplifyItem(item) {
+  var _a, _b, _c, _d, _e;
+  if ((_a = item.snippet) == null ? void 0 : _a.tags) {
+    item.snippet.tags = item.snippet.tags.join(",");
+  }
+  if ((_b = item.topicDetails) == null ? void 0 : _b.topicCategories) {
+    item.topicDetails.topicCategories = item.topicDetails.topicCategories.join(",");
+  }
+  delete item.snippet.thumbnails;
+  if ((_d = (_c = item.contentDetails) == null ? void 0 : _c.regionRestriction) == null ? void 0 : _d.blocked) {
+    item.contentDetails.regionRestriction.blocked = item.contentDetails.regionRestriction.blocked.join(",");
+  }
+  if ((_e = item.contentDetails) == null ? void 0 : _e.duration) {
+    item.contentDetails.durationSeconds = toSeconds(item.contentDetails.duration);
+  }
+  return item;
+}
+function toSeconds(value) {
+  let math = value.replace("PT", "").replace("H", "*60*60+").replace("M", "*60+").replace("S", "");
+  if (math.slice(-1) == "+") {
+    math = math.slice(0, -1);
+  }
+  return (0, eval)(math);
+}
+
+// src/youtube/getVideosByPlaylist.ts
+async function getYoutubePlaylistVideoIds(playlistId, key) {
+  playlistId = "UU" + playlistId.substring(2);
+  const items = [];
+  const ids = [];
+  let nextPageToken = "start";
+  do {
+    const nextPageTokenQuery = nextPageToken == "start" ? "" : `&pageToken=${nextPageToken}`;
+    const nextPageEndpoint = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=${playlistId}&key=${key}${nextPageTokenQuery}`;
+    console.log(nextPageEndpoint);
+    const nextPageJson = (await import_axios7.default.get(nextPageEndpoint)).data;
+    let pageData = nextPageJson.items;
+    nextPageToken = nextPageJson.nextPageToken;
+    for (const item of pageData) {
+      ids.push(item.contentDetails.videoId);
+    }
+  } while (nextPageToken);
+  return {
+    ids
+  };
+}
+async function getYoutubePlaylistVideos(playlistId, key) {
+  playlistId = "UU" + playlistId.substring(2);
+  const items = [];
+  const ids = [];
+  let nextPageToken = "start";
+  do {
+    console.log("getting next page");
+    const nextPageTokenQuery = nextPageToken == "start" ? "" : `&pageToken=${nextPageToken}`;
+    const nextPageEndpoint = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=${playlistId}&key=${key}${nextPageTokenQuery}`;
+    console.log(nextPageEndpoint);
+    const nextPageJson = (await import_axios7.default.get(nextPageEndpoint)).data;
+    let pageData = nextPageJson.items;
+    nextPageToken = nextPageJson.nextPageToken;
+    for (const item of pageData) {
+      ids.push(item.contentDetails.videoId);
+    }
+    const part = "contentDetails,topicDetails,status,statistics,snippet,recordingDetails";
+    const detailsEndpoint = `https://www.googleapis.com/youtube/v3/videos?part=${part}&id=${ids.join(",")}&key=${key}`;
+    const detailsData = (await import_axios7.default.get(detailsEndpoint)).data;
+    for (const item of detailsData.items) {
+      items.push(simplifyItem(item));
+    }
+  } while (nextPageToken);
+  return {
+    items
+  };
+}
+
+// src/entitree-images/getImages.ts
+var import_axios8 = __toESM(require("axios"));
 var IMAGE_SERVER_BASE_URL = "https://images.entitree.com";
 var IMAGE_SERVER_TYPES = [
   { code: "transparent_face" },
@@ -22678,7 +22787,7 @@ var missingImagesLink = (extra = {}) => {
   });
   return IMAGE_SERVER_BASE_URL + "/#/images/create?" + params.toString();
 };
-var imageServer = import_axios6.default.create({
+var imageServer = import_axios8.default.create({
   baseURL: IMAGE_SERVER_BASE_URL,
   timeout: 3e3
 });
@@ -32347,10 +32456,13 @@ module.exports = __toCommonJS(src_exports);
   getDateClaimISO,
   getEntitreeImages,
   getItunesShowEpisodes,
+  getSpotifyShowEpisodes,
   getWikidataEntities,
   getWikidataSparql,
   getWikipediaArticle,
   getWikipediaDescription,
+  getYoutubePlaylistVideoIds,
+  getYoutubePlaylistVideos,
   imageServer,
   missingImagesLink,
   searchTerm

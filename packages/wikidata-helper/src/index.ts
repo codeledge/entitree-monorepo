@@ -18,6 +18,10 @@ export * from "./wikidata/format/formatDateClaim";
 
 //itunes
 export * from "./itunes/getEpisodes";
+//spotify
+export * from "./spotify/getEpisodes";
+//youtube
+export * from "./youtube/getVideosByPlaylist";
 
 //entitree images
 export * from "./entitree-images/getImages";
