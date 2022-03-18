@@ -1,12 +1,13 @@
+//@ts-nocheck
 import { Claim, ClaimSnakTimeValue } from "../../types/Claim";
+import { WD_CIRCA, WD_PRESUMABLY } from "../shorthands";
 import { getBestClaim, getBestClaimValue } from "./getBestClaim";
 
-import { DateTime } from "luxon";
-import wbk from "wikidata-sdk";
-import { WD_SOURCING_CIRCUMSTANCES } from "../properties";
-import { WD_CIRCA, WD_PRESUMABLY } from "../shorthands";
-import ordinalize from "ordinalize";
 import { DEFAULT_LANG_CODE } from "../prefetched/langs";
+import { DateTime } from "luxon";
+import { WD_SOURCING_CIRCUMSTANCES } from "../properties";
+import ordinalize from "ordinalize";
+import wbk from "wikidata-sdk";
 
 export const getDateClaimISO = (dateClaim: any): string | undefined => {
   const bestClaimValue = getBestClaimValue(
@@ -23,8 +24,9 @@ export default function formatDateClaim(
   const dateClaim = getBestClaim(claims);
   const value = getBestClaimValue(claims) as ClaimSnakTimeValue["value"];
   if (!value) return "";
+
   const sourcingCircumstances =
-    dateClaim?.qualifiers?.[WD_SOURCING_CIRCUMSTANCES]?.[0]?.datavalue?.value[
+    dateClaim?.qualifiers?.[WD_SOURCING_CIRCUMSTANCES]?.[0]?.datavalue?.value?.[
       "id"
     ];
 

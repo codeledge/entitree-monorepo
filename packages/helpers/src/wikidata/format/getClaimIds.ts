@@ -1,7 +1,9 @@
+//@ts-nocheck
+
 // Claims may have qualifier series ordinal,
 // this should be set when the children birthdate is unknown,
 
-import { SimpleClaim, Entity } from "../../types/Entity";
+import { SimpleClaim, WikibaseEntity } from "../../types/Entity";
 
 // but they should still be sorted by age.
 function getSeriesOrdinal(claim: SimpleClaim) {
@@ -19,7 +21,7 @@ function getSeriesOrdinal(claim: SimpleClaim) {
   return 0;
 }
 
-export default function getClaimIds(entity: Entity, propId: string) {
+export default function getClaimIds(entity: WikibaseEntity, propId: string) {
   const simpleClaimSet = entity.simpleClaims?.[propId] || [];
   simpleClaimSet.sort((a, b) => {
     return getSeriesOrdinal(a) - getSeriesOrdinal(b);
@@ -28,7 +30,10 @@ export default function getClaimIds(entity: Entity, propId: string) {
 }
 
 // checks whether the claim has a qualifier of series ordinal, return true if the first one has it
-export function checkIfClaimsHasSeriesOrdinal(entity: Entity, propId: string) {
+export function checkIfClaimsHasSeriesOrdinal(
+  entity: WikibaseEntity,
+  propId: string
+) {
   const simpleClaimSet = entity.simpleClaims?.[propId] || [];
   if (simpleClaimSet.length) {
     if (getSeriesOrdinal(simpleClaimSet[0])) {
