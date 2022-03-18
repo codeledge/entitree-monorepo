@@ -1,6 +1,6 @@
-export default function abbreviateNumber(value: number) {
+export const abbreviateNumber = (value: number) => {
   let newValue: any = value;
-  const suffixes = ['', 'K', 'M', 'B', 'T'];
+  const suffixes = ["", "K", "M", "B", "T"];
   let suffixNum = 0;
   while (newValue >= 1000) {
     newValue /= 1000;
@@ -11,4 +11,4 @@ export default function abbreviateNumber(value: number) {
 
   newValue += suffixes[suffixNum];
   return newValue;
-}
+};

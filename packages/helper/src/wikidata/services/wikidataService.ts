@@ -5,7 +5,7 @@ const wikidataService = axios.create({
 });
 wikidataService.interceptors.response.use((res) => res.data);
 
-export type SearchResult = {
+export type WikidataSearchResult = {
   aliases?: string[]; // ["Queen Elizabeth II"]
   id: string; // Q623
   description?: string; // "chemical element with symbol C and atomic number 6; common element of all known life"
@@ -23,7 +23,7 @@ export type SearchResult = {
 };
 
 type Response = {
-  search: SearchResult[];
+  search: WikidataSearchResult[];
   "search-continue": number;
   searchinfo: { search: string };
   success: number;
