@@ -1,34 +1,6 @@
 //@ts-nocheck
 import axios from "axios";
-import { simplifyItem } from "./youtube-helper";
-
-export async function getYoutubePlaylistVideoIds(
-  playlistId: string,
-  key: string
-): Promise<any | undefined> {
-  playlistId = "UU" + playlistId.substring(2);
-  const items: any[] = [];
-  const ids = [];
-
-  let nextPageToken = "start";
-  do {
-    const nextPageTokenQuery =
-      nextPageToken == "start" ? "" : `&pageToken=${nextPageToken}`;
-    //before contentDetails,snippet now contentDetails is enough
-    const nextPageEndpoint = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=${playlistId}&key=${key}${nextPageTokenQuery}`;
-    console.log(nextPageEndpoint);
-    const nextPageJson = (await axios.get(nextPageEndpoint)).data;
-
-    let pageData = nextPageJson.items;
-    nextPageToken = nextPageJson.nextPageToken;
-    for (const item of pageData) {
-      ids.push(item.contentDetails.videoId);
-    }
-  } while (nextPageToken);
-  return {
-    ids,
-  };
-}
+import { simplifyYoutubeItem } from "./lib/simplifyYoutubeItem";
 
 export async function getYoutubePlaylistVideos(
   playlistId: string,
@@ -62,7 +34,7 @@ export async function getYoutubePlaylistVideos(
     )}&key=${key}`;
     const detailsData = (await axios.get(detailsEndpoint)).data;
     for (const item of detailsData.items) {
-      items.push(simplifyItem(item));
+      items.push(simplifyYoutubeItem(item));
     }
   } while (nextPageToken);
   return {

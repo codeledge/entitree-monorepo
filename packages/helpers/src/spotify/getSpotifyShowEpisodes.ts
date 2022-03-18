@@ -1,17 +1,17 @@
 import { DateTime } from "luxon";
-import { EpisodeObject } from "./types";
+import { SpotifyEpisodeObject } from "./types";
 import axios from "axios";
 
 interface SpotifyResponse {
   next: string;
-  items: EpisodeObject[];
+  items: SpotifyEpisodeObject[];
 }
 
 export async function getSpotifyShowEpisodes(
   playlistId: string,
   access_token: string,
   afterDate: DateTime
-): Promise<EpisodeObject[]> {
+): Promise<SpotifyEpisodeObject[]> {
   let items: any[] = [];
   let offset = 0;
   let nextPageToken = "start";

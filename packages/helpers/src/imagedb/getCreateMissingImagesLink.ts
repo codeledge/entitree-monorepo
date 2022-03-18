@@ -1,6 +1,6 @@
 import { IMAGE_SERVER_BASE_URL } from "./constants";
 
-export const getAddMissingImagesLink = (extra = {}) => {
+export const getCreateMissingImagesLink = (extra = {}) => {
   const params = new URLSearchParams({
     source: JSON.stringify(extra),
   });

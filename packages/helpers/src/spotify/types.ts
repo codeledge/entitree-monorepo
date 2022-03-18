@@ -1,4 +1,4 @@
-export interface EpisodeObject {
+export interface SpotifyEpisodeObject {
   audio_preview_url: string;
   description: string;
   duration_ms: number;
