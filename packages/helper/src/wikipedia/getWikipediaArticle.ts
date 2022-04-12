@@ -1,3 +1,4 @@
+import { LangCode } from "../types/Lang";
 import axios from "axios";
 
 type Response = {
@@ -36,7 +37,7 @@ type Response = {
 
 export async function getWikipediaArticle(
   wikipediaSlug: string,
-  langCode: string = "en"
+  langCode: LangCode = "en"
 ) {
   const { data } = await axios.get<Response>(
     `https://${langCode}.wikipedia.org/api/rest_v1/page/summary/${wikipediaSlug}` //encodeURIComponent
