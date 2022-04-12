@@ -5,6 +5,7 @@ import { getBestClaim, getBestClaimValue } from "./getBestClaim";
 
 import { DEFAULT_LANG_CODE } from "../prefetched/langs";
 import { DateTime } from "luxon";
+import { LangCode } from "../../types/Lang";
 import { WD_SOURCING_CIRCUMSTANCES } from "../properties";
 import ordinalize from "ordinalize";
 import wbk from "wikidata-sdk";
@@ -18,7 +19,7 @@ export const getDateClaimISO = (dateClaim: any): string | undefined => {
 
 export const formatDateClaim = (
   claims: Claim[],
-  languageCode: string, //TODO: change to LangCode
+  languageCode: LangCode, //TODO: change to LangCode
   yearOnly = false //TODO: make this an option object
 ): string => {
   const dateClaim = getBestClaim(claims);

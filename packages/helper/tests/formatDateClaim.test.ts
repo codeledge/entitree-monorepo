@@ -1,5 +1,5 @@
 import { Claim } from "../src/types/Claim";
-import formatDateClaim from "../src/wikidata/format/formatDateClaim";
+import { formatDateClaim } from "../src/wikidata/format/formatDateClaim";
 
 test("JESUS birth date", () => {
   const claim = [
