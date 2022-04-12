@@ -16,11 +16,11 @@ export const getDateClaimISO = (dateClaim: any): string | undefined => {
   if (bestClaimValue) return wbk.wikibaseTimeToISOString(bestClaimValue.time);
 };
 
-export default function formatDateClaim(
+export const formatDateClaim = (
   claims: Claim[],
   languageCode: string, //TODO: change to LangCode
   yearOnly = false //TODO: make this an option object
-): string {
+): string => {
   const dateClaim = getBestClaim(claims);
   const value = getBestClaimValue(claims) as ClaimSnakTimeValue["value"];
   if (!value) return "";
@@ -31,7 +31,7 @@ export default function formatDateClaim(
     ];
 
   return parseDate(value, languageCode, yearOnly, sourcingCircumstances);
-}
+};
 
 /**
  *
