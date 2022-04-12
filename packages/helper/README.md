@@ -78,6 +78,16 @@ let query = await getSimplifiedWikidataEntities(["Q110903311"]));
 console.log(query);
 ```
 
+## Notes
+
+How to sort by Wikidata ID
+
+```
+ORDER BY (xsd:integer(substr(str(?item),33)))
+```
+
+Any better idea?
+
 ## Contributing
 
 <!-- Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us. -->

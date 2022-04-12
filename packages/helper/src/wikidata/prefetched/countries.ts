@@ -747,7 +747,7 @@ export const COUNTRIES: Country[] = [
   },
   {
     item: "http://www.wikidata.org/entity/Q1008",
-    itemLabel: "Côte d'Ivoire",
+    itemLabel: "Ivory Coast",
     code: "CI",
   },
   {
@@ -789,11 +789,6 @@ export const COUNTRIES: Country[] = [
     item: "http://www.wikidata.org/entity/Q1025",
     itemLabel: "Mauritania",
     code: "MR",
-  },
-  {
-    item: "http://www.wikidata.org/entity/Q1027",
-    itemLabel: "Mauritius",
-    code: "MU",
   },
   {
     item: "http://www.wikidata.org/entity/Q1028",
@@ -902,4 +897,4 @@ export const COUNTRIES: Country[] = [
   },
 ];
 
-//https://query.wikidata.org/#%23Countries%20with%20country%20code%0ASELECT%20%3Fitem%20%3Fname%20%3Fcode%0AWHERE%20%0A%7B%0A%20%20%3Fitem%20wdt%3AP31%20wd%3AQ6256.%0A%20%20%3Fitem%20wdt%3AP297%20%3Fcode.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D
+//https://query.wikidata.org/#%23Countries%20with%20country%20code%0ASELECT%20%3Fitem%20%3FitemLabel%20%3Fcode%0AWHERE%20%0A%7B%0A%20%20%3Fitem%20wdt%3AP31%20wd%3AQ6256.%0A%20%20%3Fitem%20wdt%3AP297%20%3Fcode.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0AORDER%20BY%20%28xsd%3Ainteger%28substr%28str%28%3Fitem%29%2C33%29%29%29%0A
