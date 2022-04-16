@@ -1,4 +1,4 @@
-import { LangCode } from "types/Lang";
+import { LangCode } from "..";
 
 export type PageProps = {
   errorCode?: number;
