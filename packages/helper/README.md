@@ -78,6 +78,19 @@ let query = await getSimplifiedWikidataEntities(["Q110903311"]));
 console.log(query);
 ```
 
+### use constants instead of Wikidata IDS and properties
+
+use WD_POSITION_HELD instead of "P39" to make your code look cleaner.
+
+just type WD\_ in your code editor to get suggestions.
+
+### getWikipediaArticle
+
+```ts
+let artice = getWikipediaArticle("Germany", "en");
+console.log(artice);
+```
+
 ## Notes
 
 How to sort by Wikidata ID
