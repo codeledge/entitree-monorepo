@@ -1,9 +1,9 @@
-import axios from "axios";
 import { LangCode } from "../types/Lang";
+import axios from "axios";
 //@ts-ignore
 import wdk from "wikidata-sdk";
 
-export default async function getEntityIdFromSlug(
+export async function getEntityIdFromSlug(
   slug: string,
   langCode: LangCode
 ): Promise<string> {
