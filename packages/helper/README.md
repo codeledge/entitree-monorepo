@@ -1,8 +1,12 @@
-[![npm version](https://badge.fury.io/js/@entitree%2Fhelper.svg)](https://badge.fury.io/js/@entitree%2Fhelper)
-
 # Entitree Helper
 
 > Super awesome helper function for Entitree projects. But anyone can use them.
+
+[![npm version](https://badge.fury.io/js/@entitree%2Fhelper.svg)](https://badge.fury.io/js/@entitree%2Fhelper)
+
+Source Code:
+
+https://github.com/ogroppo/entitree-monorepo/tree/main/packages/helper
 
 ## Prerequisites
 
