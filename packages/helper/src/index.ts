@@ -5,3 +5,4 @@ export * from "./spotify";
 export * from "./youtube";
 export * from "./imagedb";
 export * from "./formatters";
+export * from "./types";

@@ -6,7 +6,7 @@ export * from "./shorthands";
 export * from "./getWikidataEntities";
 export * from "./getWikibaseSourceIds";
 export * from "./checkId";
-export * from "./services/wikidataService";
+export * from "./services/wikibaseSearchEntities";
 export * from "./services/wikimediaService";
 export * from "./queries/color";
 export * from "./prefetched/countries";

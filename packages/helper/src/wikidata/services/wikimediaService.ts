@@ -43,4 +43,6 @@ export const searchImage = (term: string) => {
   });
 };
 
+export const wikimediaSearchImages = searchImage;
+
 export default wikimediaService;

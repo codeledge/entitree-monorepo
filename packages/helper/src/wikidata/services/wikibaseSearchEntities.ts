@@ -1,10 +1,5 @@
 import axios from "axios";
 
-const wikidataService = axios.create({
-  baseURL: "https://www.wikidata.org",
-});
-wikidataService.interceptors.response.use((res) => res.data);
-
 export type WikidataSearchResult = {
   aliases?: string[]; // ["Queen Elizabeth II"]
   id: string; // Q623
@@ -22,7 +17,7 @@ export type WikidataSearchResult = {
   url: string; // www.wikidata.org/wiki/Q623
 };
 
-type Response = {
+type WikidataSearchResponse = {
   search: WikidataSearchResult[];
   "search-continue": number;
   searchinfo: { search: string };
@@ -35,23 +30,41 @@ type Response = {
   servedby: string;
 };
 
-export const searchTerm = async (term: string, languageCode: string) => {
-  const { search, error } = await wikidataService.get<any, Response>(
-    "/w/api.php",
-    {
-      params: {
-        origin: "*",
-        action: "wbsearchentities",
-        format: "json",
-        uselang: languageCode,
-        language: languageCode,
-        search: term,
-      },
-    }
+export const wikidataSearchEntities = async (
+  term: string,
+  languageCode: string
+) => {
+  return await wikibaseSearchEntities(
+    term,
+    languageCode,
+    "https://www.wikidata.org"
   );
+};
+
+export const wikibaseSearchEntities = async (
+  term: string,
+  languageCode: string,
+  baseURL: string
+) => {
+  const wikibaseService = axios.create({
+    baseURL,
+  });
+  wikibaseService.interceptors.response.use((res) => res.data);
+
+  const { search, error } = await wikibaseService.get<
+    any,
+    WikidataSearchResponse
+  >("/w/api.php", {
+    params: {
+      origin: "*",
+      action: "wbsearchentities",
+      format: "json",
+      uselang: languageCode,
+      language: languageCode,
+      search: term,
+    },
+  });
   if (error) throw error;
 
   return search;
 };
-
-export default wikidataService;
