@@ -82,6 +82,13 @@ ORDER BY (xsd:integer(substr(str(?item),33)))
 
 Any better idea?
 
+Recreate constantsfile:
+
+```
+cd /packages/helper/src/wikidata/scripts
+ts-node-transpile-only createConstantsFile.ts
+```
+
 ## Contributing
 
 <!-- Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us. -->
