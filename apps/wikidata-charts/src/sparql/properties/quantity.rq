@@ -1,0 +1,10 @@
+SELECT DISTINCT ?item ?itemLabel ?itemDescription ?propContraint
+WHERE 
+{
+  ?item rdf:type  wikibase:Property.
+  ?item wikibase:propertyType wikibase:Quantity .
+#   ?item wdt:P31/wdt:P279* wd:Q18608993.
+  ?item p:P2302 ?propContraint .
+  ?propContraint ps:P2302 wd:Q21510856; pq:P2306 wd:P585. # with forced point in time
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}

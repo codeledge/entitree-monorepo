@@ -1,0 +1,11 @@
+SELECT ?item ?itemLabel ?itemDescription ?amount  WHERE {
+  {
+  SELECT ?item ?itemLabel ?itemDescription (COUNT(?value) as ?amount) WHERE
+    {
+    ?item p:$p [ps:$p ?value].
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,de,fr,id". }
+    }
+  GROUP BY ?item ?itemLabel ?itemDescription ?amount
+  }
+FILTER (?amount > 3)
+}

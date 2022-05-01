@@ -1,0 +1,15 @@
+SELECT ?item ?itemLabel ?amount  WHERE {
+  {
+SELECT ?item ?itemLabel (COUNT(?episode) as ?amount)
+WHERE
+{
+   ?item wdt:P31 wd:Q24634210 .
+   ?episode wdt:P31 wd:Q61855877   .
+    ?episode wdt:P179 ?item.
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+  GROUP BY ?item ?itemLabel ?amount
+    }
+  FILTER (?amount > 15)
+}

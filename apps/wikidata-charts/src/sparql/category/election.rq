@@ -1,0 +1,13 @@
+SELECT ?item ?itemLabel ?amount  WHERE {
+  {
+SELECT ?item ?itemLabel (COUNT(?human) as ?amount)
+WHERE
+{
+  ?human wdt:P3602 ?item;
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+  GROUP BY ?item ?itemLabel ?amount
+    }
+  FILTER (?amount > 20)
+}
+ 

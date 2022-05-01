@@ -1,0 +1,16 @@
+SELECT ?search ?searchLabel ?eventDate ?party ?partyLabel (COUNT(?item) as ?value)
+WHERE 
+{
+  VALUES ?search {wd:Q109682730}.
+  ?election wdt:P31 ?search.
+  ?election wdt:P585 ?eventDate.
+
+  ?item p:P3602 ?electionStatement.
+  ?electionStatement ps:P3602 ?election.
+  ?electionStatement pq:P102 ?party.
+  
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+
+GROUP BY ?party ?partyLabel ?eventDate ?search ?searchLabel

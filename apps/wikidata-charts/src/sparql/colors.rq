@@ -1,0 +1,13 @@
+#Colors
+SELECT ?item ?itemLabel ?color ?colorLabel ?hex
+WHERE 
+{
+  VALUES ?item {wd:Q183}
+  ?item wdt:P163 ?flag.
+  ?flag wdt:P462 ?color.
+  OPTIONAL {
+  ?flag p:P462 ?color;
+   pqv:P465 ?hex.
+    }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
