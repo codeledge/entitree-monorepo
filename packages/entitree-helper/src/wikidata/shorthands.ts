@@ -33,4 +33,4 @@ export const WDQ_STANDARD_YOUTUBE_LICENSE = "Q111772254";
 export const WDQ_CC_BY_30 = "Q149475462";
 export const WDQ_YOUTUBE_MADE_FOR_KIDS = "Q111772463";
 export const WDQ_MP3 = "Q42591";
-export const WD_YOUTUBE_VIDEO = "Q63412991";
+export const WDQ_YOUTUBE_VIDEO = "Q63412991";
