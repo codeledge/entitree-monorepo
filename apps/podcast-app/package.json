@@ -1,0 +1,38 @@
+{
+  "name": "wikidata-to-podcast-xml",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 8099",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@activediscourse/podcast-parser": "^1.0.0",
+    "@entitree/helper": "workspace:*",
+    "@types/gapi.youtube": "^3.0.35",
+    "@types/luxon": "^2.0.9",
+    "@types/spotify-api": "^0.0.15",
+    "@types/wikidata-sdk": "^6.1.0",
+    "axios": "^0.27.2",
+    "fs": "^0.0.1-security",
+    "locutus": "^2.0.16",
+    "luxon": "^2.3.2",
+    "next": "12.1.5",
+    "podcast": "^2.0.0",
+    "podparse": "^1.5.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "sharp": "^0.30.4",
+    "wikibase-edit": "^4.16.0",
+    "wikidata-sdk": "^7.14.2",
+    "youtube-mp3-downloader": "^0.7.10"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.31",
+    "@types/react": "18.0.8",
+    "eslint": "8.14.0",
+    "eslint-config-next": "12.1.5",
+    "typescript": "4.6.4"
+  }
+}
