@@ -1,0 +1,13 @@
+SELECT DISTINCT ?item ?itemEnglish ?itemLabel ?code ?kabupatenLabel
+WHERE 
+{
+  ?item wdt:P31 wd:Q3700011.
+  ?item wdt:P2588 ?code . 
+#   ?item wdt:P131 ?kabupaten
+  OPTIONAL { SERVICE wikibase:label { 
+   bd:serviceParam wikibase:language "en,id". 
+   ?item rdfs:label ?itemEnglish.
+  }}
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "id,[AUTO_LANGUAGE],en". }
+}
