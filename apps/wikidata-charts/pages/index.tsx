@@ -4,6 +4,15 @@ import Head from "next/head";
 import Link from "next/link";
 import type { NextPage } from "next";
 
+export async function getServerSideProps() {
+  return {
+    redirect: {
+      permanent: false,
+      destination: "/chart",
+    },
+    props: {},
+  };
+}
 const Home: NextPage = () => {
   return (
     <Box height="100vh">
@@ -23,7 +32,7 @@ const Home: NextPage = () => {
           </Text>
 
           <SimpleGrid columns={1} spacing={10}>
-            <Box p={4} border={"1px solid #eaeaea"} style={{fontSize:"3em"}}>
+            <Box p={4} border={"1px solid #eaeaea"} style={{ fontSize: "3em" }}>
               <Link href="/chart">
                 <a>
                   <h2>Charts</h2>
