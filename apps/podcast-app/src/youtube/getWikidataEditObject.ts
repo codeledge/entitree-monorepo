@@ -4,6 +4,7 @@ import {
   WDQ_SECOND,
   WDQ_STANDARD_YOUTUBE_LICENSE,
   WDQ_YOUTUBE_MADE_FOR_KIDS,
+  WDQ_YOUTUBE_VIDEO,
   WD_BASED_ON_HEURISTIC,
   WD_COPYRIGHT_LICENSE,
   WD_DURATION,
@@ -18,7 +19,6 @@ import {
   WD_STATED_IN_REFERENCE_AS,
   WD_TITLE,
   WD_YOUTUBE_CHANNEL_ID,
-  WD_YOUTUBE_VIDEO,
   WD_YOUTUBE_VIDEO_ID,
   durationToSeconds,
 } from "@entitree/helper";
@@ -79,7 +79,7 @@ export function getWikidataEditObject(
     license = WDQ_CC_BY_30;
   }
   let claims: any = {
-    [WD_INSTANCE_OF]: [WD_YOUTUBE_VIDEO],
+    [WD_INSTANCE_OF]: [WDQ_YOUTUBE_VIDEO],
     [WD_TITLE]: [{ text: wikidataLabel, language }],
     // [WD_PART_OF_THE_SERIES]: [podcast.id],
     [WD_DURATION]: [

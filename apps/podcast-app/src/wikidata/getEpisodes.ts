@@ -1,9 +1,9 @@
 import {
+  WDQ_PODCAST_EPISODE,
   WD_APPLE_PODCASTS_PODCAST_EPISODE_ID,
   WD_DURATION,
   WD_HAS_QUALITY,
   WD_MAIN_SUBJECT,
-  WD_PODCAST_EPISODE,
   WD_PODCAST_LOGO_URL,
   WD_PRODUCTION_CODE,
   WD_PUBLICATION_DATE,
@@ -30,7 +30,7 @@ SELECT ?item ?itemLabel ?title ?url ?publicationDate ?duration ?hasQuality ?seas
 (GROUP_CONCAT(DISTINCT ?article;separator="|") AS ?wikipedia) 
 WHERE 
 {
-  ?item wdt:P31 wd:${WD_PODCAST_EPISODE}.
+  ?item wdt:P31 wd:${WDQ_PODCAST_EPISODE}.
   ?item wdt:P179 wd:${podcast}.
   OPTIONAL { ?item wdt:${WD_TITLE} ?title .}
   #?item wdt:P953 ?url .

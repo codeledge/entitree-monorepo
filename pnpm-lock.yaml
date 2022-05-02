@@ -22,6 +22,7 @@ importers:
 
   apps/entitree-api:
     specifiers:
+      '@entitree/helper': workspace:*
       '@types/node': ^17.0.12
       '@types/react': 17.0.37
       config: workspace:*
@@ -34,6 +35,7 @@ importers:
       typescript: ^4.5.3
       ui: workspace:*
     dependencies:
+      '@entitree/helper': link:../../packages/entitree-helper
       next: 12.0.8_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
