@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { Claim, ClaimSnakTimeValue } from "../../types/Claim";
-import { WD_CIRCA, WD_PRESUMABLY } from "../shorthands";
+import { WDQ_CIRCA, WDQ_PRESUMABLY } from "../shorthands";
 import { getBestClaim, getBestClaimValue } from "./getBestClaim";
 
 import { DEFAULT_LANG_CODE } from "../prefetched/langs";
@@ -27,10 +27,8 @@ export const formatDateClaim = (
   if (!value) return "";
 
   const sourcingCircumstances =
-    dateClaim?.qualifiers?.[WD_SOURCING_CIRCUMSTANCES]?.[0]?.datavalue?.value?.[
-      "id"
-    ];
-
+    dateClaim?.qualifiers?.[WD_SOURCING_CIRCUMSTANCES]?.[0]?.datavalue?.value
+      ?.id;
   return parseDate(value, languageCode, yearOnly, sourcingCircumstances);
 };
 
@@ -41,7 +39,7 @@ export const formatDateClaim = (
  */
 function parseDate(
   wikidatatime: ClaimSnakTimeValue["value"],
-  languageCode: string = DEFAULT_LANG_CODE,
+  languageCode: LangCode = DEFAULT_LANG_CODE,
   yearOnly = false,
   sourcingCircumstances = null
 ) {
@@ -77,10 +75,10 @@ function parseDate(
   }
   let sourcingPrefix = "";
   let sourcingPostfix = "";
-  if (sourcingCircumstances === WD_CIRCA) {
+  if (sourcingCircumstances === WDQ_CIRCA) {
     // circa
     sourcingPrefix = "~";
-  } else if (sourcingCircumstances === WD_PRESUMABLY) {
+  } else if (sourcingCircumstances === WDQ_PRESUMABLY) {
     // presumably/maybe
     sourcingPostfix = "?";
   }
@@ -121,9 +119,15 @@ function parseDate(
     case 9:
       return sourcingPrefix + Math.abs(year) + sourcingPostfix + eraSuffix;
     case 10:
-      return parsedDate.setLocale(languageCode).toFormat("MMM y") + eraSuffix;
+      return (
+        parsedDate.setLocale(languageCode as string).toFormat("MMM y") +
+        eraSuffix
+      );
     case 11: {
-      return parsedDate.setLocale(languageCode).toFormat("d MMM y") + eraSuffix;
+      return (
+        parsedDate.setLocale(languageCode as string).toFormat("d MMM y") +
+        eraSuffix
+      );
     }
     default:
       return wbk.wikibaseTimeToSimpleDay(wikidatatime);
