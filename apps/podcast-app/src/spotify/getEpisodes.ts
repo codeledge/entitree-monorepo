@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { Episode, EpisodeType } from "podparse";
 
 import { EpisodeExtended } from "../import/readFeed";

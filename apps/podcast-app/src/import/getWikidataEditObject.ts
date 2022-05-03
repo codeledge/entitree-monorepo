@@ -1,4 +1,4 @@
-import { EpisodeExtended, d } from "./readFeed";
+import { EpisodeExtended, READ_FEED } from "./readFeed";
 import {
   WDQ_EPISODE_TYPE_MATCH,
   WDQ_EXPLICIT_EPISODE,
@@ -38,7 +38,7 @@ import { searchGuest } from "./searchGuests";
 
 export async function getWikidataEditObject(
   episode: EpisodeExtended,
-  podcast: d
+  podcast: READ_FEED
 ) {
   const language = "en";
   let wikidataLabel = episode.title;
@@ -203,32 +203,6 @@ export async function getWikidataEditObject(
     claims,
     sitelinks: [],
   };
-  // if (podcast.write) {
-  //   if (episode.wikidataId) {
-  //     wbEdit.entity.edit({
-  //       // Required
-  //       id: episode.wikidataId,
-  //       reconciliation: {
-  //         mode: "skip-on-any-value",
-  //       },
-  //       // labels: [],
-  //       descriptions,
-  //       aliases,
-  //       claims,
-  //     });
-  //     console.log("edited item id");
-  //   } else {
-  //     const { entity } = await wbEdit.entity.create({
-  //       type: "item",
-  //       labels,
-  //       descriptions,
-  //       aliases,
-  //       claims,
-  //       sitelinks: [],
-  //     });
-  //     console.log("created item id", entity.id);
-  //   }
-  // }
 
   // return { labels, guests, claims, des: episode.description };
 }
