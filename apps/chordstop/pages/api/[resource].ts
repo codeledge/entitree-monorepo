@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+
 import { defaultHandler } from "ra-data-simple-prisma";
 import { prismaClient } from "../../prisma/prismaClient";
 
