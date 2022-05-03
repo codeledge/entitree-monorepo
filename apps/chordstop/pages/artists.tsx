@@ -1,3 +1,4 @@
+import { Chord } from "chordsheetjs";
 import Head from "next/head";
 import Link from "next/link";
 import type { NextPage } from "next";
@@ -14,7 +15,7 @@ export async function getServerSideProps() {
     props: { chord },
   };
 }
-const Artist: NextPage = ({ chord }) => {
+const Artist: NextPage | any = ({ chord }: { chord: any }) => {
   return (
     <div>
       <h1>Artist</h1>
