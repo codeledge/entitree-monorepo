@@ -1,5 +1,4 @@
-import getWikibaseEntities from "./getWikibaseEntities";
-import { getWikidataInstance } from "./getWikibaseInstance";
+import { getWikibaseEntities, getWikidataInstance } from ".";
 
 export async function getWikidataEntities(
   ids: string[],

@@ -12,7 +12,7 @@ type GetWikibaseEntitiesProps = {
 
 type WikibaseEntityMap = Record<WikibaseEntity["id"], WikibaseEntity>;
 
-export default async function getWikibaseEntities({
+export async function getWikibaseEntities({
   ids,
   languages = ["en"],
   props = ["labels", "descriptions", "claims", "sitelinks/urls"],
