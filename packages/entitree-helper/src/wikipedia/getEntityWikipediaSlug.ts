@@ -3,7 +3,7 @@ import { DataSource, getWikibaseInstance } from "../wikidata";
 import { LangCode } from "../types";
 import axios from "axios";
 
-export default async function getEntityWikipediaSlug(
+export async function getEntityWikipediaSlug(
   id: string,
   langCode: LangCode,
   dataSource: DataSource
