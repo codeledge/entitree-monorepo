@@ -45,7 +45,10 @@ export const ChordShow = () => (
       <TextField source="id" />
       <TextField source="title" />
       <TextField source="artist" />
-      <TextField source="body" />
+      <TextField
+        source="body"
+        style={{ fontFamily: "monospace", whiteSpace: "pre" }}
+      />
     </SimpleShowLayout>
   </Show>
 );

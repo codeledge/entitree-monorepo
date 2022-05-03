@@ -1,25 +1,36 @@
+import { Chord } from "@prisma/client";
 import Head from "next/head";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { prismaClient } from "../../prisma/prismaClient";
 
-export async function getServerSideProps() {
-  const chord = await prismaClient.chord.getMany({
+async function findSongs(artist: string): Promise<Chord[]> {
+  return await prismaClient.chord.findMany({
     where: {
-      artist: "Kendrick Lamar",
+      artist,
     },
   });
+}
+
+export async function getServerSideProps(context: any) {
+  const { artist } = context.query;
+  console.log(artist);
+  const songs = await findSongs(artist);
   return {
-    props: { chord },
+    props: { artist, songs },
   };
 }
-const Artist: NextPage = ({ chord }) => {
+const Artist: NextPage<any, Chord[]> = ({ artist, songs }) => {
   return (
     <div>
-      <h1>Songs</h1>
+      <h1>{artist}: Songs</h1>
       <ul>
-        {chord.map((song) => (
-          <li key={song.title}></li>
+        {songs.map((song: Chord) => (
+          <li key={song.title}>
+            <Link href="/chord/[id]" as={`/chord/${song.id}`}>
+              {song.title}
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

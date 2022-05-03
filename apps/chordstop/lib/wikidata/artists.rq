@@ -1,0 +1,11 @@
+SELECT ?item ?itemLabel ?linkcount (SAMPLE(?img) as ?image) WHERE {
+    ?item wdt:P2850 ?apl .
+    ?item wdt:P1902 ?spo .
+    ?item wdt:P5927 ?ult .
+    ?item wdt:P18 ?img .
+    ?item wikibase:sitelinks ?linkcount .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+}
+GROUP BY  ?linkcount ?item ?itemLabel
+ORDER BY DESC(?linkcount)
+LIMIT 30
