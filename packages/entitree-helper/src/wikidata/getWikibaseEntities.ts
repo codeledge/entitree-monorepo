@@ -1,11 +1,13 @@
-import axios from "axios";
+import { DataSource, getWikibaseInstance } from "./getWikibaseInstance";
+
 import { WikibaseEntity } from "../types/Entity";
+import axios from "axios";
 
 type GetWikibaseEntitiesProps = {
   ids: string[]; // ['Q1', 'Q2', 'Q3', ..., 'Q123']
   languages?: string[]; // ['en', 'fr', 'de']
   props?: string[]; // ['info', 'claims']
-  dataSource: any;
+  dataSource: DataSource;
 };
 
 type WikibaseEntityMap = Record<WikibaseEntity["id"], WikibaseEntity>;
@@ -19,13 +21,15 @@ export default async function getWikibaseEntities({
   if (ids.length === 0) {
     return {};
   }
+  const wikibaseInstance = getWikibaseInstance(dataSource);
+
   ids = ids.filter((id) => !!id); // delete undefined values
 
   // 1 url for every 50 items
   const urls: string[] = await new Promise((resolve, reject) => {
     try {
       resolve(
-        dataSource.getManyEntities({
+        wikibaseInstance.getManyEntities({
           ids,
           languages,
           props,

@@ -1,4 +1,4 @@
-import { getWikidataSparql } from "../getWikidataSparql";
+import { getWikidataSparql } from "../getWikibaseSparql";
 
 export async function getColorByWikidataItem(
   id: string

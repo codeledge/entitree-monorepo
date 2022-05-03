@@ -1,13 +1,17 @@
-//@ts-ignore
-import wdk from "wikidata-sdk";
 import getWikibaseEntities from "./getWikibaseEntities";
+import { getWikidataInstance } from "./getWikibaseInstance";
 
 export async function getWikidataEntities(
   ids: string[],
   languages = ["en"],
   props = ["labels", "descriptions", "claims", "sitelinks/urls"]
 ) {
-  return await getWikibaseEntities({ ids, languages, props, dataSource: wdk });
+  return await getWikibaseEntities({
+    ids,
+    languages,
+    props,
+    dataSource: "wikidata",
+  });
 }
 
 export async function getSimplifiedWikidataEntities(
@@ -16,7 +20,7 @@ export async function getSimplifiedWikidataEntities(
   props = ["labels", "descriptions", "claims", "sitelinks/urls"]
 ) {
   const entities = await getWikidataEntities(ids, languages, props);
-  return wdk.simplify.entities(entities, {
+  return getWikidataInstance().simplify.entities(entities, {
     keepQualifiers: true,
     addUrl: true,
   });

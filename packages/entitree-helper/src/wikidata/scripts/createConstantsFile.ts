@@ -1,5 +1,5 @@
 import fs from "fs";
-import { getWikidataSparql } from "../getWikidataSparql";
+import { getWikidataSparql } from "../getWikibaseSparql";
 import latinize from "latinize";
 import path from "path";
 interface IProperty {
