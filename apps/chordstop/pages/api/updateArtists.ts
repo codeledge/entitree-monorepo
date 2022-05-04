@@ -64,7 +64,6 @@ async function getWikidataIds() {
   artists.map(async (artist) => {
     const search = await wikidataSearchEntities(artist.label, "en");
     if (search.length > 0) {
-      console.log(search[0]);
       await prismaClient.artist.update({
         where: {
           id: artist.id,
