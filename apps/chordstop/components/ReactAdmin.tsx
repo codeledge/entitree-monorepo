@@ -9,7 +9,7 @@ import {
 
 import { dataProvider } from "ra-data-simple-prisma";
 
-const ReactAdmin = () => {
+const ReactAdmin: React.FC = () => {
   return (
     <Admin dataProvider={dataProvider("/api")} disableTelemetry>
       {/* <Resource
