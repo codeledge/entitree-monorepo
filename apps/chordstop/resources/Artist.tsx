@@ -8,6 +8,7 @@ import {
   DateField,
   Edit,
   EditProps,
+  ImageField,
   List,
   ListProps,
   NumberField,
@@ -23,13 +24,28 @@ import {
   TextInput,
 } from "react-admin";
 
+import { ImageCustomField } from "../components/Fields/ImageAllField";
+
 export const ArtistList = (props: ListProps) => (
   <List {...props}>
-    <Datagrid>
+    <Datagrid rowClick={"show"}>
       <TextField source="id" />
       <TextField source="label" />
       <TextField source="wikidataId" />
-      {/* <NumberField source="hits" /> */}
     </Datagrid>
   </List>
+);
+
+export const ArtistShow = () => (
+  <Show>
+    <SimpleShowLayout>
+      <TextField source="id" />
+      <TextField source="label" />
+      <TextField source="wikidataId" />
+      <TextField source="spotifyArtistId" />
+      <ImageCustomField source="imageCommons" />
+      <TextField source="appleArtistId" />
+      <TextField source="ultimateGuitarId" />
+    </SimpleShowLayout>
+  </Show>
 );

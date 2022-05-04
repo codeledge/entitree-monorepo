@@ -1,0 +1,20 @@
+[
+  {
+    "item": "http://www.wikidata.org/entity/Q26876",
+    "itemLabel": "Taylor Swift",
+    "linkcount": "120",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/191125%20Taylor%20Swift%20at%20the%202019%20American%20Music%20Awards%20%28cropped%29.png"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q392",
+    "itemLabel": "Bob Dylan",
+    "linkcount": "170",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Joan%20Baez%20Bob%20Dylan%20crop.jpg"
+  },
+  {
+    "item": "http://www.wikidata.org/entity/Q18233",
+    "itemLabel": "ABBA",
+    "linkcount": "158",
+    "image": "http://commons.wikimedia.org/wiki/Special:FilePath/Museo%20de%20ABBA%20-%20BugWarp%20%2831%29.jpg"
+  }
+]

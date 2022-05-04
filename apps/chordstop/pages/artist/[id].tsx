@@ -2,6 +2,7 @@ import { Artist, Chord } from "@prisma/client";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Head from "next/head";
+import Layout from "../../components/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { prismaClient } from "../../prisma/prismaClient";
@@ -44,7 +45,7 @@ export async function getServerSideProps(context: any) {
 }
 const ArtistPage = ({ artist }) => {
   return (
-    <div>
+    <Layout>
       <h1>
         <ArrowBackIcon></ArrowBackIcon>
         {artist.label}: Songs
@@ -58,7 +59,7 @@ const ArtistPage = ({ artist }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </Layout>
   );
 };
 export default ArtistPage;

@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
   WD_APPLE_MUSIC_ARTIST_ID_US_VERSION,
+  WD_IMAGE,
   WD_SPOTIFY_ARTIST_ID,
   WD_TWITTER_USERNAME,
   WD_ULTIMATE_GUITAR_ARTIST_ID,
@@ -22,7 +23,7 @@ export default async function handler(
 async function fillWikidata() {
   const artists = await prismaClient.artist.findMany({
     where: {
-      spotifyArtistId: null,
+      imageCommons: null,
     },
   });
   artists.map(async (artist) => {
@@ -36,7 +37,7 @@ async function fillWikidata() {
       const ultimateGuitarId = claims[WD_ULTIMATE_GUITAR_ARTIST_ID]?.[0].value;
       const wikipediaSlugEn =
         search[artist.wikidataId].sitelinks?.enwiki?.title;
-      console.log(wikipediaSlugEn);
+      const imageCommons = claims[WD_IMAGE]?.[0].value;
       await prismaClient.artist.update({
         where: {
           id: artist.id,
@@ -47,6 +48,7 @@ async function fillWikidata() {
           twitterUsername,
           ultimateGuitarId,
           wikipediaSlugEn,
+          imageCommons,
         },
       });
     }

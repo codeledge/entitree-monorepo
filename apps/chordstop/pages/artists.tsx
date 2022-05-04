@@ -1,6 +1,10 @@
+import { List, ListItem, Typography } from "@mui/material";
+
 import { Artist } from "@prisma/client";
 import { Chord } from "chordsheetjs";
 import Head from "next/head";
+import Header from "../components/Header";
+import Layout from "../components/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { prismaClient } from "../prisma/prismaClient";
@@ -19,18 +23,20 @@ export async function getServerSideProps() {
 }
 const ArtistPage = ({ artists }: { artists: Artist[] }) => {
   return (
-    <div>
-      <h1>Artist</h1>
-      <ul>
+    <Layout>
+      <Typography variant="h2" component="h2">
+        Artist
+      </Typography>
+      <List>
         {artists.map((artist) => (
-          <li key={artist.label}>
+          <ListItem key={artist.label}>
             <Link href="/artist/[artist]" as={`/artist/${artist.id}`}>
               {artist.label}
             </Link>
-          </li>
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Layout>
   );
 };
 export default ArtistPage;
