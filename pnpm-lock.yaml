@@ -111,7 +111,6 @@ importers:
       '@types/node': 17.0.31
       '@types/react': 18.0.8
       '@types/spotify-api': ^0.0.15
-      '@types/wikidata-sdk': ^6.1.0
       axios: ^0.27.2
       eslint: 8.14.0
       eslint-config-next: 12.1.5
@@ -134,7 +133,6 @@ importers:
       '@types/gapi.youtube': 3.0.35
       '@types/luxon': 2.3.1
       '@types/spotify-api': 0.0.15
-      '@types/wikidata-sdk': 6.1.0
       axios: 0.27.2
       fs: 0.0.1-security
       locutus: 2.0.16
@@ -164,7 +162,6 @@ importers:
       '@types/luxon': ^2.3.1
       '@types/node': 17.0.30
       '@types/react': 18.0.8
-      '@types/wikidata-sdk': ^6.1.0
       axios: ^0.27.2
       config: workspace:*
       debounce-promise: ^3.1.2
@@ -188,7 +185,6 @@ importers:
       '@entitree/helper': link:../../packages/entitree-helper
       '@types/debounce-promise': 3.1.4
       '@types/luxon': 2.3.1
-      '@types/wikidata-sdk': 6.1.0
       axios: 0.27.2
       debounce-promise: 3.1.2
       framer-motion: 6.3.3_react-dom@18.1.0+react@18.1.0
@@ -2456,13 +2452,6 @@ packages:
     dependencies:
       '@types/jest': 27.5.0
     dev: true
-
-  /@types/wikidata-sdk/6.1.0:
-    resolution: {integrity: sha512-4IG0mbD97vnpNUCCsybYOZvXDPOgv4riDHllKKkv4yKM90md2j2lH3yqp2pnPURHS79tbQibZybANHT++J25fA==}
-    deprecated: This is a stub types definition. wikidata-sdk provides its own type definitions, so you do not need this installed.
-    dependencies:
-      wikidata-sdk: 7.14.4
-    dev: false
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
