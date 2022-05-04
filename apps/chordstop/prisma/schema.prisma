@@ -11,12 +11,29 @@ datasource db {
 }
 
 model Chord {
-  id        Int     @id @default(autoincrement())
-  artist    String
-  title     String
-  lastedit  String?
-  category  String?
-  hits      Int?
-  body      String
-  open      Int?
+  id          Int     @id @default(autoincrement())
+  artistLabel String
+  title       String
+  lastedit    String?
+  category    String?
+  hits        Int?
+  body        String
+  open        Int?
+  artist      Artist? @relation(fields: [artistId], references: [id])
+  artistId    Int?
+  wikidataId  String? @unique
+  duration    Int?
+}
+
+model Artist {
+  id               Int     @id @default(autoincrement())
+  label            String  @unique
+  wikidataId       String  @unique
+  ultimateGuitarId String?
+  wikipediaSlugEn  String?
+  spotifyArtistId  String?
+  appleArtistID    String?
+  twitterUsername  String?
+  imageCommons     String?
+  chords           Chord[]
 }

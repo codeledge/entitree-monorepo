@@ -1,3 +1,4 @@
+import { Artist } from "@prisma/client";
 import { Chord } from "chordsheetjs";
 import Head from "next/head";
 import Link from "next/link";
@@ -5,25 +6,26 @@ import type { NextPage } from "next";
 import { prismaClient } from "../prisma/prismaClient";
 
 export async function getServerSideProps() {
-  const chord = await prismaClient.chord.groupBy({
-    by: ["artist"],
-    _sum: {
-      hits: true,
-    },
-  });
+  // const chord = await prismaClient.chord.groupBy({
+  //   by: ["artistLabel"],
+  //   _sum: {
+  //     hits: true,
+  //   },
+  // });
+  const artists = await prismaClient.artist.findMany();
   return {
-    props: { chord },
+    props: { artists },
   };
 }
-const Artist: NextPage | any = ({ chord }: { chord: any }) => {
+const ArtistPage = ({ artists }: { artists: Artist[] }) => {
   return (
     <div>
       <h1>Artist</h1>
       <ul>
-        {chord.map((entry: any) => (
-          <li key={entry.artist}>
-            <Link href="/artist/[artist]" as={`/artist/${entry.artist}`}>
-              {entry.artist}
+        {artists.map((artist) => (
+          <li key={artist.label}>
+            <Link href="/artist/[artist]" as={`/artist/${artist.id}`}>
+              {artist.label}
             </Link>
           </li>
         ))}
@@ -31,4 +33,4 @@ const Artist: NextPage | any = ({ chord }: { chord: any }) => {
     </div>
   );
 };
-export default Artist;
+export default ArtistPage;

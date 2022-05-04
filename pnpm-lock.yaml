@@ -25,7 +25,7 @@ importers:
       '@babel/core': 7.17.9
       '@emotion/react': ^11.9.0
       '@emotion/styled': ^11.8.1
-      '@entitree/helper': workspace:^0.3.1
+      '@entitree/helper': workspace:*
       '@mui/icons-material': ^5.6.2
       '@mui/material': ^5.6.4
       '@prisma/client': ^3.12.0
@@ -34,6 +34,7 @@ importers:
       '@types/react-dom': 18.0.1
       '@types/styled-components': ^5.1.25
       chordsheetjs: ^6.3.0
+      config: workspace:*
       eslint: 8.13.0
       eslint-config-next: 12.1.5
       next: 12.1.5
@@ -43,6 +44,7 @@ importers:
       react-admin: ^4.0.1
       react-dom: 18.0.0
       styled-components: ^5.3.5
+      tsconfig: workspace:*
       typescript: 4.6.3
     dependencies:
       '@babel/core': 7.17.9
@@ -64,9 +66,11 @@ importers:
       '@types/node': 17.0.24
       '@types/react': 18.0.5
       '@types/react-dom': 18.0.1
+      config: link:../../packages/config
       eslint: 8.13.0
       eslint-config-next: 12.1.5_73f9dd19bec33b69290ec95d96fcfe5a
       prisma: 3.13.0
+      tsconfig: link:../../packages/tsconfig
       typescript: 4.6.3
 
   apps/entitree-api:

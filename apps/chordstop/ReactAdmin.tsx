@@ -5,9 +5,8 @@ import {
   ChordList,
   ChordShow,
 } from "./resources/Chord";
-import { TagCreate, TagList } from "./resources/Tag";
-import { UserCreate, UserEdit, UserList, UserShow } from "./resources/User";
 
+import { ArtistList } from "./resources/Artist";
 import { dataProvider } from "ra-data-simple-prisma";
 
 const ReactAdmin = () => {
@@ -27,6 +26,7 @@ const ReactAdmin = () => {
         show={ChordShow}
         edit={ChordEdit}
       />
+      <Resource name="artist" list={ArtistList} />
       {/* <Resource name="tag" list={TagList} create={TagCreate} /> */}
     </Admin>
   );

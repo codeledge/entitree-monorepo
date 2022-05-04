@@ -1,3 +1,4 @@
+import { Chord } from "@prisma/client";
 import Head from "next/head";
 import Link from "next/link";
 import type { NextPage } from "next";
@@ -10,15 +11,26 @@ export async function getServerSideProps(context: any) {
     where: {
       id: parseInt(id),
     },
+    include: {
+      artist: true,
+    },
   });
   return {
     props: { chord, body: chord ? formatSong(chord.body) : "" },
   };
 }
 
-const Artist: NextPage<any, string> = ({ chord, body }) => {
+const ChordPage: NextPage<{ chord: Chord; body: string }> = ({
+  chord,
+  body,
+}) => {
   return (
     <div>
+      <h2>
+        <Link href="/artist/[id]" as={`/artist/${chord.artist.id}`}>
+          {chord.artist.label}
+        </Link>
+      </h2>
       <h1>Chord for {chord.title}</h1>
       {/* <pre>{disp}</pre> */}
       <div
@@ -30,4 +42,4 @@ const Artist: NextPage<any, string> = ({ chord, body }) => {
     </div>
   );
 };
-export default Artist;
+export default ChordPage;
