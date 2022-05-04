@@ -4620,7 +4620,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.17.9
       aria-query: 4.2.2
-      array-includes: 3.1.5
+      array-includes: 3.1.4
       ast-types-flow: 0.0.7
       axe-core: 4.4.1
       axobject-query: 2.2.0
@@ -4628,7 +4628,7 @@ packages:
       emoji-regex: 9.2.2
       eslint: 8.14.0
       has: 1.0.3
-      jsx-ast-utils: 3.3.0
+      jsx-ast-utils: 3.2.1
       language-tags: 1.0.5
       minimatch: 3.1.2
     dev: true
@@ -6729,7 +6729,6 @@ packages:
     dependencies:
       array-includes: 3.1.4
       object.assign: 4.1.2
-    dev: false
 
   /jsx-ast-utils/3.2.2:
     resolution: {integrity: sha512-HDAyJ4MNQBboGpUnHAVUNJs6X0lh058s6FuixsFGP7MgJYpD6Vasd6nzSG5iIfXu1zAYlHJ/zsOKNlrenTUBnw==}
