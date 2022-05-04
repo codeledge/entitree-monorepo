@@ -1,5 +1,5 @@
-import { Chord } from "@prisma/client";
-import Head from "next/head";
+import { Artist, Chord } from "@prisma/client";
+
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
@@ -22,10 +22,10 @@ export async function getServerSideProps(context: any) {
   };
 }
 
-const ChordPage: NextPage<{ chord: Chord; body: string }> = ({
-  chord,
-  body,
-}) => {
+const ChordPage: NextPage<{
+  chord: Chord & { artist: Artist };
+  body: string;
+}> = ({ chord, body }) => {
   return (
     <Layout>
       <Typography variant="h4">
