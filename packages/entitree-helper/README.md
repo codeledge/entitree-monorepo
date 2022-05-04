@@ -85,7 +85,7 @@ Any better idea?
 Recreate constantsfile:
 
 ```
-cd /packages/helper/src/wikidata/scripts
+cd packages/entitree-helper/src/wikidata/scripts
 ts-node-transpile-only createConstantsFile.ts
 ```
 
