@@ -15,12 +15,14 @@ import {
   ReferenceArrayField,
   ReferenceArrayInput,
   ReferenceInput,
+  SelectInput,
   Show,
   SimpleForm,
   SimpleShowLayout,
   SingleFieldList,
   TextField,
   TextInput,
+  required,
 } from "react-admin";
 
 export const ChordList = (props: ListProps) => (
@@ -58,7 +60,16 @@ export const ChordEdit = (props: EditProps) => (
     <SimpleForm>
       <TextInput source="id" />
       <TextInput source="title" />
-      <TextInput source="artist" />
+      <SelectInput source="artist" />
+      <ReferenceInput
+        label="Artist"
+        source="artistId"
+        reference="artist"
+        validate={[required()]}
+      >
+        <SelectInput optionText="name" />
+      </ReferenceInput>
+      {/* <TextInput source="artist" /> */}
       <TextInput multiline source="body" style={{ width: "100%" }} />
     </SimpleForm>
   </Edit>
@@ -68,10 +79,17 @@ export const ChordCreate = (props: CreateProps) => (
   <Create title="New chord" {...props}>
     <SimpleForm>
       {/* <TextInput source="id" /> */}
-      <TextInput source="title" />
-      <TextInput source="artist" />
+      <TextInput source="title" validate={[required()]} />
+      <ReferenceInput label="Artist" source="artistId" reference="artist">
+        <AutocompleteInput optionText="label" />
+      </ReferenceInput>
       <NumberInput source="hits" defaultValue={0} />
-      <TextInput multiline source="body" style={{ width: "100%" }} />
+      <TextInput
+        multiline
+        source="body"
+        style={{ width: "100%" }}
+        validate={[required()]}
+      />
     </SimpleForm>
   </Create>
 );
