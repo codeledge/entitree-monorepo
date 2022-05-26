@@ -11,12 +11,13 @@ export default async function handler(
       select: {
         id: true,
         title: true,
-        artistLabel: true,
+        artist: true,
       },
     })
   ).map((chord) => {
+    // console.log(chord);
     return {
-      label: chord.artistLabel + " - " + chord.title,
+      label: chord.artist.label + " - " + chord.title,
       id: chord.id,
     };
   });

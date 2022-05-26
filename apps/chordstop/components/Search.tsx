@@ -3,10 +3,30 @@ import * as React from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { useRouter } from "next/router";
+import { createStyles, makeStyles } from "@mui/material";
 
 export default function SearchInput() {
   const [chords, setChords] = React.useState([]);
   const router = useRouter();
+  // const useStyles = makeStyles(() =>
+  //   createStyles({
+  //     root: {
+  //       "& .MuiAutocomplete-listbox": {
+  //         border: "2px solid grey",
+  //         minHeight: 400,
+  //         color: "green",
+  //         fontSize: 18,
+  //         //hover discussed above
+  //         "& li": {
+  //           //list item specific styling
+  //           border: "2px solid green",
+  //           borderRadius: 4,
+  //         },
+  //       },
+  //     },
+  //   })
+  // );
+  // const classes = useStyles();
 
   React.useEffect(() => {
     const fetchData = async () => {

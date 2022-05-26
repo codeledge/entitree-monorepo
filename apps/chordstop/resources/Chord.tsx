@@ -23,21 +23,21 @@ import {
   TextField,
   TextInput,
   required,
+  ReferenceField,
 } from "react-admin";
-
+const chordFilters = [
+  <TextInput label="Song" source="title" alwaysOn />,
+  // <TextInput label="Title" source="title" defaultValue="Hello, World!" />,
+];
 export const ChordList = (props: ListProps) => (
-  <List {...props}>
+  <List {...props} filters={chordFilters}>
     <Datagrid rowClick={"show"}>
       <TextField source="id" />
       <TextField source="title" />
-      <TextField source="artist" />
-      {/* <TextField source="body" /> */}
+      <ReferenceField source="artistId" reference="artist">
+        <TextField source="label" />
+      </ReferenceField>
       <NumberField source="hits" />
-      {/* <ReferenceArrayField label="Tags" reference="tag" source="tags">
-        <SingleFieldList>
-          <ChipField source="name" />
-        </SingleFieldList>
-      </ReferenceArrayField> */}
     </Datagrid>
   </List>
 );
@@ -46,7 +46,9 @@ export const ChordShow = () => (
     <SimpleShowLayout>
       <TextField source="id" />
       <TextField source="title" />
-      <TextField source="artist" />
+      <ReferenceField source="artistId" reference="artist">
+        <TextField source="label" />
+      </ReferenceField>
       <TextField
         source="body"
         style={{ fontFamily: "monospace", whiteSpace: "pre" }}
@@ -60,15 +62,23 @@ export const ChordEdit = (props: EditProps) => (
     <SimpleForm>
       <TextInput source="id" />
       <TextInput source="title" />
-      <SelectInput source="artist" />
-      <ReferenceInput
+      {/* <SelectInput source="artist" /> */}
+      {/* <ReferenceInput
         label="Artist"
         source="artistId"
         reference="artist"
         validate={[required()]}
       >
-        <SelectInput optionText="name" />
+        <SelectInput optionText="label" />
+      </ReferenceInput> */}
+      <ReferenceInput source="artistId" reference="artist">
+        <SelectInput optionText="label" />
       </ReferenceInput>
+
+      {/* <ReferenceField source="artistId" reference="artist">
+        <SelectInput source="id" />
+      </ReferenceField> */}
+
       {/* <TextInput source="artist" /> */}
       <TextInput multiline source="body" style={{ width: "100%" }} />
     </SimpleForm>
@@ -80,7 +90,10 @@ export const ChordCreate = (props: CreateProps) => (
     <SimpleForm>
       {/* <TextInput source="id" /> */}
       <TextInput source="title" validate={[required()]} />
-      <ReferenceInput label="Artist" source="artistId" reference="artist">
+      {/* <ReferenceInput label="Artist" source="artistId" reference="artist">
+        <AutocompleteInput optionText="label" />
+      </ReferenceInput> */}
+      <ReferenceInput source="artistId" reference="artist">
         <AutocompleteInput optionText="label" />
       </ReferenceInput>
       <NumberInput source="hits" defaultValue={0} />

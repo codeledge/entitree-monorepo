@@ -12,7 +12,6 @@ datasource db {
 
 model Chord {
   id          Int     @id @default(autoincrement())
-  artistLabel String
   title       String
   lastedit    String?
   category    String?
