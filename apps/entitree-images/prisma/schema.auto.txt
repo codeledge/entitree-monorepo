@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = "mongodb+srv://image-db-user-1:nUhB63lVyixQQ4ng@cluster-imagedb.paizm.mongodb.net/image-db-db?retryWrites=true&w=majority"
 }
 
 type ImagesFaceDetectionGoogleVision {
