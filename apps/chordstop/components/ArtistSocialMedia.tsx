@@ -1,16 +1,34 @@
-import InstagramIcon from "@mui/icons-material/Instagram";
 import { Artist } from "@prisma/client";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import { WD_INSTAGRAM_USERNAME } from "@entitree/helper";
+import { WD_INSTAGRAM_USERNAME, formatUrl } from "@entitree/helper";
+import Image from "next/image";
 
 export const ArtistSocialMedia = ({ artist }: { artist: Artist }) => {
   //artist.twitterUsername
+  let twitter = artist.twitterUsername;
+  let spotify = artist.spotifyArtistId;
+
   return (
     <div>
-      <a href={WD_INSTAGRAM_USERNAME} />
+      {/* <a href={WD_INSTAGRAM_USERNAME} /> */}
       {/* <InstagramIcon /> */}
-
-      <TwitterIcon />
+      {twitter && (
+        <>
+          <a href={twitter} target="_blank">
+            <TwitterIcon />
+          </a>
+        </>
+      )}{" "}
+      {spotify && (
+        <>
+          <a href={spotify} target="_blank">
+            <TwitterIcon />
+          </a>
+        </>
+      )}
     </div>
   );
+};
+
+const Icon = ({ icon }: { icon: string }) => {
+  return <Image src={getImage(icon)} width={20} height={20} />;
 };

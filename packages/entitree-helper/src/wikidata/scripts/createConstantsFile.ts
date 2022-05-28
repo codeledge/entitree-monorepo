@@ -2,6 +2,8 @@ import fs from "fs";
 import { getWikidataSparql } from "../getWikibaseSparql";
 import latinize from "latinize";
 import path from "path";
+import { WD_ICON, WD_LOGO_IMAGE } from "../properties";
+import getFilePath from "../../wikimedia-commons/getFilePath";
 interface IProperty {
   p: {
     value: string;
@@ -90,6 +92,30 @@ export async function createFormatter() {
   );
 }
 
+export async function createIcon() {
+  const query = `SELECT ?p ?pt ?pLabel ?icon WHERE {
+  ?p wikibase:propertyType ?pt .
+  ?p wdt:${WD_ICON} ?icon.
+    SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". 
+    }
+}`;
+  let data = await getSortedWikidataSparql(query);
+
+  let json: any = {};
+  data.forEach((item) => {
+    if (!json[item.p.value]) {
+      json[item.p.value] = getFilePath(
+        decodeURIComponent(item.icon.split("FilePath/")[1])
+      );
+    }
+  });
+  console.log(json);
+  const output = `export const WIKIDATA_ICON = ` + JSON.stringify(json);
+  fs.writeFileSync(path.resolve(__dirname, "../propertiesIcon.ts"), output);
+}
+
 createConstants();
 createRegex();
 createFormatter();
+createIcon();

@@ -67,7 +67,7 @@ export const WIKIDATA_URL = {
   P477: "http://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=$1",
   P480: "https://www.filmaffinity.com/es/film$1.html",
   P481: "https://www.pop.culture.gouv.fr/notice/palissy/$1",
-  P486: "https://id.nlm.nih.gov/mesh/$1.html",
+  P486: "https://meshb.nlm.nih.gov/record/ui?ui=$1",
   P487: "https://util.unicode.org/UnicodeJsps/character.jsp?a=$1",
   P492: "https://omim.org/entry/$1",
   P493: "http://www.icd9data.com/getICD9Code.ashx?icd9=$1",
@@ -286,7 +286,7 @@ export const WIKIDATA_URL = {
   P1207:
     "https://wikidata-externalid-url.toolforge.org/?p=1207&url_prefix=http://nukat.edu.pl/aut/&id=$1",
   P1212:
-    "http://cartelfr.louvre.fr/cartelfr/visite?srv=car_not_frame&idNotice=$1&langue=fr",
+    "http://cartelen.louvre.fr/cartelen/visite?srv=car_not_frame&idNotice=$1",
   P1213: "http://opac.nlc.cn/F/?func=accref&acc_sequence=$1",
   P1214: "https://data.riksdagen.se/personlista/?iid=$1&utformat=html",
   P1216: "https://www.historicengland.org.uk/listing/the-list/list-entry/$1",
@@ -777,7 +777,7 @@ export const WIKIDATA_URL = {
     "http://www.unesco.org/languages-atlas/en/atlasmap/language-id-$1.html",
   P2357: "https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cip=$1",
   P2367: "https://asud.ga.gov.au/search-stratigraphic-units/results/$1",
-  P2369: "https://int.soccerway.com/players/$1/",
+  P2369: "https://id.soccerway.com/players/$1/",
   P2372: "http://www.odis.be/lnk/$1",
   P2373: "https://genius.com/artists/$1",
   P2380: "http://frenchsculpture.org/artist/$1",
@@ -813,7 +813,7 @@ export const WIKIDATA_URL = {
   P2434: "http://panarcticflora.org/results?name=#paf-$1",
   P2435: "https://port.hu/jump/person-$1",
   P2446: "https://www.transfermarkt.com/-/profil/spieler/$1",
-  P2447: "https://www.transfermarkt.com/-/profil/trainer/$1",
+  P2447: "https://www.transfermarkt.com/transfermarkt/profil/trainer/$1",
   P2448: "http://www.tff.org/Default.aspx?pageId=526&kisiID=$1",
   P2449: "http://www.tff.org/Default.aspx?pageID=527&antID=$1",
   P2450: "https://www.britannica.com/contributor/wd/$1",
@@ -1389,7 +1389,8 @@ export const WIKIDATA_URL = {
   P3371: "https://www.patrimoine-religieux.fr/eglises_edifices/0-wd/0-wd/$1-wd",
   P3372: "https://www.aucklandartgallery.com/explore-art-and-ideas/artist/$1/",
   P3375: "http://earlycinema.dch.phil-fak.uni-koeln.de/companies/view/$1",
-  P3376: "http://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?nummer=$1",
+  P3376:
+    "https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?lang=fr&nummer=$1",
   P3377:
     "http://www.bloomberg.com/research/stocks/private/snapshot.asp?privcapId=$1",
   P3378: "https://www.rsc.org/Merck-Index/reaction/r$1",
@@ -4734,7 +4735,7 @@ export const WIKIDATA_URL = {
   P7625:
     "https://msi.nga.mil/queryBreakout?publications/world-port-index?indexNumber=$1&output=html",
   P7626:
-    "https://www.nve.no/energi/energisystem/vindkraft/utbygde-vindkraftverk/vindkraftverk/?id=$1",
+    "https://www.nve.no/energi/energisystem/vannkraft/vannkraftdatabase/vannkraftverk/?id=$1",
   P7627: "http://kg.artsdata.ca/resource/$1",
   P7630: "http://www.scottisharchitects.org.uk/building_full.php?id=$1",
   P7631: "https://mppda.flinders.edu.au/films/$1",
@@ -6127,7 +6128,7 @@ export const WIKIDATA_URL = {
   P9268: "https://www.sciencemag.org/author/$1",
   P9269: "https://ok.ru/profile/$1",
   P9271: "https://www.kickstarter.com/profile/$1",
-  P9272: "https://decs.bvsalud.org/fr/ths/resource/?id=$1",
+  P9272: "https://decs.bvsalud.org/en/ths/resource/?id=$1",
   P9273: "https://econpapers.repec.org/RePEc:$1",
   P9276:
     "https://encyklopedie.ostrava.cz/home-mmo/?acc=profil_osobnosti&load=$1",
@@ -6724,7 +6725,7 @@ export const WIKIDATA_URL = {
   P9898: "https://dataportal.arc.gov.au/NCGP/Web/Grant/Grant/$1",
   P9900: "http://gdt.oqlf.gouv.qc.ca/ficheOqlf.aspx?Id_Fiche=$1",
   P9902: "https://materialsproject.org/materials/$1/",
-  P9903: "https://all.rugby/player/$1",
+  P9903: "https://www.allrugby.com/joueurs/$1",
   P9906: "https://commons.wikimedia.org/wiki/File:$1",
   P9907: "https://swisscovery.slsp.ch/permalink/41SLSP_NETWORK/1ufb5t2/alma$1",
   P9909: "https://geoloogia.info/locality/$1/",

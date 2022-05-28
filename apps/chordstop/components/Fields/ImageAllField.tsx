@@ -1,5 +1,4 @@
 import React from "react";
-import { getCommonsUrlByFile } from "../../lib/getCommonsImage";
 import { useRecordContext } from "react-admin";
 
 export const ImageCustomField = (props: {
