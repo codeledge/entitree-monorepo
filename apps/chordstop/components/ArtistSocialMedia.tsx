@@ -1,34 +1,55 @@
 import { Artist } from "@prisma/client";
-import { WD_INSTAGRAM_USERNAME, getComm } from "@entitree/helper";
+import {
+  WIKIDATA_ICON,
+  WD_TWITTER_USERNAME,
+  formatUrl,
+  FormatUrlProps,
+  WD_APPLE_MUSIC_ARTIST_ID_US_VERSION,
+  WD_ULTIMATE_GUITAR_ARTIST_ID,
+} from "@entitree/helper";
 import Image from "next/image";
 
 export const ArtistSocialMedia = ({ artist }: { artist: Artist }) => {
-  //artist.twitterUsername
-  let twitter = artist.twitterUsername;
-  let spotify = artist.spotifyArtistId;
-
   return (
     <div>
-      {/* <a href={WD_INSTAGRAM_USERNAME} /> */}
-      {/* <InstagramIcon /> */}
-      {twitter && (
-        <>
-          <a href={twitter} target="_blank">
-            <TwitterIcon />
-          </a>
-        </>
-      )}{" "}
-      {spotify && (
-        <>
-          <a href={spotify} target="_blank">
-            <Icon icon= />
-          </a>
-        </>
+      {artist.twitterUsername && (
+        <Link property={WD_TWITTER_USERNAME} value={artist.twitterUsername} />
+      )}
+      {artist.appleArtistID && (
+        <Link
+          property={WD_APPLE_MUSIC_ARTIST_ID_US_VERSION}
+          value={artist.appleArtistID}
+        />
+      )}
+      {artist.ultimateGuitarId && (
+        <Link
+          property={WD_ULTIMATE_GUITAR_ARTIST_ID}
+          value={artist.ultimateGuitarId}
+        />
       )}
     </div>
   );
 };
 
-const Icon = ({ icon }: { icon: string }) => {
-  return <Image src={getCoomm(icon)} width={20} height={20} />;
+const Link = ({
+  property,
+  value,
+}: {
+  property: FormatUrlProps;
+  value: string;
+}) => {
+  return (
+    <a href={formatUrl(property, value)} target="_blank">
+      {WIKIDATA_ICON[property] ? (
+        <Image
+          src={WIKIDATA_ICON[property]}
+          width={20}
+          height={20}
+          alt="not found"
+        />
+      ) : (
+        <>??</>
+      )}
+    </a>
+  );
 };

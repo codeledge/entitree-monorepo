@@ -5,6 +5,9 @@ function md5(str: string) {
 }
 
 export function getCommonsUrlByFile(file: string, width?: number): string {
+  if (file.includes("FilePath/")) {
+    file = file.split("FilePath/")[1];
+  }
   file = file.replace(/^File:/, "").replace(/\s+/g, "_");
   const encoded = encodeURIComponent(file);
   const base = "https://upload.wikimedia.org/wikipedia/commons";

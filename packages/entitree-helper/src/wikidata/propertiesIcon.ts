@@ -126,8 +126,11 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/1/1f/GOG.com_logo_no_URL.svg",
   P2847:
     "https://upload.wikimedia.org/wikipedia/commons/0/0b/Google_Plus_logo_(2015-2019).svg",
+  P2850:
+    "https://upload.wikimedia.org/wikipedia/commons/5/59/Apple_Music_Icon.svg",
   P2893:
     "https://upload.wikimedia.org/wikipedia/commons/6/60/Skype_logo_(2019%E2%80%93present).svg",
+  P2949: "https://upload.wikimedia.org/wikipedia/commons/f/fa/WikiTree.png",
   P2963:
     "https://upload.wikimedia.org/wikipedia/commons/4/4b/Goodreads_'g'_logo.png",
   P3040:
@@ -265,6 +268,8 @@ export const WIKIDATA_ICON = {
   P5915: "https://upload.wikimedia.org/wikipedia/commons/c/c0/Shazam_icon.svg",
   P5916: "https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg",
   P5917: "https://upload.wikimedia.org/wikipedia/commons/c/c0/Shazam_icon.svg",
+  P5927:
+    "https://upload.wikimedia.org/wikipedia/commons/b/b6/Ultimate_Guitar_Icon.svg",
   P5933:
     "https://upload.wikimedia.org/wikipedia/commons/8/8b/Twitter_logo_initial.svg",
   P6005:
@@ -373,4 +378,5 @@ export const WIKIDATA_ICON = {
   P10524:
     "https://upload.wikimedia.org/wikipedia/commons/f/f8/Zvuk_(compact_logo).svg",
   P10583: "https://upload.wikimedia.org/wikipedia/commons/2/21/SRSLY.jpg",
+  P10716: "https://upload.wikimedia.org/wikipedia/commons/3/31/Fanvue_Logo.png",
 };

@@ -9,6 +9,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: [`upload.wikimedia.org`],
+  },
 };
 
 module.exports = nextConfig;

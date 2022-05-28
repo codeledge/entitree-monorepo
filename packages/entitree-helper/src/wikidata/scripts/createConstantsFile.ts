@@ -2,8 +2,8 @@ import fs from "fs";
 import { getWikidataSparql } from "../getWikibaseSparql";
 import latinize from "latinize";
 import path from "path";
-import { WD_ICON, WD_LOGO_IMAGE } from "../properties";
-import getFilePath from "../../wikimedia-commons/getFilePath";
+import { WD_ICON } from "../properties";
+import { getCommonsUrlByFile } from "../../wikimedia-commons";
 interface IProperty {
   p: {
     value: string;
@@ -15,7 +15,6 @@ interface IProperty {
 
 async function getSortedWikidataSparql(query: string): Promise<IProperty[]> {
   let data: IProperty[] = await getWikidataSparql(query);
-  console.log(data);
   data = data.sort(
     (n1, n2) =>
       parseInt(n1.p.value.substring(1)) - parseInt(n2.p.value.substring(1))
@@ -33,7 +32,7 @@ export async function createConstants() {
     }}
 `;
   let data = await getSortedWikidataSparql(query);
-  console.log(data);
+
   let output = "";
   data.forEach((item) => {
     output += `export const WD_${latinize(item.p.label)
@@ -44,7 +43,6 @@ export async function createConstants() {
       .replace(/__/g, "_") //remove double _
       .toUpperCase()} = "${item.p.value}";\n`;
   });
-  console.log(output);
 
   fs.writeFileSync(path.resolve(__dirname, "../properties.ts"), output);
 }
@@ -63,7 +61,6 @@ export async function createRegex() {
   data.forEach((item) => {
     json[item.p.value] = item.regex;
   });
-  console.log(json);
   const output = `export const WIKIDATA_REGEX = ` + JSON.stringify(json);
   fs.writeFileSync(path.resolve(__dirname, "../propertiesRegex.ts"), output);
 }
@@ -84,7 +81,6 @@ export async function createFormatter() {
       json[item.p.value] = item.formatter;
     }
   });
-  console.log(json);
   const output = `export const WIKIDATA_URL = ` + JSON.stringify(json);
   fs.writeFileSync(
     path.resolve(__dirname, "../propertiesFormatter.ts"),
@@ -105,12 +101,11 @@ export async function createIcon() {
   let json: any = {};
   data.forEach((item) => {
     if (!json[item.p.value]) {
-      json[item.p.value] = getFilePath(
+      json[item.p.value] = getCommonsUrlByFile(
         decodeURIComponent(item.icon.split("FilePath/")[1])
       );
     }
   });
-  console.log(json);
   const output = `export const WIKIDATA_ICON = ` + JSON.stringify(json);
   fs.writeFileSync(path.resolve(__dirname, "../propertiesIcon.ts"), output);
 }
