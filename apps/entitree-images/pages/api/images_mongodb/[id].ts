@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { Image } from "./../../../models/Image";
+import { Image } from "../../../models/Image";
 import ImageModel from "../../../models/Image";
 import connectDB from "../../../middleware/mongodb";
 import { deleteFilesById } from "../../../lib/googleStorage";

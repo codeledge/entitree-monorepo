@@ -1,9 +1,7 @@
 import GoogleProvider from "next-auth/providers/google";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import NextAuth from "next-auth";
-import { UserModel } from "./../../../models/User";
-import clientPromise from "../../../middleware/mongodbClientPromise";
-import connectDB from "../../../middleware/mongodb";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "../../../lib/mongodb";
 
 export default async function auth(req, res) {
   return await NextAuth(req, res, {
@@ -15,18 +13,18 @@ export default async function auth(req, res) {
       }),
     ],
     secret: process.env.NEXTAUTH_SECRET_KEY,
-    callbacks: {
-      async session({ session, token, user }) {
-        // const sessionUser = session!.user as any;
-        await connectDB();
-        session.userId = user.id;
+    // callbacks: {
+    //   async session({ session, token, user }) {
+    //     // const sessionUser = session!.user as any;
+    //     await connectDB();
+    //     session.userId = user.id;
 
-        const userDoc = await UserModel.findById(user.id, "role").lean();
+    //     const userDoc = await UserModel.findById(user.id, "role").lean();
 
-        session.role = userDoc?.role;
-        return session;
-      },
-    },
+    //     session.role = userDoc?.role;
+    //     return session;
+    //   },
+    // },
     adapter: MongoDBAdapter(clientPromise),
   });
 }

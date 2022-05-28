@@ -1,4 +1,11 @@
-import { Admin, CustomRoutes, EditGuesser, Resource } from "react-admin";
+import {
+  Admin,
+  CustomRoutes,
+  EditGuesser,
+  ListGuesser,
+  Resource,
+  ShowGuesser,
+} from "react-admin";
 
 import Dashboard from "./resources/dashboard/Dashboard";
 import Documentation from "./custom-pages/Documentation";
@@ -12,10 +19,11 @@ import Privacy from "./custom-pages/Privacy";
 import React from "react";
 import { UserList } from "./resources/UserList";
 import { authProvider } from "./providers/authProvider";
-import { dataProvider } from "./providers/dataProvider";
+// import { dataProvider } from "./providers/dataProvider";
 import { i18nProvider } from "./providers/i18nProvider";
 import { useSession } from "next-auth/react";
 import { Route } from "react-router";
+import { dataProvider } from "ra-data-simple-prisma";
 
 const ReactAdmin = () => {
   const { data: session, status } = useSession();
@@ -27,9 +35,9 @@ const ReactAdmin = () => {
       disableTelemetry
       authProvider={authProvider(session)}
       dashboard={Dashboard}
-      dataProvider={dataProvider}
+      dataProvider={dataProvider("/api")}
       i18nProvider={i18nProvider}
-      layout={Layout}
+      // layout={Layout}
       loginPage={LoginPage}
     >
       <CustomRoutes>
@@ -37,12 +45,18 @@ const ReactAdmin = () => {
         <Route key="key" path="/privacy" element={<Privacy />} />,
       </CustomRoutes>
       <Resource
-        key="images"
-        name="images"
+        name="image"
         show={ImageShow}
         list={ImageList}
         create={ImageCreate}
         edit={ImageEdit}
+      />
+      <Resource
+        name="user"
+        list={ListGuesser}
+        // create={UserCreate}
+        edit={EditGuesser}
+        show={ShowGuesser}
       />
     </Admin>
   );

@@ -30,15 +30,15 @@ const ReactAdmin: React.FC = () => {
       authProvider={authProvider(session)}
       loginPage={LoginPage}
     >
-      {session.user.name === "admin" && (
-        <Resource
-          name="user"
-          list={ListGuesser}
-          // create={UserCreate}
-          edit={EditGuesser}
-          show={ShowGuesser}
-        />
-      )}
+      {/* {session.user.name === "admin" && ( */}
+      <Resource
+        name="user"
+        list={ListGuesser}
+        // create={UserCreate}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      {/* )} */}
       <Resource
         name="chord"
         list={ChordList}
