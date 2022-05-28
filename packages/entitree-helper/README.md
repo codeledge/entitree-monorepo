@@ -6,7 +6,7 @@
 
 Source Code:
 
-https://github.com/ogroppo/entitree-monorepo/tree/main/packages/helper
+https://github.com/codeledge/entitree-monorepo/tree/main/packages/entitree-helper
 
 ## Prerequisites
 

@@ -8,7 +8,19 @@ interface IProperty {
     label: string;
   };
   pt: string;
+  [key: string]: any;
 }
+
+async function getSortedWikidataSparql(query: string): Promise<IProperty[]> {
+  let data: IProperty[] = await getWikidataSparql(query);
+  console.log(data);
+  data = data.sort(
+    (n1, n2) =>
+      parseInt(n1.p.value.substring(1)) - parseInt(n2.p.value.substring(1))
+  );
+  return data;
+}
+
 export async function createConstants() {
   const query = `SELECT ?p ?pt ?pLabel  WHERE {
       ?p wikibase:propertyType ?pt .
@@ -18,14 +30,10 @@ export async function createConstants() {
     bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". 
     }}
 `;
-  let data: IProperty[] = await getWikidataSparql(query);
-  // console.log(data);
-  data = data.sort(
-    (n1, n2) =>
-      parseInt(n1.p.value.substring(1)) - parseInt(n2.p.value.substring(1))
-  );
+  let data = await getSortedWikidataSparql(query);
+  console.log(data);
   let output = "";
-  data.forEach((item: any) => {
+  data.forEach((item) => {
     output += `export const WD_${latinize(item.p.label)
       .replace(/\'/g, "") // remove ' to prevent COUNTRY_S
       .replace(/U\.S\./g, "US") //replace US
@@ -38,4 +46,25 @@ export async function createConstants() {
 
   fs.writeFileSync(path.resolve(__dirname, "../properties.ts"), output);
 }
+
+export async function createRegex() {
+  const query = `SELECT ?p ?pt ?pLabel ?regex WHERE {
+  ?p wikibase:propertyType ?pt .
+  ?p wdt:P1793 ?regex.
+    SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". 
+    }
+}`;
+  let data = await getSortedWikidataSparql(query);
+
+  let json: any = {};
+  data.forEach((item) => {
+    json[item.p.value] = item.regex;
+  });
+  console.log(json);
+  const output = `export const WIKIDATA_REGEX = ` + JSON.stringify(json);
+  fs.writeFileSync(path.resolve(__dirname, "../propertiesRegex.ts"), output);
+}
+
 createConstants();
+createRegex();
