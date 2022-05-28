@@ -6,6 +6,7 @@ import {
   FormatUrlProps,
   WD_APPLE_MUSIC_ARTIST_ID_US_VERSION,
   WD_ULTIMATE_GUITAR_ARTIST_ID,
+  WD_SPOTIFY_ARTIST_ID,
 } from "@entitree/helper";
 import Image from "next/image";
 
@@ -21,12 +22,16 @@ export const ArtistSocialMedia = ({ artist }: { artist: Artist }) => {
           value={artist.appleArtistID}
         />
       )}
-      {artist.ultimateGuitarId && (
+
+      {artist.spotifyArtistId && (
+        <Link property={WD_SPOTIFY_ARTIST_ID} value={artist.spotifyArtistId} />
+      )}
+      {/* {artist.ultimateGuitarId && (
         <Link
           property={WD_ULTIMATE_GUITAR_ARTIST_ID}
           value={artist.ultimateGuitarId}
         />
-      )}
+      )} */}
     </div>
   );
 };
@@ -39,14 +44,13 @@ const Link = ({
   value: string;
 }) => {
   return (
-    <a href={formatUrl(property, value)} target="_blank">
+    <a
+      href={formatUrl(property, value)}
+      target="_blank"
+      style={{ marginRight: "1em" }}
+    >
       {WIKIDATA_ICON[property] ? (
-        <Image
-          src={WIKIDATA_ICON[property]}
-          width={20}
-          height={20}
-          alt="not found"
-        />
+        <Image src={WIKIDATA_ICON[property]} width={20} height={20} alt="" />
       ) : (
         <>??</>
       )}

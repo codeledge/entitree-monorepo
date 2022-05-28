@@ -7,8 +7,12 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import { prismaClient } from "../../prisma/prismaClient";
 import { ArtistSocialMedia } from "../../components/ArtistSocialMedia";
+import Image from "next/image";
+import { getCommonsUrlByFile } from "@entitree/helper";
 
-async function findArtist(id: number): Promise<Artist> {
+type ArtistAndChords = Artist & { chords: Chord[] };
+
+async function findArtist(id: number): Promise<ArtistAndChords> {
   return await prismaClient.artist.findUnique({
     where: { id },
     include: {
@@ -44,9 +48,21 @@ export async function getServerSideProps(context: any) {
     props: { artist },
   };
 }
-const ArtistPage = ({ artist }) => {
+const ArtistPage = ({ artist }: { artist: ArtistAndChords }) => {
   return (
     <Layout>
+      {artist.imageCommons && (
+        <div
+          style={{
+            position: "absolute",
+            right: "10px",
+            height: "150px",
+            width: "100px",
+          }}
+        >
+          <Image src={getCommonsUrlByFile(artist.imageCommons)} layout="fill" />
+        </div>
+      )}
       <h1>
         <ArrowBackIcon></ArrowBackIcon>
         {artist.label}: Songs
@@ -54,6 +70,7 @@ const ArtistPage = ({ artist }) => {
       <div>
         <ArtistSocialMedia artist={artist} />
       </div>
+
       <ul>
         {artist.chords.map((chord) => (
           <li key={chord.title}>
