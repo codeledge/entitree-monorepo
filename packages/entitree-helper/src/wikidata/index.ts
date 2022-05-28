@@ -5,6 +5,8 @@ export * from "./getWikibaseSparql";
 export * from "./getWikibaseInstance";
 export * from "./getWikibaseSourceIds";
 export * from "./properties";
+export * from "./propertiesRegex";
+export * from "./propertiesFormatter";
 export * from "./shorthands";
 export * from "./checkId";
 export * from "./services/wikibaseSearchEntities";

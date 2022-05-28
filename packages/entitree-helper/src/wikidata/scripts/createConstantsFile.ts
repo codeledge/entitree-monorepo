@@ -66,5 +66,30 @@ export async function createRegex() {
   fs.writeFileSync(path.resolve(__dirname, "../propertiesRegex.ts"), output);
 }
 
+export async function createFormatter() {
+  const query = `SELECT ?p ?pt ?pLabel ?formatter WHERE {
+  ?p wikibase:propertyType ?pt .
+  ?p wdt:P1630 ?formatter.
+    SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". 
+    }
+}`;
+  let data = await getSortedWikidataSparql(query);
+
+  let json: any = {};
+  data.forEach((item) => {
+    if (!json[item.p.value]) {
+      json[item.p.value] = item.formatter;
+    }
+  });
+  console.log(json);
+  const output = `export const WIKIDATA_URL = ` + JSON.stringify(json);
+  fs.writeFileSync(
+    path.resolve(__dirname, "../propertiesFormatter.ts"),
+    output
+  );
+}
+
 createConstants();
 createRegex();
+createFormatter();
