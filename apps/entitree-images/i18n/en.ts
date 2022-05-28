@@ -12,6 +12,7 @@ const customEnglishMessages: TranslationMessages = {
     //     light: 'Light',
     //     dark: 'Dark',
     // },
+    image_create: "Create new image",
     dashboard: {
       total_images: "Total Images",
       total_image_views: "Image Views",

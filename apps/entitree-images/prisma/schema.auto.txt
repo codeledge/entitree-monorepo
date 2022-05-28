@@ -1,0 +1,190 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = "mongodb+srv://image-db-user-1:nUhB63lVyixQQ4ng@cluster-imagedb.paizm.mongodb.net/image-db-db?retryWrites=true&w=majority"
+}
+
+type ImagesFaceDetectionGoogleVision {
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  context                    Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  cropHintsAnnotation        Json?
+  error                      ImagesFaceDetectionGoogleVisionError?
+  faceAnnotations            ImagesFaceDetectionGoogleVisionFaceAnnotations[]
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  fullTextAnnotation         Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  imagePropertiesAnnotation  Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  labelAnnotations           Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  landmarkAnnotations        Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  localizedObjectAnnotations Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  logoAnnotations            Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  productSearchResults       Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  safeSearchAnnotation       Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  textAnnotations            Json?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  webDetection               Json?
+}
+
+type ImagesFaceDetectionGoogleVisionError {
+  code    Int
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  details Json?
+  message String
+}
+
+type ImagesFaceDetectionGoogleVisionFaceAnnotations {
+  angerLikelihood        String
+  blurredLikelihood      String
+  boundingPoly           ImagesFaceDetectionGoogleVisionFaceAnnotationsBoundingPoly
+  detectionConfidence    Float
+  fdBoundingPoly         ImagesFaceDetectionGoogleVisionFaceAnnotationsFdBoundingPoly
+  headwearLikelihood     String
+  joyLikelihood          String
+  landmarkingConfidence  Float
+  landmarks              ImagesFaceDetectionGoogleVisionFaceAnnotationsLandmarks[]
+  panAngle               Float
+  rollAngle              Float
+  sorrowLikelihood       String
+  surpriseLikelihood     String
+  tiltAngle              Float
+  underExposedLikelihood String
+}
+
+type ImagesFaceDetectionGoogleVisionFaceAnnotationsBoundingPoly {
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  normalizedVertices Json?
+  vertices           ImagesFaceDetectionGoogleVisionFaceAnnotationsBoundingPolyVertices[]
+}
+
+type ImagesFaceDetectionGoogleVisionFaceAnnotationsBoundingPolyVertices {
+  x Int
+  y Int
+}
+
+type ImagesFaceDetectionGoogleVisionFaceAnnotationsFdBoundingPoly {
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  normalizedVertices Json?
+  vertices           ImagesFaceDetectionGoogleVisionFaceAnnotationsFdBoundingPolyVertices[]
+}
+
+type ImagesFaceDetectionGoogleVisionFaceAnnotationsFdBoundingPolyVertices {
+  x Int
+  y Int
+}
+
+type ImagesFaceDetectionGoogleVisionFaceAnnotationsLandmarks {
+  position ImagesFaceDetectionGoogleVisionFaceAnnotationsLandmarksPosition
+  type     String
+}
+
+type ImagesFaceDetectionGoogleVisionFaceAnnotationsLandmarksPosition {
+  /// Multiple data types found: Float: 100%, Int: 0% out of 31586 sampled entries
+  x Json
+  y Float
+  z Float
+}
+
+model accounts {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  v                  Int?      @map("__v")
+  accessToken        String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  accessTokenExpires Json?
+  access_token       String?
+  compoundId         String?
+  createdAt          DateTime? @db.Date
+  expires_at         Int?
+  id_token           String?
+  provider           String?
+  providerAccountId  String
+  providerId         String?
+  providerType       String?
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  refreshToken       Json?
+  scope              String?
+  token_type         String?
+  type               String?
+  updatedAt          DateTime? @db.Date
+  userId             String    @db.ObjectId
+}
+
+model counters {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  id_             String @map("id")
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  reference_value Json?
+  seq             Int
+
+  @@unique([id, reference_value], map: "id_1_reference_value_1")
+}
+
+model images {
+  id                        String                            @id @default(auto()) @map("_id") @db.ObjectId
+  v                         Int                               @map("__v")
+  comment                   String?
+  createdAt                 DateTime                          @db.Date
+  createdBy                 String?                           @db.ObjectId
+  faceDetectionGoogleVision ImagesFaceDetectionGoogleVision[]
+  fileSize                  Int?
+  id_                       Int                               @map("id")
+  internalFileName          String?
+  mimetype                  String?
+  name                      String?
+  originalFilename          String?
+  recordedDate              DateTime?                         @db.Date
+  sourceUrl                 String?
+  statusBackgroundRemoval   String?
+  statusGoogleFaceDetection String?
+  statusImageCropping       String
+  updatedAt                 DateTime                          @db.Date
+  uploadSite                String
+  viewCount                 Int
+  wikidataEntity            Int
+  wikidataLabel             String?
+  wikidataP31               String?
+}
+
+model sessions {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  accessToken  String?
+  createdAt    DateTime? @db.Date
+  expires      DateTime  @db.Date
+  sessionToken String    @unique(map: "sessionToken_1")
+  updatedAt    DateTime? @db.Date
+  userId       String    @db.ObjectId
+}
+
+model stats {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  v      Int    @map("__v")
+  count  Int
+  metric String
+  month  String
+}
+
+model users {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime? @db.Date
+  email         String    @unique(map: "email_1")
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  emailVerified Json?
+  image         String?
+  name          String
+  role          String?
+  updatedAt     DateTime? @db.Date
+}
+
+model verificationtokens {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
