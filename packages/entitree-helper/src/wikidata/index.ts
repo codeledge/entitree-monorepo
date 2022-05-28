@@ -17,7 +17,4 @@ export * from "./prefetched/eyeHairColors";
 export * from "./prefetched/langs";
 export * from "./prefetched/occupations";
 export * from "./prefetched/religions";
-export * from "./format/formatDateClaim";
-export * from "./format/getBestClaim";
-export * from "./format/getClaimIds";
-export * from "./format/getSimpleClaimValue";
+export * from "./format";
