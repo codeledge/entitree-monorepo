@@ -24,7 +24,7 @@ import {
   TextInput,
 } from "react-admin";
 
-import { ImageCustomField } from "../components/Fields/ImageAllField";
+import { ImageCustomField } from "../Fields/ImageAllField";
 
 export const ArtistList = (props: ListProps) => (
   <List {...props}>
