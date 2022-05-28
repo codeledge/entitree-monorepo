@@ -1,0 +1,77 @@
+import {
+  BUCKET,
+  ImageType,
+  createFilePath,
+  uploadAndGetPublicFile,
+} from "../../../lib/googleStorage";
+import { MetricType, updateMetric } from "../../../lib/statsUpdater";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { getNumericId, isEntityId } from "wikibase-sdk";
+
+import ImageModel from "../../../models/Image";
+import NextCors from "nextjs-cors";
+import axios from "axios";
+import connectDB from "../../../middleware/mongodb";
+import { getSession } from "next-auth/react";
+
+const getImage = async (id: number) => {
+  const image = await ImageModel.findOne({
+    id,
+  });
+  return image;
+};
+
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  await connectDB();
+  await NextCors(req, res, {
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200,
+  });
+
+  const session = await getSession({ req });
+  const userId = session?.userId;
+  const role = session?.role;
+  const query = req.query;
+
+  console.log("downloading file", query.downloadUrl);
+  const download = await axios.get(query.downloadUrl, {
+    responseType: "arraybuffer",
+  });
+  let image = {
+    title: query.downloadUrl.split("/").pop() || "undefined",
+    size: 0,
+    base64: Buffer.from(download.data, "binary").toString("base64"),
+    type: "image",
+  };
+  const imageDoc = await ImageModel.create({
+    name,
+    wikidataEntity: getNumericId(query.wikidataEntity),
+    wikidataLabel: query.wikidataLabel,
+    sourceUrl: query.downloadUrl,
+    // recordedDate,
+    originalFilename: image.title,
+    uploadSite: "localhost", //REPLACE with hostname
+    viewCount: 1,
+    fileSize: image.size,
+    createdBy: null,
+    priority: 3,
+    faceDetectionGoogleVision: {},
+    statusBackgroundRemoval: "PotentialActionStatus",
+    statusGoogleFaceDetection: "PotentialActionStatus",
+    statusImageCropping: "PotentialActionStatus",
+  });
+
+  const originalFile = `uploads/original/${imageDoc.id}`;
+
+  const publicFile = await uploadAndGetPublicFile(originalFile, image.base64);
+  console.log(req.query);
+  res.status(200).json({ message: "image uploaded." });
+}
