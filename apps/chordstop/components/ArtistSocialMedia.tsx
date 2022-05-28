@@ -1,5 +1,5 @@
 import { Artist } from "@prisma/client";
-import { WD_INSTAGRAM_USERNAME, formatUrl } from "@entitree/helper";
+import { WD_INSTAGRAM_USERNAME, getComm } from "@entitree/helper";
 import Image from "next/image";
 
 export const ArtistSocialMedia = ({ artist }: { artist: Artist }) => {
@@ -21,7 +21,7 @@ export const ArtistSocialMedia = ({ artist }: { artist: Artist }) => {
       {spotify && (
         <>
           <a href={spotify} target="_blank">
-            <TwitterIcon />
+            <Icon icon= />
           </a>
         </>
       )}
@@ -30,5 +30,5 @@ export const ArtistSocialMedia = ({ artist }: { artist: Artist }) => {
 };
 
 const Icon = ({ icon }: { icon: string }) => {
-  return <Image src={getImage(icon)} width={20} height={20} />;
+  return <Image src={getCoomm(icon)} width={20} height={20} />;
 };
