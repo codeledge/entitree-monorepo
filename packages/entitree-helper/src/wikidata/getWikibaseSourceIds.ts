@@ -2,7 +2,7 @@ import { DataSource, getWikibaseInstance } from "./getWikibaseInstance";
 
 import axios from "axios";
 
-export default async function getWikibaseSourceIds(
+export async function getWikibaseSourceIds(
   entityId: string,
   propId: string,
   dataSource: DataSource

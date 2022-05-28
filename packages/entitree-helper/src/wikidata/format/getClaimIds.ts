@@ -21,7 +21,7 @@ function getSeriesOrdinal(claim: SimpleClaim) {
   return 0;
 }
 
-export default function getClaimIds(entity: WikibaseEntity, propId: string) {
+export function getClaimIds(entity: WikibaseEntity, propId: string) {
   const simpleClaimSet = entity.simpleClaims?.[propId] || [];
   simpleClaimSet.sort((a, b) => {
     return getSeriesOrdinal(a) - getSeriesOrdinal(b);

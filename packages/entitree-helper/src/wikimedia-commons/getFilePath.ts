@@ -4,10 +4,7 @@ function md5(str: string) {
   return crypto.createHash("md5").update(str).digest("hex");
 }
 
-export default function getCommonsUrlByFile(
-  file: string,
-  width?: number
-): string {
+export function getCommonsUrlByFile(file: string, width?: number): string {
   file = file.replace(/^File:/, "").replace(/\s+/g, "_");
   const encoded = encodeURIComponent(file);
   const base = "https://upload.wikimedia.org/wikipedia/commons";

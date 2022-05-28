@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const wikimediaService = axios.create({
+export const wikimediaService = axios.create({
   baseURL: "https://commons.wikimedia.org",
 });
 wikimediaService.interceptors.response.use((res) => res.data);
@@ -44,5 +44,3 @@ export const searchImage = (term: string) => {
 };
 
 export const wikimediaSearchImages = searchImage;
-
-export default wikimediaService;

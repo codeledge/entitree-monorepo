@@ -1,6 +1,6 @@
 import { SimpleClaims } from "../../types/Entity";
 
-export default function getSimpleClaimValue(
+export function getSimpleClaimValue(
   simpleClaims: SimpleClaims | undefined,
   propId: string
 ) {

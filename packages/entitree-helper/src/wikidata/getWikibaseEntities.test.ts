@@ -1,4 +1,4 @@
-import getWikibaseEntities from "./getWikibaseEntities";
+import { getWikibaseEntities } from "./getWikibaseEntities";
 
 describe("getWikibaseEntities", () => {
   describe("factgrid", () => {
