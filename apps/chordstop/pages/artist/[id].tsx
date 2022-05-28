@@ -6,6 +6,7 @@ import Layout from "../../components/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { prismaClient } from "../../prisma/prismaClient";
+import { ArtistSocialMedia } from "../../components/ArtistSocialMedia";
 
 async function findArtist(id: number): Promise<Artist> {
   return await prismaClient.artist.findUnique({
@@ -50,6 +51,9 @@ const ArtistPage = ({ artist }) => {
         <ArrowBackIcon></ArrowBackIcon>
         {artist.label}: Songs
       </h1>
+      <div>
+        <ArtistSocialMedia artist={artist} />
+      </div>
       <ul>
         {artist.chords.map((chord) => (
           <li key={chord.title}>
