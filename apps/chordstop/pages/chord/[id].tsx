@@ -19,10 +19,18 @@ export async function getServerSideProps(context: any) {
       artist: true,
     },
   });
+  let html: string;
+  try {
+    html = formatSong(chord.body);
+  } catch (er) {
+    html = "Couldn't parse this song";
+    console.log(er);
+  }
+
   return {
     props: {
       chord,
-      body: chord ? formatSong(chord.body) : "",
+      body: chord ? html : "",
       text: chord.body,
     },
   };
