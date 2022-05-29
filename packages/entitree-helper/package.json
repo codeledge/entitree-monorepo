@@ -31,6 +31,7 @@
     "latinize": "^0.5.0",
     "luxon": "^2.4.0",
     "ordinalize": "^1.0.2",
+    "ts-md5": "^1.2.11",
     "wikibase-edit": "^5.0.0",
     "wikibase-sdk": "^8.0.0",
     "wikidata-sdk": "^8.0.0"

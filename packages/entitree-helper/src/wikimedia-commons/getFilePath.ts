@@ -1,8 +1,4 @@
-const crypto = require("crypto");
-
-function md5(str: string) {
-  return crypto.createHash("md5").update(str).digest("hex");
-}
+import { md5 } from "../formatters";
 
 export function getCommonsUrlByFile(file: string, width?: number): string {
   if (file.includes("FilePath/")) {
