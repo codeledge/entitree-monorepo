@@ -10,25 +10,25 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { signIn } from "next-auth/react";
-import { useCheckAuth } from "ra-core";
-import { useNavigate } from "react-router-dom";
+// import { useCheckAuth } from "ra-core";
+// import { useNavigate } from "react-router-dom";
 
 //https://github.com/mui/material-ui/blob/v5.6.1/docs/data/material/getting-started/templates/sign-in/SignIn.tsx
 const theme = createTheme();
 
 const LoginPage = () => {
-  const checkAuth = useCheckAuth();
-  const navigate = useNavigate();
-  useEffect(() => {
-    checkAuth({}, false)
-      .then(() => {
-        // already authenticated, redirect to the home page
-        navigate("/");
-      })
-      .catch(() => {
-        // not authenticated, stay on the login page
-      });
-  }, [checkAuth, navigate]);
+  // const checkAuth = useCheckAuth();
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   checkAuth({}, false)
+  //     .then(() => {
+  //       // already authenticated, redirect to the home page
+  //       navigate("/");
+  //     })
+  //     .catch(() => {
+  //       // not authenticated, stay on the login page
+  //     });
+  // }, [checkAuth, navigate]);
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

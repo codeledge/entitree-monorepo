@@ -28,7 +28,7 @@ export const ImageList = (props) => {
   return (
     <List {...props} filters={imageFilters}>
       <Datagrid rowClick="show">
-        <ImageDbField source="id" title="wikidataLabel" label="image" />
+        <ImageDbField source="imageId" title="wikidataLabel" label="image" />
         <TextField source="wikidataLabel" />
         <TextField source="wikidataEntity" label="Wikidata id" />
         {/* <TextField source="viewCount" /> */}

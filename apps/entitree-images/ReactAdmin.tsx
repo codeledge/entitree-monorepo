@@ -38,7 +38,7 @@ const ReactAdmin = () => {
       dataProvider={dataProvider("/api/admin")}
       i18nProvider={i18nProvider}
       // layout={Layout}
-      // loginPage={LoginPage}
+      loginPage={LoginPage}
     >
       <CustomRoutes>
         <Route key="key" path="/documentation" element={<Documentation />} />

@@ -1,4 +1,4 @@
-import { WikidataSearchResult, searchTerm } from "@entitree/helper";
+import { WikidataSearchResult, wikidataSearchEntities } from "@entitree/helper";
 import { useEffect, useState } from "react";
 
 import Autocomplete from "@mui/material/Autocomplete";
@@ -16,7 +16,7 @@ export const WikidataSearchField = ({
 
   useEffect(() => {
     if (inputValue.length > 2) {
-      searchTerm(inputValue, "en")
+      wikidataSearchEntities(inputValue, "en")
         .then((res) => {
           setResults(res);
         })
