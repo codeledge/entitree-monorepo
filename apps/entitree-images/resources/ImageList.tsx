@@ -46,7 +46,7 @@ export const ImageList = (props) => {
         )} */}
         <DateField source="createdAt" />
         <DateField source="updatedAt" />
-        <TextField source="id" />
+        <TextField source="imageId" />
       </Datagrid>
     </List>
   );

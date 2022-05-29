@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { BUCKET, ImageType, createFilePath } from "../../lib/googleStorage";
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
@@ -8,13 +6,15 @@ import {
   process3_cropFaces,
 } from "../../lib/photoEditing";
 
-import ImageModel from "../../models/Image";
 import { getSession } from "next-auth/react";
+import { prismaClient } from "../../prisma/prismaClient";
 
 const getAllImagesWithoutFile = async () => {
-  const images = await ImageModel.find({
-    wikidataP31: "Q5", //only humans
-    statusImageCropping: "CompletedActionStatus",
+  const images = await prismaClient.image.findMany({
+    where: {
+      wikidataP31: "Q5", //only humans
+      statusImageCropping: "CompletedActionStatus",
+    },
   });
   return images;
 };
@@ -43,16 +43,12 @@ export default async function handler(
   });
   let idsWithoutImage = idsProcessed.filter((d) => !idsWithImage.includes(d));
   //reset image status if Image wasn't found
-  const images = await ImageModel.updateMany(
-    {
-      id: {
-        $in: idsWithoutImage,
-      },
+  const images = await prismaClient.image.updateMany({
+    where: {
+      id: { in: idsWithoutImage },
     },
-    {
-      $set: { statusImageCropping: "PotentialActionStatus" },
-    }
-  );
+    data: { statusImageCropping: "PotentialActionStatus" },
+  });
   console.log("Finshed processing", idsWithoutImage.length);
   res.status(200).json({ idsProcessed, idsWithoutImage, idsWithImage });
 }

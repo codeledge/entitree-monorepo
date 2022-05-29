@@ -4,7 +4,7 @@ import {
   ImageType,
   createFilePath,
 } from "./googleStorage";
-import { FaceAnnotations, GoogleImageResponse } from "./../models/Image";
+import { FaceAnnotations, GoogleImageResponse } from "../types/Image";
 
 import sharp from "sharp";
 import vision from "@google-cloud/vision";

@@ -7,7 +7,7 @@ const EMOTION_EMOJI = {
   // blurredLikelihood: "VERY_UNLIKELY",
   // headwearLikelihood: "VERY_UNLIKELY",
 };
-export function getEmojiByLikelihood(face) {
+export function getEmojiByLikelihood(face: string): string {
   let result = "";
   for (const [key, value] of Object.entries(EMOTION_EMOJI)) {
     if (face[key] == "VERY_LIKELY") {

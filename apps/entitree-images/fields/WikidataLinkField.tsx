@@ -1,10 +1,6 @@
-import { Image } from "../models/Image";
 import { useRecordContext } from "react-admin";
 
-export const WikidataLinkField = (props: {
-  record?: Image;
-  source: string;
-}) => {
+export const WikidataLinkField = (props: { record?: any; source: string }) => {
   // const { source } = props;
   const record = useRecordContext(props);
   return (

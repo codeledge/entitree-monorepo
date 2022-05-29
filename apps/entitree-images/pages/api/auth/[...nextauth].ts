@@ -1,7 +1,7 @@
 import GoogleProvider from "next-auth/providers/google";
 import NextAuth from "next-auth";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import clientPromise from "../../../lib/mongodb";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { prismaClient } from "../../../prisma/prismaClient";
 
 export default async function auth(req, res) {
   return await NextAuth(req, res, {
@@ -25,6 +25,6 @@ export default async function auth(req, res) {
     //     return session;
     //   },
     // },
-    adapter: MongoDBAdapter(clientPromise),
+    adapter: PrismaAdapter(prismaClient),
   });
 }

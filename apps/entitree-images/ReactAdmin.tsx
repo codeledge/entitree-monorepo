@@ -53,7 +53,7 @@ const ReactAdmin = () => {
       />
       <Resource
         name="user"
-        list={ListGuesser}
+        list={UserList}
         // create={UserCreate}
         edit={EditGuesser}
         show={ShowGuesser}

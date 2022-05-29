@@ -11,33 +11,46 @@ import {
   process3_cropFaces,
 } from "../../../../lib/photoEditing";
 
-import ImageModel from "../../../../models/Image";
 import NextCors from "nextjs-cors";
-import connectDB from "../../../../middleware/mongodb";
 import { getSession } from "next-auth/react";
+import { prismaClient } from "../../../../prisma/prismaClient";
 
 const getImage = async (id: number) => {
-  const image = await ImageModel.findOne({
-    id,
+  const image = await prismaClient.image.findFirst({
+    where: {
+      imageId: id,
+    },
   });
   return image;
 };
 
 const imageInfo = async (id: number) => {
   console.log(id);
-  await updateMetric(MetricType.apiCalled);
+  // await updateMetric(MetricType.apiCalled);
 
-  const images = await ImageModel.find(
-    {
+  // const images = await prisma.image.create({
+  //   data: {
+  //     createdAt: new Date(),
+  //     // id_: 123123,
+  //     wikidataEntity: id,
+  //     uploadSite: "localhost",
+  //     viewCount: 0,
+  //     statusImageCropping: "No",
+  //   },
+  // });
+  // return images;
+
+  const images = await prismaClient.image.findMany({
+    where: {
       wikidataEntity: id,
       statusImageCropping: "CompletedActionStatus",
-      // uploadSite: "localhost"
-    } //TODO <= what?
-  )
-    .sort({ name: 1 })
-    .limit(20);
+    },
+  });
+  // return { test: images };
+  // .sort({ name: 1 })
+  // .limit(20);
 
-  return images.map((image) => {
+  return images.map((image: any) => {
     image.faceDetectionGoogleVision = undefined;
     image.url = {};
     for (let i in ImageType) {
@@ -55,7 +68,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await connectDB();
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     origin: "*",
@@ -103,10 +115,10 @@ export default async function handler(
     ) {
       //!without_bgExists
       console.log("remove BG");
-      await process1_removeBackground(imageData.id);
+      await process1_removeBackground(imageData.imageId);
     }
     const without_bgExists = await BUCKET.file(
-      createFilePath(ImageType.without_bg, imageData.id)
+      createFilePath(ImageType.without_bg, imageData.imageId)
     ).exists();
 
     if (!without_bgExists[0]) {
@@ -121,8 +133,8 @@ export default async function handler(
       (imageData.statusGoogleFaceDetection !== "CompletedActionStatus" &&
         imageData.statusGoogleFaceDetection !== "FailedActionStatus") //consider failed as no reason to process again
     ) {
-      await process2_detectFaces(imageData.id);
-      imageData = (await getImage(imageData.id)) || imageData; //otherwise it could be null
+      await process2_detectFaces(imageData.imageId);
+      imageData = (await getImage(imageData.imageId)) || imageData; //otherwise it could be null
     }
     if (
       (imageType === "reprocess" ||
@@ -133,10 +145,10 @@ export default async function handler(
       console.log("process crop");
       console.log(imageData.faceDetectionGoogleVision);
       await process3_cropFaces(
-        imageData.id,
+        imageData.imageId,
         imageData.faceDetectionGoogleVision?.[0]?.faceAnnotations!
       );
-      imageData = (await getImage(imageData.id)) || imageData; //otherwise it could be null
+      imageData = (await getImage(imageData.imageId)) || imageData; //otherwise it could be null
     }
 
     res.status(200).json({ message: "all 3 steps completed.", img: imageData });

@@ -1,21 +1,18 @@
-import StatsModel from "../models/Stats";
+import { prismaClient } from "../prisma/prismaClient";
+import { Metric } from ".prisma/client";
 
-export enum MetricType {
-  googleCloudVisionFaceDetection = "googleCloudVisionFaceDetection",
-  backgroundRemoval = "backgroundRemoval",
-  apiCalled = "apiCalled",
-}
-
-export async function updateMetric(metric: MetricType) {
+export async function updateMetric(metric: Metric) {
   const month = new Date().toISOString().slice(0, 7);
-
-  await StatsModel.findOneAndUpdate(
-    { metric, month },
-    {
-      $inc: { count: 1 },
-    },
-    {
-      upsert: true,
-    }
-  );
+  //TODO
+  // await prismaClient.stat.upsert({
+  //   where: {
+  //     metric,
+  //     month,
+  //   },
+  //   update: {
+  //     count: {
+  //       increment: 1,
+  //     },
+  //   },
+  // });
 }

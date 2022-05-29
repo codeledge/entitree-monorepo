@@ -10,7 +10,7 @@ datasource db {
 
 model Image {
   id                        String    @id @default(auto()) @map("_id") @db.ObjectId
-  imageId                   Int       @map("id")
+  imageId                   Int       @unique @map("id")
   comment                   String?
   createdAt                 DateTime  @default(now()) @db.Date
   createdBy                 String?   @db.ObjectId
@@ -81,4 +81,17 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Stat {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  count  Int
+  metric Metric
+  month  String
+}
+
+enum Metric {
+  googleCloudVisionFaceDetection
+  backgroundRemoval
+  apiCalled
 }

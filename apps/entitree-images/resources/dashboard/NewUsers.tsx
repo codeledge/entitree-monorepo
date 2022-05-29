@@ -13,11 +13,9 @@ import {
 import CardWithIcon from "./CardWithIcon";
 import CustomerIcon from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { User } from "../../models/User";
 import axios from "axios";
 import { makeStyles } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
-import { subDays } from "date-fns";
 import { useTranslate } from "react-admin";
 
 const PREFIX = "NewUsers";
@@ -44,7 +42,7 @@ const NewUsers = () => {
 
   React.useEffect(() => {
     axios
-      .get('/api/users?filter={}&range=[0,4]&sort=["createdAt","DESC"]')
+      .get('/api/admin/users?filter={}&range=[0,4]&sort=["createdAt","DESC"]')
       .then((res) => {
         const data = res.data;
         setUsers(data);

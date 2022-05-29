@@ -1,55 +1,59 @@
 import { BUCKET, ImageType, createFilePath } from "./googleStorage";
-import ImageModel, { FaceAnnotations } from "../models/Image";
+import { FaceAnnotations } from "../types/Image";
 import { MetricType, updateMetric } from "./statsUpdater";
 import { cropFacesAndSave, detectFaces } from "./faceDetection";
 
 import removePhotoBackground from "./removePhotoBackground";
+import { prismaClient } from "../prisma/prismaClient";
 
-export async function process1_removeBackground(id: number) {
-  await ImageModel.updateOne(
-    { id },
-    {
+export async function process1_removeBackground(imageId: number) {
+  await prismaClient.image.update({
+    where: { imageId },
+    data: {
       statusBackgroundRemoval: "ActiveActionStatus",
-    }
-  );
-  const success = await removePhotoBackground(id);
+    },
+  });
+  const success = await removePhotoBackground(imageId);
   await updateMetric(MetricType.backgroundRemoval);
-  return await ImageModel.updateOne(
-    { id },
-    {
+  return await prismaClient.image.update({
+    where: { imageId },
+    data: {
       statusBackgroundRemoval: success
         ? "CompletedActionStatus"
         : "FailedActionStatus",
-    }
-  );
+    },
+  });
 }
 
-export async function process2_detectFaces(id: number) {
+export async function process2_detectFaces(imageId: number) {
   const googleVisionObject = await detectFaces(
-    createFilePath(ImageType.without_bg, id)
+    createFilePath(ImageType.without_bg, imageId)
   );
   const faceAnnotations = googleVisionObject[0].faceAnnotations;
   console.log(googleVisionObject);
-  await ImageModel.updateOne(
-    { id },
-    {
-      faceDetectionGoogleVision: googleVisionObject,
+
+  const faceDetectionGoogleVision: any = googleVisionObject;
+
+  await prismaClient.image.update({
+    where: { imageId },
+    data: {
+      faceDetectionGoogleVision,
       statusGoogleFaceDetection:
         !!faceAnnotations && faceAnnotations.length
           ? "CompletedActionStatus"
           : "FailedActionStatus",
-    }
-  );
+    },
+  });
   await updateMetric(MetricType.googleCloudVisionFaceDetection);
   return googleVisionObject;
 }
 
 export async function process3_cropFaces(
-  id: number,
+  imageId: number,
   faceAnnotations: FaceAnnotations
 ) {
   console.log("Start Cropping");
-  const cropStatus = await cropFacesAndSave(id, faceAnnotations);
+  const cropStatus = await cropFacesAndSave(imageId, faceAnnotations);
   // const cropExists = await BUCKET.file(
   //   createFilePath(ImageType.transparent_head, id)
   // ).exists();
@@ -68,12 +72,12 @@ export async function process3_cropFaces(
   //     }
   //   );
   // }
-  await ImageModel.updateOne(
-    { id },
-    {
+  await prismaClient.image.update({
+    where: { imageId },
+    data: {
       statusImageCropping: !!cropStatus //&& cropExists[0]
         ? "CompletedActionStatus"
         : "FailedActionStatus",
-    }
-  );
+    },
+  });
 }

@@ -5,17 +5,19 @@ import {
   process3_cropFaces,
 } from "../../lib/photoEditing";
 
-import ImageModel from "../../models/Image";
 import { getSession } from "next-auth/react";
+import { prismaClient } from "../../prisma/prismaClient";
 
 const getAllImages = async (limit, skip) => {
-  const images = await ImageModel.find({
+  const images = await prismaClient.image.findMany({
     // statusGoogleFaceDetection: "",
     // wikidataP31: "Q5", //only humans
-    statusImageCropping: "PotentialActionStatus",
-  })
-    .limit(limit)
-    .skip(skip);
+    where: {
+      statusImageCropping: "PotentialActionStatus",
+    },
+    skip,
+    take: limit,
+  });
   return images;
 };
 export default async function handler(
@@ -68,7 +70,7 @@ export default async function handler(
       console.log("Cropping", image.id);
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const result = await process3_cropFaces(
-        image.id,
+        image.imageId,
         image.faceDetectionGoogleVision[0].faceAnnotations
       );
       // result.push("ImageCropped");
