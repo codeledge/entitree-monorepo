@@ -4,15 +4,12 @@ import { Title, useTranslate } from "react-admin";
 
 import Card from "@mui/material/Card";
 import Link from "next/link";
-// import LinkToRelatedCustomers from "./LinkToRelatedCustomers";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { makeStyles } from "@mui/material/styles";
-
-// import segments from "./data";
 
 const Documentation = () => {
   const translate = useTranslate();
