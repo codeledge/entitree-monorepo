@@ -1,0 +1,37 @@
+export type CompaniesReq = {
+  draw: number;
+  recordsTotal: number;
+  recordsFiltered: number;
+  data: IdxCompany[];
+};
+export type IdxCompany = {
+  Alamat: string;
+  BAE: string;
+  DataID: number;
+  Divisi: any;
+  EfekEmiten_EBA: boolean;
+  EfekEmiten_ETF: boolean;
+  EfekEmiten_Obligasi: boolean;
+  EfekEmiten_Saham: boolean;
+  EfekEmiten_SPEI: boolean;
+  Industri: string;
+  SubIndustri: string;
+  Email: string;
+  Fax: string;
+  id: number;
+  JenisEmiten: any;
+  KegiatanUsahaUtama: string;
+  KodeDivisi: any;
+  KodeEmiten: string;
+  NamaEmiten: string;
+  NPKP: string;
+  NPWP: string;
+  PapanPencatatan: string;
+  Sektor: string;
+  SubSektor: string;
+  TanggalPencatatan: string;
+  Telepon: string;
+  Website: string;
+  Status: number;
+  Logo: string;
+};
