@@ -4,27 +4,27 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env( "MONGODB_URI" )
-  }
+  url      = env("MONGODB_URI")
+}
 
 model Image {
-  id_                       String                            @id @default(auto()) @db.ObjectId @map("_id")
-  id                        Int                            
+  id                        String    @id @default(auto()) @map("_id") @db.ObjectId
+  imageId                   Int       @map("id")
   comment                   String?
-  createdAt                 DateTime                          @db.Date @default(now())
-  createdBy                 String?                           @db.ObjectId
+  createdAt                 DateTime  @default(now()) @db.Date
+  createdBy                 String?   @db.ObjectId
   faceDetectionGoogleVision Json?
   fileSize                  Int?
   internalFileName          String?
   mimetype                  String?
   name                      String?
   originalFilename          String?
-  recordedDate              DateTime?                         @db.Date
+  recordedDate              DateTime? @db.Date
   sourceUrl                 String?
   statusBackgroundRemoval   String?
   statusGoogleFaceDetection String?
   statusImageCropping       String
-  updatedAt                 DateTime                          @db.Date @default(now())
+  updatedAt                 DateTime  @default(now()) @db.Date
   uploadSite                String
   viewCount                 Int
   wikidataEntity            Int
@@ -34,18 +34,18 @@ model Image {
 
 //https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
 model Account {
-  id                 String  @id @default(cuid()) @map("_id")
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  
-  access_token       String?  
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  
-  session_state      String?
+  id                String  @id @default(cuid()) @map("_id")
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -69,13 +69,13 @@ model User {
   role          String?
   updatedAt     DateTime? @db.Date
 
-  accounts      Account[]
-  sessions      Session[]
+  accounts Account[]
+  sessions Session[]
 }
 
 model VerificationToken {
-  id            String    @id @default(cuid()) @map("_id")
-  identifier String   
+  id         String   @id @default(cuid()) @map("_id")
+  identifier String
   token      String   @unique
   expires    DateTime
 
