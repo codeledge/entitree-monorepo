@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -11,17 +12,17 @@ datasource db {
 }
 
 model Chord {
-  id          Int     @id @default(autoincrement())
-  title       String
-  lastedit    String?
-  category    String?
-  hits        Int?
-  body        String
-  open        Int?
-  artist      Artist? @relation(fields: [artistId], references: [id])
-  artistId    Int?
-  wikidataId  String? @unique
-  duration    Int?
+  id         Int     @id @default(autoincrement())
+  title      String
+  lastedit   String?
+  category   String?
+  hits       Int?
+  body       String
+  open       Int?
+  artist     Artist? @relation(fields: [artistId], references: [id])
+  artistId   Int?
+  wikidataId String? @unique
+  duration   Int?
 }
 
 model Artist {
@@ -39,18 +40,18 @@ model Artist {
 
 //https://next-auth.js.org/adapters/prisma
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?
-  access_token       String?
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String? 
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

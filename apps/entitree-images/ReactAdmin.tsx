@@ -35,10 +35,10 @@ const ReactAdmin = () => {
       disableTelemetry
       authProvider={authProvider(session)}
       dashboard={Dashboard}
-      dataProvider={dataProvider("/api")}
+      dataProvider={dataProvider("/api/admin")}
       i18nProvider={i18nProvider}
       // layout={Layout}
-      loginPage={LoginPage}
+      // loginPage={LoginPage}
     >
       <CustomRoutes>
         <Route key="key" path="/documentation" element={<Documentation />} />

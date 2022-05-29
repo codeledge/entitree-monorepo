@@ -13,14 +13,12 @@ import {
 
 import NextCors from "nextjs-cors";
 import { getSession } from "next-auth/react";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prismaClient } from "../../../../prisma/prismaClient";
 
 const getImage = async (id: number) => {
-  const image = await prisma.image.findFirst({
+  const image = await prismaClient.image.findFirst({
     where: {
-      id,
+      imageId: id,
     },
   });
   return image;
@@ -42,7 +40,7 @@ const imageInfo = async (id: number) => {
   // });
   // return images;
 
-  const images = await prisma.image.findMany({
+  const images = await prismaClient.image.findMany({
     where: {
       wikidataEntity: id,
       statusImageCropping: "CompletedActionStatus",
