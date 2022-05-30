@@ -9,23 +9,23 @@ datasource db {
 }
 
 model Image {
-  id                        String    @id @default(auto()) @map("_id") @db.ObjectId
-  imageId                   Int       @unique @map("id")
+  id                        String       @id @default(auto()) @map("_id") @db.ObjectId
+  imageId                   Int          @unique @map("id")
   comment                   String?
-  createdAt                 DateTime  @default(now()) @db.Date
-  createdBy                 String?   @db.ObjectId
+  createdAt                 DateTime     @default(now()) @db.Date
+  createdBy                 String?      @db.ObjectId
   faceDetectionGoogleVision Json?
   fileSize                  Int?
   internalFileName          String?
   mimetype                  String?
   name                      String?
   originalFilename          String?
-  recordedDate              DateTime? @db.Date
+  recordedDate              DateTime?    @db.Date
   sourceUrl                 String?
-  statusBackgroundRemoval   String?
-  statusGoogleFaceDetection String?
-  statusImageCropping       String
-  updatedAt                 DateTime  @default(now()) @db.Date
+  statusBackgroundRemoval   ActionStatus @default(PotentialActionStatus)
+  statusGoogleFaceDetection ActionStatus @default(PotentialActionStatus)
+  statusImageCropping       ActionStatus @default(PotentialActionStatus)
+  updatedAt                 DateTime     @default(now()) @db.Date
   uploadSite                String
   viewCount                 Int
   wikidataEntity            Int
@@ -94,4 +94,11 @@ enum Metric {
   googleCloudVisionFaceDetection
   backgroundRemoval
   apiCalled
+}
+
+enum ActionStatus {
+  PotentialActionStatus
+  CompletedActionStatus
+  FailedActionStatus
+  ActiveActionStatus
 }
