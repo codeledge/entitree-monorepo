@@ -26,8 +26,8 @@ model Image {
   statusGoogleFaceDetection ActionStatus @default(PotentialActionStatus)
   statusImageCropping       ActionStatus @default(PotentialActionStatus)
   updatedAt                 DateTime     @default(now()) @db.Date
-  uploadSite                String
-  viewCount                 Int
+  uploadSite                String       @default("images.entitree.com")
+  viewCount                 Int          @default(0)
   wikidataEntity            Int
   wikidataLabel             String?
   wikidataP31               String?
