@@ -37,7 +37,7 @@ const ReactAdmin = () => {
       dashboard={Dashboard}
       dataProvider={dataProvider("/api/admin")}
       i18nProvider={i18nProvider}
-      // layout={Layout}
+      layout={Layout}
       loginPage={LoginPage}
     >
       <CustomRoutes>

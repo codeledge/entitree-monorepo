@@ -30,16 +30,16 @@ export const ImageAllField = (props: {
     Math.random();
   return (
     <div>
-      <Box my={2}>
-        <Typography variant="h5">Without Bg Image</Typography>
-      </Box>
-
-      {/* <img
+      <img
         alt=""
         src={`${storage_url}original/${record[source]}`}
         title={title}
         width={60}
-      /> */}
+      />
+      <Box my={2}>
+        <Typography variant="h5">Without Bg Image</Typography>
+      </Box>
+
       <img
         alt=""
         src={`${storage_url}without_bg/${record[source]}`}

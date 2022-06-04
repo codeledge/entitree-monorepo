@@ -47,29 +47,10 @@ export const FaceInfoField = (props: {
           <a
             target={"_blank"}
             rel={"noreferrer"}
-            href={`/api/v1/image/process/id/${record["id"]}`}
+            href={`/api/v1/image/process/id/${record["imageId"]}`}
           >
             Process pictures
           </a>
-          <br />
-          {/* <a
-            target={"_blank"}
-            rel={"noreferrer"}
-            href={`https://images.dataprick.com/api/v1/image/original/id/${record["id"]}/`}
-          >
-            See old server original
-          </a>
-          <br /> */}
-          <img
-            src={`https://images.dataprick.com/api/v1/image/original/id/${record["id"]}/`}
-            width={"100px"}
-            alt={""}
-          ></img>
-          <img
-            src={`https://images.dataprick.com/api/v1/image/facecrop/id/${record["id"]}/`}
-            width={"100px"}
-            alt={""}
-          ></img>
         </>
       )}
     </div>

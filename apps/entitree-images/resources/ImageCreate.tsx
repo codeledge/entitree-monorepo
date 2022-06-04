@@ -28,7 +28,6 @@ export const ImageCreate = (props) => {
   ) {
     let jparse = queryString.parse(props.location.search)?.source;
     params = JSON.parse(jparse as string);
-    console.log(params);
   } // catch (err) {}
   const [sourceUrl, setSourceUrl] = useState();
   const [downloadUrl, setDownloadUrl] = useState("");
@@ -39,7 +38,7 @@ export const ImageCreate = (props) => {
       //https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url&titles=
       searchImage(params.sourceUrl.split("/wiki/")[1])
         .then((res) => {
-          console.log(res.query.pages);
+          // console.log(res.query.pages);
           const image = Object.values(res.query.pages)[0];
           setDownloadUrl(image.imageinfo[0].url);
           const creationDate =
@@ -69,7 +68,7 @@ export const ImageCreate = (props) => {
   );
   return (
     <Create {...props}>
-      <SimpleForm toolbar={<ImageCreateToolbar />}>
+      <SimpleForm toolbar={<ImageCreateToolbar />} redirect="show">
         <Typography variant="h3">Upload a new Image</Typography>
 
         {params?.wikidataEntity ? (
@@ -113,6 +112,9 @@ export const ImageCreate = (props) => {
           // defaultValue={sourceUrl}
           // inputProps={{ value: sourceUrl }}
         />
+
+        <TextInput title="comment" fullWidth source="comment" />
+
         {/* <CheckboxGroupInput
           source="remove"
           choices={checkboxChoices}
