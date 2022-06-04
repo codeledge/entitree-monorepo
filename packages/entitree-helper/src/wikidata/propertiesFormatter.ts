@@ -67,7 +67,7 @@ export const WIKIDATA_URL = {
   P477: "http://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=$1",
   P480: "https://www.filmaffinity.com/en/film$1.html",
   P481: "https://www.pop.culture.gouv.fr/notice/palissy/$1",
-  P486: "https://id.nlm.nih.gov/mesh/$1.html",
+  P486: "https://meshb.nlm.nih.gov/record/ui?ui=$1",
   P487: "https://util.unicode.org/UnicodeJsps/character.jsp?a=$1",
   P492: "https://omim.org/entry/$1",
   P493: "http://www.icd9data.com/getICD9Code.ashx?icd9=$1",
@@ -229,7 +229,8 @@ export const WIKIDATA_URL = {
   P982: "https://musicbrainz.org/area/$1",
   P998: "https://curlie.org/$1",
   P999: "http://wwwadd.zah.uni-heidelberg.de/datenbanken/aricns/cnspages/4c$1.htm",
-  P1003: "http://aleph.bibnat.ro/F/?func=direct&local_base=NLR10&doc_number=$1",
+  P1003:
+    "https://aleph.bibnat.ro/F/?func=direct&local_base=NLR10&doc_number=$1",
   P1004: "https://musicbrainz.org/place/$1",
   P1005: "http://id.bnportugal.gov.pt/aut/catbnp/$1",
   P1006: "https://data.bibliotheken.nl/doc/thes/p$1",
@@ -286,7 +287,7 @@ export const WIKIDATA_URL = {
   P1207:
     "https://wikidata-externalid-url.toolforge.org/?p=1207&url_prefix=http://nukat.edu.pl/aut/&id=$1",
   P1212:
-    "http://cartelfr.louvre.fr/cartelfr/visite?srv=car_not_frame&idNotice=$1&langue=fr",
+    "http://cartelen.louvre.fr/cartelen/visite?srv=car_not_frame&idNotice=$1",
   P1213: "http://opac.nlc.cn/F/?func=accref&acc_sequence=$1",
   P1214: "https://data.riksdagen.se/personlista/?iid=$1&utformat=html",
   P1216: "https://www.historicengland.org.uk/listing/the-list/list-entry/$1",
@@ -411,7 +412,7 @@ export const WIKIDATA_URL = {
     "http://patrimoine.region-bretagne.fr/gertrude-diffusion/recherche/globale?texte=$1",
   P1541: "https://cqranking.com/men/asp/gen/rider.asp?riderid=$1",
   P1543: "https://commons.wikimedia.org/wiki/File:$1",
-  P1544: "https://federalregister.gov/a/$1",
+  P1544: "https://www.federalregister.gov/d/$1",
   P1550: "https://www.orpha.net/consor/cgi-bin//OC_Exp.php?lng=EN&Expert=$1",
   P1551:
     "http://lampspw.wallonie.be/dgo4/site_thema/index.php/dossier/view/PAT_EXC/$1",
@@ -813,7 +814,7 @@ export const WIKIDATA_URL = {
   P2434: "http://panarcticflora.org/results?name=#paf-$1",
   P2435: "https://port.hu/jump/person-$1",
   P2446: "https://www.transfermarkt.com/-/profil/spieler/$1",
-  P2447: "https://www.transfermarkt.com/-/profil/trainer/$1",
+  P2447: "https://www.transfermarkt.com/transfermarkt/profil/trainer/$1",
   P2448: "http://www.tff.org/Default.aspx?pageId=526&kisiID=$1",
   P2449: "http://www.tff.org/Default.aspx?pageID=527&antID=$1",
   P2450: "https://www.britannica.com/contributor/wd/$1",
@@ -1186,7 +1187,7 @@ export const WIKIDATA_URL = {
   P3077: "https://www.cineplex.de/film/id/$1",
   P3083: "https://simbad.u-strasbg.fr/simbad/sim-id?Ident=$1",
   P3088:
-    "http://taibnet.sinica.edu.tw/chi/taibnet_species_detail.php?name_code=$1",
+    "http://taibnet.sinica.edu.tw/eng/taibnet_species_detail.php?name_code=$1",
   P3089: "https://www.fotw.info/flags/$1.html",
   P3098: "https://clinicaltrials.gov/show/$1",
   P3099: "https://www.hbw.com/species/$1",
@@ -1215,8 +1216,7 @@ export const WIKIDATA_URL = {
   P3123: "https://plato.stanford.edu/entries/$1/",
   P3124: "http://nauka-polska.pl/#/profile/scientist?id=$1",
   P3125: "http://edr.data-gov-ua.org/organizations/$1",
-  P3126:
-    "https://www-app.uni-regensburg.de/Fakultaeten/PKGG/Philosophie/Gesch_Phil/alcuin/philosopher.php?id=$1",
+  P3126: "http://www.alcuin.de/philosopher.php?id=$1",
   P3127: "https://www.latindex.org/latindex/ficha?folio=$1",
   P3128: "http://www.cinetmag.com/Movies/ShowFilms.asp?ID=$1",
   P3129: "https://cine.gr/film.asp?id=$1",
@@ -1286,8 +1286,7 @@ export const WIKIDATA_URL = {
   P3209: "https://www.pc.gc.ca/apps/dfhd/page_hrs_eng.aspx?id=$1",
   P3211: "https://www.pc.gc.ca/apps/dfhd/page_hl_eng.aspx?id=$1",
   P3212: "https://web.isan.org/public/en/search?domain=search&isan=$1",
-  P3215:
-    "https://www.sirene.fr/sirene/public/recherche?recherche.sirenSiret=$1",
+  P3215: "https://annuaire-entreprises.data.gouv.fr/etablissement/$1",
   P3217: "https://sok.riksarkivet.se/sbl/Presentation.aspx?id=$1",
   P3218: "http://www.euskomedia.org/aunamendi/$1",
   P3219: "https://www.universalis.fr/encyclopedie/$1/",
@@ -1303,8 +1302,7 @@ export const WIKIDATA_URL = {
     "https://heritage.toolforge.org/api/api.php?action=search&srcountry=xk&srlang=sq&srname=&sraddress=&srmunicipality=&userlang=en&format=html&srid=$1",
   P3229:
     "http://www.sdlegislature.gov/Legislators/Historical_Listing/LegislatorDetail.aspx?MemberID=$1",
-  P3230:
-    "https://data.aad.gov.au/aadc/gaz/scar/search_names_action.cfm?search_text=$1&feature_type_code=0&country_id=0&relic_options=include_relics&north=-45.0&south=-90.0&west=-180.0&east=180.0&search_near=&radius=0.5&gazetteers=SCAR",
+  P3230: "https://data.aad.gov.au/aadc/gaz/scar/display_name.cfm?gaz_id=$1",
   P3232: "https://philpapers.org/s/$1",
   P3233: "https://philpeople.org/profiles/$1",
   P3234: "http://id.loc.gov/vocabulary/organizations/$1.html",
@@ -1367,7 +1365,7 @@ export const WIKIDATA_URL = {
   P3340: "http://kvikmyndir.is/mynd/?id=$1",
   P3341: "https://kvikmyndir.is/nafn/?id=$1",
   P3343: "https://www.legislation.gov.uk/id/$1",
-  P3344: "http://www.votesmart.org/candidate/$1",
+  P3344: "https://www.votesmart.org/candidate/$1",
   P3345: "https://mor.nlm.nih.gov/RxNav/search?searchBy=RXCUI&searchTerm=$1",
   P3346: "https://www.hkmdb.com/db/people/view.mhtml?id=$1",
   P3347: "https://permid.org/1-$1",
@@ -1804,7 +1802,7 @@ export const WIKIDATA_URL = {
   P3894: "https://www.osti.gov/biblio/$1",
   P3895: "https://www.inao.gouv.fr/produit/$1",
   P3897: "https://ladieseuropeantour.com/player-profiles/?player=$1",
-  P3898: "https://au.hotels.com/$1/",
+  P3898: "https://hotels.com/$1/",
   P3899: "https://medium.com/@$1",
   P3900:
     "http://www.conicet.gov.ar/new_scp/detalle.php?id=$1&datos_academicos=yes",
@@ -2116,7 +2114,7 @@ export const WIKIDATA_URL = {
     "https://www.riigikogu.ee/riigikogu/koosseis/riigikogu-liikmed/saadik/$1",
   P4288: "http://www.nationalfruitcollection.org.uk/full2.php?id=$1",
   P4289: "http://www.handlfh.org/joueuse/$1/",
-  P4293: "http://purl.org/pressemappe20/folder/$1",
+  P4293: "https://purl.org/pressemappe20/folder/$1",
   P4294: "http://www.crd.york.ac.uk/PROSPERO/display_record.asp?ID=$1",
   P4297: "https://spatialillusions.com/unitgenerator.html#$1",
   P4298:
@@ -2737,7 +2735,7 @@ export const WIKIDATA_URL = {
   P5031: "http://www.animatedknots.com/$1/",
   P5032: "https://www.filmweb.pl/film?Id=$1",
   P5033: "https://www.filmweb.pl/person?Id=$1",
-  P5034: "https://librarian.nl.go.kr/LI/contents/L20101000000.do?id=$1",
+  P5034: "https://lod.nl.go.kr/page/$1",
   P5035: "https://www.lambiek.net/artists/$1.htm",
   P5036: "https://amphibiaweb.org/species/$1",
   P5037: "https://powo.science.kew.org/taxon/$1",
@@ -2928,7 +2926,7 @@ export const WIKIDATA_URL = {
   P5310:
     "https://www.kyppi.fi/palveluikkuna/rapea/read/asp/r_kohde_det.aspx?KOHDE_ID=$1",
   P5311: "http://kino-teatr.ua/uk/main/film/film_id/$1.phtml",
-  P5312: "http://kino-teatr.ua/uk/main/person/person_id/$1.phtml",
+  P5312: "https://kino-teatr.ua/uk/main/person/person_id/$1.phtml",
   P5315: "https://biostor.org/reference/$1",
   P5316: "http://www.signaturer.se/Sverige/$1.htm",
   P5318: "https://www.academie-cinema.org/films/$1/",
@@ -3924,7 +3922,7 @@ export const WIKIDATA_URL = {
   P6618: "https://www.imls.gov/search-compare/details.html?fscs_id=$1",
   P6619: "https://www.xing.com/pages/$1",
   P6620: "https://www.lexpress.fr/infos/pers/$1.html",
-  P6621: "http://plus.lefigaro.fr/tag/$1",
+  P6621: "https://plus.lefigaro.fr/tag/$1",
   P6622: "https://www.leparisien.fr/$1/",
   P6624: "http://www.fskate.ru/skaters/$1.html",
   P6625:
@@ -3998,7 +3996,7 @@ export const WIKIDATA_URL = {
   P6704: "http://frogmap.adu.org.za/Species_text.php?sp=$1",
   P6705:
     "https://newarchive.ihp.sinica.edu.tw/sncaccgi/sncacFtp?ACTION=TQ,sncacFtpqf,SN=$1,2nd,search_simple",
-  P6706: "http://www.sapere.it/enciclopedia/$1.html",
+  P6706: "https://www.sapere.it/enciclopedia/$1.html",
   P6713: "https://www.awm.gov.au/collection/$1",
   P6714: "https://whitney.org/artists/$1",
   P6715:
@@ -4576,7 +4574,7 @@ export const WIKIDATA_URL = {
   P7441: "https://www.worldfootball.net/competition/$1/",
   P7444:
     "https://library.rijksmuseum.nl/cgi-bin/koha/opac-authoritiesdetail.pl?marc=1&authid=$1",
-  P7445: "http://www.basis-wien.at/db/person/$1",
+  P7445: "https://www.basis-wien.at/db/person/$1",
   P7446: "http://www.basis-wien.at/db/institution/$1",
   P7447: "http://www.basis-wien.at/db/event/$1",
   P7448: "https://www.basis-wien.at/db/object/$1",
@@ -4734,7 +4732,7 @@ export const WIKIDATA_URL = {
   P7625:
     "https://msi.nga.mil/queryBreakout?publications/world-port-index?indexNumber=$1&output=html",
   P7626:
-    "https://www.nve.no/energi/energisystem/vannkraft/vannkraftdatabase/vannkraftverk/?id=$1",
+    "https://www.nve.no/energi/energisystem/vindkraft/utbygde-vindkraftverk/vindkraftverk/?id=$1",
   P7627: "http://kg.artsdata.ca/resource/$1",
   P7630: "http://www.scottisharchitects.org.uk/building_full.php?id=$1",
   P7631: "https://mppda.flinders.edu.au/films/$1",
@@ -4998,7 +4996,7 @@ export const WIKIDATA_URL = {
   P7916: "https://www.mendeley.com/catalogue/$1/",
   P7918: "http://www.medias19.org/index.php?id=$1",
   P7919: "https://serialstation.com/games/$1",
-  P7920: "http://thetvdb.com/people/$1",
+  P7920: "https://thetvdb.com/people/$1",
   P7921: "https://www.trueachievements.com/series/$1",
   P7922: "https://canmore.org.uk/thesaurus/1/$1/_",
   P7923: "https://www.bollywoodhungama.com/celebrity/$1/filmography/",
@@ -5045,7 +5043,7 @@ export const WIKIDATA_URL = {
   P7968: "https://vrgamecritic.com/game/$1",
   P7969:
     "https://services.dar.org/public/dar_research/search_adb/?action=full&p_id=$1",
-  P7970: "https://www.fandangonow.com/details/$1",
+  P7970: "https://wcd.fandangonow.com/details/$1",
   P7972: "https://datacvr.virk.dk/data/visenhed?enhedstype=person&id=$1",
   P7974:
     "http://cussenot-fst-nancy.ahp-numerique.fr/cussenot2/alphabetique.php?recherche=$1",
@@ -5865,7 +5863,7 @@ export const WIKIDATA_URL = {
   P8985: "https://www.aib.it/aib/editoria/dbbi20/$1.htm",
   P8987: "https://www.mojedatovaschranka.cz/sds/detail?dbid=$1",
   P8988:
-    "https://wikidata-externalid-url.toolforge.org/?p=8988&url_prefix=https://mapy.cz/zakladni?source=&id=$1",
+    "https://wikidata-externalid-url.toolforge.org/?p=8988&url_prefix=https://mapy.cz/zakladni?source=$1",
   P8990: "https://world-rowing-api.soticcloud.net/stats/api/person/$1",
   P8992: "https://encyclopedia.1914-1918-online.net/article/$1",
   P8993: "http://alexandredumas.org/Corpus/Auteurs?ID=$1",
@@ -6167,7 +6165,7 @@ export const WIKIDATA_URL = {
   P9314: "https://rbms.info/lpn/$1/",
   P9315: "https://enslaved.org/record/person/$1",
   P9316: "https://www.mymusic.net.tw/ux/w/singer/show/$1",
-  P9318: "https://www.avvir.no/tag/$1",
+  P9318: "https://www.avvir.no/tag/$1/",
   P9319: "https://digital.darkhorse.com/contributors/$1",
   P9320: "https://www.comixology.com/*/comics-publisher/$1",
   P9321: "https://www.inforegister.ee/$1",
@@ -6476,7 +6474,7 @@ export const WIKIDATA_URL = {
   P9626: "https://doi.org/10.1007/978-0-387-30400-7_$1",
   P9627: "http://lexikon.romanischestudien.de/index.php?curid=$1",
   P9628: "http://composers.am/?p=$1",
-  P9629: "http://www.armeniapedia.org/index.php?curid=$1",
+  P9629: "https://www.armeniapedia.org/index.php?curid=$1",
   P9630: "http://registries.opencorporates.com/jurisdiction/$1",
   P9631: "http://armradioarchive.am/ar/$1",
   P9632: "https://cov-lineages.org/lineages/lineage_$1.html",
@@ -6487,7 +6485,7 @@ export const WIKIDATA_URL = {
   P9637: "https://erfgoedkaart.be/?id=$1",
   P9638: "https://www.mae.ro/romanian-missions/$1",
   P9639: "https://www.mae.ro/foreign-missions/$1",
-  P9640: "http://www.pas.va/content/accademia/en/academicians/$1.html",
+  P9640: "https://www.pas.va/en/academicians/$1.html",
   P9641: "https://fondoambiente.it/luoghi/$1",
   P9642: "https://www.olschki.it/catalogo/autore/$1",
   P9644: "https://en.geneanet.org/surnames/$1",
@@ -6618,7 +6616,7 @@ export const WIKIDATA_URL = {
   P9786: "http://www.jodeninnederland.nl/id/P-$1",
   P9787: "https://smartify.org/artworks/$1",
   P9789: "https://collections.britishart.yale.edu/catalog/tms:$1",
-  P9791: "http://www.sie-ase.it/scheda-economista.aspx?persona=--$1",
+  P9791: "https://www.sie-asee.it/autore.php?id_autore=$1",
   P9792: "https://archive.alsharekh.org/AuthorArticles/$1",
   P9794: "http://spaceinventory.ucla.edu/#/LocID/$1",
   P9795: "https://arpi.unipi.it/cris/rp/rp$1",
@@ -6831,7 +6829,7 @@ export const WIKIDATA_URL = {
   P10024: "https://register.oric.gov.au/PrintCorporationSearch.aspx?icn=$1",
   P10025: "https://toolhub.wikimedia.org/tools/$1",
   P10026: "https://researchdata.edu.au/$1",
-  P10028: "http://www.tennisabstract.com/cgi-bin/player.cgi?p=$1",
+  P10028: "https://www.tennisabstract.com/cgi-bin/player.cgi?p=$1",
   P10029: "http://web.leg.wa.gov/WomenInTheLegislature/Members/$1.htm",
   P10030: "https://stopgame.ru/game/$1",
   P10031: "https://www.info.roma.it/personaggi_dettaglio.asp?ID_personaggi=$1",
@@ -7055,7 +7053,7 @@ export const WIKIDATA_URL = {
   P10264: "http://numismatics.org/authority/$1",
   P10265:
     "https://www.senado.es/web/conocersenado/senadohistoria/senado18341923/senadores/fichasenador/index.html?id1=$1",
-  P10266: "https://www.adorocinema.com/personalidades/personalidade-$1",
+  P10266: "https://www.adorocinema.com/personalidades/personalidade-$1/",
   P10267: "https://kinofilms.ua/$1",
   P10268: "https://kinofilms.ua/star/$1",
   P10269: "https://www.kino-teatr.ru/kino/movie/xyz/$1/annot/",
@@ -7137,7 +7135,7 @@ export const WIKIDATA_URL = {
     "https://clavis.brepols.net/clacla/OA/link.aspx?clavis=CAVT&number=$1",
   P10347: "https://www.weforum.org/people/$1",
   P10348: "https://www.usgamer.net/games/$1",
-  P10349: "http://www.podvignaroda.ru/?#id=$1",
+  P10349: "https://www.podvignaroda.ru/?#id=$1",
   P10350: "https://www.vesti.ru/article/$1",
   P10351:
     "https://www.asut.unito.it/studenti/web/index.php?r=studenti%2Fview&id=$1",
@@ -7496,4 +7494,8 @@ export const WIKIDATA_URL = {
   P10781: "https://anr.fr/Projet-$1",
   P10782: "https://doi.org/10.1007/978-1-4020-9729-4_$1",
   P10783: "https://umanity.jp/racedata/db/horse_top.php?code=$1",
+  P10784: "https://www.isko.org/cyclo/$1",
+  P10785: "https://www.jbis.jp/horse/$1/",
+  P10787: "https://database.factgrid.de/entity/$1",
+  P10789: "https://www.mle.lt/straipsniai/$1",
 };
