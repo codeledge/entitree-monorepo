@@ -8,6 +8,7 @@ export * from "./properties";
 export * from "./propertiesRegex";
 export * from "./propertiesFormatter";
 export * from "./propertiesIcon";
+export * from "./propertiesLabelsEn";
 export * from "./shorthands";
 export * from "./checkId";
 export * from "./services/wikibaseSearchEntities";

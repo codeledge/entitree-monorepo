@@ -1,0 +1,105 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/sankey.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+  <div id="container"></div>
+  <p class="highcharts-description">
+    Sankey charts are used to visualize data flow and volume between nodes. The
+    wider lines indicate larger volumes.
+  </p>
+</figure>
+<script type="text/javascript" src="dataP.js"></script>
+<script type="text/javascript">
+  console.log(data);
+  data = data.map((d) => {
+    return {
+      from: d.from,
+      to: d.to + " ",
+      weight: parseInt(d.amount),
+      color: "#" + d.color,
+    };
+  });
+  console.log(data);
+  Highcharts.chart("container", {
+    title: {
+      text: "Highcharts Sankey Diagram",
+    },
+    colors: [
+      "#2f7ed8",
+      "#0d233a",
+      "#8bbc21",
+      "#910000",
+      "#1aadce",
+      "#492970",
+      "#f28f43",
+      "#77a1e5",
+      "#c42525",
+      "#a6c96a",
+    ],
+    accessibility: {
+      point: {
+        valueDescriptionFormat:
+          "{index}. {point.from} to {point.to}, {point.weight}.",
+      },
+    },
+    series: [
+      {
+        keys: ["from", "to", "weight"],
+        data: data,
+        type: "sankey",
+        name: "Sankey demo series",
+      },
+    ],
+  });
+</script>
+<style type="type/css">
+  #csv {
+    display: none;
+  }
+
+  .highcharts-figure,
+  .highcharts-data-table table {
+    min-width: 310px;
+    max-width: 800px;
+    margin: 1em auto;
+  }
+
+  .highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+  }
+
+  .highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+  }
+
+  .highcharts-data-table td,
+  .highcharts-data-table th,
+  .highcharts-data-table caption {
+    padding: 0.5em;
+  }
+
+  .highcharts-data-table thead tr,
+  .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+  }
+
+  .highcharts-data-table tr:hover {
+    background: #f1f7ff;
+  }
+</style>
