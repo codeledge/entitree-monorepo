@@ -3,6 +3,7 @@ import { prismaClient } from "../../../prisma/prismaClient";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getNumericId, isEntityId } from "wikidata-sdk";
 import axios from "axios";
+import { Image } from ".prisma/client";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,7 +13,8 @@ export default async function handler(
     case "create":
       // req.body.params.data.wikidataEntity =
       //   req.body.params.data.wikidataEntity.replace(/^Q/, "");
-      let data = req.body.params.data;
+      let data = req.body.params.data; //: Image
+
       console.log(data);
       if (!data.image && !data.downloadUrl) {
         res.status(409).json({
@@ -46,6 +48,21 @@ export default async function handler(
         };
       }
 
+      const lastImageId = (
+        await prismaClient.image.findFirst({
+          orderBy: { id: "desc" },
+        })
+      ).imageId;
+      await prismaClient.image.create({
+        data: {
+          imageId: lastImageId + 1,
+          wikidataEntity: getNumericId(data.wikidataEntity),
+          wikidataLabel: data.wikidataLabel,
+          originalFilename: data.originalFilename,
+          // createdBy,
+        },
+      });
+
       // const imageDoc = await ImageModel.create({
       //   name,
       //   wikidataEntity: getNumericId(wikidataEntity),
@@ -72,7 +89,7 @@ export default async function handler(
       //   image.base64
       // );
       // console.log(publicFile);
-
+      req.body.params.data = image;
       return createHandler(req, res, prismaClient.image, {
         connect: {},
       });
