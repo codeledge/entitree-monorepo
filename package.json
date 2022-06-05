@@ -2,20 +2,6 @@
   "name": "@entitree/root",
   "version": "0.0.0",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "apps/*",
-      "packages/*"
-    ],
-    "nohoist": [
-      "**/.prisma/**",
-      "**/.prisma",
-      "**/@prisma/**",
-      "**/@prisma",
-      "**/prisma/**",
-      "**/prisma"
-    ]
-  },
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean && rm -rf node_modules",

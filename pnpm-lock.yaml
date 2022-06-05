@@ -362,7 +362,7 @@ importers:
     specifiers:
       '@emotion/react': ^11.9.0
       '@emotion/styled': ^11.8.1
-      '@entitree/helper': workspace:*
+      '@entitree/helper': 0.7.0
       '@types/debounce-promise': ^3.1.4
       '@types/luxon': ^2.3.1
       '@types/node': 17.0.30
