@@ -7,7 +7,11 @@ import {
 import type { NextApiRequest, NextApiResponse } from "next";
 import { WikidataPageArray } from "../../lib/data/page";
 // import { WD_INSTAGRAM_USERNAME } from "@entitree/helper";
-import { defaultHandler, getListHandler } from "../../ra-data-wikidata";
+import {
+  defaultHandler,
+  getListHandler,
+  getOneHandler,
+} from "../../ra-data-wikidata";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   type Table = {
@@ -43,9 +47,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // ];
   const table = WikidataPageArray.filter((t) => t.id == req.body.resource)[0];
 
+  console.log(req.body.method);
   switch (req.body.method) {
     case "getList": {
       getListHandler(req, res, table);
+      break;
+    }
+    case "getOne": {
+      getOneHandler(req, res, table);
+      break;
     }
   }
 }

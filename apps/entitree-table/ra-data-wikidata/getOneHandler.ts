@@ -1,5 +1,7 @@
 import { getWikidataEntities, getWikidataSparql } from "@entitree/helper";
+import { Page } from "../lib/data/types";
 import { GetOneRequest, Response } from "./Http";
+import { sparqlQueryCreate } from "./sparql";
 
 export const getOneHandler = async <
   W extends {
@@ -9,6 +11,8 @@ export const getOneHandler = async <
 >(
   req: GetOneRequest,
   res: Response,
+  table: Page,
+
   options?: {
     select?: W["select"];
     include?: W["include"];
@@ -17,18 +21,30 @@ export const getOneHandler = async <
   }
 ) => {
   // const row = await getWikidataEntities([req.body.params.id]);
-  const query = `SELECT (?item as ?id) ?itemLabel 
+  if (!req.body.params.id) {
+    res.json("No id provided");
+    return;
+  }
+  let sparql = sparqlQueryCreate(table);
+
+  const query = `SELECT ?item ?itemLabel  ${sparql.top}
 WHERE 
 {
   BIND (wd:${req.body.params.id} AS ?item)
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+  ${sparql.body}
+  ${sparql.labelService}
 }
+  GROUP BY ?item ?itemLabel 
 `;
   console.log(query);
-  const rows = await getWikidataSparql(query);
+  let rows = await getWikidataSparql(query);
+  rows = rows.map((d) => {
+    d.id = d.item.value;
+    return d;
+  });
   const row = rows[0];
 
   await options?.transform?.(row);
 
-  return res.json({ data: row });
+  res.json({ data: row });
 };

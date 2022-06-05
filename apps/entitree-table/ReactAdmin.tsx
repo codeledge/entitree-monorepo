@@ -26,6 +26,7 @@ import { CountriesList } from "./resources/CountriesList";
 import { JoeRoganList } from "./resources/JoeRogan";
 import { WikidataPageArray, WikidataPages } from "./lib/data/page";
 import { WikidataList } from "./resources/WikidataList";
+import { WikidataShow } from "./resources/WikidataShow";
 
 const ReactAdmin = () => {
   // const { data: session, status } = useSession();
@@ -46,15 +47,16 @@ const ReactAdmin = () => {
         <Route key="key" path="/documentation" element={<Documentation />} />
         <Route key="key" path="/privacy" element={<Privacy />} />,
       </CustomRoutes> */}
-      <Resource name="airlines" list={AirlinesList} show={AirlinesShow} />
+      {/* <Resource name="airlines" list={AirlinesList} show={AirlinesShow} />
       <Resource name="universities" list={UniversitiesList} />{" "}
       <Resource name="countries" list={CountriesList} />
-      <Resource name="JoeRogan" list={JoeRoganList} />
+      <Resource name="JoeRogan" list={JoeRoganList} /> */}
       {WikidataPageArray.map((page) => (
         <Resource
           key={page.id}
           name={page.id}
           list={WikidataList(page.header)}
+          show={WikidataShow(page.header)}
         />
       ))}
     </Admin>

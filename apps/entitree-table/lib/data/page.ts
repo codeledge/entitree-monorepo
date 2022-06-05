@@ -22,6 +22,7 @@ export const WikidataPages: Pages = {
   smartphones: {
     query:
       "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo\n }",
+    where: "?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo",
     header: [
       { property: "label", url: "item" },
       { name: "P577", type: "date" },
@@ -44,6 +45,7 @@ export const WikidataPages: Pages = {
   },
   "intercity-bus-companies": {
     represents: "Q15712205",
+    where: `?item wdt:P31 wd:Q15712205.`,
     query:
       'SELECT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q15712205.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}',
     header: [
@@ -100,6 +102,7 @@ export const WikidataPages: Pages = {
   },
   films: {
     list: "Q623104",
+    where: ` ?item wdt:P31/wdt:P279* wd:Q11424 .\n ?item wdt:P345 ?imdb .\n ?item wdt:P161 ?person .\n ?item wdt:P2047 ?duration .\n ?item wdt:P646 ?freeba .`,
     query:
       "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31/wdt:P279* wd:Q11424 .\n ?item wdt:P345 ?imdb .\n ?item wdt:P161 ?person .\n ?item wdt:P2047 ?duration .\n ?item wdt:P646 ?freeba .\n\n }",
     header: [
@@ -220,6 +223,7 @@ export const WikidataPages: Pages = {
   netflix_series: {
     query:
       'SELECT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q5398426.\n ?item wdt:P449 wd:Q907311 .\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
+    where: `?item wdt:P31 wd:Q5398426.\n ?item wdt:P449 wd:Q907311.`,
     header: [
       { name: "name", property: "label", url: "item" },
       { name: "P170" },
@@ -285,6 +289,7 @@ export const WikidataPages: Pages = {
   },
   "cryptocurrency-exchanges": {
     represents: "Q20107444",
+    where: `?item wdt:P31 wd:Q20107444.`,
     query:
       "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31 wd:Q20107444.\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n }",
     header: [
@@ -310,11 +315,11 @@ export const WikidataPages: Pages = {
         property: "P5896",
         options: { qualifiers: { P518: "Q55956748" } },
       },
-      {
-        name: "Q55956741",
-        property: "P5896",
-        options: { qualifiers: { P518: "Q55956741" } },
-      },
+      // {
+      //   name: "Q55956741",
+      //   property: "P5896",
+      //   options: { qualifiers: { P518: "Q55956741" } },
+      // },
       { property: "trustpilot_score" },
       { property: "publicAPI", type: "integer" },
       { property: "P1661", type: "integer" },
@@ -1324,14 +1329,21 @@ export const WikidataPages: Pages = {
 export const WikidataPageArray = Object.keys(WikidataPages).map(function (key) {
   let page = WikidataPages[key];
   page.id = key;
+  if (!page.where && page.represents) {
+    page.where = `?item wdt:P31 wd:${page.represents}.`;
+  }
   if (page.header) {
     page.header = page.header.map((row) => {
       if (!row.property) {
         row.property = row.name;
       }
+
       return row;
     });
     page.header = page.header.filter((row) => row.property.startsWith("P"));
+    page.header.push({
+      property: "P18",
+    });
   }
   return page;
 });

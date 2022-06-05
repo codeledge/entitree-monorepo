@@ -4,6 +4,7 @@ import { extractWhere } from "./extractWhere";
 import { GetListRequest, Response } from "./Http";
 import { getWikibaseSparql, getWikidataSparql } from "@entitree/helper";
 import { Page } from "../lib/data/types";
+import { sparqlQueryCreate } from "./sparql";
 
 export const getListHandler = async <
   W extends {
@@ -34,38 +35,23 @@ export const getListHandler = async <
   const { skip, take } = extractSkipTake(req);
   //  OPTIONAL { ?item wdt:P123 ?P123. }
 
-  let sparqlTop = "";
-  let sparqlBody = "";
   let query = "";
   let orderBy = "";
   if (sort.field) {
     orderBy = `ORDER BY ${sort.order}(?${sort.field})`;
   }
-  //   const query = `SELECT (?item as ?id) ?itemLabel ${sparqlTop}
-  // WHERE
-  // {
-  //   ?item wdt:P31 wd:${table.P31}.
-  //   ${table.sparql ? table.sparql : ""}
-  //   ${sparqlBody}
-  //   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-  // }
-  // LIMIT ${take}
-  // OFFSET ${skip}
-  // `; // ${orderBy}
   console.log(table.header);
   if (table.where) {
-    for (let t of table.header) {
-      sparqlTop += ` ?${t.property} ?${t.property}Label `;
-      sparqlBody += `OPTIONAL { ?item wdt:${t.property} ?${t.property}. }\n`;
-    }
+    let sparql = sparqlQueryCreate(table);
 
-    query = `SELECT ?item ?itemLabel ${sparqlTop}
+    query = `SELECT ?item ?itemLabel ${sparql.top}
   WHERE
   {
     ${table.where}
-    ${sparqlBody}
-    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    ${sparql.body}
+    ${sparql.labelService}
   }
+  GROUP BY ?item ?itemLabel 
   LIMIT ${take}
   OFFSET ${skip}
   `;
@@ -78,11 +64,25 @@ OFFSET ${skip}
   }
   console.log(query);
 
-  let data = await getWikidataSparql(query);
-  data.map((d) => {
+  let data: any = await getWikidataSparql(query);
+  console.log(data);
+
+  // const groupBy = <T>(array: T[], predicate: (v: T) => string) =>
+  //   array.reduce((acc, value) => {
+  //     (acc[predicate(value)] ||= []).push(value);
+  //     return acc;
+  //   }, {} as { [key: string]: T[] });
+
+  data = data.map((d) => {
     d.id = d.item.value;
     return d;
   });
+
+  // let result = groupBy(data, (v: any) => v.id);
+  // let res2 = [];
+  // for (let i of Object.values(result)) {
+  // }
+
   const total = 100;
   // console.log(data);
   // await options?.transform?.(data);
