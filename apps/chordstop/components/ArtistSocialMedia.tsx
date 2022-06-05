@@ -1,4 +1,4 @@
-import { Artist } from ".prisma/client";
+import { Artist } from ".prisma_chordstop/client";
 import {
   WIKIDATA_ICON,
   WD_TWITTER_USERNAME,

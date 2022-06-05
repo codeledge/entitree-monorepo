@@ -1,4 +1,4 @@
-import { Artist, Chord } from ".prisma/client";
+import { Artist, Chord } from ".prisma_chordstop/client";
 import EditIcon from "@mui/icons-material/Edit";
 import Layout from "../../components/Layout";
 import Link from "next/link";
