@@ -3,7 +3,7 @@ import {
   ImageType,
   createFilePath,
 } from "../../../../lib/googleStorage";
-import { MetricType, updateMetric } from "../../../../lib/statsUpdater";
+// import { MetricType, updateMetric } from "../../../../lib/statsUpdater";
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
   process1_removeBackground,
@@ -90,6 +90,7 @@ export default async function handler(
     imageType === "recrop"
   ) {
     if (role !== "admin") {
+      console.log("admine");
       return res.status(401).json({ message: "This is admin only" });
     }
 

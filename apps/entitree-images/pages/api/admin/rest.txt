@@ -1,0 +1,39 @@
+// statusBackgroundRemoval: "PotentialActionStatus",
+        // statusGoogleFaceDetection: "PotentialActionStatus",
+        // statusImageCropping: "PotentialActionStatus",
+        // id: "",
+        // comment: "",
+        // createdAt: undefined,
+        // createdBy: "",
+        // faceDetectionGoogleVision: "",
+        // fileSize: 0,
+        // internalFileName: "",
+        // mimetype: "",
+        // name: "",
+        // recordedDate: undefined,
+        // sourceUrl: "",
+        // updatedAt: undefined,
+        // uploadSite: "",
+        // viewCount: 0,
+        // wikidataP31: ""
+      };
+
+
+      // const imageDoc = await ImageModel.create({
+      //   name,
+      //   wikidataEntity: getNumericId(wikidataEntity),
+      //   wikidataLabel,
+      //   sourceUrl,
+      //   recordedDate,
+      //   originalFilename: image.title,
+      //   uploadSite: "localhost", //REPLACE with hostname
+      //   viewCount: 1,
+      //   fileSize: image.size,
+      //   createdBy: userId,
+      //   priority: 0, //0-9, 9 is the highest
+      //   faceDetectionGoogleVision: {},
+      //   // faceDetectedGoogleVision: false,
+      //   statusBackgroundRemoval: "PotentialActionStatus",
+      //   statusGoogleFaceDetection: "PotentialActionStatus",
+      //   statusImageCropping: "PotentialActionStatus",
+      // });

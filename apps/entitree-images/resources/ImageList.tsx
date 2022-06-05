@@ -36,14 +36,14 @@ export const ImageList = (props) => {
         <ActionTypeField source="statusGoogleFaceDetection" label="face" />
         <ActionTypeField source="statusBackgroundRemoval" label="bg" />
         <ActionTypeField source="statusImageCropping" label="crop" />
-        {/* {permissions === "admin" && (
+        {permissions === "admin" && (
           <ReferenceField label="User" source="createdBy" reference="users">
             <TextField source="email" />
           </ReferenceField>
         )}
         {permissions === "admin" && (
-          <AdminActionField label="Action" source="id" />
-        )} */}
+          <AdminActionField label="Action" source="imageId" />
+        )}
         <DateField source="createdAt" />
         <DateField source="updatedAt" />
         <TextField source="imageId" />

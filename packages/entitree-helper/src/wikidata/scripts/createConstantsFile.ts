@@ -32,7 +32,8 @@ export async function createConstants() {
     }}
 `;
   let data = await getSortedWikidataSparql(query);
-
+  let labels: any = {};
+  let types: any = {};
   let output = "";
   data.forEach((item) => {
     output += `export const WD_${latinize(item.p.label)
@@ -42,9 +43,23 @@ export async function createConstants() {
       .replace(/_$/, "") //remove trailing _ (caused by closing bracket)
       .replace(/__/g, "_") //remove double _
       .toUpperCase()} = "${item.p.value}";\n`;
+    labels[item.p.value] = item.p.label;
+    types[item.p.value] = item.pt.split("#")[1];
   });
 
   fs.writeFileSync(path.resolve(__dirname, "../properties.ts"), output);
+
+  fs.writeFileSync(
+    path.resolve(__dirname, "../propertiesLabelsEn.ts"),
+    `export const WIKIDATA_LABELS_EN = ` + JSON.stringify(labels)
+  );
+
+  fs.writeFileSync(
+    path.resolve(__dirname, "../propertiesTypes.ts"),
+    `import { WikidataPropertyTypesConstants } from "../types/PropertyType";
+     export const WIKIDATA_TYPE: WikidataPropertyTypesConstants = ` +
+      JSON.stringify(types)
+  );
 }
 
 export async function createRegex() {

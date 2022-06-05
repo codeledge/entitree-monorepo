@@ -13,7 +13,7 @@ model Image {
   imageId                   Int          @unique @map("id")
   comment                   String?
   createdAt                 DateTime     @default(now()) @db.Date
-  createdBy                 String?      @db.ObjectId
+  createdById               String?
   faceDetectionGoogleVision Json?
   fileSize                  Int?
   internalFileName          String?
@@ -31,6 +31,8 @@ model Image {
   wikidataEntity            Int
   wikidataLabel             String?
   wikidataP31               String?
+  priority                  Int          @default(0)
+  createdBy                 User?        @relation(fields: [createdById], references: [id], onDelete: Cascade)
 }
 
 //https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
@@ -72,6 +74,7 @@ model User {
 
   accounts Account[]
   sessions Session[]
+  Image    Image[]
 }
 
 model VerificationToken {

@@ -132,7 +132,7 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/6/60/Skype_logo_(2019%E2%80%93present).svg",
   P2949: "https://upload.wikimedia.org/wikipedia/commons/f/fa/WikiTree.png",
   P2963:
-    "https://upload.wikimedia.org/wikipedia/commons/4/4b/Goodreads_'g'_logo.png",
+    "https://upload.wikimedia.org/wikipedia/commons/4/4e/Goodreads_'g'_logo.svg",
   P3040:
     "https://upload.wikimedia.org/wikipedia/commons/a/a2/Antu_soundcloud.svg",
   P3108: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Yelp.svg",
@@ -289,7 +289,7 @@ export const WIKIDATA_ICON = {
   P6306:
     "https://upload.wikimedia.org/wikipedia/commons/e/ef/AllMusic_favicon.svg",
   P6327:
-    "https://upload.wikimedia.org/wikipedia/commons/4/4b/Goodreads_'g'_logo.png",
+    "https://upload.wikimedia.org/wikipedia/commons/4/4e/Goodreads_'g'_logo.svg",
   P6381: "https://upload.wikimedia.org/wikipedia/commons/d/df/ITunes_logo.svg",
   P6395:
     "https://upload.wikimedia.org/wikipedia/commons/2/22/Apple_Books_(macOS).svg",
@@ -308,9 +308,11 @@ export const WIKIDATA_ICON = {
   P6945:
     "https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg",
   P6947:
-    "https://upload.wikimedia.org/wikipedia/commons/4/4b/Goodreads_'g'_logo.png",
+    "https://upload.wikimedia.org/wikipedia/commons/4/4e/Goodreads_'g'_logo.svg",
   P6972: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Napster.png",
   P6998: "https://upload.wikimedia.org/wikipedia/commons/d/df/ITunes_logo.svg",
+  P7085:
+    "https://upload.wikimedia.org/wikipedia/commons/d/d6/Iconoir_tiktok.svg",
   P7171:
     "https://upload.wikimedia.org/wikipedia/commons/b/b2/Y_Combinator_logo.svg",
   P7259:
@@ -331,7 +333,7 @@ export const WIKIDATA_ICON = {
   P8052:
     "https://upload.wikimedia.org/wikipedia/commons/9/9a/MusicBrainz_Logo_Icon_(2016).svg",
   P8057:
-    "https://upload.wikimedia.org/wikipedia/commons/7/7e/Apache_Feather_Logo.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/f4/Apache_Small_Logo.svg",
   P8176:
     "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cib-itch-io_(CoreUI_Icons_v1.0.0).svg",
   P8205:
@@ -340,7 +342,7 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/5/5f/New_York_Times_T_icon.svg",
   P8347: "https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg",
   P8383:
-    "https://upload.wikimedia.org/wikipedia/commons/4/4b/Goodreads_'g'_logo.png",
+    "https://upload.wikimedia.org/wikipedia/commons/4/4e/Goodreads_'g'_logo.svg",
   P8526:
     "https://upload.wikimedia.org/wikipedia/commons/2/23/Have_I_Been_Pwned_logo.png",
   P8559:

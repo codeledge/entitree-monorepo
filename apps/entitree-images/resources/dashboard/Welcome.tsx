@@ -71,7 +71,7 @@ const Welcome = () => {
             </Button>
             <Button
               variant="contained"
-              href="/#/images/create"
+              href="/#/image/create"
               startIcon={<CloudUploadIcon />}
             >
               {translate("pos.image_create")}

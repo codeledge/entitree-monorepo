@@ -13,18 +13,18 @@ export default async function auth(req, res) {
       }),
     ],
     secret: process.env.NEXTAUTH_SECRET_KEY,
-    // callbacks: {
-    //   async session({ session, token, user }) {
-    //     // const sessionUser = session!.user as any;
-    //     await connectDB();
-    //     session.userId = user.id;
-
-    //     const userDoc = await UserModel.findById(user.id, "role").lean();
-
-    //     session.role = userDoc?.role;
-    //     return session;
-    //   },
-    // },
+    callbacks: {
+      async session({ session, token, user }) {
+        const userDoc = await prismaClient.user.findFirst({
+          where: {
+            id: user.id,
+          },
+        });
+        session.userId = user.id;
+        session.role = userDoc?.role;
+        return session;
+      },
+    },
     adapter: PrismaAdapter(prismaClient),
   });
 }
