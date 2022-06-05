@@ -13,6 +13,7 @@ export type Page = {
   represents?: string;
   example?: any;
   img?: string;
+  emoji?: string;
   category?: string;
 };
 

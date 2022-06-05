@@ -1,3 +1,4 @@
+import { PAGE_EMOJI } from "../emojis";
 import { Pages } from "./types";
 
 export const WikidataPages: Pages = {
@@ -1331,6 +1332,9 @@ export const WikidataPageArray = Object.keys(WikidataPages).map(function (key) {
   page.id = key;
   if (!page.where && page.represents) {
     page.where = `?item wdt:P31 wd:${page.represents}.`;
+  }
+  if (PAGE_EMOJI[page.represents]) {
+    page.emoji = PAGE_EMOJI[page.represents];
   }
   if (page.header) {
     page.header = page.header.map((row) => {
