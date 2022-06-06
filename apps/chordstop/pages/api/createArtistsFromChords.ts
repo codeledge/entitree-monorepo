@@ -6,12 +6,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const artists = await prismaClient.chord.groupBy({
-    by: ["artistLabel"],
-    _sum: {
-      hits: true,
-    },
-  });
+  // const artists = await prismaClient.chord.groupBy({
+  //   by: ["artist"],
+  //   _sum: {
+  //     hits: true,
+  //   },
+  // });
   // artists.map(async (artist) => {
   //   console.log(artist.artistLabel);
   //   if (
@@ -38,5 +38,5 @@ export default async function handler(
   //   }
   // });
 
-  res.status(200).json({ artists, message: "Done;" });
+  res.status(200).json({ artists: false, message: "Done;" });
 }
