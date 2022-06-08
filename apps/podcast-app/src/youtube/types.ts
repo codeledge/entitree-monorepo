@@ -4,8 +4,6 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.3
 
-/// <reference types="gapi" />
-
 export interface GoogleApiYouTubePageInfo<T> {
   /**
    * The type of the API response. For this operation, the value will be youtube#activityListResponse.

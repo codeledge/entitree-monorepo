@@ -21,11 +21,11 @@ export const sparql = async ({
   WHERE
   {
     ${where}
-  }
+  }  
   ${groupBy ? `GROUP BY ${groupBy}\n` : ""}
+  ${orderBy ? `ORDER BY ${orderBy}\n` : ""}
   ${take ? `LIMIT ${take}\n` : ""}
   ${skip ? `OFFSET ${skip}\n` : ""}
-  ${orderBy ? `ORDER BY ${orderBy}\n` : ""}
   `;
   console.log(query);
 

@@ -15,10 +15,10 @@ export const SERVICES = {
   },
 };
 
-export const getIdxCompanies = (req) => {
-  let url = SERVICES.IDX.companies;
-  return axios.get(url);
-};
+// export const getIdxCompanies = (req) => {
+//   let url = SERVICES.IDX.companies;
+//   return axios.get(url);
+// };
 
 export const getNepseTodaysPrice = (date: string) => {
   let url = SERVICES.NPSE.todaysPrice.replace("$1", date);

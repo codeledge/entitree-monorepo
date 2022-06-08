@@ -6,7 +6,7 @@ module.exports = {
     GC_BUCKET: process.env.GC_BUCKET,
   },
   images: {
-    domains: ["storage.googleapis.com"],
+    domains: ["storage.googleapis.com", `upload.wikimedia.org`],
   },
   async headers() {
     return [

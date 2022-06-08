@@ -8,6 +8,8 @@ export const extractSkipTake = (
   let skip;
   let take;
 
+  console.log(pagination);
+
   if (pagination) {
     const { page, perPage } = pagination;
 

@@ -1,12 +1,26 @@
+import {
+  WD_AGODA_HOTEL_NUMERIC_ID,
+  WD_BOOKING_COM_HOTEL_ID,
+  WD_CHECK_IN_TIME,
+  WD_CHECK_OUT_TIME,
+  WD_COUNTRY,
+  WD_GOOGLE_MAPS_CUSTOMER_ID,
+  WD_HOTEL_RATING,
+  WD_INCEPTION,
+  WD_LOCATED_IN_THE_ADMINISTRATIVE_TERRITORIAL_ENTITY,
+  WD_PHONE_NUMBER,
+  WD_POSTAL_CODE,
+  WIKIDATA_TYPE,
+} from "@entitree/helper";
 import { PAGE_EMOJI } from "../emojis";
 import { Pages } from "./types";
 
 export const WikidataPages: Pages = {
-  properties: {
-    represents: null,
-    query: "SELECT ?item WHERE {\n ?item a wikibase:Property .\n}",
-    header: [{ name: "name", property: "label", url: "item" }],
-  },
+  // properties: {
+  //   represents: null,
+  //   query: "SELECT ?item WHERE {\n ?item a wikibase:Property .\n}",
+  //   header: [{ name: "name", property: "label", url: "item" }],
+  // },
   "mobile-network-operators": {
     represents: "Q1941618",
     query:
@@ -21,11 +35,27 @@ export const WikidataPages: Pages = {
       { property: "P3744" },
     ],
   },
+  hotels: {
+    represents: "Q27686",
+    header: [
+      { property: WD_COUNTRY },
+      { property: WD_INCEPTION },
+      { property: WD_LOCATED_IN_THE_ADMINISTRATIVE_TERRITORIAL_ENTITY },
+      { property: WD_POSTAL_CODE },
+      { property: WD_PHONE_NUMBER },
+      { property: WD_CHECK_IN_TIME },
+      { property: WD_CHECK_OUT_TIME },
+      { property: WD_HOTEL_RATING },
+      { property: WD_AGODA_HOTEL_NUMERIC_ID },
+      { property: WD_BOOKING_COM_HOTEL_ID },
+      { property: WD_GOOGLE_MAPS_CUSTOMER_ID },
+    ],
+  },
   smartphones: {
     represents: "Q19723451",
-    query:
-      "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo\n }",
-    where: "?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo",
+    // query:
+    //   "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo\n }",
+    // // where: "?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo.",
     header: [
       { property: "label", url: "item" },
       { name: "P577", type: "date" },
@@ -718,20 +748,20 @@ export const WikidataPages: Pages = {
       { property: "P1174", type: "integer" },
       { property: "P2046" },
       { property: "P1990", type: "text", ellipsis: "25", visible: false },
-      {
-        name: "Q34027",
-        type: "coordinate",
-        visible: false,
-        property: "P625",
-        options: { value: "latitude" },
-      },
-      {
-        name: "Q36477",
-        type: "coordinate",
-        visible: false,
-        property: "P625",
-        options: { value: "longitude" },
-      },
+      // {
+      //   name: "Q34027",
+      //   type: "coordinate",
+      //   visible: false,
+      //   property: "P625",
+      //   options: { value: "latitude" },
+      // },
+      // {
+      //   name: "Q36477",
+      //   type: "coordinate",
+      //   visible: false,
+      //   property: "P625",
+      //   options: { value: "longitude" },
+      // },
     ],
     dataset: ["google_maps_cid"],
   },
@@ -1335,6 +1365,7 @@ export const WikidataPageArray = Object.keys(WikidataPages).map(function (key) {
       if (!row.property) {
         row.property = row.name;
       }
+      row.propertyType = WIKIDATA_TYPE[row.property];
 
       return row;
     });

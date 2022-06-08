@@ -20,6 +20,8 @@ import { dataProvider } from "./ra-data-wikidata";
 import { WikidataPageArray, WikidataPages } from "./lib/data/page";
 import { WikidataList } from "./resources/WikidataList";
 import { WikidataShow } from "./resources/WikidataShow";
+import { muiIcons } from "./lib/data/muiIcons";
+import Icon from "@mui/material/Icon";
 
 const ReactAdmin = () => {
   // const { data: session, status } = useSession();
@@ -41,15 +43,24 @@ const ReactAdmin = () => {
         <Route key="key" path="/privacy" element={<Privacy />} />,
       </CustomRoutes> */}
 
-      {WikidataPageArray.map((page) => (
-        <Resource
-          key={page.id}
-          name={page.id}
-          list={WikidataList(page.header)}
-          show={WikidataShow(page.header)}
-          // icon={<>{page.emoji}</>}
-        />
-      ))}
+      {WikidataPageArray.map((page) =>
+        muiIcons[page.id] ? (
+          <Resource
+            key={page.id}
+            name={page.id}
+            list={WikidataList(page.header)}
+            show={WikidataShow(page.header)}
+            // icon={<Icon>star</Icon>}
+          />
+        ) : (
+          <Resource
+            key={page.id}
+            name={page.id}
+            list={WikidataList(page.header)}
+            show={WikidataShow(page.header)}
+          />
+        )
+      )}
     </Admin>
   );
 };

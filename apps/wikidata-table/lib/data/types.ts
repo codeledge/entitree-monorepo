@@ -1,3 +1,5 @@
+import { WikidataPropertyDatatype } from "@entitree/helper";
+
 export type Pages = {
   [key: string]: Page;
 };
@@ -20,6 +22,7 @@ export type Page = {
 export type Column = {
   name?: string;
   property?: string;
+  propertyType?: WikidataPropertyDatatype;
   url?: string;
   visible?: boolean;
   sortable?: boolean;

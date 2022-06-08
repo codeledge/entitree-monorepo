@@ -2,7 +2,11 @@ import { extractSkipTake } from "./extractSkipTake";
 import { extractOrderBy } from "./extractOrderBy";
 import { extractWhere } from "./extractWhere";
 import { GetListRequest, Response } from "./Http";
-import { getWikibaseSparql, getWikidataSparql } from "@entitree/helper";
+import {
+  getCommonsUrlByFile,
+  getWikibaseSparql,
+  getWikidataSparql,
+} from "@entitree/helper";
 import { Page } from "../lib/data/types";
 import { sparqlQueryCreate, sparql } from "./sparql";
 
@@ -34,45 +38,84 @@ export const getListHandler = async <
   const where = extractWhere(req);
   const { skip, take } = extractSkipTake(req);
 
-  console.log(table.header);
+  console.log({ skip, take }, table.header);
   if (!table.where) {
     res.json({ error: "no where clause" });
     return;
   }
   let query = sparqlQueryCreate(table);
 
+  let queryFilter = "";
+  if (filter) {
+    for (let key in filter) {
+      if (filter[key]) {
+        if (key == "item") {
+          queryFilter += `?item rdfs:label ?itemLabel .       
+                             FILTER (lang(?itemLabel) = 'en')     
+                             FILTER(contains(str(?itemLabel),'${filter[key]}' ))`;
+        } else {
+          queryFilter += `?item wdt:${key} wd:${filter[key]}.\n`;
+        }
+      }
+    }
+  }
+
+  let orderBy = "";
+  if (sort) {
+    sort.field = sort.field.split(".")[0];
+    if (sort.field === "id") {
+      sort.field = null;
+    }
+    orderBy = sort.field ? `${sort.order}(?${sort.field})` : "";
+  }
+
+  // let totalQuery = await sparql({
+  //   select: "?item",
+  //   where: `${table.where}
+  //   ${queryFilter}`,
+  // });
+
   let data: any = await sparql({
     select: "?item",
-    where: `${table.where}`,
+    where: `${table.where}
+    ${sort.field ? `OPTIONAL { ?item wdt:${sort.field} ?${sort.field}_. }` : ""}
+    ${queryFilter}`,
     take,
     skip,
-    // orderBy: sort.field ? `${sort.order}(?${sort.field})` : "",
+    orderBy,
   });
 
   let searchIds: string[] = data.map((d) => d.item);
 
-  data = await sparql({
-    select: query.top,
-    where: `VALUES ?item {wd:${searchIds.join(" wd:")}}
+  if (searchIds.length) {
+    data = await sparql({
+      select: "?wikipedia " + query.top,
+      where: `VALUES ?item {wd:${searchIds.join(" wd:")}}
     ${query.body}
-    ${query.labelService}`,
-    groupBy: "?item ?itemLabel",
-    take,
-    skip,
-    // orderBy: sort.field ? `${sort.order}(?${sort.field})` : "",
-  });
+    ${query.labelService}
+      ?sitelink schema:about ?item;
+    schema:isPartOf <https://en.wikipedia.org/>;
+    schema:name ?wikipedia.
+    `,
+      groupBy: "?item ?itemLabel ?wikipedia",
+      orderBy,
+    });
+  }
 
-  console.log(data);
+  // console.log(data);
 
   //
 
   //add id for react-admin
   data = data.map((d) => {
     d.id = d.item.value;
+    if (d.P18.label) {
+      // d.P18.label = getCommonsUrlByFile(d.P18.label, 400);
+    }
     return d;
   });
 
-  const total = 100;
+  const total = 1000; //totalQuery.length;
   // console.log(data);
   // await options?.transform?.(data);
 

@@ -1,10 +1,10 @@
+import { SpotifyEpisodeObject } from "@entitree/helper";
 import { Episode, EpisodeType } from "podparse";
 
 import { EpisodeExtended } from "../import/readFeed";
-import { EpisodeObject } from "./episodeType";
 
 export function convertSpotifyToFeed(
-  episodes: EpisodeObject[]
+  episodes: SpotifyEpisodeObject[]
 ): EpisodeExtended[] {
   let items = [];
   for (const item of episodes) {
@@ -16,7 +16,7 @@ export function convertSpotifyToFeed(
       explicit: item.explicit,
       description: item.description,
       guid: item.href,
-
+      episodeType: EpisodeType.Full, //doublecheck
       spotifyId: item.href.split("episodes/")[1],
       image: item.images[0].url,
       author: "",

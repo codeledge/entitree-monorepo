@@ -1,7 +1,7 @@
 import { generalConfig } from "./wikidataConfig";
 
 const wbEdit = require("wikibase-edit")(generalConfig);
-async function uploadEdits(edits) {
+async function uploadEdits(edits: any) {
   for (let edit of edits) {
     if (podcast.write) {
       if (episode.wikidataId) {

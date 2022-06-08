@@ -1,7 +1,11 @@
-import { getWikidataEntities, getWikidataSparql } from "@entitree/helper";
+import {
+  getCommonsUrlByFile,
+  getWikidataEntities,
+  getWikidataSparql,
+} from "@entitree/helper";
 import { Page } from "../lib/data/types";
 import { GetOneRequest, Response } from "./Http";
-import { sparqlQueryCreate } from "./sparql";
+import { sparql, sparqlQueryCreate } from "./sparql";
 
 export const getOneHandler = async <
   W extends {
@@ -25,23 +29,24 @@ export const getOneHandler = async <
     res.json("No id provided");
     return;
   }
-  let sparql = sparqlQueryCreate(table);
+  let query = sparqlQueryCreate(table);
 
-  const query = `SELECT ?item ?itemLabel  ${sparql.top}
-WHERE 
-{
-  BIND (wd:${req.body.params.id} AS ?item)
-  ${sparql.body}
-  ${sparql.labelService}
-}
-  GROUP BY ?item ?itemLabel 
-`;
-  console.log(query);
-  let rows = await getWikidataSparql(query);
+  let rows = await sparql({
+    select: query.top,
+    where: `VALUES ?item {wd:${req.body.params.id}}
+    ${query.body}
+    ${query.labelService}`,
+    groupBy: "?item ?itemLabel",
+  });
+
   rows = rows.map((d) => {
     d.id = d.item.value;
+    if (d.P18.label) {
+      d.P18.label = getCommonsUrlByFile(d.P18.label, 400);
+    }
     return d;
   });
+
   const row = rows[0];
 
   await options?.transform?.(row);

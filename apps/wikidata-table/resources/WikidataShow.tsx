@@ -12,16 +12,18 @@ import {
 import React from "react";
 import { WIKIDATA_LABELS_EN } from "@entitree/helper";
 import { Column } from "../lib/data/types";
+import { WikidataLabelField } from "../fields/WikidataLabelField";
 
 export const WikidataShow = (header: Column[]) => (
   <Show>
     <SimpleShowLayout>
-      <TextField source="id"></TextField>
-      <TextField source="item.label"></TextField>
+      <TextField source="id" />
+      <WikidataLabelField source="item.label" />
       {/*<TextField source={WD_COUNTRY + ".label"}></TextField> */}
       {header &&
         header.map((col) => (
           <>
+            {/* {col.property} */}
             {col.property === "P18" ? (
               <ImageField
                 key={col.property}
