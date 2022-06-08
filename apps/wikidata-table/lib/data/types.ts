@@ -10,7 +10,7 @@ export type Page = {
   dataset?: any;
   parent?: string;
   list?: string;
-  represents?: string;
+  represents: string | null;
   example?: any;
   img?: string;
   emoji?: string;

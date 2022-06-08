@@ -277,6 +277,7 @@ importers:
       stream: ^0.0.2
       tsconfig: workspace:*
       typescript: 4.7.2
+      wikibase-sdk: ^8.0.0
       wikidata-sdk: ^8.0.0
     dependencies:
       '@emotion/react': 11.9.0_@types+react@18.0.9+react@18.1.0
@@ -304,6 +305,7 @@ importers:
       set-value: 4.1.0
       sharp: 0.30.5
       stream: 0.0.2
+      wikibase-sdk: 8.0.0
       wikidata-sdk: 8.0.0
     devDependencies:
       '@types/jest': 27.5.1
@@ -373,6 +375,7 @@ importers:
       eslint: 8.14.0
       eslint-config-next: 12.1.5
       framer-motion: ^6.3.3
+      highcharts: ^10.1.0
       luxon: ^2.3.2
       moment: ^2.29.3
       next: 12.1.5
@@ -393,6 +396,7 @@ importers:
       axios: 0.27.2
       debounce-promise: 3.1.2
       framer-motion: 6.3.3_react-dom@18.1.0+react@18.1.0
+      highcharts: 10.1.0
       luxon: 2.3.2
       moment: 2.29.3
       next: 12.1.5_react-dom@18.1.0+react@18.1.0
@@ -1991,8 +1995,8 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.18.3
-      '@emotion/react': 11.9.0_b6102fabd8e4850ab0d17c8e8bd2165e
-      '@emotion/styled': 11.8.1_afc8419877fdd37f8210ebf093c185c5
+      '@emotion/react': 11.9.0_@types+react@18.0.9+react@18.1.0
+      '@emotion/styled': 11.8.1_c0b3a74a6f0f44f0ea5b4673d860f10b
       '@mui/base': 5.0.0-alpha.82_71dc17fa2f93091b2e1d43ec53f70836
       '@mui/system': 5.8.1_d17f8e0b635e0d07d2591ec7cdba4bb2
       '@mui/types': 7.1.3_@types+react@18.0.9
@@ -2094,8 +2098,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.18.3
       '@emotion/cache': 11.7.1
-      '@emotion/react': 11.9.0_b6102fabd8e4850ab0d17c8e8bd2165e
-      '@emotion/styled': 11.8.1_afc8419877fdd37f8210ebf093c185c5
+      '@emotion/react': 11.9.0_@types+react@18.0.9+react@18.1.0
+      '@emotion/styled': 11.8.1_c0b3a74a6f0f44f0ea5b4673d860f10b
       prop-types: 15.8.1
       react: 18.1.0
     dev: false
@@ -2179,8 +2183,8 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.18.3
-      '@emotion/react': 11.9.0_b6102fabd8e4850ab0d17c8e8bd2165e
-      '@emotion/styled': 11.8.1_afc8419877fdd37f8210ebf093c185c5
+      '@emotion/react': 11.9.0_@types+react@18.0.9+react@18.1.0
+      '@emotion/styled': 11.8.1_c0b3a74a6f0f44f0ea5b4673d860f10b
       '@mui/private-theming': 5.8.0_@types+react@18.0.9+react@18.1.0
       '@mui/styled-engine': 5.8.0_9f23f4097fbec8b91de0b8b9767d3123
       '@mui/types': 7.1.3_@types+react@18.0.9
@@ -5336,7 +5340,7 @@ packages:
       eslint-plugin-jsx-a11y: 6.5.1_eslint@8.16.0
       eslint-plugin-react: 7.30.0_eslint@8.16.0
       eslint-plugin-react-hooks: 4.5.0_eslint@8.16.0
-      next: 12.1.6_f27a4c237496d6873c96491b66a1e77e
+      next: 12.1.6_react-dom@18.1.0+react@18.1.0
       typescript: 4.7.2
     transitivePeerDependencies:
       - supports-color
@@ -6858,6 +6862,10 @@ packages:
 
   /hey-listen/1.0.8:
     resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
+    dev: false
+
+  /highcharts/10.1.0:
+    resolution: {integrity: sha512-gW/pzy/Qy/hiYeCflYHpwgsP2nqQavwuRUswRf+papmbutZ3I7K7AIZJ/yZ9NL5yzpF7X7r2dX7/nzZGN4A1rg==}
     dev: false
 
   /history/5.3.0:

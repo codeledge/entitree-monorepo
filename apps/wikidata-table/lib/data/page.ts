@@ -3,13 +3,14 @@ import { Pages } from "./types";
 
 export const WikidataPages: Pages = {
   properties: {
+    represents: null,
     query: "SELECT ?item WHERE {\n ?item a wikibase:Property .\n}",
     header: [{ name: "name", property: "label", url: "item" }],
   },
   "mobile-network-operators": {
+    represents: "Q1941618",
     query:
       'SELECT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q1941618.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
-    where: "?item wdt:P31 wd:Q1941618.",
     header: [
       { property: "label" },
       { name: "P571", type: "date" },
@@ -21,6 +22,7 @@ export const WikidataPages: Pages = {
     ],
   },
   smartphones: {
+    represents: "Q19723451",
     query:
       "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo\n }",
     where: "?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo",
@@ -62,8 +64,7 @@ export const WikidataPages: Pages = {
     dataset: ["trustpilot"],
   },
   "hotel-booking-websites": {
-    query:
-      'SELECT ?item ?itemLabel\n WHERE\n {\n ?item wdt:P31 wd:Q57590076.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n }',
+    represents: "Q57590076",
     header: [
       { name: "name", property: "label", url: "item" },
       { property: "P571", options: { date: "year" } },
@@ -87,8 +88,7 @@ export const WikidataPages: Pages = {
     dataset: ["trustpilot", "alexa", "androidAppDetails", "itunesAppDetails"],
   },
   fictional_characters: {
-    query:
-      'SELECT ?item ?itemLabel\n WHERE\n {\n ?item wdt:P31 wd:Q95074.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n }',
+    represents: "Q95074",
     header: [
       { name: "name", property: "label", url: "item" },
       { name: "P569" },
@@ -103,6 +103,7 @@ export const WikidataPages: Pages = {
   },
   films: {
     list: "Q623104",
+    represents: "Q11424",
     where: ` ?item wdt:P31/wdt:P279* wd:Q11424 .\n ?item wdt:P345 ?imdb .\n ?item wdt:P161 ?person .\n ?item wdt:P2047 ?duration .\n ?item wdt:P646 ?freeba .`,
     query:
       "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31/wdt:P279* wd:Q11424 .\n ?item wdt:P345 ?imdb .\n ?item wdt:P161 ?person .\n ?item wdt:P2047 ?duration .\n ?item wdt:P646 ?freeba .\n\n }",
@@ -224,6 +225,7 @@ export const WikidataPages: Pages = {
   netflix_series: {
     query:
       'SELECT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q5398426.\n ?item wdt:P449 wd:Q907311 .\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
+    represents: "Q5398426",
     where: `?item wdt:P31 wd:Q5398426.\n ?item wdt:P449 wd:Q907311.`,
     header: [
       { name: "name", property: "label", url: "item" },
@@ -354,12 +356,12 @@ export const WikidataPages: Pages = {
       'SELECT ?item ?itemLabel WHERE\n{\n ?item wdt:P31 wd:Q13479982.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
   },
   isostandarts: {
-    query:
-      'SELECT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q15087423.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
+    represents: "Q15087423",
   },
   banks: {
-    query:
-      'SELECT DISTINCT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q730038.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}',
+    represents: "Q730038",
+    // query:
+    //   'SELECT DISTINCT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q730038.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}',
     // query2: 'SELECT DISTINCT ?item ?itemLabel (GROUP_CONCAT(?lab; SEPARATOR = "|") AS ?labels)\nWHERE\n{\n ?item wdt:P31/wd:P279* wd:Q22687.\n ?item rdfs:label ?lab.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}\nGROUP BY ?item ?itemLabel\n',
     list: "Q2734055",
     header: [
@@ -400,6 +402,7 @@ export const WikidataPages: Pages = {
     dataset: [],
   },
   southparkepisodes: {
+    represents: "Q21191270",
     list: "Q1540084",
     query:
       'SELECT ?item ?itemLabel ?season_no\nWHERE\n{\n ?item wdt:P31 wd:Q21191270 .\n ?item wdt:P179 wd:Q16538 .\n ?item wdt:P4908 ?season .\n ?season p:P179 ?season_stat .\n ?season_stat pq:P1545 ?season_no .\nSERVICE wikibase:label { bd:serviceParam wikibase:language "en" }\n}',
@@ -415,42 +418,43 @@ export const WikidataPages: Pages = {
     dataset: ["imdb_rating"],
   },
   tvstationgerman: {
+    represents: "Q1616075",
     query:
       '\n SELECT ?item ?itemLabel\n WHERE\n {\n ?item wdt:P31 wd:Q1616075 .\n ?item wdt:P17 wd:Q183 .\n \tSERVICE wikibase:label { bd:serviceParam wikibase:language "de" }\n }',
   },
-  german_railwaystations: {
-    query:
-      'SELECT DISTINCT ?item WHERE {\n SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }\n ?item wdt:P31/wdt:P279* wd:Q55488.\n ?item wdt:P17 wd:Q183 .\n }',
-    header: [
-      { name: "name", property: "label", url: "item" },
-      { name: "P1103" },
-      { name: "P1619", options: { date: "year" } },
-      { property: "P296" },
-      {
-        name: "Q34027",
-        type: "string",
-        visible: false,
-        property: "P625",
-        options: { value: "latitude" },
-      },
-      {
-        name: "Q36477",
-        type: "float",
-        visible: false,
-        property: "P625",
-        options: { value: "longitude" },
-      },
-      { name: "P5105" },
-      { name: "google_maps_name" },
-      {
-        name: "Q56024321",
-        property: "google_maps_rating",
-        url: "google_maps_url",
-        type: "stars",
-      },
-    ],
-    dataset: ["google_maps_cid"],
-  },
+  // german_railwaystations: {
+  //   query:
+  //     'SELECT DISTINCT ?item WHERE {\n SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }\n ?item wdt:P31/wdt:P279* wd:Q55488.\n ?item wdt:P17 wd:Q183 .\n }',
+  //   header: [
+  //     { name: "name", property: "label", url: "item" },
+  //     { name: "P1103" },
+  //     { name: "P1619", options: { date: "year" } },
+  //     { property: "P296" },
+  //     {
+  //       name: "Q34027",
+  //       type: "string",
+  //       visible: false,
+  //       property: "P625",
+  //       options: { value: "latitude" },
+  //     },
+  //     {
+  //       name: "Q36477",
+  //       type: "float",
+  //       visible: false,
+  //       property: "P625",
+  //       options: { value: "longitude" },
+  //     },
+  //     { name: "P5105" },
+  //     { name: "google_maps_name" },
+  //     {
+  //       name: "Q56024321",
+  //       property: "google_maps_rating",
+  //       url: "google_maps_url",
+  //       type: "stars",
+  //     },
+  //   ],
+  //   dataset: ["google_maps_cid"],
+  // },
   countries: {
     represents: "Q3624078",
     example:
@@ -543,8 +547,7 @@ export const WikidataPages: Pages = {
     ],
   },
   "gps-tracker": {
-    query:
-      "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31/wdt:P279* wd:Q253677\n }",
+    represents: "Q253677",
     img: "gpstracker.jpg",
     header: [
       { property: "label" },
@@ -552,18 +555,9 @@ export const WikidataPages: Pages = {
       { property: "P4140" },
     ],
   },
-  gpstracker: {
-    img: "gpstracker.jpg",
-    header: [
-      { name: "company" },
-      { name: "model" },
-      { name: "battery_life" },
-      { name: "network" },
-    ],
-    dataset: [{ name: "Spreadsheet", spreadsheet: "gpstracker" }],
-  },
   "credit-cards": {
     img: "creditcards.jpg",
+    represents: "Q161380",
     query:
       "SELECT DISTINCT ?item ?P856_alternative WHERE {\n ?item wdt:P31/wdt:P279* wd:Q161380\n FILTER NOT EXISTS {?item wdt:P576 ?end }\n FILTER NOT EXISTS {?item wdt:P582 ?endd }\n OPTIONAL { ?item wdt:P137 ?operator. ?operator wdt:P856 ?P856_alternative }\n\n\n }",
     header: [
@@ -582,30 +576,30 @@ export const WikidataPages: Pages = {
     ],
     dataset: ["trustpilot"],
   },
-  "german-creditcards": {
-    img: "creditcards.jpg",
-    list: "Q1727518",
-    header: [
-      { name: "bank", url: "P856" },
-      { name: "name" },
-      { name: "payment_gateway" },
-      { name: "Q179179" },
-      { name: "annual_fee" },
-      { name: "Q55863525" },
-      { name: "trustpilot_score", type: "stars", render: "stars(data,0,10)" },
-      { name: "trustpilot_reviews" },
-    ],
-    dataset: [
-      { name: "Spreadsheet", spreadsheet: "germany_creditcards" },
-      "trustpilot",
-    ],
-  },
-  german_universities: {
-    parent: "universities",
-    list: "Q330041",
-    query:
-      'SELECT DISTINCT ?item WHERE {\n ?item wdt:P31/wdt:P279* wd:Q38723.\n ?item wdt:P17 wd:Q183.\n ?article schema:about ?item .\n ?article schema:inLanguage "de" .\n ?article schema:isPartOf \n FILTER NOT EXISTS {?item wdt:P576 ?end }\n}',
-  },
+  // "german-creditcards": {
+  //   img: "creditcards.jpg",
+  //   list: "Q1727518",
+  //   header: [
+  //     { name: "bank", url: "P856" },
+  //     { name: "name" },
+  //     { name: "payment_gateway" },
+  //     { name: "Q179179" },
+  //     { name: "annual_fee" },
+  //     { name: "Q55863525" },
+  //     { name: "trustpilot_score", type: "stars", render: "stars(data,0,10)" },
+  //     { name: "trustpilot_reviews" },
+  //   ],
+  //   dataset: [
+  //     { name: "Spreadsheet", spreadsheet: "germany_creditcards" },
+  //     "trustpilot",
+  //   ],
+  // },
+  // german_universities: {
+  //   parent: "universities",
+  //   list: "Q330041",
+  //   query:
+  //     'SELECT DISTINCT ?item WHERE {\n ?item wdt:P31/wdt:P279* wd:Q38723.\n ?item wdt:P17 wd:Q183.\n ?article schema:about ?item .\n ?article schema:inLanguage "de" .\n ?article schema:isPartOf \n FILTER NOT EXISTS {?item wdt:P576 ?end }\n}',
+  // },
   "tourist-attractions": {
     represents: "Q570116",
     list: "Q6647249",

@@ -1,17 +1,6 @@
-import {
-  WDQ_PODCAST_EPISODE,
-  WD_COUNTRY,
-  WD_INCEPTION,
-  WD_PUBLICATION_DATE,
-} from "@entitree/helper";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { WikidataPageArray } from "../../lib/data/page";
-// import { WD_INSTAGRAM_USERNAME } from "@entitree/helper";
-import {
-  defaultHandler,
-  getListHandler,
-  getOneHandler,
-} from "../../ra-data-wikidata";
+import { getListHandler, getOneHandler } from "../../ra-data-wikidata";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   type Table = {

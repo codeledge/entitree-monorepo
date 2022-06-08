@@ -1,6 +1,6 @@
 export * from "./createHandler";
 export * from "./dataProvider";
-export * from "./defaultHandler";
+// export * from "./defaultHandler";
 export * from "./deleteHandler";
 export * from "./deleteManyHandler";
 export * from "./extractOrderBy";

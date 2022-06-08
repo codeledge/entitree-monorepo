@@ -5,7 +5,6 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
-  "type": "module",
   "license": "MIT",
   "files": [
     "dist/**"

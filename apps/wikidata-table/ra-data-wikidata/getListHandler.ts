@@ -4,7 +4,7 @@ import { extractWhere } from "./extractWhere";
 import { GetListRequest, Response } from "./Http";
 import { getWikibaseSparql, getWikidataSparql } from "@entitree/helper";
 import { Page } from "../lib/data/types";
-import { sparqlQueryCreate } from "./sparql";
+import { sparqlQueryCreate, sparql } from "./sparql";
 
 export const getListHandler = async <
   W extends {
@@ -33,55 +33,44 @@ export const getListHandler = async <
 
   const where = extractWhere(req);
   const { skip, take } = extractSkipTake(req);
-  //  OPTIONAL { ?item wdt:P123 ?P123. }
 
-  let query = "";
-  let orderBy = "";
-  if (sort.field) {
-    orderBy = `ORDER BY ${sort.order}(?${sort.field})`;
-  }
   console.log(table.header);
-  if (table.where) {
-    let sparql = sparqlQueryCreate(table);
-
-    query = `SELECT ?item ?itemLabel ${sparql.top}
-  WHERE
-  {
-    ${table.where}
-    ${sparql.body}
-    ${sparql.labelService}
+  if (!table.where) {
+    res.json({ error: "no where clause" });
+    return;
   }
-  GROUP BY ?item ?itemLabel 
-  LIMIT ${take}
-  OFFSET ${skip}
-  `;
-  } else {
-    query = `
-${table.query}
-LIMIT ${take}
-OFFSET ${skip}
-`;
-  }
-  console.log(query);
+  let query = sparqlQueryCreate(table);
 
-  let data: any = await getWikidataSparql(query);
+  let data: any = await sparql({
+    select: "?item",
+    where: `${table.where}`,
+    take,
+    skip,
+    // orderBy: sort.field ? `${sort.order}(?${sort.field})` : "",
+  });
+
+  let searchIds: string[] = data.map((d) => d.item);
+
+  data = await sparql({
+    select: query.top,
+    where: `VALUES ?item {wd:${searchIds.join(" wd:")}}
+    ${query.body}
+    ${query.labelService}`,
+    groupBy: "?item ?itemLabel",
+    take,
+    skip,
+    // orderBy: sort.field ? `${sort.order}(?${sort.field})` : "",
+  });
+
   console.log(data);
 
-  // const groupBy = <T>(array: T[], predicate: (v: T) => string) =>
-  //   array.reduce((acc, value) => {
-  //     (acc[predicate(value)] ||= []).push(value);
-  //     return acc;
-  //   }, {} as { [key: string]: T[] });
+  //
 
+  //add id for react-admin
   data = data.map((d) => {
     d.id = d.item.value;
     return d;
   });
-
-  // let result = groupBy(data, (v: any) => v.id);
-  // let res2 = [];
-  // for (let i of Object.values(result)) {
-  // }
 
   const total = 100;
   // console.log(data);

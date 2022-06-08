@@ -1,5 +1,5 @@
 {
-  "name": "entitree-table",
+  "name": "wikidata-table",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -37,6 +37,7 @@
     "set-value": "^4.1.0",
     "sharp": "^0.30.5",
     "stream": "^0.0.2",
+    "wikibase-sdk": "^8.0.0",
     "wikidata-sdk": "^8.0.0"
   },
   "devDependencies": {
