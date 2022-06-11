@@ -4,6 +4,18 @@ export type Pages = {
   [key: string]: Page;
 };
 
+export const PageCategories = [
+  "aviation",
+  "education",
+  "medicine",
+  "science",
+  "technology",
+  "entertainment",
+  "finance",
+  "other",
+  "traveling",
+];
+
 export type Page = {
   id?: string;
   query?: string;
@@ -16,7 +28,17 @@ export type Page = {
   example?: any;
   img?: string;
   emoji?: string;
-  category?: string;
+  muiEmoji?: string;
+  category?:
+    | "aviation"
+    | "education"
+    | "medicine"
+    | "science"
+    | "technology"
+    | "entertainment"
+    | "finance"
+    | "other"
+    | "traveling";
 };
 
 export type Column = {
@@ -41,4 +63,5 @@ export type Column = {
   formatterurl?: string;
   multiple?: boolean;
   getqualifiers?: any;
+  list?: boolean;
 };

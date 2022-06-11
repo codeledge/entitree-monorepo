@@ -15,13 +15,12 @@ import React from "react";
 import { authProvider } from "./providers/authProvider";
 // import { dataProvider } from "./providers/dataProvider";
 // import { useSession } from "next-auth/react";
-// import { Route } from "react-router";
+import { Route } from "react-router";
 import { dataProvider } from "./ra-data-wikidata";
 import { WikidataPageArray, WikidataPages } from "./lib/data/page";
 import { WikidataList } from "./resources/WikidataList";
 import { WikidataShow } from "./resources/WikidataShow";
 import { muiIcons } from "./lib/data/muiIcons";
-import Icon from "@mui/material/Icon";
 
 const ReactAdmin = () => {
   // const { data: session, status } = useSession();
@@ -35,13 +34,13 @@ const ReactAdmin = () => {
       // dashboard={Dashboard}
       dataProvider={dataProvider("/api/")}
       // i18nProvider={i18nProvider}
-      // layout={Layout}
+      layout={Layout}
       loginPage={LoginPage}
     >
-      {/* <CustomRoutes>
+      <CustomRoutes>
         <Route key="key" path="/documentation" element={<Documentation />} />
         <Route key="key" path="/privacy" element={<Privacy />} />,
-      </CustomRoutes> */}
+      </CustomRoutes>
 
       {WikidataPageArray.map((page) =>
         muiIcons[page.id] ? (

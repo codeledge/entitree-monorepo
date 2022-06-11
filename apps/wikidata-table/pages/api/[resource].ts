@@ -34,11 +34,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   //     sparql: `?item wdt:P179 wd:Q30323986. `,
   //   },
   // ];
-  const table = WikidataPageArray.filter((t) => t.id == req.body.resource)[0];
+  let table = WikidataPageArray.filter((t) => t.id == req.body.resource)[0];
 
   console.log(req.body.method);
   switch (req.body.method) {
     case "getList": {
+      table.header = table.header.filter((h) => h.visible !== false);
       getListHandler(req, res, table);
       break;
     }

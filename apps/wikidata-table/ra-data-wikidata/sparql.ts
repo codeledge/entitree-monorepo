@@ -1,5 +1,6 @@
-import { getWikidataSparql } from "@entitree/helper";
+import { getWikidataSparql, WIKIDATA_TYPE } from "@entitree/helper";
 import { Page } from "../lib/data/types";
+import { SPARQL_SEPARATOR } from "./const";
 
 export const sparql = async ({
   select,
@@ -34,7 +35,7 @@ export const sparql = async ({
 };
 
 function gc(id) {
-  return `(group_concat(DISTINCT ?${id}_;separator=", ") as ?${id} ) `;
+  return `(group_concat(DISTINCT ?${id}_;separator="${SPARQL_SEPARATOR}") as ?${id} ) `;
 }
 export const sparqlQueryCreate = (table: Page) => {
   let r = {
@@ -46,10 +47,13 @@ export const sparqlQueryCreate = (table: Page) => {
   for (let t of table.header) {
     // sparqlTop += ` ?${t.property} ?${t.property}Label `;
     r.top += gc(t.property);
-    r.top += gc(t.property + "Label") + "\n";
-
     r.body += `OPTIONAL { ?item wdt:${t.property} ?${t.property}_. }\n`;
-    r.label += `?${t.property}_ rdfs:label ?${t.property}Label_ .\n`;
+
+    //Only check label if the property is of item type
+    if (WIKIDATA_TYPE[t.property] === "WikibaseItem") {
+      r.top += gc(t.property + "Label") + "\n";
+      r.label += `?${t.property}_ rdfs:label ?${t.property}Label_ .\n`;
+    }
   }
   r.labelService = `
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".

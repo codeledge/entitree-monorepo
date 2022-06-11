@@ -33,10 +33,15 @@ export const WikidataList = (header: Column[]) => (
       {header &&
         header.map(
           (col) =>
-            col.property !== "P18" && (
+            col.property !== "P18" &&
+            col.list !== false &&
+            col.visible !== false && (
               <TextField
                 key={col.property}
-                source={col.property + ".label"}
+                source={
+                  col.property +
+                  (col.propertyType === "WikibaseItem" ? ".label" : "")
+                }
                 label={WIKIDATA_LABELS_EN[col.property]}
                 sortable={col.propertyType !== "WikibaseItem"}
               />

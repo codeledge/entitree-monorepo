@@ -305,7 +305,7 @@ __export(src_exports, {
   WD_ALBUM_OF_THE_YEAR_ARTIST_ID: () => WD_ALBUM_OF_THE_YEAR_ARTIST_ID,
   WD_ALCA_AUTHOR_ID: () => WD_ALCA_AUTHOR_ID,
   WD_ALCOHOL_BY_VOLUME: () => WD_ALCOHOL_BY_VOLUME,
-  WD_ALCUIN_ID: () => WD_ALCUIN_ID,
+  WD_ALCUIN_PHILOSOPHER_ID: () => WD_ALCUIN_PHILOSOPHER_ID,
   WD_ALDIWAN_POEM_ID: () => WD_ALDIWAN_POEM_ID,
   WD_ALDIWAN_POET_ID: () => WD_ALDIWAN_POET_ID,
   WD_ALEXANDER_BRIGGS_NOTATION: () => WD_ALEXANDER_BRIGGS_NOTATION,
@@ -1407,7 +1407,7 @@ __export(src_exports, {
   WD_CANONICAL_SMILES: () => WD_CANONICAL_SMILES,
   WD_CANONIZATION_STATUS: () => WD_CANONIZATION_STATUS,
   WD_CANTIC_ID: () => WD_CANTIC_ID,
-  WD_CANTIC_ID_OLD: () => WD_CANTIC_ID_OLD,
+  WD_CANTIC_ID_FORMER_SCHEME: () => WD_CANTIC_ID_FORMER_SCHEME,
   WD_CANTILEVER_SIGN: () => WD_CANTILEVER_SIGN,
   WD_CANTODICT_CHARACTER_ID: () => WD_CANTODICT_CHARACTER_ID,
   WD_CANTODICT_WORD_ID: () => WD_CANTODICT_WORD_ID,
@@ -1567,6 +1567,7 @@ __export(src_exports, {
   WD_CHAIRPERSON: () => WD_CHAIRPERSON,
   WD_CHAMBER_OF_DEPUTIES_OF_ITALY_STORIA_ID: () => WD_CHAMBER_OF_DEPUTIES_OF_ITALY_STORIA_ID,
   WD_CHAMBER_OF_DEPUTIES_OF_ROMANIA_PERSON_ID: () => WD_CHAMBER_OF_DEPUTIES_OF_ROMANIA_PERSON_ID,
+  WD_CHAMPIONAT_ID: () => WD_CHAMPIONAT_ID,
   WD_CHANGE_ORG_DECISION_MAKER_ID: () => WD_CHANGE_ORG_DECISION_MAKER_ID,
   WD_CHANNEL_NUMBER: () => WD_CHANNEL_NUMBER,
   WD_CHANNEL_ONE_RUSSIA_SHOW_ID: () => WD_CHANNEL_ONE_RUSSIA_SHOW_ID,
@@ -1972,6 +1973,7 @@ __export(src_exports, {
   WD_COORDINATES_OF_THE_POINT_OF_VIEW: () => WD_COORDINATES_OF_THE_POINT_OF_VIEW,
   WD_COORDINATES_OF_WESTERNMOST_POINT: () => WD_COORDINATES_OF_WESTERNMOST_POINT,
   WD_COORDINATE_LOCATION: () => WD_COORDINATE_LOCATION,
+  WD_COORDINATION_NUMBER: () => WD_COORDINATION_NUMBER,
   WD_COPYRIGHT_EXEMPTION: () => WD_COPYRIGHT_EXEMPTION,
   WD_COPYRIGHT_HOLDER: () => WD_COPYRIGHT_HOLDER,
   WD_COPYRIGHT_LICENSE: () => WD_COPYRIGHT_LICENSE,
@@ -3051,6 +3053,8 @@ __export(src_exports, {
   WD_ESPN_COM_NFL_PLAYER_ID: () => WD_ESPN_COM_NFL_PLAYER_ID,
   WD_ESPN_COM_NHL_PLAYER_ID: () => WD_ESPN_COM_NHL_PLAYER_ID,
   WD_ESPN_MMA_FIGHTER_ID: () => WD_ESPN_MMA_FIGHTER_ID,
+  WD_ESPORTS_EARNINGS_GAME_ID: () => WD_ESPORTS_EARNINGS_GAME_ID,
+  WD_ESPORTS_EARNINGS_PLAYER_ID: () => WD_ESPORTS_EARNINGS_PLAYER_ID,
   WD_ESRB_GAME_ID: () => WD_ESRB_GAME_ID,
   WD_ESRB_RATING: () => WD_ESRB_RATING,
   WD_ESR_STATION_CODE: () => WD_ESR_STATION_CODE,
@@ -3681,6 +3685,7 @@ __export(src_exports, {
   WD_GARAPH_GROUP_ID: () => WD_GARAPH_GROUP_ID,
   WD_GARDENS_NAVIGATOR_ID: () => WD_GARDENS_NAVIGATOR_ID,
   WD_GARDENS_OF_THE_ROMAN_EMPIRE_ID: () => WD_GARDENS_OF_THE_ROMAN_EMPIRE_ID,
+  WD_GARDEN_ORG_PLANTS_DATABASE_ID: () => WD_GARDEN_ORG_PLANTS_DATABASE_ID,
   WD_GARD_RARE_DISEASE_ID: () => WD_GARD_RARE_DISEASE_ID,
   WD_GARES_CONNEXIONS_ID: () => WD_GARES_CONNEXIONS_ID,
   WD_GARZANTI_LINGUISTICA_ID: () => WD_GARZANTI_LINGUISTICA_ID,
@@ -4124,6 +4129,7 @@ __export(src_exports, {
   WD_HEIDELBERG_ACADEMY_FOR_SCIENCES_AND_HUMANITIES_MEMBER_ID: () => WD_HEIDELBERG_ACADEMY_FOR_SCIENCES_AND_HUMANITIES_MEMBER_ID,
   WD_HEIGHT: () => WD_HEIGHT,
   WD_HEIGHT_OF_CENTER_OF_MASS: () => WD_HEIGHT_OF_CENTER_OF_MASS,
+  WD_HEILIGEN_NET_ID: () => WD_HEILIGEN_NET_ID,
   WD_HELLENIC_CIVIL_AVIATION_AUTHORITY_AIRPORT_CODE: () => WD_HELLENIC_CIVIL_AVIATION_AUTHORITY_AIRPORT_CODE,
   WD_HELLENIC_OLYMPIC_COMMITTEE_ATHLETE_ID: () => WD_HELLENIC_OLYMPIC_COMMITTEE_ATHLETE_ID,
   WD_HELSINKI_PERSISTENT_BUILDING_ID_RATU: () => WD_HELSINKI_PERSISTENT_BUILDING_ID_RATU,
@@ -4165,7 +4171,6 @@ __export(src_exports, {
   WD_HISTORIA_DE_LA_MEDICINA_PERSON_ID: () => WD_HISTORIA_DE_LA_MEDICINA_PERSON_ID,
   WD_HISTORICAL_ARCHIVES_OF_THE_EUROPEAN_UNION_ID: () => WD_HISTORICAL_ARCHIVES_OF_THE_EUROPEAN_UNION_ID,
   WD_HISTORICAL_GAZETTEER_GOV_ID: () => WD_HISTORICAL_GAZETTEER_GOV_ID,
-  WD_HISTORICAL_GAZETTEER_OF_ENGLANDS_PLACE_NAMES_ID: () => WD_HISTORICAL_GAZETTEER_OF_ENGLANDS_PLACE_NAMES_ID,
   WD_HISTORICAL_MARKER_DATABASE_ID: () => WD_HISTORICAL_MARKER_DATABASE_ID,
   WD_HISTORICAL_REGION: () => WD_HISTORICAL_REGION,
   WD_HISTORICAL_REPERTOIRE_NATIONAL_DES_ASSOCIATIONS_IDENTIFIER: () => WD_HISTORICAL_REPERTOIRE_NATIONAL_DES_ASSOCIATIONS_IDENTIFIER,
@@ -4825,6 +4830,7 @@ __export(src_exports, {
   WD_ISTITUTO_VENETO_DI_SCIENZE_LETTERE_ED_ARTI_MEMBER_ID: () => WD_ISTITUTO_VENETO_DI_SCIENZE_LETTERE_ED_ARTI_MEMBER_ID,
   WD_ISTRAPEDIA_ID: () => WD_ISTRAPEDIA_ID,
   WD_ISU_FIGURE_SKATER_ID: () => WD_ISU_FIGURE_SKATER_ID,
+  WD_ISU_SHORT_TRACK_SPEED_SKATER_ID: () => WD_ISU_SHORT_TRACK_SPEED_SKATER_ID,
   WD_ISWC: () => WD_ISWC,
   WD_ISZDB_COMPANY_ID: () => WD_ISZDB_COMPANY_ID,
   WD_ISZDB_DUB_ID: () => WD_ISZDB_DUB_ID,
@@ -4842,6 +4848,8 @@ __export(src_exports, {
   WD_ITALIAN_ATHLETICS_FEDERATION_ATHLETE_ID: () => WD_ITALIAN_ATHLETICS_FEDERATION_ATHLETE_ID,
   WD_ITALIAN_CADASTRE_CODE_MUNICIPALITY: () => WD_ITALIAN_CADASTRE_CODE_MUNICIPALITY,
   WD_ITALIAN_CHAMBER_OF_DEPUTIES_DATI_ID: () => WD_ITALIAN_CHAMBER_OF_DEPUTIES_DATI_ID,
+  WD_ITALIAN_CHAMBER_OF_DEPUTIES_GOVERNMENT_ID: () => WD_ITALIAN_CHAMBER_OF_DEPUTIES_GOVERNMENT_ID,
+  WD_ITALIAN_CHAMBER_OF_DEPUTIES_PARLIAMENTARY_GROUP_ID: () => WD_ITALIAN_CHAMBER_OF_DEPUTIES_PARLIAMENTARY_GROUP_ID,
   WD_ITALIAN_FOOTBALLERS_ASSOCIATION_PLAYER_ID: () => WD_ITALIAN_FOOTBALLERS_ASSOCIATION_PLAYER_ID,
   WD_ITALIAN_NATIONAL_EARTHQUAKE_CENTER_ID: () => WD_ITALIAN_NATIONAL_EARTHQUAKE_CENTER_ID,
   WD_ITALIAN_NATIONAL_OLYMPIC_COMMITTEE_ATHLETE_ID: () => WD_ITALIAN_NATIONAL_OLYMPIC_COMMITTEE_ATHLETE_ID,
@@ -5547,6 +5555,7 @@ __export(src_exports, {
   WD_M3DB_COM_FILM_ID: () => WD_M3DB_COM_FILM_ID,
   WD_M3DB_COM_PERSON_ID: () => WD_M3DB_COM_PERSON_ID,
   WD_MACARTHUR_FELLOWS_PROGRAM_ID: () => WD_MACARTHUR_FELLOWS_PROGRAM_ID,
+  WD_MACAULAY_LIBRARY_TAXON_ID: () => WD_MACAULAY_LIBRARY_TAXON_ID,
   WD_MACDONALD_DICTIONARY_ID: () => WD_MACDONALD_DICTIONARY_ID,
   WD_MACEDONIAN_CADASTRAL_MUNICIPALITY_ID: () => WD_MACEDONIAN_CADASTRAL_MUNICIPALITY_ID,
   WD_MACINTOSH_GARDEN_GAME_ID: () => WD_MACINTOSH_GARDEN_GAME_ID,
@@ -5828,6 +5837,7 @@ __export(src_exports, {
   WD_MICROWORLD_ID: () => WD_MICROWORLD_ID,
   WD_MIC_MARKET_CODE: () => WD_MIC_MARKET_CODE,
   WD_MIDDELNEDERLANDSCH_WOORDENBOEK_GTB_ID: () => WD_MIDDELNEDERLANDSCH_WOORDENBOEK_GTB_ID,
+  WD_MIDI_LIBRE_JOURNALIST_ID: () => WD_MIDI_LIBRE_JOURNALIST_ID,
   WD_MILESPLIT_ID: () => WD_MILESPLIT_ID,
   WD_MILITARY_BRANCH: () => WD_MILITARY_BRANCH,
   WD_MILITARY_CASUALTY_CLASSIFICATION: () => WD_MILITARY_CASUALTY_CLASSIFICATION,
@@ -6193,7 +6203,7 @@ __export(src_exports, {
   WD_NAME_IN_NATIVE_LANGUAGE: () => WD_NAME_IN_NATIVE_LANGUAGE,
   WD_NAME_OF_THE_CHARACTER_ROLE: () => WD_NAME_OF_THE_CHARACTER_ROLE,
   WD_NAMUWIKI_ID: () => WD_NAMUWIKI_ID,
-  WD_NAPSTER_ARTIST_ID: () => WD_NAPSTER_ARTIST_ID,
+  WD_NAPSTER_ARTIST_ID_US_VERSION: () => WD_NAPSTER_ARTIST_ID_US_VERSION,
   WD_NAQ_ELECTED_PERSON_ID: () => WD_NAQ_ELECTED_PERSON_ID,
   WD_NARA_COLLECTION_IDENTIFIER: () => WD_NARA_COLLECTION_IDENTIFIER,
   WD_NARA_RECORD_GROUP_NUMBER: () => WD_NARA_RECORD_GROUP_NUMBER,
@@ -6254,7 +6264,7 @@ __export(src_exports, {
   WD_NATIONAL_GOVERNORS_ASSOCIATION_BIOGRAPHY_URL: () => WD_NATIONAL_GOVERNORS_ASSOCIATION_BIOGRAPHY_URL,
   WD_NATIONAL_HEALTH_PORTAL_HOSPITAL_ID: () => WD_NATIONAL_HEALTH_PORTAL_HOSPITAL_ID,
   WD_NATIONAL_HERITAGE_LIST_FOR_ENGLAND_NUMBER: () => WD_NATIONAL_HERITAGE_LIST_FOR_ENGLAND_NUMBER,
-  WD_NATIONAL_HISTORICAL_MUSEUMS_OF_SWEDEN_AGENT_ID: () => WD_NATIONAL_HISTORICAL_MUSEUMS_OF_SWEDEN_AGENT_ID,
+  WD_NATIONAL_HISTORICAL_MUSEUMS_OF_SWEDEN_ID: () => WD_NATIONAL_HISTORICAL_MUSEUMS_OF_SWEDEN_ID,
   WD_NATIONAL_HISTORIC_LOOKOUT_REGISTER_ID: () => WD_NATIONAL_HISTORIC_LOOKOUT_REGISTER_ID,
   WD_NATIONAL_HISTORIC_PEOPLE_ID: () => WD_NATIONAL_HISTORIC_PEOPLE_ID,
   WD_NATIONAL_HISTORIC_SHIPS_CERTIFICATE_NUMBER: () => WD_NATIONAL_HISTORIC_SHIPS_CERTIFICATE_NUMBER,
@@ -7299,6 +7309,7 @@ __export(src_exports, {
   WD_PLANETE_AVENTURE_ID: () => WD_PLANETE_AVENTURE_ID,
   WD_PLANETMATH_ID: () => WD_PLANETMATH_ID,
   WD_PLANTARIUM_ID: () => WD_PLANTARIUM_ID,
+  WD_PLANTFILES_TAXON_ID: () => WD_PLANTFILES_TAXON_ID,
   WD_PLANTLIST_ID: () => WD_PLANTLIST_ID,
   WD_PLANTS_OF_THE_WORLD_ONLINE_ID: () => WD_PLANTS_OF_THE_WORLD_ONLINE_ID,
   WD_PLANT_FINDER_ID: () => WD_PLANT_FINDER_ID,
@@ -8336,7 +8347,6 @@ __export(src_exports, {
   WD_SHORT_NAME: () => WD_SHORT_NAME,
   WD_SHORT_TERM_EXPOSURE_LIMIT: () => WD_SHORT_TERM_EXPOSURE_LIMIT,
   WD_SHORT_TITLE_CATALOGUE_FLANDERS_STCV_IDENTIFIER: () => WD_SHORT_TITLE_CATALOGUE_FLANDERS_STCV_IDENTIFIER,
-  WD_SHORT_TRACK_SPEED_SKATER_ISU_ID: () => WD_SHORT_TRACK_SPEED_SKATER_ISU_ID,
   WD_SHOWN_WITH_FEATURES: () => WD_SHOWN_WITH_FEATURES,
   WD_SHRINKAGE: () => WD_SHRINKAGE,
   WD_SIAMZONE_FILM_ID: () => WD_SIAMZONE_FILM_ID,
@@ -8828,6 +8838,7 @@ __export(src_exports, {
   WD_SURFLINE_ID: () => WD_SURFLINE_ID,
   WD_SURMAN_ID: () => WD_SURMAN_ID,
   WD_SURROUNDS_THE_ENCLAVE: () => WD_SURROUNDS_THE_ENCLAVE,
+  WD_SURVEY_OF_ENGLISH_PLACE_NAMES_ID: () => WD_SURVEY_OF_ENGLISH_PLACE_NAMES_ID,
   WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_ACCUSED_WITCH_ID: () => WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_ACCUSED_WITCH_ID,
   WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_PERSON_ID: () => WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_PERSON_ID,
   WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_TRIAL_ID: () => WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_TRIAL_ID,
@@ -9370,6 +9381,7 @@ __export(src_exports, {
   WD_TWITCH_CHANNEL_ID: () => WD_TWITCH_CHANNEL_ID,
   WD_TWITCH_TAG_ID: () => WD_TWITCH_TAG_ID,
   WD_TWITCH_TEAM_ID: () => WD_TWITCH_TEAM_ID,
+  WD_TWITTER_LIST_ID: () => WD_TWITTER_LIST_ID,
   WD_TWITTER_MOMENT_ID: () => WD_TWITTER_MOMENT_ID,
   WD_TWITTER_TOPIC_ID: () => WD_TWITTER_TOPIC_ID,
   WD_TWITTER_USERNAME: () => WD_TWITTER_USERNAME,
@@ -9422,6 +9434,7 @@ __export(src_exports, {
   WD_UKA_CLASSIFICATION_OF_SCIENCE_TOPICS_2016: () => WD_UKA_CLASSIFICATION_OF_SCIENCE_TOPICS_2016,
   WD_UKA_STANDARD_CLASSIFICATION_OF_SWEDISH_SCIENCE_TOPICS_2011: () => WD_UKA_STANDARD_CLASSIFICATION_OF_SWEDISH_SCIENCE_TOPICS_2011,
   WD_UKRAINIAN_ASSOCIATION_OF_FOOTBALL_PLAYER_ID: () => WD_UKRAINIAN_ASSOCIATION_OF_FOOTBALL_PLAYER_ID,
+  WD_UKRAINIAN_LIVE_CLASSIC_COMPOSER_ID: () => WD_UKRAINIAN_LIVE_CLASSIC_COMPOSER_ID,
   WD_UKRAINIAN_NATIONAL_ROMANIZATION: () => WD_UKRAINIAN_NATIONAL_ROMANIZATION,
   WD_UKRAINIAN_PREMIER_LEAGUE_PLAYER_ID: () => WD_UKRAINIAN_PREMIER_LEAGUE_PLAYER_ID,
   WD_UK_ELECTORAL_COMMISSION_ID: () => WD_UK_ELECTORAL_COMMISSION_ID,
@@ -9939,6 +9952,7 @@ __export(src_exports, {
   WD_WOMEN_OF_SCOTLAND_SUBJECT_ID: () => WD_WOMEN_OF_SCOTLAND_SUBJECT_ID,
   WD_WOMEN_S_ELITE_RUGBY_PLAYER_ID: () => WD_WOMEN_S_ELITE_RUGBY_PLAYER_ID,
   WD_WOODLAND_TRUST_WOOD_ID: () => WD_WOODLAND_TRUST_WOOD_ID,
+  WD_WOODY_PLANTS_DATABASE_ID: () => WD_WOODY_PLANTS_DATABASE_ID,
   WD_WOOLWORTHS_PRODUCT_ID: () => WD_WOOLWORTHS_PRODUCT_ID,
   WD_WORDLIFT_URL: () => WD_WORDLIFT_URL,
   WD_WORDNET_3_1_SYNSET_ID: () => WD_WORDNET_3_1_SYNSET_ID,
@@ -10298,15 +10312,8 @@ async function getSimplifiedWikidataEntities(ids, languages = ["en"], props = ["
 var import_axios4 = __toESM(require("axios"));
 async function getWikibaseSparql(query, dataSource) {
   const wikibaseInstance = getWikibaseInstance(dataSource);
-  const url = await new Promise((resolve, reject) => {
-    try {
-      const url2 = wikibaseInstance.sparqlQuery(query);
-      resolve(url2);
-    } catch (error) {
-      reject(error);
-    }
-  });
-  return import_axios4.default.get(url).then(({ data }) => wikibaseInstance.simplify.sparqlResults(data)).then((results) => {
+  const [url, body] = wikibaseInstance.sparqlQuery(query).split("?", 2);
+  return import_axios4.default.post(url, body).then((res) => wikibaseInstance.simplify.sparqlResults(res.data)).then((results) => {
     return results;
   });
 }
@@ -11297,7 +11304,7 @@ var WD_FACET_OF = "P1269";
 var WD_NORWEGIAN_REGISTER_JOURNAL_ID = "P1270";
 var WD_NORWAY_DATABASE_FOR_STATISTICS_ON_HIGHER_EDUCATION_PUBLISHER_ID = "P1271";
 var WD_NORWAY_IMPORT_SERVICE_AND_REGISTRATION_AUTHORITY_PERIODICAL_CODE = "P1272";
-var WD_CANTIC_ID_OLD = "P1273";
+var WD_CANTIC_ID_FORMER_SCHEME = "P1273";
 var WD_ISFDB_TITLE_ID = "P1274";
 var WD_NORWAY_IMPORT_SERVICE_AND_REGISTRATION_AUTHORITY_PUBLISHER_CODE = "P1275";
 var WD_DICTIONNAIRE_DU_JURA_ID = "P1276";
@@ -12948,7 +12955,7 @@ var WD_OPENDOMESDAY_PERSON_ID = "P3122";
 var WD_STANFORD_ENCYCLOPEDIA_OF_PHILOSOPHY_ID = "P3123";
 var WD_POLISH_SCIENTIST_ID = "P3124";
 var WD_EDRPOU_CODE = "P3125";
-var WD_ALCUIN_ID = "P3126";
+var WD_ALCUIN_PHILOSOPHER_ID = "P3126";
 var WD_LATINDEX_ID = "P3127";
 var WD_CINETMAG_FILM_ID = "P3128";
 var WD_CINE_GR_FILM_ID = "P3129";
@@ -13421,7 +13428,7 @@ var WD_BADMINTONLINK_PLAYER_ID = "P3623";
 var WD_CWE_ID = "P3624";
 var WD_KIRSHENBAUM_CODE = "P3625";
 var WD_AUSTRALIAN_ANTARCTIC_GAZETTEER_ID = "P3626";
-var WD_HISTORICAL_GAZETTEER_OF_ENGLANDS_PLACE_NAMES_ID = "P3627";
+var WD_SURVEY_OF_ENGLISH_PLACE_NAMES_ID = "P3627";
 var WD_BRITISH_HISTORY_ONLINE_VCH_ID = "P3628";
 var WD_AGE_AT_EVENT = "P3629";
 var WD_BABELIO_AUTHOR_ID = "P3630";
@@ -13485,7 +13492,7 @@ var WD_ICF_CANOER_ID = "P3689";
 var WD_IFSC_CLIMBER_ID = "P3690";
 var WD_INTERNATIONAL_SWIMMING_HALL_OF_FAME_ID = "P3691";
 var WD_NCAA_COM_TEAM_ID = "P3692";
-var WD_SHORT_TRACK_SPEED_SKATER_ISU_ID = "P3693";
+var WD_ISU_SHORT_TRACK_SPEED_SKATER_ID = "P3693";
 var WD_SPEEDSKATINGNEWS_INFO_SPEED_SKATER_ID = "P3694";
 var WD_SPEEDSKATINGSTATS_SPEED_SKATER_ID = "P3695";
 var WD_SPORTS_REFERENCE_COM_COLLEGE_BASKETBALL_PLAYER_ID = "P3696";
@@ -16625,7 +16632,7 @@ var WD_HITPARADE_CH_ARTIST_CERTIFICATION_ID = "P6968";
 var WD_BVMI_ARTIST_ID = "P6969";
 var WD_MUSIC_CANADA_ARTIST_ID = "P6970";
 var WD_IFPI_NORGE_ARTIST_ID = "P6971";
-var WD_NAPSTER_ARTIST_ID = "P6972";
+var WD_NAPSTER_ARTIST_ID_US_VERSION = "P6972";
 var WD_PERSONNEL_DE_LADMINISTRATION_PREFECTORALE_ID = "P6973";
 var WD_RBF_PROFESSIONAL_BOXER_ID = "P6975";
 var WD_RETROSHEET_PERSON_ID = "P6976";
@@ -19081,7 +19088,7 @@ var WD_COFE_ARCHIVES_PLACE_ID = "P9491";
 var WD_NC_HIGHWAY_HISTORICAL_MARKER_PROGRAM_ID = "P9492";
 var WD_ARTIST_FILES_AT = "P9493";
 var WD_ACCESSIBILITY_STATEMENT_URL = "P9494";
-var WD_NATIONAL_HISTORICAL_MUSEUMS_OF_SWEDEN_AGENT_ID = "P9495";
+var WD_NATIONAL_HISTORICAL_MUSEUMS_OF_SWEDEN_ID = "P9495";
 var WD_DEGREES_DAY = "P9496";
 var WD_AUSTRALIAN_THESAURUS_OF_EDUCATION_DESCRIPTORS_ID = "P9497";
 var WD_ENZYKLOPADIE_DES_EUROPAISCHEN_OSTENS_ID = "P9498";
@@ -20372,6 +20379,20 @@ var WD_DATE_OF_INCORPORATION = "P10786";
 var WD_FACTGRID_PROPERTY_ID = "P10787";
 var WD_IN_OPERATION_ON_SERVICE = "P10788";
 var WD_LITHUANIA_MINOR_ENCYCLOPEDIA_ID = "P10789";
+var WD_PLANTFILES_TAXON_ID = "P10791";
+var WD_GARDEN_ORG_PLANTS_DATABASE_ID = "P10792";
+var WD_WOODY_PLANTS_DATABASE_ID = "P10793";
+var WD_MACAULAY_LIBRARY_TAXON_ID = "P10794";
+var WD_COORDINATION_NUMBER = "P10795";
+var WD_ITALIAN_CHAMBER_OF_DEPUTIES_GOVERNMENT_ID = "P10796";
+var WD_ITALIAN_CHAMBER_OF_DEPUTIES_PARLIAMENTARY_GROUP_ID = "P10797";
+var WD_MIDI_LIBRE_JOURNALIST_ID = "P10798";
+var WD_HEILIGEN_NET_ID = "P10799";
+var WD_CHAMPIONAT_ID = "P10800";
+var WD_UKRAINIAN_LIVE_CLASSIC_COMPOSER_ID = "P10801";
+var WD_ESPORTS_EARNINGS_GAME_ID = "P10802";
+var WD_ESPORTS_EARNINGS_PLAYER_ID = "P10803";
+var WD_TWITTER_LIST_ID = "P10804";
 
 // src/wikidata/propertiesBackwards.ts
 var WD_NAMED_AS = "P1810";
@@ -22720,6 +22741,7 @@ var WIKIDATA_REGEX = {
   P5019: "[^\\s]+",
   P5029: "[^\\s\\/]+",
   P5031: "\\w+",
+  P5034: "(KAB|KAC|KSH)([0-9]{4}|[0-9]{4}[a-zA-Z])[0-9]{4,6}",
   P5035: "[^\\s]+",
   P5036: "[1-9]\\d*",
   P5037: "urn:lsid:ipni\\.org:names:[1-9]\\d{0,7}-[123]",
@@ -23882,7 +23904,7 @@ var WIKIDATA_REGEX = {
   P7286: "[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}",
   P7288: "\\d+",
   P7291: "L(\\d{3})([a-z]*)(([ ][A-Za-z]+)*)",
-  P7293: "981[0-9]{8}05606",
+  P7293: "98[0-9]{10}5606",
   P7296: "[\\d]+",
   P7298: "[\\d]+",
   P7299: "[1-9]\\d*",
@@ -24387,7 +24409,7 @@ var WIKIDATA_REGEX = {
   P8170: "\\d{11}",
   P8179: "ncf\\d{8}",
   P8184: "\\d+",
-  P8189: "9870(0|1)\\d{8}05171",
+  P8189: "98[0-9]{12}5171",
   P8192: "T516-[1-9]\\d{1,5}|[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}",
   P8198: "[-a-z]+",
   P8199: "CEI\\d{3}B\\d{5}",
@@ -24847,7 +24869,7 @@ var WIKIDATA_REGEX = {
   P9489: "[1-9][0-9]*",
   P9491: "(NA|PL)[0-9]+",
   P9492: "[A-Z]{1,3}-[1-9]\\d*",
-  P9495: "[0-9A-Z]{8}-[0-9A-Z]{4}-[0-9A-Z]{4}-[0-9A-Z]{4}-[0-9A-Z]{12}",
+  P9495: "[a-z]+\\/[0-9A-Z]{8}-[0-9A-Z]{4}-[0-9A-Z]{4}-[0-9A-Z]{4}-[0-9A-Z]{12}",
   P9501: "[a-z]{3}_[a-z]{3,7}[\\_]{0,1}[a-z]{0,3}",
   P9503: "[1-9]\\d*",
   P9504: "^[1-9]\\d{0,8}$",
@@ -25058,7 +25080,7 @@ var WIKIDATA_REGEX = {
   P9981: "[a-z]+(-[a-z]+)*",
   P9982: "[1-9]\\d*",
   P9983: "[a-z]+(-[a-z]+)*",
-  P9984: "981(0|1)\\d{9}06706",
+  P9984: "98[0-9]{12}6706",
   P9985: "[a-z]+(-[a-z]+)+",
   P9986: "\\d{8}",
   P9987: "[^\\s]+",
@@ -25422,7 +25444,17 @@ var WIKIDATA_REGEX = {
   P10784: "[a-z0-9_-]+",
   P10785: "\\d{10}",
   P10787: "P[0-9]+",
-  P10789: "[a-z0-9-]+"
+  P10789: "[a-z0-9-]+",
+  P10791: "[1-9]\\d*",
+  P10792: "[1-9]\\d*",
+  P10793: "[1-9]\\d*",
+  P10794: "[a-z0-9\\-]+",
+  P10796: "[1-9]\\d*",
+  P10797: "[1-9]\\d*",
+  P10798: "[a-z-]+",
+  P10799: "\\d{2}/\\d{2}/\\d{2}-\\d{2}-\\d{4}-[\\w-]+",
+  P10800: "[0-9a-z\\-]+",
+  P10801: "[a-z-]+"
 };
 
 // src/wikidata/propertiesFormatter.ts
@@ -25705,7 +25737,7 @@ var WIKIDATA_URL = {
   P1187: "https://authority.dila.edu.tw/person/?fromInner=$1",
   P1188: "http://authority.dila.edu.tw/place/index.php?fromInner=$1",
   P1207: "https://wikidata-externalid-url.toolforge.org/?p=1207&url_prefix=http://nukat.edu.pl/aut/&id=$1",
-  P1212: "http://cartelen.louvre.fr/cartelen/visite?srv=car_not_frame&idNotice=$1",
+  P1212: "http://cartelfr.louvre.fr/cartelfr/visite?srv=car_not_frame&idNotice=$1&langue=fr",
   P1213: "http://opac.nlc.cn/F/?func=accref&acc_sequence=$1",
   P1214: "https://data.riksdagen.se/personlista/?iid=$1&utformat=html",
   P1216: "https://www.historicengland.org.uk/listing/the-list/list-entry/$1",
@@ -26174,7 +26206,7 @@ var WIKIDATA_URL = {
   P2434: "http://panarcticflora.org/results?name=#paf-$1",
   P2435: "https://port.hu/jump/person-$1",
   P2446: "https://www.transfermarkt.com/-/profil/spieler/$1",
-  P2447: "https://www.transfermarkt.com/transfermarkt/profil/trainer/$1",
+  P2447: "https://www.transfermarkt.com/-/profil/trainer/$1",
   P2448: "http://www.tff.org/Default.aspx?pageId=526&kisiID=$1",
   P2449: "http://www.tff.org/Default.aspx?pageID=527&antID=$1",
   P2450: "https://www.britannica.com/contributor/wd/$1",
@@ -26489,7 +26521,7 @@ var WIKIDATA_URL = {
   P3076: "https://world.openbeautyfacts.org/category/$1",
   P3077: "https://www.cineplex.de/film/id/$1",
   P3083: "https://simbad.u-strasbg.fr/simbad/sim-id?Ident=$1",
-  P3088: "http://taibnet.sinica.edu.tw/eng/taibnet_species_detail.php?name_code=$1",
+  P3088: "http://taibnet.sinica.edu.tw/chi/taibnet_species_detail.php?name_code=$1",
   P3089: "https://www.fotw.info/flags/$1.html",
   P3098: "https://clinicaltrials.gov/show/$1",
   P3099: "https://www.hbw.com/species/$1",
@@ -26671,7 +26703,7 @@ var WIKIDATA_URL = {
   P3371: "https://www.patrimoine-religieux.fr/eglises_edifices/0-wd/0-wd/$1-wd",
   P3372: "https://www.aucklandartgallery.com/explore-art-and-ideas/artist/$1/",
   P3375: "http://earlycinema.dch.phil-fak.uni-koeln.de/companies/view/$1",
-  P3376: "http://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?nummer=$1",
+  P3376: "https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?lang=fr&nummer=$1",
   P3377: "http://www.bloomberg.com/research/stocks/private/snapshot.asp?privcapId=$1",
   P3378: "https://www.rsc.org/Merck-Index/reaction/r$1",
   P3381: "http://fileformats.archiveteam.org/wiki/$1",
@@ -26847,8 +26879,8 @@ var WIKIDATA_URL = {
   P3623: "https://web.archive.org/web/*/http://www.badmintonlink.com/Player-Info/$1/",
   P3624: "https://cwe.mitre.org/data/definitions/$1.html",
   P3626: "http://data.aad.gov.au/aadc/gaz/display_name.cfm?gaz_id=$1",
-  P3627: "http://placenames.website/id/placename/$1",
-  P3628: "https://www.british-history.ac.uk/vch/$1",
+  P3627: "http://epns.nottingham.ac.uk/browse/id/$1",
+  P3628: "https://wikidata-externalid-url.toolforge.org/?p=3628&url_prefix=https://www.british-history.ac.uk/vch/&id=$1",
   P3630: "https://www.babelio.com/auteur/wd/$1",
   P3631: "https://www.babelio.com/livres/wd/$1",
   P3632: "https://www.britishmuseum.org/collection/term/$1",
@@ -27070,7 +27102,7 @@ var WIKIDATA_URL = {
   P3942: "https://www.bmx-results.com/db/riders_info.php?id=$1",
   P3943: "https://$1.tumblr.com/",
   P3944: "http://www.oldbaileyonline.org/browse.jsp?div=$1",
-  P3945: "http://www.ranm.es/academicos/$1",
+  P3945: "https://www.ranm.es/academicos/$1",
   P3946: "http://www.caicyt-conicet.gov.ar/cientificos/items/show/$1",
   P3948: "http://stats.pointstreak.com/playerpage.html?playerid=$1",
   P3949: "https://www.juwra.com/$1.html",
@@ -27857,7 +27889,7 @@ var WIKIDATA_URL = {
   P5031: "http://www.animatedknots.com/$1/",
   P5032: "https://www.filmweb.pl/film?Id=$1",
   P5033: "https://www.filmweb.pl/person?Id=$1",
-  P5034: "https://lod.nl.go.kr/page/$1",
+  P5034: "https://lod.nl.go.kr/resource/$1",
   P5035: "https://www.lambiek.net/artists/$1.htm",
   P5036: "https://amphibiaweb.org/species/$1",
   P5037: "https://powo.science.kew.org/taxon/$1",
@@ -27920,7 +27952,7 @@ var WIKIDATA_URL = {
   P5149: "http://www.ester.ee/record=$1",
   P5151: "http://www.filmfund.org.il/films/?nom=$1",
   P5153: "https://www.kkbox.com/tw/en/album/$1-index.html",
-  P5154: "https://www.kkbox.com/tw/en/artist/$1-index-1.html",
+  P5154: "https://www.kkbox.com/tw/en/artist/$1",
   P5156: "https://www.krigsseilerregisteret.no/no/skip/$1",
   P5157: "https://www.onsoranje.nl/toernooien/$1",
   P5158: "https://www.onsoranje.nl/teams/$1",
@@ -29195,7 +29227,7 @@ var WIKIDATA_URL = {
   P6969: "http://www.musikindustrie.de/nc/datenbank/?action=suche&strInterpret=$1",
   P6970: "https://musiccanada.com/gold-platinum/?_gp_search=$1",
   P6971: "https://ifpi.no/trofe/trofeoversikt/?aar=&searchterm=$1",
-  P6972: "https://napster.com/artist/$1",
+  P6972: "https://us.napster.com/artist/$1",
   P6973: "https://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_001504/$1",
   P6975: "http://rusboxing.ru/prof-box/boxers/$1/",
   P6976: "https://www.retrosheet.org/boxesetc/P$1.htm",
@@ -30719,7 +30751,7 @@ var WIKIDATA_URL = {
   P8984: "http://cpv.data.ac.uk/code-$1.html",
   P8985: "https://www.aib.it/aib/editoria/dbbi20/$1.htm",
   P8987: "https://www.mojedatovaschranka.cz/sds/detail?dbid=$1",
-  P8988: "https://wikidata-externalid-url.toolforge.org/?p=8988&url_prefix=https://mapy.cz/zakladni?source=$1",
+  P8988: "https://wikidata-externalid-url.toolforge.org/?p=8988&url_prefix=https://mapy.cz/zakladni?source=&id=$1",
   P8990: "https://world-rowing-api.soticcloud.net/stats/api/person/$1",
   P8992: "https://encyclopedia.1914-1918-online.net/article/$1",
   P8993: "http://alexandredumas.org/Corpus/Auteurs?ID=$1",
@@ -30968,7 +31000,7 @@ var WIKIDATA_URL = {
   P9290: "https://www.tiktok.com/music/_-$1",
   P9291: "http://entsyklopeedia.ee/artikkel/$1",
   P9292: "http://www.ameriquefrancaise.org/fr/article-$1/",
-  P9293: "http://www1.aiatsis.gov.au/placename/mtw.exe?k=default&l=60&linkType=term&w=$1&n=1&s=5&t=2",
+  P9293: "https://www1.aiatsis.gov.au/placename/mtw.exe?k=default&l=60&linkType=term&w=$1&n=1&s=5&t=2",
   P9294: "http://www1.aiatsis.gov.au/subject/mtw.exe?k=default&l=60&linkType=term&w=$1&n=1&s=5&t=2",
   P9296: "https://www.astroawani.com/topic/$1",
   P9297: "https://www.taptap.com/app/$1",
@@ -31139,7 +31171,7 @@ var WIKIDATA_URL = {
   P9490: "http://yukon.minisisinc.com/scripts/mwimain.dll/144/REC/AUTH/SISN%20$1?SESSIONSEARCH",
   P9491: "https://archives.lambethpalacelibrary.org.uk/CalmView/Record.aspx?src=CalmView.Places&id=$1",
   P9492: "http://www.ncmarkers.com/Markers.aspx?MarkerId=$1",
-  P9495: "https://samlingar.shm.se/person/$1",
+  P9495: "https://samlingar.shm.se/$1",
   P9497: "http://cunningham.acer.edu.au/multites2007/mtwdk.exe?k=default&l=60&w=$1&n=1&s=5&t=2",
   P9498: "https://eeo.aau.at/eeo.aau.at/index$1.html",
   P9500: "https://www.rdklabor.de/w/?curid=$1",
@@ -32189,7 +32221,20 @@ var WIKIDATA_URL = {
   P10784: "https://www.isko.org/cyclo/$1",
   P10785: "https://www.jbis.jp/horse/$1/",
   P10787: "https://database.factgrid.de/entity/$1",
-  P10789: "https://www.mle.lt/straipsniai/$1"
+  P10789: "https://www.mle.lt/straipsniai/$1",
+  P10791: "https://davesgarden.com/guides/pf/go/$1",
+  P10792: "https://garden.org/plants/view/$1/",
+  P10793: "http://woodyplants.cals.cornell.edu/plant/$1",
+  P10794: "https://search.macaulaylibrary.org/catalog?taxonCode=$1",
+  P10796: "http://dati.camera.it/ocd/governo.rdf/g$1",
+  P10797: "http://dati.camera.it/ocd/gruppoParlamentare.rdf/gr$1",
+  P10798: "https://www.midilibre.fr/auteur/$1",
+  P10799: "https://heiligen.net/heiligen/$1.php",
+  P10800: "https://championat.com/tags/$1",
+  P10801: "https://ukrainianlive.org/$1",
+  P10802: "https://www.esportsearnings.com/games/$1",
+  P10803: "https://www.esportsearnings.com/players/$1",
+  P10804: "https://twitter.com/i/lists/$1"
 };
 
 // src/wikidata/propertiesIcon.ts
@@ -32277,6 +32322,7 @@ var WIKIDATA_ICON = {
   P2963: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Goodreads_'g'_logo.svg",
   P3040: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Antu_soundcloud.svg",
   P3108: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Yelp.svg",
+  P3134: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cib-tripadvisor_(CoreUI_Icons_v1.0.0).svg",
   P3185: "https://upload.wikimedia.org/wikipedia/commons/f/f3/VK_Compact_Logo_(2021-present).svg",
   P3192: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Last.fm_favicon.png",
   P3221: "https://upload.wikimedia.org/wikipedia/commons/5/5f/New_York_Times_T_icon.svg",
@@ -32287,6 +32333,7 @@ var WIKIDATA_ICON = {
   P3561: "https://upload.wikimedia.org/wikipedia/commons/0/02/Sports_Reference_pennant_green.svg",
   P3571: "https://upload.wikimedia.org/wikipedia/commons/8/81/ESPN_E_icon.svg",
   P3598: "https://upload.wikimedia.org/wikipedia/commons/4/41/Sports_Reference_pennant_aqua.svg",
+  P3607: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Booking.com_Icon_2022.svg",
   P3647: "https://upload.wikimedia.org/wikipedia/commons/e/e5/NBA_script.svg",
   P3681: "https://upload.wikimedia.org/wikipedia/commons/8/81/ESPN_E_icon.svg",
   P3685: "https://upload.wikimedia.org/wikipedia/commons/8/81/ESPN_E_icon.svg",
@@ -32296,10 +32343,12 @@ var WIKIDATA_ICON = {
   P3696: "https://upload.wikimedia.org/wikipedia/commons/0/05/Sports_Reference_pennant_red.svg",
   P3697: "https://upload.wikimedia.org/wikipedia/commons/9/9c/Sports_Reference_pennant_blue.svg",
   P3699: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Transfermarkt_favicon.png",
+  P3749: "https://upload.wikimedia.org/wikipedia/commons/3/39/Google_Maps_icon_(2015-2020).svg",
   P3789: "https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg",
   P3827: "https://upload.wikimedia.org/wikipedia/commons/b/b9/JSTOR_icon.jpg",
   P3836: "https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png",
   P3861: "https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_(iOS).svg",
+  P3898: "https://upload.wikimedia.org/wikipedia/commons/4/43/Hotels.com_Icon_2022.svg",
   P3984: "https://upload.wikimedia.org/wikipedia/commons/b/b4/Reddit_logo.svg",
   P4003: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_(2019).svg",
   P4019: "https://upload.wikimedia.org/wikipedia/commons/f/fa/USL_Championship_icon_logo.svg",
@@ -32342,10 +32391,12 @@ var WIKIDATA_ICON = {
   P5646: "https://upload.wikimedia.org/wikipedia/commons/e/ec/AniDB_apple-touch-icon.png",
   P5648: "https://upload.wikimedia.org/wikipedia/commons/e/ec/AniDB_apple-touch-icon.png",
   P5649: "https://upload.wikimedia.org/wikipedia/commons/e/ec/AniDB_apple-touch-icon.png",
+  P5651: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Expedia_Icon_2022.svg",
   P5750: "https://upload.wikimedia.org/wikipedia/commons/0/02/Sports_Reference_pennant_green.svg",
   P5797: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Twitch_Glitch_Logo_Purple.svg",
   P5813: "https://upload.wikimedia.org/wikipedia/commons/9/9a/MusicBrainz_Logo_Icon_(2016).svg",
   P5840: "https://upload.wikimedia.org/wikipedia/commons/d/d7/National_Public_Radio_logo.svg",
+  P5842: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_(iOS).svg",
   P5885: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Microsoft_Store.svg",
   P5915: "https://upload.wikimedia.org/wikipedia/commons/c/c0/Shazam_icon.svg",
   P5916: "https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg",
@@ -32353,6 +32404,7 @@ var WIKIDATA_ICON = {
   P5927: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Ultimate_Guitar_Icon.svg",
   P5933: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Twitter_logo_initial.svg",
   P6005: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Muck_Rack_favicon.png",
+  P6008: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Agoda_Logo_2022.svg",
   P6079: "https://upload.wikimedia.org/wikipedia/commons/6/69/Discogs_record_icon.svg",
   P6080: "https://upload.wikimedia.org/wikipedia/commons/6/69/Discogs_record_icon.svg",
   P6110: "https://upload.wikimedia.org/wikipedia/commons/e/ef/AllMusic_favicon.svg",
@@ -32385,7 +32437,7 @@ var WIKIDATA_ICON = {
   P7943: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Washington_Post_favicon.png",
   P8008: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg",
   P8052: "https://upload.wikimedia.org/wikipedia/commons/9/9a/MusicBrainz_Logo_Icon_(2016).svg",
-  P8057: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Apache_Small_Logo.svg",
+  P8057: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Apache_Feather_Logo.svg",
   P8176: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cib-itch-io_(CoreUI_Icons_v1.0.0).svg",
   P8205: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Moz-fav-bw-rgb.svg",
   P8297: "https://upload.wikimedia.org/wikipedia/commons/5/5f/New_York_Times_T_icon.svg",
@@ -32408,9 +32460,18 @@ var WIKIDATA_ICON = {
   P8817: "https://upload.wikimedia.org/wikipedia/commons/d/d0/NCAA_enhanced_logo_clean.png",
   P8904: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Parler_-_Logo_(2020).svg",
   P8939: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg",
+  P9003: "https://upload.wikimedia.org/wikipedia/commons/2/25/Google_Podcasts_icon.svg",
   P9812: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Likee_icon.svg",
+  P9882: "https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg",
   P9979: "https://upload.wikimedia.org/wikipedia/commons/d/d3/NRK_TV_logo.svg",
+  P10046: "https://upload.wikimedia.org/wikipedia/commons/1/17/AppleMaps_logo.svg",
+  P10304: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_(iOS).svg",
+  P10425: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Trip.com_Icon_2022.png",
+  P10448: "https://upload.wikimedia.org/wikipedia/commons/d/df/Traveloka.com_Icon_2022.svg",
+  P10487: "https://upload.wikimedia.org/wikipedia/commons/1/14/Skyscanner_Icon_2020.svg",
   P10524: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Zvuk_(compact_logo).svg",
+  P10532: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Booking.com_Icon_2022.svg",
+  P10533: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Agoda_Logo_2022.svg",
   P10583: "https://upload.wikimedia.org/wikipedia/commons/2/21/SRSLY.jpg",
   P10716: "https://upload.wikimedia.org/wikipedia/commons/3/31/Fanvue_Logo.png"
 };
@@ -42463,7 +42524,21 @@ var WIKIDATA_TYPE = {
   P10786: "Time",
   P10787: "ExternalId",
   P10788: "WikibaseItem",
-  P10789: "ExternalId"
+  P10789: "ExternalId",
+  P10791: "ExternalId",
+  P10792: "ExternalId",
+  P10793: "ExternalId",
+  P10794: "ExternalId",
+  P10795: "Quantity",
+  P10796: "ExternalId",
+  P10797: "ExternalId",
+  P10798: "ExternalId",
+  P10799: "ExternalId",
+  P10800: "ExternalId",
+  P10801: "ExternalId",
+  P10802: "ExternalId",
+  P10803: "ExternalId",
+  P10804: "ExternalId"
 };
 
 // src/wikidata/propertiesLabelsEn.ts
@@ -43440,7 +43515,7 @@ var WIKIDATA_LABELS_EN = {
   P1270: "Norwegian Register journal ID",
   P1271: "Norway Database for Statistics on Higher education publisher ID",
   P1272: "Norway Import Service and Registration Authority periodical code",
-  P1273: "CANTIC ID (old)",
+  P1273: "CANTIC ID (former scheme)",
   P1274: "ISFDB title ID",
   P1275: "Norway Import Service and Registration Authority publisher code",
   P1276: "Dictionnaire du Jura ID",
@@ -45091,7 +45166,7 @@ var WIKIDATA_LABELS_EN = {
   P3123: "Stanford Encyclopedia of Philosophy ID",
   P3124: "Polish scientist ID",
   P3125: "EDRPOU code",
-  P3126: "ALCUIN ID",
+  P3126: "ALCUIN philosopher ID",
   P3127: "Latindex ID",
   P3128: "CiNetMag film ID",
   P3129: "cine.gr film ID",
@@ -45564,7 +45639,7 @@ var WIKIDATA_LABELS_EN = {
   P3624: "CWE ID",
   P3625: "Kirshenbaum code",
   P3626: "Australian Antarctic Gazetteer ID",
-  P3627: "Historical Gazetteer of England's Place Names ID",
+  P3627: "Survey of English Place-Names ID",
   P3628: "British History Online VCH ID",
   P3629: "age at event",
   P3630: "Babelio author ID",
@@ -45628,7 +45703,7 @@ var WIKIDATA_LABELS_EN = {
   P3690: "IFSC climber ID",
   P3691: "International Swimming Hall of Fame ID",
   P3692: "NCAA.com team ID",
-  P3693: "short-track speed skater ISU ID",
+  P3693: "ISU short-track speed skater ID",
   P3694: "SpeedSkatingNews.info speed skater ID",
   P3695: "SpeedSkatingStats speed skater ID",
   P3696: "Sports-Reference.com college basketball player ID",
@@ -48768,7 +48843,7 @@ var WIKIDATA_LABELS_EN = {
   P6969: "BVMI artist ID",
   P6970: "Music Canada artist ID",
   P6971: "IFPI Norge artist ID",
-  P6972: "Napster artist ID",
+  P6972: "Napster artist ID (U.S. version)",
   P6973: "Personnel de l'administration pr\xE9fectorale ID",
   P6975: "RBF professional boxer ID",
   P6976: "Retrosheet person ID",
@@ -51224,7 +51299,7 @@ var WIKIDATA_LABELS_EN = {
   P9492: "NC Highway Historical Marker Program ID",
   P9493: "artist files at",
   P9494: "accessibility statement URL",
-  P9495: "National Historical Museums of Sweden agent ID",
+  P9495: "National Historical Museums of Sweden ID",
   P9496: "degrees day",
   P9497: "Australian Thesaurus of Education Descriptors ID",
   P9498: "Enzyklop\xE4die des europ\xE4ischen Ostens ID",
@@ -52514,7 +52589,21 @@ var WIKIDATA_LABELS_EN = {
   P10786: "date of incorporation",
   P10787: "FactGrid property ID",
   P10788: "in operation on service",
-  P10789: "Lithuania Minor Encyclopedia ID"
+  P10789: "Lithuania Minor Encyclopedia ID",
+  P10791: "PlantFiles taxon ID",
+  P10792: "Garden.org Plants Database ID",
+  P10793: "Woody Plants Database ID",
+  P10794: "Macaulay Library taxon ID",
+  P10795: "coordination number",
+  P10796: "Italian Chamber of Deputies government ID",
+  P10797: "Italian Chamber of Deputies parliamentary group ID",
+  P10798: "Midi libre journalist ID",
+  P10799: "Heiligen.net ID",
+  P10800: "Championat ID",
+  P10801: "Ukrainian Live Classic composer ID",
+  P10802: "Esports Earnings game ID",
+  P10803: "Esports Earnings player ID",
+  P10804: "Twitter list ID"
 };
 
 // src/wikidata/shorthands.ts
@@ -106461,7 +106550,7 @@ function getCommonsUrlByFile(file, width) {
   WD_ALBUM_OF_THE_YEAR_ARTIST_ID,
   WD_ALCA_AUTHOR_ID,
   WD_ALCOHOL_BY_VOLUME,
-  WD_ALCUIN_ID,
+  WD_ALCUIN_PHILOSOPHER_ID,
   WD_ALDIWAN_POEM_ID,
   WD_ALDIWAN_POET_ID,
   WD_ALEXANDER_BRIGGS_NOTATION,
@@ -107563,7 +107652,7 @@ function getCommonsUrlByFile(file, width) {
   WD_CANONICAL_SMILES,
   WD_CANONIZATION_STATUS,
   WD_CANTIC_ID,
-  WD_CANTIC_ID_OLD,
+  WD_CANTIC_ID_FORMER_SCHEME,
   WD_CANTILEVER_SIGN,
   WD_CANTODICT_CHARACTER_ID,
   WD_CANTODICT_WORD_ID,
@@ -107723,6 +107812,7 @@ function getCommonsUrlByFile(file, width) {
   WD_CHAIRPERSON,
   WD_CHAMBER_OF_DEPUTIES_OF_ITALY_STORIA_ID,
   WD_CHAMBER_OF_DEPUTIES_OF_ROMANIA_PERSON_ID,
+  WD_CHAMPIONAT_ID,
   WD_CHANGE_ORG_DECISION_MAKER_ID,
   WD_CHANNEL_NUMBER,
   WD_CHANNEL_ONE_RUSSIA_SHOW_ID,
@@ -108128,6 +108218,7 @@ function getCommonsUrlByFile(file, width) {
   WD_COORDINATES_OF_THE_POINT_OF_VIEW,
   WD_COORDINATES_OF_WESTERNMOST_POINT,
   WD_COORDINATE_LOCATION,
+  WD_COORDINATION_NUMBER,
   WD_COPYRIGHT_EXEMPTION,
   WD_COPYRIGHT_HOLDER,
   WD_COPYRIGHT_LICENSE,
@@ -109207,6 +109298,8 @@ function getCommonsUrlByFile(file, width) {
   WD_ESPN_COM_NFL_PLAYER_ID,
   WD_ESPN_COM_NHL_PLAYER_ID,
   WD_ESPN_MMA_FIGHTER_ID,
+  WD_ESPORTS_EARNINGS_GAME_ID,
+  WD_ESPORTS_EARNINGS_PLAYER_ID,
   WD_ESRB_GAME_ID,
   WD_ESRB_RATING,
   WD_ESR_STATION_CODE,
@@ -109837,6 +109930,7 @@ function getCommonsUrlByFile(file, width) {
   WD_GARAPH_GROUP_ID,
   WD_GARDENS_NAVIGATOR_ID,
   WD_GARDENS_OF_THE_ROMAN_EMPIRE_ID,
+  WD_GARDEN_ORG_PLANTS_DATABASE_ID,
   WD_GARD_RARE_DISEASE_ID,
   WD_GARES_CONNEXIONS_ID,
   WD_GARZANTI_LINGUISTICA_ID,
@@ -110280,6 +110374,7 @@ function getCommonsUrlByFile(file, width) {
   WD_HEIDELBERG_ACADEMY_FOR_SCIENCES_AND_HUMANITIES_MEMBER_ID,
   WD_HEIGHT,
   WD_HEIGHT_OF_CENTER_OF_MASS,
+  WD_HEILIGEN_NET_ID,
   WD_HELLENIC_CIVIL_AVIATION_AUTHORITY_AIRPORT_CODE,
   WD_HELLENIC_OLYMPIC_COMMITTEE_ATHLETE_ID,
   WD_HELSINKI_PERSISTENT_BUILDING_ID_RATU,
@@ -110321,7 +110416,6 @@ function getCommonsUrlByFile(file, width) {
   WD_HISTORIA_DE_LA_MEDICINA_PERSON_ID,
   WD_HISTORICAL_ARCHIVES_OF_THE_EUROPEAN_UNION_ID,
   WD_HISTORICAL_GAZETTEER_GOV_ID,
-  WD_HISTORICAL_GAZETTEER_OF_ENGLANDS_PLACE_NAMES_ID,
   WD_HISTORICAL_MARKER_DATABASE_ID,
   WD_HISTORICAL_REGION,
   WD_HISTORICAL_REPERTOIRE_NATIONAL_DES_ASSOCIATIONS_IDENTIFIER,
@@ -110981,6 +111075,7 @@ function getCommonsUrlByFile(file, width) {
   WD_ISTITUTO_VENETO_DI_SCIENZE_LETTERE_ED_ARTI_MEMBER_ID,
   WD_ISTRAPEDIA_ID,
   WD_ISU_FIGURE_SKATER_ID,
+  WD_ISU_SHORT_TRACK_SPEED_SKATER_ID,
   WD_ISWC,
   WD_ISZDB_COMPANY_ID,
   WD_ISZDB_DUB_ID,
@@ -110998,6 +111093,8 @@ function getCommonsUrlByFile(file, width) {
   WD_ITALIAN_ATHLETICS_FEDERATION_ATHLETE_ID,
   WD_ITALIAN_CADASTRE_CODE_MUNICIPALITY,
   WD_ITALIAN_CHAMBER_OF_DEPUTIES_DATI_ID,
+  WD_ITALIAN_CHAMBER_OF_DEPUTIES_GOVERNMENT_ID,
+  WD_ITALIAN_CHAMBER_OF_DEPUTIES_PARLIAMENTARY_GROUP_ID,
   WD_ITALIAN_FOOTBALLERS_ASSOCIATION_PLAYER_ID,
   WD_ITALIAN_NATIONAL_EARTHQUAKE_CENTER_ID,
   WD_ITALIAN_NATIONAL_OLYMPIC_COMMITTEE_ATHLETE_ID,
@@ -111703,6 +111800,7 @@ function getCommonsUrlByFile(file, width) {
   WD_M3DB_COM_FILM_ID,
   WD_M3DB_COM_PERSON_ID,
   WD_MACARTHUR_FELLOWS_PROGRAM_ID,
+  WD_MACAULAY_LIBRARY_TAXON_ID,
   WD_MACDONALD_DICTIONARY_ID,
   WD_MACEDONIAN_CADASTRAL_MUNICIPALITY_ID,
   WD_MACINTOSH_GARDEN_GAME_ID,
@@ -111984,6 +112082,7 @@ function getCommonsUrlByFile(file, width) {
   WD_MICROWORLD_ID,
   WD_MIC_MARKET_CODE,
   WD_MIDDELNEDERLANDSCH_WOORDENBOEK_GTB_ID,
+  WD_MIDI_LIBRE_JOURNALIST_ID,
   WD_MILESPLIT_ID,
   WD_MILITARY_BRANCH,
   WD_MILITARY_CASUALTY_CLASSIFICATION,
@@ -112349,7 +112448,7 @@ function getCommonsUrlByFile(file, width) {
   WD_NAME_IN_NATIVE_LANGUAGE,
   WD_NAME_OF_THE_CHARACTER_ROLE,
   WD_NAMUWIKI_ID,
-  WD_NAPSTER_ARTIST_ID,
+  WD_NAPSTER_ARTIST_ID_US_VERSION,
   WD_NAQ_ELECTED_PERSON_ID,
   WD_NARA_COLLECTION_IDENTIFIER,
   WD_NARA_RECORD_GROUP_NUMBER,
@@ -112410,7 +112509,7 @@ function getCommonsUrlByFile(file, width) {
   WD_NATIONAL_GOVERNORS_ASSOCIATION_BIOGRAPHY_URL,
   WD_NATIONAL_HEALTH_PORTAL_HOSPITAL_ID,
   WD_NATIONAL_HERITAGE_LIST_FOR_ENGLAND_NUMBER,
-  WD_NATIONAL_HISTORICAL_MUSEUMS_OF_SWEDEN_AGENT_ID,
+  WD_NATIONAL_HISTORICAL_MUSEUMS_OF_SWEDEN_ID,
   WD_NATIONAL_HISTORIC_LOOKOUT_REGISTER_ID,
   WD_NATIONAL_HISTORIC_PEOPLE_ID,
   WD_NATIONAL_HISTORIC_SHIPS_CERTIFICATE_NUMBER,
@@ -113455,6 +113554,7 @@ function getCommonsUrlByFile(file, width) {
   WD_PLANETE_AVENTURE_ID,
   WD_PLANETMATH_ID,
   WD_PLANTARIUM_ID,
+  WD_PLANTFILES_TAXON_ID,
   WD_PLANTLIST_ID,
   WD_PLANTS_OF_THE_WORLD_ONLINE_ID,
   WD_PLANT_FINDER_ID,
@@ -114492,7 +114592,6 @@ function getCommonsUrlByFile(file, width) {
   WD_SHORT_NAME,
   WD_SHORT_TERM_EXPOSURE_LIMIT,
   WD_SHORT_TITLE_CATALOGUE_FLANDERS_STCV_IDENTIFIER,
-  WD_SHORT_TRACK_SPEED_SKATER_ISU_ID,
   WD_SHOWN_WITH_FEATURES,
   WD_SHRINKAGE,
   WD_SIAMZONE_FILM_ID,
@@ -114984,6 +115083,7 @@ function getCommonsUrlByFile(file, width) {
   WD_SURFLINE_ID,
   WD_SURMAN_ID,
   WD_SURROUNDS_THE_ENCLAVE,
+  WD_SURVEY_OF_ENGLISH_PLACE_NAMES_ID,
   WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_ACCUSED_WITCH_ID,
   WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_PERSON_ID,
   WD_SURVEY_OF_SCOTTISH_WITCHCRAFT_TRIAL_ID,
@@ -115526,6 +115626,7 @@ function getCommonsUrlByFile(file, width) {
   WD_TWITCH_CHANNEL_ID,
   WD_TWITCH_TAG_ID,
   WD_TWITCH_TEAM_ID,
+  WD_TWITTER_LIST_ID,
   WD_TWITTER_MOMENT_ID,
   WD_TWITTER_TOPIC_ID,
   WD_TWITTER_USERNAME,
@@ -115578,6 +115679,7 @@ function getCommonsUrlByFile(file, width) {
   WD_UKA_CLASSIFICATION_OF_SCIENCE_TOPICS_2016,
   WD_UKA_STANDARD_CLASSIFICATION_OF_SWEDISH_SCIENCE_TOPICS_2011,
   WD_UKRAINIAN_ASSOCIATION_OF_FOOTBALL_PLAYER_ID,
+  WD_UKRAINIAN_LIVE_CLASSIC_COMPOSER_ID,
   WD_UKRAINIAN_NATIONAL_ROMANIZATION,
   WD_UKRAINIAN_PREMIER_LEAGUE_PLAYER_ID,
   WD_UK_ELECTORAL_COMMISSION_ID,
@@ -116095,6 +116197,7 @@ function getCommonsUrlByFile(file, width) {
   WD_WOMEN_OF_SCOTLAND_SUBJECT_ID,
   WD_WOMEN_S_ELITE_RUGBY_PLAYER_ID,
   WD_WOODLAND_TRUST_WOOD_ID,
+  WD_WOODY_PLANTS_DATABASE_ID,
   WD_WOOLWORTHS_PRODUCT_ID,
   WD_WORDLIFT_URL,
   WD_WORDNET_3_1_SYNSET_ID,

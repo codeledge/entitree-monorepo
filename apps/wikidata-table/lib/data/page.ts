@@ -1,5 +1,6 @@
 import {
   WD_AGODA_HOTEL_NUMERIC_ID,
+  WD_APPLE_PODCASTS_PODCAST_ID,
   WD_BOOKING_COM_HOTEL_ID,
   WD_CHECK_IN_TIME,
   WD_CHECK_OUT_TIME,
@@ -10,9 +11,12 @@ import {
   WD_LOCATED_IN_THE_ADMINISTRATIVE_TERRITORIAL_ENTITY,
   WD_PHONE_NUMBER,
   WD_POSTAL_CODE,
+  WD_SPOTIFY_SHOW_ID,
   WIKIDATA_TYPE,
 } from "@entitree/helper";
-import { PAGE_EMOJI } from "../emojis";
+import { PAGE_EMOJI, PAGE_MUI_EMOJI } from "../emojis";
+import { socialHotel } from "./addition";
+import { universities } from "./pages/universities";
 import { Pages } from "./types";
 
 export const WikidataPages: Pages = {
@@ -23,6 +27,7 @@ export const WikidataPages: Pages = {
   // },
   "mobile-network-operators": {
     represents: "Q1941618",
+    category: "technology",
     query:
       'SELECT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q1941618.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
     header: [
@@ -37,6 +42,7 @@ export const WikidataPages: Pages = {
   },
   hotels: {
     represents: "Q27686",
+    category: "traveling",
     header: [
       { property: WD_COUNTRY },
       { property: WD_INCEPTION },
@@ -46,13 +52,12 @@ export const WikidataPages: Pages = {
       { property: WD_CHECK_IN_TIME },
       { property: WD_CHECK_OUT_TIME },
       { property: WD_HOTEL_RATING },
-      { property: WD_AGODA_HOTEL_NUMERIC_ID },
-      { property: WD_BOOKING_COM_HOTEL_ID },
-      { property: WD_GOOGLE_MAPS_CUSTOMER_ID },
+      ...socialHotel,
     ],
   },
   smartphones: {
     represents: "Q19723451",
+    category: "technology",
     // query:
     //   "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo\n }",
     // // where: "?item wdt:P31 wd:Q19723451 .\n ?item wdt:P5906 ?dxo.",
@@ -78,6 +83,7 @@ export const WikidataPages: Pages = {
   },
   "intercity-bus-companies": {
     represents: "Q15712205",
+    category: "traveling",
     where: `?item wdt:P31 wd:Q15712205.`,
     query:
       'SELECT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q15712205.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}',
@@ -95,6 +101,7 @@ export const WikidataPages: Pages = {
   },
   "hotel-booking-websites": {
     represents: "Q57590076",
+    category: "traveling",
     header: [
       { name: "name", property: "label", url: "item" },
       { property: "P571", options: { date: "year" } },
@@ -119,6 +126,7 @@ export const WikidataPages: Pages = {
   },
   fictional_characters: {
     represents: "Q95074",
+    category: "entertainment",
     header: [
       { name: "name", property: "label", url: "item" },
       { name: "P569" },
@@ -134,6 +142,7 @@ export const WikidataPages: Pages = {
   films: {
     list: "Q623104",
     represents: "Q11424",
+    category: "entertainment",
     where: ` ?item wdt:P31/wdt:P279* wd:Q11424 .\n ?item wdt:P345 ?imdb .\n ?item wdt:P161 ?person .\n ?item wdt:P2047 ?duration .\n ?item wdt:P646 ?freeba .`,
     query:
       "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31/wdt:P279* wd:Q11424 .\n ?item wdt:P345 ?imdb .\n ?item wdt:P161 ?person .\n ?item wdt:P2047 ?duration .\n ?item wdt:P646 ?freeba .\n\n }",
@@ -188,6 +197,7 @@ export const WikidataPages: Pages = {
   "television-series": {
     represents: "Q5398426",
     list: "Q7470411",
+    category: "entertainment",
     // todo: "\n SELECT DISTINCT ?item ?starttime WHERE {\n ?item wdt:P31 wd:Q5398426 .\n FILTER(NOT EXISTS { ?item wdt:P580 ?yearEnd. })\n ?item wdt:P1191 ?starttime .\n }\n#add start times\n SELECT DISTINCT ?item ?starttime WHERE {\n ?item wdt:P31 wd:Q5398426 .\n FILTER(NOT EXISTS { ?item wdt:P580 ?yearEnd. })\n ?item p:P449 ?network .\n ?network pq:P580 ?starttime.\n }\n\n ",
     query:
       "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31 wd:Q5398426 .\n ?item wdt:P345 ?imdb .\n }",
@@ -253,6 +263,7 @@ export const WikidataPages: Pages = {
     ],
   },
   netflix_series: {
+    category: "entertainment",
     query:
       'SELECT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q5398426.\n ?item wdt:P449 wd:Q907311 .\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
     represents: "Q5398426",
@@ -273,6 +284,7 @@ export const WikidataPages: Pages = {
   },
   "fictional-humans-tv": {
     represents: "Q15632617",
+    category: "entertainment",
     query:
       'SELECT DISTINCT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q15632617.\n ?item wdt:P175 ?doesnt .\n ?item wdt:P1441 ?work .\n ?work wdt:P31 wd:Q5398426 .\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
     header: [
@@ -288,6 +300,7 @@ export const WikidataPages: Pages = {
   },
   onlinetaxiservices: {
     represents: "Q65295049",
+    category: "traveling",
     query:
       "SELECT DISTINCT ?item WHERE {\n {?item wdt:P452 wd:Q65295049 } UNION {?item wdt:P452 wd:Q23582374} \n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n FILTER(NOT EXISTS { ?item wdt:P2669 ?yearEnd2. })\n\n \n }",
     header: [
@@ -323,6 +336,7 @@ export const WikidataPages: Pages = {
   "cryptocurrency-exchanges": {
     represents: "Q20107444",
     where: `?item wdt:P31 wd:Q20107444.`,
+    category: "finance",
     query:
       "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31 wd:Q20107444.\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n }",
     header: [
@@ -371,6 +385,7 @@ export const WikidataPages: Pages = {
   cryptocurrencies: {
     represents: "Q13479982",
     list: "Q15369810",
+    category: "finance",
     header: [
       { name: "Q82799", property: "label", url: "item" },
       { property: "P571", options: { date: "year" } },
@@ -387,9 +402,11 @@ export const WikidataPages: Pages = {
   },
   isostandarts: {
     represents: "Q15087423",
+    category: "other",
   },
   banks: {
     represents: "Q730038",
+    category: "finance",
     // query:
     //   'SELECT DISTINCT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q730038.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}',
     // query2: 'SELECT DISTINCT ?item ?itemLabel (GROUP_CONCAT(?lab; SEPARATOR = "|") AS ?labels)\nWHERE\n{\n ?item wdt:P31/wd:P279* wd:Q22687.\n ?item rdfs:label ?lab.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}\nGROUP BY ?item ?itemLabel\n',
@@ -415,6 +432,7 @@ export const WikidataPages: Pages = {
   },
   podcasts: {
     represents: "Q24634210",
+    category: "other",
     query:
       "SELECT DISTINCT ?item\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q24634210.\n}",
     header: [
@@ -427,31 +445,32 @@ export const WikidataPages: Pages = {
       { name: "P17" },
       { name: "P371" },
       { name: "P407" },
-      { name: "P5842" },
+      { property: WD_APPLE_PODCASTS_PODCAST_ID, visible: false },
+      { property: WD_SPOTIFY_SHOW_ID, visible: false },
     ],
     dataset: [],
   },
-  southparkepisodes: {
-    represents: "Q21191270",
-    list: "Q1540084",
-    query:
-      'SELECT ?item ?itemLabel ?season_no\nWHERE\n{\n ?item wdt:P31 wd:Q21191270 .\n ?item wdt:P179 wd:Q16538 .\n ?item wdt:P4908 ?season .\n ?season p:P179 ?season_stat .\n ?season_stat pq:P1545 ?season_no .\nSERVICE wikibase:label { bd:serviceParam wikibase:language "en" }\n}',
-    header: [
-      { name: "name", property: "label" },
-      { property: "imdb_rating" },
-      { property: "imdb_count", type: "integer", visible: false },
-      { name: "P4908", property: "season_no", type: "integer" },
-      { property: "P577" },
-      { property: "P57" },
-      { property: "P2364", visible: false },
-    ],
-    dataset: ["imdb_rating"],
-  },
-  tvstationgerman: {
-    represents: "Q1616075",
-    query:
-      '\n SELECT ?item ?itemLabel\n WHERE\n {\n ?item wdt:P31 wd:Q1616075 .\n ?item wdt:P17 wd:Q183 .\n \tSERVICE wikibase:label { bd:serviceParam wikibase:language "de" }\n }',
-  },
+  // southparkepisodes: {
+  //   represents: "Q21191270",
+  //   list: "Q1540084",
+  //   query:
+  //     'SELECT ?item ?itemLabel ?season_no\nWHERE\n{\n ?item wdt:P31 wd:Q21191270 .\n ?item wdt:P179 wd:Q16538 .\n ?item wdt:P4908 ?season .\n ?season p:P179 ?season_stat .\n ?season_stat pq:P1545 ?season_no .\nSERVICE wikibase:label { bd:serviceParam wikibase:language "en" }\n}',
+  //   header: [
+  //     { name: "name", property: "label" },
+  //     { property: "imdb_rating" },
+  //     { property: "imdb_count", type: "integer", visible: false },
+  //     { name: "P4908", property: "season_no", type: "integer" },
+  //     { property: "P577" },
+  //     { property: "P57" },
+  //     { property: "P2364", visible: false },
+  //   ],
+  //   dataset: ["imdb_rating"],
+  // },
+  // tvstationgerman: {
+  //   represents: "Q1616075",
+  //   query:
+  //     '\n SELECT ?item ?itemLabel\n WHERE\n {\n ?item wdt:P31 wd:Q1616075 .\n ?item wdt:P17 wd:Q183 .\n \tSERVICE wikibase:label { bd:serviceParam wikibase:language "de" }\n }',
+  // },
   // german_railwaystations: {
   //   query:
   //     'SELECT DISTINCT ?item WHERE {\n SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }\n ?item wdt:P31/wdt:P279* wd:Q55488.\n ?item wdt:P17 wd:Q183 .\n }',
@@ -487,6 +506,7 @@ export const WikidataPages: Pages = {
   // },
   countries: {
     represents: "Q3624078",
+    category: "other",
     example:
       '\n //allcountries\n SELECT DISTINCT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q6256.\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n FILTER(NOT EXISTS { ?item wdt:P582 ?yearEnd. })\n FILTER(NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q3024240. })\n FILTER(NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q15634554. })\n FILTER(NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q28864179. })\n FILTER(NOT EXISTS { ?item wdt:P31/wdt:P279* wd:Q1145276. })\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}\n\n #Goats\nSELECT DISTINCT ?item ?itemLabel ?iso ?iso2 ?country (GROUP_CONCAT(?alternative; SEPARATOR = "|") AS ?alt) WHERE {\n ?item wdt:P298 ?iso.\n OPTIONAL { ?item wdt:P297 ?iso2. }\n OPTIONAL { ?item wdt:P17 ?country. }\n\n FILTER NOT EXISTS {?item wdt:P31 wd:Q3024240}\n FILTER NOT EXISTS {?item wdt:P576 ?end}\n\n\n OPTIONAL { ?item skos:altLabel ?alternative . FILTER (lang(?alternative) = "en") }\n SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }\n}\nGROUP BY ?item ?itemLabel ?iso ?iso2 ?country\nLIMIT 2000',
     list: "Q11750",
@@ -579,6 +599,7 @@ export const WikidataPages: Pages = {
   "gps-tracker": {
     represents: "Q253677",
     img: "gpstracker.jpg",
+    category: "technology",
     header: [
       { property: "label" },
       { property: "P176" },
@@ -588,6 +609,7 @@ export const WikidataPages: Pages = {
   "credit-cards": {
     img: "creditcards.jpg",
     represents: "Q161380",
+    category: "finance",
     query:
       "SELECT DISTINCT ?item ?P856_alternative WHERE {\n ?item wdt:P31/wdt:P279* wd:Q161380\n FILTER NOT EXISTS {?item wdt:P576 ?end }\n FILTER NOT EXISTS {?item wdt:P582 ?endd }\n OPTIONAL { ?item wdt:P137 ?operator. ?operator wdt:P856 ?P856_alternative }\n\n\n }",
     header: [
@@ -633,6 +655,7 @@ export const WikidataPages: Pages = {
   "tourist-attractions": {
     represents: "Q570116",
     list: "Q6647249",
+    category: "traveling",
     query:
       'SELECT DISTINCT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q570116.\n ?item wdt:P17 wd:Q252\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}',
     header: [
@@ -679,6 +702,7 @@ export const WikidataPages: Pages = {
   museums: {
     represents: "Q33506",
     list: "Q17079082",
+    category: "traveling",
     query:
       'SELECT DISTINCT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q33506.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n}',
     header: [
@@ -723,6 +747,7 @@ export const WikidataPages: Pages = {
   zoos: {
     represents: "Q43501",
     list: "Q910176",
+    category: "traveling",
     query:
       'SELECT ?item ?itemLabel \nWHERE \n{\n ?item wdt:P31 wd:Q43501.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
     header: [
@@ -765,124 +790,11 @@ export const WikidataPages: Pages = {
     ],
     dataset: ["google_maps_cid"],
   },
-  universities: {
-    represents: "Q38723",
-    example:
-      '\n //ranked institions which are not higher educational institutions\n SELECT DISTINCT ?item ?itemLabel WHERE {\n {?item wdt:P5586 ?in} UNION {?item wdt:P5584 ?in} UNION {?item wdt:P5600 ?in} UNION {?item wdt:P5600 ?in}\n SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }\n FILTER(NOT EXISTS { ?item (wdt:P31/wdt:P279*) wd:Q38723. })\n}\n\n//exclude end date in P31\n?item p:P31 ?xx .\n FILTER NOT EXISTS { ?xx pq:P582 ?x }\n',
-    list: "Q1846117",
-    img: "universities.png",
-    query:
-      "SELECT DISTINCT ?item WHERE {\n ?item (wdt:P31/wdt:P279*) wd:Q38723 . \n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd. })\n FILTER(NOT EXISTS { ?item wdt:P582 ?yearEnd2. })\n}",
-    // query_ranks:
-    //   "SELECT DISTINCT ?item WHERE {\n ?item wdt:P31/wdt:P279* wd:Q2385804.\n {?item wdt:P5586 ?in} UNION {?item wdt:P5584 ?in} UNION {?item wdt:P5600 ?in} UNION {?item wdt:P5600 ?in}\n}",
-    // orderby: "Q478743",
-    header: [
-      { name: "Q82799", property: "label", url: "item" },
-      { property: "P131", visible: false },
-      { property: "P17", valueconstraint: { P576: false } },
-      { property: "P571", options: { date: "year" } },
-      { property: "google_maps_rating" },
-      {
-        name: "Q1068155",
-        width: "30px",
-        property: "female_male_ratio",
-        type: "float",
-        options: { round: 2, take: 1 },
-      },
-      {
-        property: "P2196",
-        type: "integer",
-        render: '(row["P2196_P585"] ? data+" ("+row["P2196_P585"]+")" : data)',
-        options: {
-          getqualifiers: { P585: "integer" },
-          sort: 1,
-          last: true,
-          qualifiers: { P518: false },
-        },
-      },
-      { name: "Q3595370", type: "float", property: "student_staff_ratio" },
-      {
-        name: "Q478743",
-        property: "shanghai_rank",
-        sort: "int",
-        options: { sort: "rank" },
-      },
-      {
-        name: "Q1318318",
-        property: "times_rank",
-        sort: "int",
-        options: { sort: "rank" },
-      },
-      {
-        name: "Q1790510",
-        property: "qs_rank",
-        sort: "int",
-        options: { sort: "rank" },
-      },
-      { property: "P5894", visible: false },
-      { name: "P5822", type: "float", options: { round: 3 }, visible: false },
-      {
-        property: "international_academic_staff",
-        type: "float",
-        visible: false,
-        width: "45px",
-        options: { round: 0 },
-      },
-      { property: "citation_rate", visible: false, options: { round: 0 } },
-      {
-        property: "foreign_lang_bachelor_programmes",
-        visible: false,
-        options: { round: 0 },
-      },
-      {
-        property: "foreign_lang_master_programmes",
-        visible: false,
-        options: { round: 0 },
-      },
-      {
-        property: "ontime_graduation_bachelor",
-        type: "float",
-        visible: false,
-        options: { round: 2 },
-      },
-      {
-        property: "ontime_graduation_master",
-        type: "float",
-        visible: false,
-        options: { round: 2 },
-      },
-      {
-        property: "bachelor_graduation_rate",
-        type: "float",
-        visible: false,
-        options: { round: 2 },
-      },
-      {
-        property: "masters_graduation_rate",
-        type: "float",
-        visible: false,
-        options: { round: 2 },
-      },
-      {
-        property: "wikidata_count_educated",
-        type: "integer",
-        visible: false,
-      },
-      { name: "P1329", visible: false },
-    ],
-    dataset: [
-      "collegescorecard",
-      "educated_at",
-      "timesranking",
-      "qsranking",
-      "shanghairanking",
-      "umultirank",
-      "google_maps_cid",
-    ],
-  },
+  universities: universities,
   occupations: {
     represents: "Q12737077",
     list: "Q6647133",
+    category: "other",
     query:
       'SELECT ?item ?avgAge ?avgBirthYear ?count\nWHERE\n{\n {\n # Group the people by their occupation and calculate age\n SELECT\n \t?item\n (count(?p) as ?count)\n (round(avg(?birthYear)) as ?avgBirthYear)\n (avg(?deathYear - ?birthYear) as ?avgAge)\n WHERE {\n {\n # Get people with occupation + birth/death dates; combine multiple birth/death dates using avg\n SELECT\n \t?p\n ?item\n (avg(year(?birth)) as ?birthYear)\n (avg(year(?death)) as ?deathYear)\n WHERE {\n ?p wdt:P31 wd:Q5 ;\n wdt:P106 ?item ;\n p:P569/psv:P569 [\n wikibase:timePrecision "9"^^xsd:integer ; # precision of at least year\n wikibase:timeValue ?birth ;\n ] ;\n p:P570/psv:P570 [\n wikibase:timePrecision "9"^^xsd:integer ; # precision of at least year\n wikibase:timeValue ?death ;\n ] .\n }\n GROUP BY ?p ?item\n }\n }\n GROUP BY ?item\n }\n FILTER (?count > 100) # arbitrary number to weed out values with few observations\n}',
     header: [
@@ -1019,6 +931,7 @@ export const WikidataPages: Pages = {
     represents: "Q46970",
     list: "Q844436",
     img: "airport.jpg",
+    category: "aviation",
     query:
       "SELECT DISTINCT ?item ?airline WHERE {\n ?item wdt:P31/wdt:P279* wd:Q1248784.\n ?item wdt:P238 ?icao_airport.\n OPTIONAL {\n ?airline wdt:P31/wdt:P279* wd:Q46970 .\n ?airline wdt:P113 ?item .\n FILTER(NOT EXISTS { ?airline wdt:P576 ?airlineend. })\n }\n FILTER(NOT EXISTS { ?item wdt:P582 ?yearEnd. })\n FILTER(NOT EXISTS { ?item wdt:P576 ?yearEnd2. })\n } ORDER BY ?item",
     header: [
@@ -1359,6 +1272,9 @@ export const WikidataPageArray = Object.keys(WikidataPages).map(function (key) {
   }
   if (PAGE_EMOJI[page.represents]) {
     page.emoji = PAGE_EMOJI[page.represents];
+  }
+  if (PAGE_MUI_EMOJI[page.id]) {
+    page.muiEmoji = PAGE_MUI_EMOJI[page.id];
   }
   if (page.header) {
     page.header = page.header.map((row) => {

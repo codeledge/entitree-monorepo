@@ -9,6 +9,7 @@ import {
 } from "@entitree/helper";
 import { Page } from "../lib/data/types";
 import { sparqlQueryCreate, sparql } from "./sparql";
+import { SPARQL_SEPARATOR } from "./const";
 
 export const getListHandler = async <
   W extends {
@@ -64,7 +65,7 @@ export const getListHandler = async <
   if (sort) {
     sort.field = sort.field.split(".")[0];
     if (sort.field === "id") {
-      sort.field = null;
+      sort.field = "item";
     }
     orderBy = sort.field ? `${sort.order}(?${sort.field})` : "";
   }
@@ -93,9 +94,9 @@ export const getListHandler = async <
       where: `VALUES ?item {wd:${searchIds.join(" wd:")}}
     ${query.body}
     ${query.labelService}
-      ?sitelink schema:about ?item;
+     OPTIONAL{ ?sitelink schema:about ?item;
     schema:isPartOf <https://en.wikipedia.org/>;
-    schema:name ?wikipedia.
+    schema:name ?wikipedia. }
     `,
       groupBy: "?item ?itemLabel ?wikipedia",
       orderBy,
@@ -104,15 +105,19 @@ export const getListHandler = async <
 
   // console.log(data);
 
-  //
-
   //add id for react-admin
-  data = data.map((d) => {
-    d.id = d.item.value;
-    if (d.P18.label) {
+  data = data.map((row) => {
+    row.id = row.item.value;
+    if (row.P18.label) {
       // d.P18.label = getCommonsUrlByFile(d.P18.label, 400);
     }
-    return d;
+    // row.map((column) => {
+    //   if (column.label) {
+    //     column.label = column.label.split(SPARQL_SEPARATOR).join(", ");
+    //   }
+    //   return column;
+    // });
+    return row;
   });
 
   const total = 1000; //totalQuery.length;
