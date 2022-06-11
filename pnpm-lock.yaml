@@ -292,7 +292,6 @@ importers:
       '@mui/material': ^5.8.1
       '@mui/styles': ^5.8.0
       '@next-auth/prisma-adapter': ^1.0.3
-      '@prisma/client': 3.14.0
       '@types/jest': ^27.5.1
       '@types/react': 18.0.9
       axios: ^0.27.2
@@ -327,8 +326,7 @@ importers:
       '@mui/icons-material': 5.8.2_0d80a206caaaa0c44a04ead5c5981b56
       '@mui/material': 5.8.2_e5e28a2031fc018063ccc89f0e979b61
       '@mui/styles': 5.8.0_@types+react@18.0.9+react@18.1.0
-      '@next-auth/prisma-adapter': 1.0.3_2364681372cf9012d5b65457b107d1a1
-      '@prisma/client': 3.14.0_prisma@3.14.0
+      '@next-auth/prisma-adapter': 1.0.3_next-auth@4.3.4
       axios: 0.27.2
       lodash: 4.17.21
       next: 12.1.6_react-dom@18.1.0+react@18.1.0
@@ -2455,16 +2453,6 @@ packages:
       react-is: 17.0.2
     dev: false
 
-  /@next-auth/prisma-adapter/1.0.3_2364681372cf9012d5b65457b107d1a1:
-    resolution: {integrity: sha512-3Lq1cD3ytKM3EGKJZ4UZvlqshLtlPvYxLeCrUV9ifYwYlq51kmDaHjsIawlp8EbH5pE1UhlsvtlXMery7RghtA==}
-    peerDependencies:
-      '@prisma/client': '>=2.26.0 || >=3'
-      next-auth: ^4.0.1
-    dependencies:
-      '@prisma/client': 3.14.0_prisma@3.14.0
-      next-auth: 4.3.4_react-dom@18.1.0+react@18.1.0
-    dev: false
-
   /@next-auth/prisma-adapter/1.0.3_d369f965efdd66c3f73915bc7adb75e9:
     resolution: {integrity: sha512-3Lq1cD3ytKM3EGKJZ4UZvlqshLtlPvYxLeCrUV9ifYwYlq51kmDaHjsIawlp8EbH5pE1UhlsvtlXMery7RghtA==}
     peerDependencies:
@@ -2472,6 +2460,15 @@ packages:
       next-auth: ^4.0.1
     dependencies:
       '@prisma/client': 3.15.0_prisma@3.15.0
+      next-auth: 4.3.4_react-dom@18.1.0+react@18.1.0
+    dev: false
+
+  /@next-auth/prisma-adapter/1.0.3_next-auth@4.3.4:
+    resolution: {integrity: sha512-3Lq1cD3ytKM3EGKJZ4UZvlqshLtlPvYxLeCrUV9ifYwYlq51kmDaHjsIawlp8EbH5pE1UhlsvtlXMery7RghtA==}
+    peerDependencies:
+      '@prisma/client': '>=2.26.0 || >=3'
+      next-auth: ^4.0.1
+    dependencies:
       next-auth: 4.3.4_react-dom@18.1.0+react@18.1.0
     dev: false
 
@@ -2858,20 +2855,6 @@ packages:
     resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
     dev: false
 
-  /@prisma/client/3.14.0_prisma@3.14.0:
-    resolution: {integrity: sha512-atb41UpgTR1MCst0VIbiHTMw8lmXnwUvE1KyUCAkq08+wJyjRE78Due+nSf+7uwqQn+fBFYVmoojtinhlLOSaA==}
-    engines: {node: '>=12.6'}
-    requiresBuild: true
-    peerDependencies:
-      prisma: '*'
-    peerDependenciesMeta:
-      prisma:
-        optional: true
-    dependencies:
-      '@prisma/engines-version': 3.14.0-36.2b0c12756921c891fec4f68d9444e18c7d5d4a6a
-      prisma: 3.14.0
-    dev: false
-
   /@prisma/client/3.15.0_prisma@3.15.0:
     resolution: {integrity: sha512-0bwpIXtE3qkkm8JV6kSHLPyEbEUQD+hFAO7NM5INr23vFBOoyKwKI1Q4V08A7jq3NdI7g2NlBuugCHE9//1ANw==}
     engines: {node: '>=12.6'}
@@ -2884,10 +2867,6 @@ packages:
     dependencies:
       '@prisma/engines-version': 3.15.0-29.b9297dc3a59307060c1c39d7e4f5765066f38372
       prisma: 3.15.0
-    dev: false
-
-  /@prisma/engines-version/3.14.0-36.2b0c12756921c891fec4f68d9444e18c7d5d4a6a:
-    resolution: {integrity: sha512-D+yHzq4a2r2Rrd0ZOW/mTZbgDIkUkD8ofKgusEI1xPiZz60Daks+UM7Me2ty5FzH3p/TgyhBpRrfIHx+ha20RQ==}
     dev: false
 
   /@prisma/engines-version/3.15.0-29.b9297dc3a59307060c1c39d7e4f5765066f38372:

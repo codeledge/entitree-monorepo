@@ -42,3 +42,4 @@ entitree-images*
 /uploads/
 
 # /config/
+prisma/client

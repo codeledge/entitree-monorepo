@@ -3,7 +3,7 @@ import {
   ImageType,
   createFilePath,
 } from "../../../../lib/googleStorage";
-// import { MetricType, updateMetric } from "../../../../lib/statsUpdater";
+import { Metric, updateMetric } from "../../../../lib/statsUpdater";
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
   process1_removeBackground,
@@ -25,30 +25,19 @@ const getImage = async (id: number) => {
 };
 
 const imageInfo = async (id: number) => {
-  console.log(id);
-  // await updateMetric(MetricType.apiCalled);
-
-  // const images = await prisma.image.create({
-  //   data: {
-  //     createdAt: new Date(),
-  //     // id_: 123123,
-  //     wikidataEntity: id,
-  //     uploadSite: "localhost",
-  //     viewCount: 0,
-  //     statusImageCropping: "No",
-  //   },
-  // });
-  // return images;
+  //sync call
+  updateMetric(Metric.apiCalled);
 
   const images = await prismaClient.image.findMany({
     where: {
       wikidataEntity: id,
       statusImageCropping: "CompletedActionStatus",
     },
+    take: 20,
+    orderBy: {
+      priority: "asc",
+    },
   });
-  // return { test: images };
-  // .sort({ name: 1 })
-  // .limit(20);
 
   return images.map((image: any) => {
     image.faceDetectionGoogleVision = undefined;
