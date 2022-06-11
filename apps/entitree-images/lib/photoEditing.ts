@@ -1,6 +1,6 @@
 import { BUCKET, ImageType, createFilePath } from "./googleStorage";
 import { FaceAnnotations } from "../types/Image";
-// import { MetricType, updateMetric } from "./statsUpdater";
+import { Metric, updateMetric } from "./statsUpdater";
 import { cropFacesAndSave, detectFaces } from "./faceDetection";
 
 import removePhotoBackground from "./removePhotoBackground";
@@ -14,7 +14,7 @@ export async function process1_removeBackground(imageId: number) {
     },
   });
   const success = await removePhotoBackground(imageId);
-  // await updateMetric(MetricType.backgroundRemoval);
+  await updateMetric(Metric.backgroundRemoval);
   return await prismaClient.image.update({
     where: { imageId },
     data: {
@@ -44,7 +44,8 @@ export async function process2_detectFaces(imageId: number) {
           : "FailedActionStatus",
     },
   });
-  // await updateMetric(MetricType.googleCloudVisionFaceDetection);
+  await updateMetric(Metric.googleCloudVisionFaceDetection);
+
   return googleVisionObject;
 }
 

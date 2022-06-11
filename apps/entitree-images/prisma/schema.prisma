@@ -1,7 +1,8 @@
 generator client {
   provider = "prisma-client-js"
-  // output   = "../../../node_modules/.prisma_images/client"
 }
+
+//  output   = "../prisma/client"
 
 datasource db {
   provider = "mongodb"
