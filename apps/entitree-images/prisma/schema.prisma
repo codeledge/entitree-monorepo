@@ -91,6 +91,8 @@ model Stat {
   count  Int
   metric Metric
   month  String
+
+  @@unique([metric, month])
 }
 
 enum Metric {

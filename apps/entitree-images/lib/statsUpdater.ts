@@ -3,16 +3,22 @@ import { Metric } from "@prisma/client";
 
 export async function updateMetric(metric: Metric) {
   const month = new Date().toISOString().slice(0, 7);
-  //TODO
-  // await prismaClient.stat.upsert({
-  //   where: {
-  //     metric,
-  //     month,
-  //   },
-  //   update: {
-  //     count: {
-  //       increment: 1,
-  //     },
-  //   },
-  // });
+  await prismaClient.stat.upsert({
+    where: {
+      metric_month: {
+        metric,
+        month,
+      },
+    },
+    create: {
+      count: 1,
+      metric,
+      month,
+    },
+    update: {
+      count: {
+        increment: 1,
+      },
+    },
+  });
 }
