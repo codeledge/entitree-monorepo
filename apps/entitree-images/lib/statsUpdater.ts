@@ -1,5 +1,5 @@
 import { prismaClient } from "../prisma/prismaClient";
-import { Metric } from ".prisma_images/client";
+import { Metric } from "@prisma/client";
 
 export async function updateMetric(metric: Metric) {
   const month = new Date().toISOString().slice(0, 7);
