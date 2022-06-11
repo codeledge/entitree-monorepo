@@ -29,7 +29,7 @@ export const PAGE_MUI_EMOJI: { [key: string]: string } = {
   medicine: "medical_information",
   hospitals: "emergency",
   podcasts: "podcasts",
-  podcast_episode: "podcasts",
+  podcast_episodes: "podcasts",
   countries: "public",
   // airlines: "airplanemode_active",
   smartphones: "phone",

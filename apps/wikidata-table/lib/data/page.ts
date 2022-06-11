@@ -16,6 +16,7 @@ import {
 } from "@entitree/helper";
 import { PAGE_EMOJI, PAGE_MUI_EMOJI } from "../emojis";
 import { socialHotel } from "./addition";
+import { drones, gps_tracker } from "./pages/gadgets";
 import { hospitals, pharmaceutical_companies } from "./pages/medicine";
 import { podcasts, podcast_episodes } from "./pages/podcast";
 import { universities } from "./pages/universities";
@@ -27,7 +28,8 @@ export const WikidataPages: Pages = {
   //   query: "SELECT ?item WHERE {\n ?item a wikibase:Property .\n}",
   //   header: [{ name: "name", property: "label", url: "item" }],
   // },
-  "mobile-network-operators": {
+  drones,
+  mobile_network_operators: {
     represents: "Q1941618",
     category: "technology",
     query:
@@ -101,7 +103,7 @@ export const WikidataPages: Pages = {
     ],
     dataset: ["trustpilot"],
   },
-  "hotel-booking-websites": {
+  hotel_booking_websites: {
     represents: "Q57590076",
     category: "traveling",
     header: [
@@ -196,7 +198,7 @@ export const WikidataPages: Pages = {
       },
     ],
   },
-  "television-series": {
+  television_series: {
     represents: "Q5398426",
     list: "Q7470411",
     category: "entertainment",
@@ -335,7 +337,7 @@ export const WikidataPages: Pages = {
       "alexa",
     ],
   },
-  "cryptocurrency-exchanges": {
+  cryptocurrency_exchanges: {
     represents: "Q20107444",
     where: `?item wdt:P31 wd:Q20107444.`,
     category: "finance",
@@ -581,16 +583,7 @@ export const WikidataPages: Pages = {
       },
     ],
   },
-  gps_tracker: {
-    represents: "Q253677",
-    img: "gpstracker.jpg",
-    category: "technology",
-    header: [
-      { property: "label" },
-      { property: "P176" },
-      { property: "P4140" },
-    ],
-  },
+  gps_tracker,
   credit_cards: {
     img: "creditcards.jpg",
     represents: "Q161380",
