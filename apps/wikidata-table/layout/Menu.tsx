@@ -39,11 +39,7 @@ type MenuName = Page["category"];
 
 const Menu = ({ dense = false }: MenuProps) => {
   let defaultMenu = "";
-  const [state, setState] = useState({
-    aviation: true,
-    education: true,
-    medicine: true,
-  });
+  const [state, setState] = useState({});
   const translate = useTranslate();
 
   const handleToggle = (menu: MenuName) => {
@@ -59,16 +55,6 @@ const Menu = ({ dense = false }: MenuProps) => {
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
-      {permissions === "admin" && (
-        <MenuItemLink
-          to={`/user`}
-          primaryText={translate(`resources.users.name`, {
-            smart_count: 2,
-          })}
-          leftIcon={<PeopleIcon />}
-          dense={dense}
-        />
-      )}
       {PageCategories.map((category: MenuName) => (
         <SubMenu
           key={category}

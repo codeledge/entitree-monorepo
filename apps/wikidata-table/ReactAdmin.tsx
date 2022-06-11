@@ -21,6 +21,7 @@ import { WikidataPageArray, WikidataPages } from "./lib/data/page";
 import { WikidataList } from "./resources/WikidataList";
 import { WikidataShow } from "./resources/WikidataShow";
 import { muiIcons } from "./lib/data/muiIcons";
+import Dashboard from "./custom-pages/Dashboard";
 
 const ReactAdmin = () => {
   // const { data: session, status } = useSession();
@@ -31,7 +32,7 @@ const ReactAdmin = () => {
     <Admin
       disableTelemetry
       // authProvider={authProvider(session)}
-      // dashboard={Dashboard}
+      dashboard={Dashboard}
       dataProvider={dataProvider("/api/")}
       // i18nProvider={i18nProvider}
       layout={Layout}
@@ -47,7 +48,7 @@ const ReactAdmin = () => {
           <Resource
             key={page.id}
             name={page.id}
-            list={WikidataList(page.header)}
+            list={WikidataList(page)}
             show={WikidataShow(page.header)}
             // icon={<Icon>star</Icon>}
           />
@@ -55,7 +56,7 @@ const ReactAdmin = () => {
           <Resource
             key={page.id}
             name={page.id}
-            list={WikidataList(page.header)}
+            list={WikidataList(page)}
             show={WikidataShow(page.header)}
           />
         )

@@ -17,18 +17,19 @@ import {
   WD_PART_OF_THE_SERIES,
   WIKIDATA_LABELS_EN,
 } from "@entitree/helper";
-import { Column } from "../lib/data/types";
+import { Column, Page } from "../lib/data/types";
 import { CountryInput } from "../fields/CountryInput";
 import { WikidataLabelField } from "../fields/WikidataLabelField";
 import { DESCRIPTIONS } from "../lib/data/podcastDescriptions";
 
 //rowClick="show"
-export const WikidataList = (header: Column[]) => {
+export const WikidataList = (page: Page) => {
+  const header = page.header;
   let filters = [
     <TextInput key="item" label="Search" source="item" resettable alwaysOn />,
     <CountryInput key="Country" source="P17" />,
   ];
-  if (true) {
+  if (page.id === "podcast_episodes") {
     filters.push(
       <AutocompleteInput
         key={WD_PART_OF_THE_SERIES}

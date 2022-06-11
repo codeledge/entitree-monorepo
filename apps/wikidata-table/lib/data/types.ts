@@ -8,7 +8,7 @@ export const PageCategories = [
   "aviation",
   "education",
   "medicine",
-  "science",
+  // "science",
   "technology",
   "entertainment",
   "finance",
@@ -31,11 +31,11 @@ export type Page = {
   emoji?: string;
   muiEmoji?: string;
   refine?: string;
-  category?:
+  category:
     | "aviation"
     | "education"
     | "medicine"
-    | "science"
+    // | "science"
     | "technology"
     | "entertainment"
     | "finance"
