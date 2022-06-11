@@ -1,3 +1,3 @@
-import { PrismaClient } from ".prisma_chordstop/client";
+import { PrismaClient } from "@prisma/client";
 
 export const prismaClient = new PrismaClient();
