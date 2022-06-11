@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../../../node_modules/.prisma_images/client"
+  // output   = "../../../node_modules/.prisma_images/client"
 }
 
 datasource db {
@@ -91,6 +91,8 @@ model Stat {
   count  Int
   metric Metric
   month  String
+
+  @@unique([metric, month])
 }
 
 enum Metric {

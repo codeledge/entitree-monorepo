@@ -1,11 +1,10 @@
-import { Artist } from ".prisma_chordstop/client";
+import { Artist } from "@prisma/client";
 import {
   WIKIDATA_ICON,
   WD_TWITTER_USERNAME,
   formatUrl,
   FormatUrlProps,
   WD_APPLE_MUSIC_ARTIST_ID_US_VERSION,
-  WD_ULTIMATE_GUITAR_ARTIST_ID,
   WD_SPOTIFY_ARTIST_ID,
 } from "@entitree/helper";
 import Image from "next/image";
@@ -48,6 +47,7 @@ const Link = ({
       href={formatUrl(property, value)}
       target="_blank"
       style={{ marginRight: "1em" }}
+      rel="noreferrer"
     >
       {WIKIDATA_ICON[property] ? (
         <Image src={WIKIDATA_ICON[property]} width={20} height={20} alt="" />
