@@ -1,0 +1,53 @@
+{
+  "name": "wikidata-table",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev -p 3008",
+    "debug": "NODE_OPTIONS='--inspect' next dev -p 3008",
+    "lint": "next lint",
+    "start": "next start",
+    "test": "jest",
+    "upgrade:interactive": "yarn upgrade-interactive --latest"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@entitree/helper": "workspace:*",
+    "@mui/icons-material": "^5.8.0",
+    "@mui/material": "^5.8.1",
+    "@mui/styles": "^5.8.0",
+    "@next-auth/prisma-adapter": "^1.0.3",
+    "@prisma/client": "3.14.0",
+    "axios": "^0.27.2",
+    "lodash": "^4.17.21",
+    "next": "12.1.6",
+    "next-auth": "^4.3.4",
+    "nextjs-cors": "^2.1.1",
+    "node-fetch": "^3.2.4",
+    "query-string": "^7.1.1",
+    "react": "18.1.0",
+    "react-admin": "4.1.0",
+    "react-dom": "18.1.0",
+    "react-hook-form": "^7.31.3",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
+    "schema-dts": "^1.1.0",
+    "set-value": "^4.1.0",
+    "sharp": "^0.30.5",
+    "stream": "^0.0.2",
+    "wikibase-sdk": "^8.0.0",
+    "wikidata-sdk": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/react": "18.0.9",
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6",
+    "jest": "^28.1.0",
+    "prisma": "^3.14.0",
+    "tsconfig": "workspace:*",
+    "typescript": "4.7.2"
+  }
+}

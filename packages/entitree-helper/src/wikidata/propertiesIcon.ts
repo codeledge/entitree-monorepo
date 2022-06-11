@@ -136,6 +136,8 @@ export const WIKIDATA_ICON = {
   P3040:
     "https://upload.wikimedia.org/wikipedia/commons/a/a2/Antu_soundcloud.svg",
   P3108: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Yelp.svg",
+  P3134:
+    "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cib-tripadvisor_(CoreUI_Icons_v1.0.0).svg",
   P3185:
     "https://upload.wikimedia.org/wikipedia/commons/f/f3/VK_Compact_Logo_(2021-present).svg",
   P3192:
@@ -155,6 +157,8 @@ export const WIKIDATA_ICON = {
   P3571: "https://upload.wikimedia.org/wikipedia/commons/8/81/ESPN_E_icon.svg",
   P3598:
     "https://upload.wikimedia.org/wikipedia/commons/4/41/Sports_Reference_pennant_aqua.svg",
+  P3607:
+    "https://upload.wikimedia.org/wikipedia/commons/6/6b/Booking.com_Icon_2022.svg",
   P3647: "https://upload.wikimedia.org/wikipedia/commons/e/e5/NBA_script.svg",
   P3681: "https://upload.wikimedia.org/wikipedia/commons/8/81/ESPN_E_icon.svg",
   P3685: "https://upload.wikimedia.org/wikipedia/commons/8/81/ESPN_E_icon.svg",
@@ -167,6 +171,8 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/9/9c/Sports_Reference_pennant_blue.svg",
   P3699:
     "https://upload.wikimedia.org/wikipedia/commons/f/fb/Transfermarkt_favicon.png",
+  P3749:
+    "https://upload.wikimedia.org/wikipedia/commons/3/39/Google_Maps_icon_(2015-2020).svg",
   P3789:
     "https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg",
   P3827: "https://upload.wikimedia.org/wikipedia/commons/b/b9/JSTOR_icon.jpg",
@@ -174,6 +180,8 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png",
   P3861:
     "https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_(iOS).svg",
+  P3898:
+    "https://upload.wikimedia.org/wikipedia/commons/4/43/Hotels.com_Icon_2022.svg",
   P3984: "https://upload.wikimedia.org/wikipedia/commons/b/b4/Reddit_logo.svg",
   P4003:
     "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_(2019).svg",
@@ -255,6 +263,8 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/e/ec/AniDB_apple-touch-icon.png",
   P5649:
     "https://upload.wikimedia.org/wikipedia/commons/e/ec/AniDB_apple-touch-icon.png",
+  P5651:
+    "https://upload.wikimedia.org/wikipedia/commons/5/5f/Expedia_Icon_2022.svg",
   P5750:
     "https://upload.wikimedia.org/wikipedia/commons/0/02/Sports_Reference_pennant_green.svg",
   P5797:
@@ -263,6 +273,8 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/9/9a/MusicBrainz_Logo_Icon_(2016).svg",
   P5840:
     "https://upload.wikimedia.org/wikipedia/commons/d/d7/National_Public_Radio_logo.svg",
+  P5842:
+    "https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_(iOS).svg",
   P5885:
     "https://upload.wikimedia.org/wikipedia/commons/a/a7/Microsoft_Store.svg",
   P5915: "https://upload.wikimedia.org/wikipedia/commons/c/c0/Shazam_icon.svg",
@@ -274,6 +286,8 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/8/8b/Twitter_logo_initial.svg",
   P6005:
     "https://upload.wikimedia.org/wikipedia/commons/c/c7/Muck_Rack_favicon.png",
+  P6008:
+    "https://upload.wikimedia.org/wikipedia/commons/b/b0/Agoda_Logo_2022.svg",
   P6079:
     "https://upload.wikimedia.org/wikipedia/commons/6/69/Discogs_record_icon.svg",
   P6080:
@@ -333,7 +347,7 @@ export const WIKIDATA_ICON = {
   P8052:
     "https://upload.wikimedia.org/wikipedia/commons/9/9a/MusicBrainz_Logo_Icon_(2016).svg",
   P8057:
-    "https://upload.wikimedia.org/wikipedia/commons/f/f4/Apache_Small_Logo.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/7/7e/Apache_Feather_Logo.svg",
   P8176:
     "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cib-itch-io_(CoreUI_Icons_v1.0.0).svg",
   P8205:
@@ -375,10 +389,27 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/c/c8/Parler_-_Logo_(2020).svg",
   P8939:
     "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg",
+  P9003:
+    "https://upload.wikimedia.org/wikipedia/commons/2/25/Google_Podcasts_icon.svg",
   P9812: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Likee_icon.svg",
+  P9882: "https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg",
   P9979: "https://upload.wikimedia.org/wikipedia/commons/d/d3/NRK_TV_logo.svg",
+  P10046:
+    "https://upload.wikimedia.org/wikipedia/commons/1/17/AppleMaps_logo.svg",
+  P10304:
+    "https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_(iOS).svg",
+  P10425:
+    "https://upload.wikimedia.org/wikipedia/commons/1/1a/Trip.com_Icon_2022.png",
+  P10448:
+    "https://upload.wikimedia.org/wikipedia/commons/d/df/Traveloka.com_Icon_2022.svg",
+  P10487:
+    "https://upload.wikimedia.org/wikipedia/commons/1/14/Skyscanner_Icon_2020.svg",
   P10524:
     "https://upload.wikimedia.org/wikipedia/commons/f/f8/Zvuk_(compact_logo).svg",
+  P10532:
+    "https://upload.wikimedia.org/wikipedia/commons/6/6b/Booking.com_Icon_2022.svg",
+  P10533:
+    "https://upload.wikimedia.org/wikipedia/commons/b/b0/Agoda_Logo_2022.svg",
   P10583: "https://upload.wikimedia.org/wikipedia/commons/2/21/SRSLY.jpg",
   P10716: "https://upload.wikimedia.org/wikipedia/commons/3/31/Fanvue_Logo.png",
 };

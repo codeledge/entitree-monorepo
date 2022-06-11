@@ -1,5 +1,4 @@
 import { Storage } from "@google-cloud/storage";
-// import { base64MimeType } from "../utils";
 import { get } from "lodash";
 
 // Instantiate a storage client with credentials
@@ -9,22 +8,6 @@ const BUCKET_NAME = process.env.GC_BUCKET!;
 export const BUCKET_BASE = "gs://" + BUCKET_NAME + "/";
 
 export const BUCKET = storage.bucket(BUCKET_NAME);
-//https://gist.github.com/jdnichollsc/f10638d44f0a9cc6bd03a1733c896f39
-export function base64MimeType(encoded: any): null | string | any {
-  var result: null | string | any = null;
-
-  if (typeof encoded !== "string") {
-    return result; //What the fuck is this?!
-  }
-
-  var mime = encoded.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
-
-  if (mime && mime.length) {
-    result = mime[1];
-  }
-
-  return result;
-}
 
 export const uploadAndGetPublicFile = async (
   fileName: string,
@@ -101,3 +84,20 @@ export const deleteFilesById = async (id) => {
     }
   }
 };
+
+//https://gist.github.com/jdnichollsc/f10638d44f0a9cc6bd03a1733c896f39
+export function base64MimeType(encoded: any): null | string | any {
+  var result: null | string | any = null;
+
+  if (typeof encoded !== "string") {
+    return result; //What the fuck is this?!
+  }
+
+  var mime = encoded.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+
+  if (mime && mime.length) {
+    result = mime[1];
+  }
+
+  return result;
+}

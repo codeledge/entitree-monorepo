@@ -1,5 +1,4 @@
 import { WikidataPropertyTypesConstants } from "../types/PropertyType";
-
 export const WIKIDATA_TYPE: WikidataPropertyTypesConstants = {
   P6: "WikibaseItem",
   P10: "CommonsMedia",
@@ -10048,4 +10047,18 @@ export const WIKIDATA_TYPE: WikidataPropertyTypesConstants = {
   P10787: "ExternalId",
   P10788: "WikibaseItem",
   P10789: "ExternalId",
+  P10791: "ExternalId",
+  P10792: "ExternalId",
+  P10793: "ExternalId",
+  P10794: "ExternalId",
+  P10795: "Quantity",
+  P10796: "ExternalId",
+  P10797: "ExternalId",
+  P10798: "ExternalId",
+  P10799: "ExternalId",
+  P10800: "ExternalId",
+  P10801: "ExternalId",
+  P10802: "ExternalId",
+  P10803: "ExternalId",
+  P10804: "ExternalId",
 };

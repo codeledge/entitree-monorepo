@@ -1,3 +1,4 @@
+//@ts-nocheck
 import dynamic from "next/dynamic";
 
 const ReactAdmin = dynamic(() => import("../../admin/components/ReactAdmin"), {

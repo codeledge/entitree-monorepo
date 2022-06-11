@@ -11,10 +11,14 @@
     wider lines indicate larger volumes.
   </p>
 </figure>
-<script type="text/javascript" src="dataP.js"></script>
+<script type="text/javascript" src="data2009-2014.js"></script>
 <script type="text/javascript">
   console.log(data);
+  let colors = [];
   data = data.map((d) => {
+    if (!colors.includes(d.color)) {
+      colors.push(d.color);
+    }
     return {
       from: d.from,
       to: d.to + " ",
@@ -22,27 +26,36 @@
       color: "#" + d.color,
     };
   });
+  data = data.filter((d) => d.weight > 1);
   console.log(data);
   Highcharts.chart("container", {
     title: {
       text: "Highcharts Sankey Diagram",
     },
-    colors: [
-      "#2f7ed8",
-      "#0d233a",
-      "#8bbc21",
-      "#910000",
-      "#1aadce",
-      "#492970",
-      "#f28f43",
-      "#77a1e5",
-      "#c42525",
-      "#a6c96a",
-    ],
+    // colors: colors,
     accessibility: {
       point: {
         valueDescriptionFormat:
           "{index}. {point.from} to {point.to}, {point.weight}.",
+      },
+    },
+    xAxis: {
+      labels: {
+        enabled: false,
+      },
+    },
+    plotOptions: {
+      columnrange: {
+        dataLabels: {
+          allowOverlap: true,
+          formatter: function () {
+            if (this.y == this.point.low) {
+              //this is needed because highcharts draws 2 boxes for columnrange
+              //1 for high series and 1 for low series
+              return this.point.low;
+            }
+          },
+        },
       },
     },
     series: [
