@@ -13,7 +13,8 @@ export const PAGE_MUI_EMOJI: { [key: string]: string } = {
   airports: "flight_take_off",
   education: "school",
   universities: "school",
-
+  podcasts: "PodcastsIcon",
+  podcast_episode: "PodcastsIcon",
   // airlines: "airplanemode_active",
   smartphones: "phone",
 };

@@ -14,6 +14,7 @@ export const PageCategories = [
   "finance",
   "other",
   "traveling",
+  "podcast",
 ];
 
 export type Page = {
@@ -29,6 +30,7 @@ export type Page = {
   img?: string;
   emoji?: string;
   muiEmoji?: string;
+  refine?: string;
   category?:
     | "aviation"
     | "education"
@@ -38,7 +40,8 @@ export type Page = {
     | "entertainment"
     | "finance"
     | "other"
-    | "traveling";
+    | "traveling"
+    | "podcast";
 };
 
 export type Column = {

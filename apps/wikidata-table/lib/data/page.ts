@@ -16,6 +16,7 @@ import {
 } from "@entitree/helper";
 import { PAGE_EMOJI, PAGE_MUI_EMOJI } from "../emojis";
 import { socialHotel } from "./addition";
+import { podcasts, podcast_episodes } from "./pages/podcast";
 import { universities } from "./pages/universities";
 import { Pages } from "./types";
 
@@ -430,26 +431,9 @@ export const WikidataPages: Pages = {
     ],
     dataset: ["trustpilot"],
   },
-  podcasts: {
-    represents: "Q24634210",
-    category: "other",
-    query:
-      "SELECT DISTINCT ?item\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q24634210.\n}",
-    header: [
-      { property: "label" },
-      { property: "P571", type: "integer", options: { date: "year" } },
-      { name: "P580" },
-      { name: "P582" },
-      { name: "P136" },
-      { name: "P449" },
-      { name: "P17" },
-      { name: "P371" },
-      { name: "P407" },
-      { property: WD_APPLE_PODCASTS_PODCAST_ID, visible: false },
-      { property: WD_SPOTIFY_SHOW_ID, visible: false },
-    ],
-    dataset: [],
-  },
+  podcasts: podcasts,
+  podcast_episodes,
+
   // southparkepisodes: {
   //   represents: "Q21191270",
   //   list: "Q1540084",
