@@ -16,6 +16,9 @@ import {
 } from "@entitree/helper";
 import { PAGE_EMOJI, PAGE_MUI_EMOJI } from "../emojis";
 import { socialHotel } from "./addition";
+import { drones, gps_tracker } from "./pages/gadgets";
+import { hospitals, pharmaceutical_companies } from "./pages/medicine";
+import { podcasts, podcast_episodes } from "./pages/podcast";
 import { universities } from "./pages/universities";
 import { Pages } from "./types";
 
@@ -25,7 +28,8 @@ export const WikidataPages: Pages = {
   //   query: "SELECT ?item WHERE {\n ?item a wikibase:Property .\n}",
   //   header: [{ name: "name", property: "label", url: "item" }],
   // },
-  "mobile-network-operators": {
+  drones,
+  mobile_network_operators: {
     represents: "Q1941618",
     category: "technology",
     query:
@@ -81,7 +85,7 @@ export const WikidataPages: Pages = {
     ],
     dataset: ["dxomark"],
   },
-  "intercity-bus-companies": {
+  intercity_bus_companies: {
     represents: "Q15712205",
     category: "traveling",
     where: `?item wdt:P31 wd:Q15712205.`,
@@ -99,7 +103,7 @@ export const WikidataPages: Pages = {
     ],
     dataset: ["trustpilot"],
   },
-  "hotel-booking-websites": {
+  hotel_booking_websites: {
     represents: "Q57590076",
     category: "traveling",
     header: [
@@ -194,7 +198,7 @@ export const WikidataPages: Pages = {
       },
     ],
   },
-  "television-series": {
+  television_series: {
     represents: "Q5398426",
     list: "Q7470411",
     category: "entertainment",
@@ -333,7 +337,7 @@ export const WikidataPages: Pages = {
       "alexa",
     ],
   },
-  "cryptocurrency-exchanges": {
+  cryptocurrency_exchanges: {
     represents: "Q20107444",
     where: `?item wdt:P31 wd:Q20107444.`,
     category: "finance",
@@ -430,26 +434,9 @@ export const WikidataPages: Pages = {
     ],
     dataset: ["trustpilot"],
   },
-  podcasts: {
-    represents: "Q24634210",
-    category: "other",
-    query:
-      "SELECT DISTINCT ?item\nWHERE\n{\n ?item wdt:P31/wdt:P279* wd:Q24634210.\n}",
-    header: [
-      { property: "label" },
-      { property: "P571", type: "integer", options: { date: "year" } },
-      { name: "P580" },
-      { name: "P582" },
-      { name: "P136" },
-      { name: "P449" },
-      { name: "P17" },
-      { name: "P371" },
-      { name: "P407" },
-      { property: WD_APPLE_PODCASTS_PODCAST_ID, visible: false },
-      { property: WD_SPOTIFY_SHOW_ID, visible: false },
-    ],
-    dataset: [],
-  },
+  podcasts: podcasts,
+  podcast_episodes,
+
   // southparkepisodes: {
   //   represents: "Q21191270",
   //   list: "Q1540084",
@@ -596,17 +583,8 @@ export const WikidataPages: Pages = {
       },
     ],
   },
-  "gps-tracker": {
-    represents: "Q253677",
-    img: "gpstracker.jpg",
-    category: "technology",
-    header: [
-      { property: "label" },
-      { property: "P176" },
-      { property: "P4140" },
-    ],
-  },
-  "credit-cards": {
+  gps_tracker,
+  credit_cards: {
     img: "creditcards.jpg",
     represents: "Q161380",
     category: "finance",
@@ -652,7 +630,7 @@ export const WikidataPages: Pages = {
   //   query:
   //     'SELECT DISTINCT ?item WHERE {\n ?item wdt:P31/wdt:P279* wd:Q38723.\n ?item wdt:P17 wd:Q183.\n ?article schema:about ?item .\n ?article schema:inLanguage "de" .\n ?article schema:isPartOf \n FILTER NOT EXISTS {?item wdt:P576 ?end }\n}',
   // },
-  "tourist-attractions": {
+  tourist_attractions: {
     represents: "Q570116",
     list: "Q6647249",
     category: "traveling",
@@ -821,6 +799,7 @@ export const WikidataPages: Pages = {
   currencies: {
     represents: "Q8142",
     list: "Q858338",
+    category: "finance",
     img: "currencies.jpg",
     // old: 'SELECT DISTINCT ?item ?itemLabel ?code WHERE {\n SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }\n ?item wdt:P31/wdt:P279* wd:Q8142.\n ?item wdt:P498 ?code .\n FILTER(NOT EXISTS { ?item wdt:P31 wd:Q13479982 }) .\n FILTER(NOT EXISTS { ?item wdt:P582 ?country. })\n}',
     query:
@@ -854,6 +833,7 @@ export const WikidataPages: Pages = {
   languages: {
     represents: "Q34770",
     list: "Q3183574",
+    category: "other",
     query:
       "SELECT DISTINCT ?item ?country WHERE {\n ?item wdt:P31/wdt:P279* wd:Q34770 .\n ?item wdt:P220 ?iso .\n ?item wdt:P218 ?id.\n OPTIONAL {\n ?country wdt:P31 wd:Q6256 . #country, or maybe use sovereign state, not sure\n ?country wdt:P37 ?item\n }\n FILTER(NOT EXISTS { ?item wdt:P582 ?end. })\n FILTER(NOT EXISTS { ?item wdt:P31 wd:Q34228. })\n FILTER(NOT EXISTS { ?item wdt:P31 wd:Q45762. })\n FILTER(NOT EXISTS { ?item wdt:P31 wd:Q38058796. })\n}\nORDER BY ?item\n",
     // querytest: 'SELECT DISTINCT ?item (GROUP_CONCAT(?country; SEPARATOR = "|") AS ?country) WHERE {\n ?item wdt:P31/wdt:P279* wd:Q34770 .\n ?item wdt:P220 ?iso .\n ?item wdt:P218 ?id.\n\n OPTIONAL {\n ?country wdt:P31 wd:Q6256 .\n ?country wdt:P37 ?item\n }\n FILTER(NOT EXISTS { ?item wdt:P582 ?end. })\n FILTER(NOT EXISTS { ?item wdt:P31 wd:Q34228. })\n FILTER(NOT EXISTS { ?item wdt:P31 wd:Q45762. })\n FILTER(NOT EXISTS { ?item wdt:P31 wd:Q38058796. })\n}GROUP BY ?item',
@@ -1014,6 +994,7 @@ export const WikidataPages: Pages = {
   "international-airports": {
     represents: "Q644371",
     list: "Q16002152",
+    category: "aviation",
     img: "airport.jpg",
     example:
       '\n#airports in countries without country code\n SELECT DISTINCT ?airport ?airportLabel ?ICAO_airport_code WHERE {\n ?airport wdt:P31 wd:Q644371.\n ?airport wdt:P238 ?ICAO_airport_code.\n ?airport wdt:P17 ?country\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n FILTER(NOT EXISTS { ?airport wdt:P582 ?yearEnd })\n FILTER(NOT EXISTS { ?country wdt:P298 ?countrycode })\n }\n\n#including countriescodes\nSELECT DISTINCT ?item ?itemLabel ?icao (GROUP_CONCAT(DISTINCT ?c; SEPARATOR = ",") AS ?subjects) WHERE {\n ?item wdt:P31 wd:Q644371.\n ?item wdt:P238 ?icao.\n ?item wdt:P17 ?country.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n OPTIONAL { ?country wdt:P298 ?c. }\n FILTER(NOT EXISTS { ?item wdt:P582 ?yearEnd. })\n}\nGROUP BY ?item ?itemLabel ?icao ?subjects\n ',
@@ -1095,20 +1076,8 @@ export const WikidataPages: Pages = {
       },
     ],
   },
-  "pharmaceutical-companies": {
-    represents: "Q19644607",
-    query:
-      'SELECT DISTINCT ?item ?itemLabel\nWHERE\n{\n ?item wdt:P31 wd:Q19644607\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
-    list: "Q2087302",
-    category: "medicine",
-    header: [
-      { name: "label" },
-      { name: "P571" },
-      { name: "P17" },
-      { name: "trustpilot_score", type: "stars", render: "stars(data,0,10)" },
-      { name: "trustpilot_reviews", visible: false },
-    ],
-  },
+  pharmaceutical_companies,
+  hospitals,
   airlines: {
     represents: "Q46970",
     list: "Q749488",

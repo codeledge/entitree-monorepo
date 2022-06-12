@@ -8,12 +8,13 @@ export const PageCategories = [
   "aviation",
   "education",
   "medicine",
-  "science",
+  // "science",
   "technology",
   "entertainment",
   "finance",
   "other",
   "traveling",
+  "podcast",
 ];
 
 export type Page = {
@@ -29,16 +30,18 @@ export type Page = {
   img?: string;
   emoji?: string;
   muiEmoji?: string;
-  category?:
+  refine?: string;
+  category:
     | "aviation"
     | "education"
     | "medicine"
-    | "science"
+    // | "science"
     | "technology"
     | "entertainment"
     | "finance"
     | "other"
-    | "traveling";
+    | "traveling"
+    | "podcast";
 };
 
 export type Column = {
