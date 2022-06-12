@@ -5,7 +5,7 @@ import {
   Resource,
   ShowGuesser,
 } from "react-admin";
-import { ArtistList, ArtistShow } from "../resources/Artist";
+import { ArtistCreate, ArtistList, ArtistShow } from "../resources/Artist";
 import {
   ChordCreate,
   ChordEdit,
@@ -46,7 +46,12 @@ const ReactAdmin: React.FC = () => {
         show={ChordShow}
         edit={ChordEdit}
       />
-      <Resource name="artist" list={ArtistList} show={ArtistShow} />
+      <Resource
+        name="artist"
+        list={ArtistList}
+        show={ArtistShow}
+        create={ArtistCreate}
+      />
       {/* <Resource name="tag" list={TagList} create={TagCreate} /> */}
     </Admin>
   );

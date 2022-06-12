@@ -13,7 +13,7 @@ export async function getServerSideProps(context: any) {
   const { id } = context.query;
   const chord = await prismaClient.chord.findUnique({
     where: {
-      id: parseInt(id),
+      id,
     },
     include: {
       artist: true,
@@ -74,7 +74,7 @@ const ChordPage: NextPage<{
           <a download="song.txt" href={downloadLink}>
             <Tooltip title="Download in Chordpro Format" placement="top">
               <FileDownloadIcon />
-            </Tooltip>{" "}
+            </Tooltip>
           </a>
         </IconButton>
       </div>

@@ -12,7 +12,7 @@ import { getCommonsUrlByFile } from "@entitree/helper";
 
 type ArtistAndChords = Artist & { chords: Chord[] };
 
-async function findArtist(id: number): Promise<ArtistAndChords> {
+async function findArtist(id: string): Promise<Artist> {
   return await prismaClient.artist.findUnique({
     where: { id },
     include: {
@@ -37,7 +37,7 @@ export async function getServerSideProps(context: any) {
       };
     }
   }
-  const artist = await findArtist(parseInt(id.split("-")[0]));
+  const artist = await findArtist(id);
   // TODO
   // if (!artist) {
   //   return {
@@ -60,7 +60,11 @@ const ArtistPage = ({ artist }: { artist: ArtistAndChords }) => {
             width: "100px",
           }}
         >
-          <Image src={getCommonsUrlByFile(artist.imageCommons)} layout="fill" />
+          <Image
+            src={getCommonsUrlByFile(artist.imageCommons)}
+            layout="fill"
+            alt=""
+          />
         </div>
       )}
       <h1>

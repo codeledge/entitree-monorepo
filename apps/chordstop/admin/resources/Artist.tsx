@@ -16,6 +16,7 @@ import {
   ReferenceArrayField,
   ReferenceArrayInput,
   ReferenceInput,
+  required,
   Show,
   SimpleForm,
   SimpleShowLayout,
@@ -48,4 +49,13 @@ export const ArtistShow = () => (
       <TextField source="ultimateGuitarId" />
     </SimpleShowLayout>
   </Show>
+);
+
+export const ArtistCreate = (props) => (
+  <Create title="New artist" {...props}>
+    <SimpleForm>
+      <TextInput source="label" />
+      <TextInput source="wikidataId" validate={[required()]} />
+    </SimpleForm>
+  </Create>
 );
