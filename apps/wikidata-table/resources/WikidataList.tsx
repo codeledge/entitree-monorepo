@@ -5,6 +5,7 @@ import {
   EmailField,
   ImageField,
   List,
+  Pagination,
   SearchInput,
   ShowButton,
   TextField,
@@ -44,7 +45,10 @@ export const WikidataList = (page: Page) => {
     );
   }
   return (
-    <List filters={filters}>
+    <List
+      filters={filters}
+      pagination={<Pagination rowsPerPageOptions={[10, 25, 50, 100]} />}
+    >
       <Datagrid>
         <TextField source="id"></TextField>
         <WikidataLabelField source="item.label" />

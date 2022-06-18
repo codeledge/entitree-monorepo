@@ -1,22 +1,7 @@
-import {
-  WD_AGODA_HOTEL_NUMERIC_ID,
-  WD_APPLE_PODCASTS_PODCAST_ID,
-  WD_BOOKING_COM_HOTEL_ID,
-  WD_CHECK_IN_TIME,
-  WD_CHECK_OUT_TIME,
-  WD_COUNTRY,
-  WD_GOOGLE_MAPS_CUSTOMER_ID,
-  WD_HOTEL_RATING,
-  WD_INCEPTION,
-  WD_LOCATED_IN_THE_ADMINISTRATIVE_TERRITORIAL_ENTITY,
-  WD_PHONE_NUMBER,
-  WD_POSTAL_CODE,
-  WD_SPOTIFY_SHOW_ID,
-  WIKIDATA_TYPE,
-} from "@entitree/helper";
+import { WIKIDATA_TYPE } from "@entitree/helper";
 import { PAGE_EMOJI, PAGE_MUI_EMOJI } from "../emojis";
-import { socialHotel } from "./addition";
 import { drones, gps_tracker } from "./pages/gadgets";
+import { hotels } from "./pages/hotels";
 import { hospitals, pharmaceutical_companies } from "./pages/medicine";
 import { podcasts, podcast_episodes } from "./pages/podcast";
 import { universities } from "./pages/universities";
@@ -44,21 +29,7 @@ export const WikidataPages: Pages = {
       { property: "P3744" },
     ],
   },
-  hotels: {
-    represents: "Q27686",
-    category: "traveling",
-    header: [
-      { property: WD_COUNTRY },
-      { property: WD_INCEPTION },
-      { property: WD_LOCATED_IN_THE_ADMINISTRATIVE_TERRITORIAL_ENTITY },
-      { property: WD_POSTAL_CODE },
-      { property: WD_PHONE_NUMBER },
-      { property: WD_CHECK_IN_TIME },
-      { property: WD_CHECK_OUT_TIME },
-      { property: WD_HOTEL_RATING },
-      ...socialHotel,
-    ],
-  },
+  hotels: hotels,
   smartphones: {
     represents: "Q19723451",
     category: "technology",

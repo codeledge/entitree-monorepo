@@ -86,7 +86,7 @@ const Menu = ({ dense = false }: MenuProps) => {
           )}
         </SubMenu>
       ))}
-      <MenuItemLink
+      {/* <MenuItemLink
         to={`/documentation`}
         primaryText={translate(`resources.documentation.name`, {
           smart_count: 2,
@@ -101,7 +101,7 @@ const Menu = ({ dense = false }: MenuProps) => {
         })}
         leftIcon={<VerifiedUserIcon />}
         dense={dense}
-      />
+      /> */}
     </Root>
   );
 };
