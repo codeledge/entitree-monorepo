@@ -17,14 +17,17 @@ export default async function handler(
 
   const artists = await prismaClient.artist.findMany({});
 
-  const chordData = await chords.map(async ({ id, artistId, ...rest }) => {
-    return {
-      ...rest,
-      numericId: id,
-      artistId: artists.filter(({ numericId }) => numericId === artistId)[0].id,
-    };
-  });
-  console.log(chordData);
+  const chordData = await Promise.all(
+    chords.map(async ({ id, artistId, ...rest }) => {
+      return {
+        ...rest,
+        numericId: id,
+        artistId: artists.filter(({ numericId }) => numericId === artistId)[0]
+          .id,
+      };
+    })
+  );
+  // console.log(chordData);
 
   // await prismaClient.artist.createMany({ data: artistData });
   await prismaClient.chord.createMany({

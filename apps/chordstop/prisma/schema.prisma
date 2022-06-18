@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/client"
 }
 
 datasource db {
@@ -21,7 +22,7 @@ model Chord {
   open       Int?
   artist     Artist? @relation(fields: [artistId], references: [id])
   artistId   String?
-  wikidataId String? @unique
+  wikidataId String?
   duration   Int?
 }
 

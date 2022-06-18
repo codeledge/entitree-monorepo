@@ -1,4 +1,4 @@
-import { Artist, Chord } from "@prisma/client";
+import { Artist, Chord } from "../../prisma/prismaClient";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Head from "next/head";
