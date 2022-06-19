@@ -1,9 +1,7 @@
 import GoogleProvider from "next-auth/providers/google";
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prismaClient } from "../../../prisma/prismaClient";
 
 export default async function auth(req, res) {
   return await NextAuth(req, res, {
@@ -27,6 +25,6 @@ export default async function auth(req, res) {
     //     return session;
     //   },
     // },
-    adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(prismaClient),
   });
 }

@@ -22,6 +22,7 @@ import { WikidataList } from "./resources/WikidataList";
 import { WikidataShow } from "./resources/WikidataShow";
 import { muiIcons } from "./lib/data/muiIcons";
 import Dashboard from "./custom-pages/Dashboard";
+import { myTheme } from "./layout/theme";
 
 const ReactAdmin = () => {
   // const { data: session, status } = useSession();
@@ -36,6 +37,7 @@ const ReactAdmin = () => {
       dataProvider={dataProvider("/api/")}
       // i18nProvider={i18nProvider}
       layout={Layout}
+      theme={myTheme}
       loginPage={LoginPage}
     >
       <CustomRoutes>

@@ -56,7 +56,7 @@ export const sparqlQueryCreate = (table: Page) => {
     }
   }
   r.labelService = `
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en".
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,de,id".
     ?item rdfs:label ?itemLabel.
     ${r.label}
   }`;

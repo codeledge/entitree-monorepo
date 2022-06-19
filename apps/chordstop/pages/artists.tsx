@@ -1,6 +1,6 @@
 import { List, ListItem, Typography } from "@mui/material";
 
-import { Artist } from "@prisma/client";
+import { Artist } from "../prisma/prismaClient";
 import { Chord } from "chordsheetjs";
 import Head from "next/head";
 import Header from "../components/Header";
