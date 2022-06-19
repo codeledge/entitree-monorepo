@@ -117,7 +117,7 @@ importers:
       '@types/react': 18.0.14
       axios: ^0.27.2
       encoding: ^0.1.13
-      eslint: 8.17.0
+      eslint: 8.18.0
       eslint-config-next: 12.1.6
       form-data: ^4.0.0
       jest: ^28.1.1
@@ -129,18 +129,18 @@ importers:
       prisma: ^3.15.2
       query-string: ^7.1.1
       ra-data-simple-prisma: ^0.4.0
-      ra-i18n-polyglot: ^4.1.4
-      ra-language-english: ^4.1.4
+      ra-i18n-polyglot: ^4.1.5
+      ra-language-english: ^4.1.5
       react: 18.2.0
-      react-admin: 4.0.0
+      react-admin: 4.1.5
       react-dom: 18.2.0
-      react-hook-form: ^7.32.1
+      react-hook-form: ^7.32.2
       react-router: ^6.3.0
       react-router-dom: ^6.3.0
       schema-dts: ^1.1.0
       sharp: ^0.30.6
       tsconfig: workspace:*
-      typescript: 4.7.3
+      typescript: 4.7.4
       util: ^0.12.4
       wikidata-sdk: ^8.0.0
     dependencies:
@@ -165,25 +165,25 @@ importers:
       prisma: 3.15.2
       query-string: 7.1.1
       ra-data-simple-prisma: 0.4.0_22ad15b52192ac19be805d0fa16d462a
-      ra-i18n-polyglot: 4.1.4_469c17bb7c0a38fc213ae0e7cef5b107
-      ra-language-english: 4.1.4_469c17bb7c0a38fc213ae0e7cef5b107
+      ra-i18n-polyglot: 4.1.5_ca42067cb28224f34e4e59c6486d7ec2
+      ra-language-english: 4.1.5_ca42067cb28224f34e4e59c6486d7ec2
       react: 18.2.0
-      react-admin: 4.0.0_9db07cc20f55ab534598201e37791c66
+      react-admin: 4.1.5_9db07cc20f55ab534598201e37791c66
       react-dom: 18.2.0_react@18.2.0
-      react-hook-form: 7.32.1_react@18.2.0
+      react-hook-form: 7.32.2_react@18.2.0
       react-router: 6.3.0_react@18.2.0
       react-router-dom: 6.3.0_react-dom@18.2.0+react@18.2.0
-      schema-dts: 1.1.0_typescript@4.7.3
+      schema-dts: 1.1.0_typescript@4.7.4
       sharp: 0.30.6
       util: 0.12.4
       wikidata-sdk: 8.0.0
     devDependencies:
       '@types/react': 18.0.14
-      eslint: 8.17.0
-      eslint-config-next: 12.1.6_85a02a54f427868067898054ce8dfb78
+      eslint: 8.18.0
+      eslint-config-next: 12.1.6_699d05d0e897151f4a13b9a6b74b579c
       jest: 28.1.1
       tsconfig: link:../../packages/tsconfig
-      typescript: 4.7.3
+      typescript: 4.7.4
 
   apps/podcast-app:
     specifiers:
@@ -2624,10 +2624,6 @@ packages:
     resolution: {integrity: sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==}
     dev: true
 
-  /@types/node/17.0.35:
-    resolution: {integrity: sha512-vu1SrqBjbbZ3J6vwY17jBs8Sr/BKA+/a/WtjRG+whKg1iuLFOosq872EXS0eXWILdO36DHQQeku/ZcL6hz2fpg==}
-    dev: false
-
   /@types/node/17.0.41:
     resolution: {integrity: sha512-xA6drNNeqb5YyV5fO3OAEsnXLfO7uF0whiOfPTz5AeDo8KeZFmODKnvwPymMNO8qE/an8pVY/O50tig2SQCrGw==}
     dev: false
@@ -2791,26 +2787,6 @@ packages:
       - supports-color
     dev: false
 
-  /@typescript-eslint/parser/5.28.0_eslint@8.17.0+typescript@4.7.3:
-    resolution: {integrity: sha512-ekqoNRNK1lAcKhZESN/PdpVsWbP9jtiNqzFWkp/yAUdZvJalw2heCYuqRmM5eUJSIYEkgq5sGOjq+ZqsLMjtRA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@typescript-eslint/scope-manager': 5.28.0
-      '@typescript-eslint/types': 5.28.0
-      '@typescript-eslint/typescript-estree': 5.28.0_typescript@4.7.3
-      debug: 4.3.4
-      eslint: 8.17.0
-      typescript: 4.7.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@typescript-eslint/parser/5.28.0_eslint@8.18.0+typescript@4.7.4:
     resolution: {integrity: sha512-ekqoNRNK1lAcKhZESN/PdpVsWbP9jtiNqzFWkp/yAUdZvJalw2heCYuqRmM5eUJSIYEkgq5sGOjq+ZqsLMjtRA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -2911,27 +2887,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
-
-  /@typescript-eslint/typescript-estree/5.28.0_typescript@4.7.3:
-    resolution: {integrity: sha512-9GX+GfpV+F4hdTtYc6OV9ZkyYilGXPmQpm6AThInpBmKJEyRSIjORJd1G9+bknb7OTFYL+Vd4FBJAO6T78OVqA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@typescript-eslint/types': 5.28.0
-      '@typescript-eslint/visitor-keys': 5.28.0
-      debug: 4.3.4
-      globby: 11.1.0
-      is-glob: 4.0.3
-      semver: 7.3.7
-      tsutils: 3.21.0_typescript@4.7.3
-      typescript: 4.7.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /@typescript-eslint/typescript-estree/5.28.0_typescript@4.7.4:
     resolution: {integrity: sha512-9GX+GfpV+F4hdTtYc6OV9ZkyYilGXPmQpm6AThInpBmKJEyRSIjORJd1G9+bknb7OTFYL+Vd4FBJAO6T78OVqA==}
@@ -4903,32 +4858,6 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-config-next/12.1.6_85a02a54f427868067898054ce8dfb78:
-    resolution: {integrity: sha512-qoiS3g/EPzfCTkGkaPBSX9W0NGE/B1wNO3oWrd76QszVGrdpLggNqcO8+LR6MB0CNqtp9Q8NoeVrxNVbzM9hqA==}
-    peerDependencies:
-      eslint: ^7.23.0 || ^8.0.0
-      next: '>=10.2.0'
-      typescript: '>=3.3.1'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@next/eslint-plugin-next': 12.1.6
-      '@rushstack/eslint-patch': 1.1.3
-      '@typescript-eslint/parser': 5.28.0_eslint@8.17.0+typescript@4.7.3
-      eslint: 8.17.0
-      eslint-import-resolver-node: 0.3.6
-      eslint-import-resolver-typescript: 2.7.1_de2e8b5f32821e366389b4575f54c566
-      eslint-plugin-import: 2.26.0_eslint@8.17.0
-      eslint-plugin-jsx-a11y: 6.5.1_eslint@8.17.0
-      eslint-plugin-react: 7.30.0_eslint@8.17.0
-      eslint-plugin-react-hooks: 4.6.0_eslint@8.17.0
-      next: 12.1.6_e085dcdba0ca19a0a2fff8fdb593fa95
-      typescript: 4.7.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /eslint-config-prettier/8.3.0_eslint@8.17.0:
     resolution: {integrity: sha512-BgZuLUSeKzvlL/VUjx/Yb787VQ26RU3gGjA3iiFvdsp/2bMfVIWUVP7tjxtjS0e+HP409cPlPvNkQloz8C91ew==}
     hasBin: true
@@ -5005,24 +4934,6 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-import-resolver-typescript/2.7.1_de2e8b5f32821e366389b4575f54c566:
-    resolution: {integrity: sha512-00UbgGwV8bSgUv34igBDbTOtKhqoRMy9bFjNehT40bXg6585PNIct8HhXZ0SybqB9rWtXj9crcku8ndDn/gIqQ==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      eslint: '*'
-      eslint-plugin-import: '*'
-    dependencies:
-      debug: 4.3.4
-      eslint: 8.17.0
-      eslint-plugin-import: 2.26.0_eslint@8.17.0
-      glob: 7.2.3
-      is-glob: 4.0.3
-      resolve: 1.22.0
-      tsconfig-paths: 3.14.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /eslint-module-utils/2.7.3:
     resolution: {integrity: sha512-088JEC7O3lDZM9xGe0RerkOMd0EjFl+Yvd1jPWIkMT5u3H9+HC34mWWPnqPrN13gieT9pBOO+Qt07Nb/6TresQ==}
     engines: {node: '>=4'}
@@ -5073,28 +4984,6 @@ packages:
       resolve: 1.22.0
       tsconfig-paths: 3.12.0
     dev: false
-
-  /eslint-plugin-import/2.26.0_eslint@8.17.0:
-    resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    dependencies:
-      array-includes: 3.1.5
-      array.prototype.flat: 1.3.0
-      debug: 2.6.9
-      doctrine: 2.1.0
-      eslint: 8.17.0
-      eslint-import-resolver-node: 0.3.6
-      eslint-module-utils: 2.7.3
-      has: 1.0.3
-      is-core-module: 2.9.0
-      is-glob: 4.0.3
-      minimatch: 3.1.2
-      object.values: 1.1.5
-      resolve: 1.22.0
-      tsconfig-paths: 3.14.1
-    dev: true
 
   /eslint-plugin-import/2.26.0_eslint@8.18.0:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
@@ -5158,6 +5047,7 @@ packages:
       jsx-ast-utils: 3.3.0
       language-tags: 1.0.5
       minimatch: 3.1.2
+    dev: false
 
   /eslint-plugin-jsx-a11y/6.5.1_eslint@8.18.0:
     resolution: {integrity: sha512-sVCFKX9fllURnXT2JwLN5Qgo24Ug5NF6dxhkmxsMEUZhXRcGg+X3e1JbJ84YePQKBl5E0ZjAH5Q4rkdcGY99+g==}
@@ -5197,15 +5087,6 @@ packages:
     dependencies:
       eslint: 8.17.0
     dev: false
-
-  /eslint-plugin-react-hooks/4.6.0_eslint@8.17.0:
-    resolution: {integrity: sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
-    dependencies:
-      eslint: 8.17.0
-    dev: true
 
   /eslint-plugin-react-hooks/4.6.0_eslint@8.18.0:
     resolution: {integrity: sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==}
@@ -5249,29 +5130,6 @@ packages:
       array.prototype.flatmap: 1.3.0
       doctrine: 2.1.0
       eslint: 8.14.0
-      estraverse: 5.3.0
-      jsx-ast-utils: 3.3.0
-      minimatch: 3.1.2
-      object.entries: 1.1.5
-      object.fromentries: 2.0.5
-      object.hasown: 1.1.1
-      object.values: 1.1.5
-      prop-types: 15.8.1
-      resolve: 2.0.0-next.3
-      semver: 6.3.0
-      string.prototype.matchall: 4.0.7
-    dev: true
-
-  /eslint-plugin-react/7.30.0_eslint@8.17.0:
-    resolution: {integrity: sha512-RgwH7hjW48BleKsYyHK5vUAvxtE9SMPDKmcPRQgtRCYaZA0XQPt5FSkrU3nhz5ifzMZcA8opwmRJ2cmOO8tr5A==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
-    dependencies:
-      array-includes: 3.1.5
-      array.prototype.flatmap: 1.3.0
-      doctrine: 2.1.0
-      eslint: 8.17.0
       estraverse: 5.3.0
       jsx-ast-utils: 3.3.0
       minimatch: 3.1.2
@@ -5348,6 +5206,7 @@ packages:
     dependencies:
       eslint: 8.17.0
       eslint-visitor-keys: 2.1.0
+    dev: false
 
   /eslint-utils/3.0.0_eslint@8.18.0:
     resolution: {integrity: sha512-uuQC43IGctw68pJA1RgbQS8/NP7rch6Cwd4j3ZBtgo4/8Flj4eGE7ZYSZRN3iq5pVUv6GPdW5Z1RFleo84uLDA==}
@@ -5507,6 +5366,7 @@ packages:
       v8-compile-cache: 2.3.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /eslint/8.18.0:
     resolution: {integrity: sha512-As1EfFMVk7Xc6/CvhssHUjsAQSkpfXvUGMFC3ce8JDe6WvqCgRrLOBQbVpsBFr1X1V+RACOadnzVvcUS5ni2bA==}
@@ -8113,7 +7973,7 @@ packages:
         optional: true
     dependencies:
       '@next/env': 12.1.6
-      caniuse-lite: 1.0.30001356
+      caniuse-lite: 1.0.30001352
       postcss: 8.4.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -8155,7 +8015,7 @@ packages:
         optional: true
     dependencies:
       '@next/env': 12.1.6
-      caniuse-lite: 1.0.30001356
+      caniuse-lite: 1.0.30001352
       postcss: 8.4.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -8841,8 +8701,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /ra-core/4.1.4_3d8f4cb217652e579bfdc1f2f5184c0e:
-    resolution: {integrity: sha512-7SXzWrt0TPASBdzi6AX1rB38t1ksldGJAf68Yo1dW6dxK2csRW7Yzg/oNK59D4rb1zb8DqciKhA7srz2G21P9g==}
+  /ra-core/4.1.5_ca42067cb28224f34e4e59c6486d7ec2:
+    resolution: {integrity: sha512-jWsbVGQUeG1R7e3k9XXERA6PzIiVxBtVxXsOgj5kYoTsRNO/0/9ccBlb5HUJ8T/qjTJcPvsLol3+7ySR7Z8+tw==}
     peerDependencies:
       history: ^5.1.0
       react: ^16.9.0 || ^17.0.0 || ^18.0.0
@@ -8854,66 +8714,6 @@ packages:
       clsx: 1.1.1
       date-fns: 2.28.0
       eventemitter3: 4.0.7
-      history: 5.3.0
-      inflection: 1.12.0
-      jsonexport: 3.2.0
-      lodash: 4.17.21
-      prop-types: 15.8.1
-      query-string: 7.1.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-hook-form: 7.32.1_react@18.2.0
-      react-is: 17.0.2
-      react-query: 3.39.1_react-dom@18.2.0+react@18.2.0
-      react-router: 6.3.0_react@18.2.0
-      react-router-dom: 6.3.0_react-dom@18.2.0+react@18.2.0
-    transitivePeerDependencies:
-      - react-native
-    dev: false
-
-  /ra-core/4.1.4_469c17bb7c0a38fc213ae0e7cef5b107:
-    resolution: {integrity: sha512-7SXzWrt0TPASBdzi6AX1rB38t1ksldGJAf68Yo1dW6dxK2csRW7Yzg/oNK59D4rb1zb8DqciKhA7srz2G21P9g==}
-    peerDependencies:
-      history: ^5.1.0
-      react: ^16.9.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
-      react-hook-form: ^7.31.0
-      react-router: ^6.1.0
-      react-router-dom: ^6.1.0
-    dependencies:
-      clsx: 1.1.1
-      date-fns: 2.28.0
-      eventemitter3: 4.0.7
-      inflection: 1.12.0
-      jsonexport: 3.2.0
-      lodash: 4.17.21
-      prop-types: 15.8.1
-      query-string: 7.1.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-hook-form: 7.32.1_react@18.2.0
-      react-is: 17.0.2
-      react-query: 3.39.1_react-dom@18.2.0+react@18.2.0
-      react-router: 6.3.0_react@18.2.0
-      react-router-dom: 6.3.0_react-dom@18.2.0+react@18.2.0
-    transitivePeerDependencies:
-      - react-native
-    dev: false
-
-  /ra-core/4.1.4_cb1682e6064963bdebd3c05cf1fd7589:
-    resolution: {integrity: sha512-7SXzWrt0TPASBdzi6AX1rB38t1ksldGJAf68Yo1dW6dxK2csRW7Yzg/oNK59D4rb1zb8DqciKhA7srz2G21P9g==}
-    peerDependencies:
-      history: ^5.1.0
-      react: ^16.9.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
-      react-hook-form: ^7.31.0
-      react-router: ^6.1.0
-      react-router-dom: ^6.1.0
-    dependencies:
-      clsx: 1.1.1
-      date-fns: 2.28.0
-      eventemitter3: 4.0.7
-      history: 5.3.0
       inflection: 1.12.0
       jsonexport: 3.2.0
       lodash: 4.17.21
@@ -8966,9 +8766,9 @@ packages:
       '@prisma/client': ^3.14.0
     dependencies:
       '@prisma/client': 3.15.2_prisma@3.15.2
-      '@types/node': 17.0.35
+      '@types/node': 17.0.45
       axios: 0.27.2
-      react-admin: 4.1.4_9db07cc20f55ab534598201e37791c66
+      react-admin: 4.1.5_9db07cc20f55ab534598201e37791c66
       set-value: 4.1.0
     transitivePeerDependencies:
       - '@babel/core'
@@ -8998,41 +8798,11 @@ packages:
       - react-native
     dev: false
 
-  /ra-i18n-polyglot/4.1.4_3d8f4cb217652e579bfdc1f2f5184c0e:
-    resolution: {integrity: sha512-q8Y6Xh6EVHtlSwyqFvbMk/iGra6LlseGNX+/nYxT+urw4M+eTahrZd848ZpYXgejO+EDtFWJvRNWYo3VH9coxA==}
+  /ra-i18n-polyglot/4.1.5_ca42067cb28224f34e4e59c6486d7ec2:
+    resolution: {integrity: sha512-vfJ9wLPUmp86ndIPYSdXi6l8v3JEy/EoRUCdsNuNnbDdsEhe9wtSTIqd6eolt1ORaXxgUuZwE3pa0tTRDKpqOg==}
     dependencies:
       node-polyglot: 2.4.2
-      ra-core: 4.1.4_3d8f4cb217652e579bfdc1f2f5184c0e
-    transitivePeerDependencies:
-      - history
-      - react
-      - react-dom
-      - react-hook-form
-      - react-native
-      - react-router
-      - react-router-dom
-    dev: false
-
-  /ra-i18n-polyglot/4.1.4_469c17bb7c0a38fc213ae0e7cef5b107:
-    resolution: {integrity: sha512-q8Y6Xh6EVHtlSwyqFvbMk/iGra6LlseGNX+/nYxT+urw4M+eTahrZd848ZpYXgejO+EDtFWJvRNWYo3VH9coxA==}
-    dependencies:
-      node-polyglot: 2.4.2
-      ra-core: 4.1.4_469c17bb7c0a38fc213ae0e7cef5b107
-    transitivePeerDependencies:
-      - history
-      - react
-      - react-dom
-      - react-hook-form
-      - react-native
-      - react-router
-      - react-router-dom
-    dev: false
-
-  /ra-i18n-polyglot/4.1.4_cb1682e6064963bdebd3c05cf1fd7589:
-    resolution: {integrity: sha512-q8Y6Xh6EVHtlSwyqFvbMk/iGra6LlseGNX+/nYxT+urw4M+eTahrZd848ZpYXgejO+EDtFWJvRNWYo3VH9coxA==}
-    dependencies:
-      node-polyglot: 2.4.2
-      ra-core: 4.1.4_cb1682e6064963bdebd3c05cf1fd7589
+      ra-core: 4.1.5_ca42067cb28224f34e4e59c6486d7ec2
     transitivePeerDependencies:
       - history
       - react
@@ -9058,38 +8828,10 @@ packages:
       - react-router-dom
     dev: false
 
-  /ra-language-english/4.1.4_3d8f4cb217652e579bfdc1f2f5184c0e:
-    resolution: {integrity: sha512-+yxzKm8zxyHGY2kIf4kn4EDsNtNhGiZht0QTUJd9QI0HMthyCmnJsHJWaGLQxL1WbhdwfYvmlP8md6g+GAhIxA==}
+  /ra-language-english/4.1.5_ca42067cb28224f34e4e59c6486d7ec2:
+    resolution: {integrity: sha512-TxxjQ4bwTTtJ99qtvueifMjh7Tzv/+dgKIuTRjMik8u503TH/Z8d9x7UwScqVJw13RNT6vxZZCKQ0zPkPT4xKA==}
     dependencies:
-      ra-core: 4.1.4_3d8f4cb217652e579bfdc1f2f5184c0e
-    transitivePeerDependencies:
-      - history
-      - react
-      - react-dom
-      - react-hook-form
-      - react-native
-      - react-router
-      - react-router-dom
-    dev: false
-
-  /ra-language-english/4.1.4_469c17bb7c0a38fc213ae0e7cef5b107:
-    resolution: {integrity: sha512-+yxzKm8zxyHGY2kIf4kn4EDsNtNhGiZht0QTUJd9QI0HMthyCmnJsHJWaGLQxL1WbhdwfYvmlP8md6g+GAhIxA==}
-    dependencies:
-      ra-core: 4.1.4_469c17bb7c0a38fc213ae0e7cef5b107
-    transitivePeerDependencies:
-      - history
-      - react
-      - react-dom
-      - react-hook-form
-      - react-native
-      - react-router
-      - react-router-dom
-    dev: false
-
-  /ra-language-english/4.1.4_cb1682e6064963bdebd3c05cf1fd7589:
-    resolution: {integrity: sha512-+yxzKm8zxyHGY2kIf4kn4EDsNtNhGiZht0QTUJd9QI0HMthyCmnJsHJWaGLQxL1WbhdwfYvmlP8md6g+GAhIxA==}
-    dependencies:
-      ra-core: 4.1.4_cb1682e6064963bdebd3c05cf1fd7589
+      ra-core: 4.1.5_ca42067cb28224f34e4e59c6486d7ec2
     transitivePeerDependencies:
       - history
       - react
@@ -9112,39 +8854,6 @@ packages:
       - react-native
       - react-router
       - react-router-dom
-    dev: false
-
-  /ra-ui-materialui/4.1.4_2015fecba3c0eda5871eba78656287ee:
-    resolution: {integrity: sha512-EktJU0zjjq3eaOECG4N+iAYrNdAzwSDTDIPk1wACzKLyJm8mZ8+vg1UuzkzHtfvlAtNEObPACQGAYBPAu5Morw==}
-    peerDependencies:
-      '@mui/icons-material': ^5.0.1
-      '@mui/material': ^5.0.2
-      ra-core: ^4.0.0
-      react: ^16.9.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
-      react-router: ^6.1.0
-      react-router-dom: ^6.1.0
-    dependencies:
-      '@mui/icons-material': 5.8.4_c53b207239262d2dac5a6e480ed16463
-      '@mui/material': 5.8.4_3ea9e06dc8acf0e155372289fb8aab28
-      autosuggest-highlight: 3.2.1
-      clsx: 1.1.1
-      inflection: 1.12.0
-      jsonexport: 3.2.0
-      lodash: 4.17.21
-      prop-types: 15.8.1
-      query-string: 7.1.1
-      ra-core: 4.1.4_cb1682e6064963bdebd3c05cf1fd7589
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-dropzone: 12.1.0_react@18.2.0
-      react-error-boundary: 3.1.4_react@18.2.0
-      react-query: 3.39.1_react-dom@18.2.0+react@18.2.0
-      react-router: 6.3.0_react@18.2.0
-      react-router-dom: 6.3.0_react-dom@18.2.0+react@18.2.0
-      react-transition-group: 4.4.2_react-dom@18.2.0+react@18.2.0
-    transitivePeerDependencies:
-      - react-native
     dev: false
 
   /ra-ui-materialui/4.1.5_ab367aaa45392966b3a440248c7bd812:
@@ -9197,58 +8906,6 @@ packages:
       ini: 1.3.8
       minimist: 1.2.6
       strip-json-comments: 2.0.1
-    dev: false
-
-  /react-admin/4.0.0_9db07cc20f55ab534598201e37791c66:
-    resolution: {integrity: sha512-NmxE4IXZC1WfymSCJyyaCIpYNxuuetg2tIO8C5By4ID6+NewaRYlLedzFvedm5e5NgId3Kn2kVOFOnPKlcfE2g==}
-    peerDependencies:
-      react: ^16.9.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@emotion/react': 11.9.3_5d30e9718ea38d687b3bb00a1dc49c11
-      '@emotion/styled': 11.9.3_64cccac00810f582db41e578ed4a4145
-      '@mui/icons-material': 5.8.4_c53b207239262d2dac5a6e480ed16463
-      '@mui/material': 5.8.4_3ea9e06dc8acf0e155372289fb8aab28
-      history: 5.3.0
-      ra-core: 4.1.4_3d8f4cb217652e579bfdc1f2f5184c0e
-      ra-i18n-polyglot: 4.1.4_3d8f4cb217652e579bfdc1f2f5184c0e
-      ra-language-english: 4.1.4_3d8f4cb217652e579bfdc1f2f5184c0e
-      ra-ui-materialui: 4.1.4_2015fecba3c0eda5871eba78656287ee
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-hook-form: 7.32.1_react@18.2.0
-      react-router: 6.3.0_react@18.2.0
-      react-router-dom: 6.3.0_react-dom@18.2.0+react@18.2.0
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@types/react'
-      - react-native
-    dev: false
-
-  /react-admin/4.1.4_9db07cc20f55ab534598201e37791c66:
-    resolution: {integrity: sha512-7i2otuKUPysW3uSQ6VabXeEOuzUIS0fhv52AQ9Xan9TndUmAkp+sR4zw5RePcUMNE0IJBwW+0+rz/yhUEjyWrQ==}
-    peerDependencies:
-      react: ^16.9.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@emotion/react': 11.9.3_5d30e9718ea38d687b3bb00a1dc49c11
-      '@emotion/styled': 11.9.3_64cccac00810f582db41e578ed4a4145
-      '@mui/icons-material': 5.8.4_c53b207239262d2dac5a6e480ed16463
-      '@mui/material': 5.8.4_3ea9e06dc8acf0e155372289fb8aab28
-      history: 5.3.0
-      ra-core: 4.1.4_cb1682e6064963bdebd3c05cf1fd7589
-      ra-i18n-polyglot: 4.1.4_cb1682e6064963bdebd3c05cf1fd7589
-      ra-language-english: 4.1.4_cb1682e6064963bdebd3c05cf1fd7589
-      ra-ui-materialui: 4.1.4_2015fecba3c0eda5871eba78656287ee
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-hook-form: 7.32.2_react@18.2.0
-      react-router: 6.3.0_react@18.2.0
-      react-router-dom: 6.3.0_react-dom@18.2.0+react@18.2.0
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@types/react'
-      - react-native
     dev: false
 
   /react-admin/4.1.5_95157756fc658de1fbdaf47a4dc6bd57:
@@ -9358,15 +9015,6 @@ packages:
 
   /react-ga4/1.4.1:
     resolution: {integrity: sha512-ioBMEIxd4ePw4YtaloTUgqhQGqz5ebDdC4slEpLgy2sLx1LuZBC9iYCwDymTXzcntw6K1dHX183ulP32nNdG7w==}
-    dev: false
-
-  /react-hook-form/7.32.1_react@18.2.0:
-    resolution: {integrity: sha512-A0bsgZZUnGdG68sXLBNMN7zRYKbYc/ESjDkjrJZ8PZ8/96EQ0IwMfYY3wpopt+yn2+Mm3APEUkw+JdjYQSRVJA==}
-    engines: {node: '>=12.22.0'}
-    peerDependencies:
-      react: ^16.8.0 || ^17 || ^18
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react-hook-form/7.32.2_react@18.2.0:
@@ -9901,14 +9549,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
-
-  /schema-dts/1.1.0_typescript@4.7.3:
-    resolution: {integrity: sha512-vdmbs/5ycj4zyKpZIDqTcy+IZi4s7c38RVAYuDmRi7zgxUT8wRWPMLzg0jr7FjdVunYu9yZ00F3+XcZTTFcTOQ==}
-    peerDependencies:
-      typescript: '>=4.1.0'
-    dependencies:
-      typescript: 4.7.3
     dev: false
 
   /schema-dts/1.1.0_typescript@4.7.4:
@@ -10789,6 +10429,7 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.7.3
+    dev: false
 
   /tsutils/3.21.0_typescript@4.7.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
@@ -11006,6 +10647,7 @@ packages:
     resolution: {integrity: sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: false
 
   /typescript/4.7.4:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
