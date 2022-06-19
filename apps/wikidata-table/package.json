@@ -28,7 +28,7 @@
     "node-fetch": "^3.2.6",
     "query-string": "^7.1.1",
     "react": "18.2.0",
-    "react-admin": "4.1.4",
+    "react-admin": "4.1.5",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.32.2",
     "react-router": "^6.3.0",
