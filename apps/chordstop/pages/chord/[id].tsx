@@ -8,6 +8,7 @@ import { formatSong } from "../../lib/formatSong";
 import { prismaClient } from "../../prisma/prismaClient";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import React, { useEffect, useState } from "react";
+import { Link as MUILink } from "@mui/material";
 
 export async function getServerSideProps(context: any) {
   const { id } = context.query;
@@ -53,11 +54,11 @@ const ChordPage: NextPage<{
     <Layout>
       <Typography variant="h4">
         <Link href="/artist/[id]" as={`/artist/${chord.artist.id}`}>
-          {chord.artist.label}
+          <MUILink underline="none">{chord.artist.label}</MUILink>
         </Link>
       </Typography>
       <Typography variant="h2" component="h2">
-        Chord for {chord.title}
+        {chord.title}
       </Typography>
       <div>
         <Link
