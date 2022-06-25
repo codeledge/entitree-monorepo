@@ -1,0 +1,15 @@
+{
+  "name": "@monorepo/shared",
+  "version": "0.0.1",
+  "sideEffects": false,
+  "license": "MIT",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "lint": "TIMING=1 eslint src --fix",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "prepublish": "pnpm build",
+    "test": "jest"
+  }
+}

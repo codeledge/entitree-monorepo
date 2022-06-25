@@ -43,7 +43,11 @@ const imageInfo = async (id: number) => {
     image.faceDetectionGoogleVision = undefined;
     image.url = {};
     for (let i in ImageType) {
-      image.url[ImageType[i]] = createFilePath(ImageType[i], image.id, true);
+      image.url[ImageType[i]] = createFilePath(
+        ImageType[i],
+        image.imageId,
+        true
+      );
     }
     return image;
   });
