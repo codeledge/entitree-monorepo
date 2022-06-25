@@ -20,11 +20,11 @@
   "devDependencies": {
     "config": "workspace:*",
     "tsconfig": "workspace:*",
-    "tsup": "^6.0.1",
-    "typescript": "^4.7.2"
+    "tsup": "^6.1.2",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@changesets/cli": "^2.22.0",
+    "@changesets/cli": "^2.23.0",
     "@types/latinize": "^0.2.15",
     "@types/luxon": "^2.3.2",
     "axios": "^0.27.2",
@@ -32,7 +32,7 @@
     "luxon": "^2.4.0",
     "ordinalize": "^1.0.2",
     "ts-md5": "^1.2.11",
-    "wikibase-edit": "^5.0.0",
+    "wikibase-edit": "^5.0.3",
     "wikibase-sdk": "^8.0.0",
     "wikidata-sdk": "^8.0.0"
   },

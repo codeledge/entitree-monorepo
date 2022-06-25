@@ -13,8 +13,7 @@ import {
 
 import NextCors from "nextjs-cors";
 import { getSession } from "next-auth/react";
-import { prismaClient } from "../../../../prisma/prismaClient";
-import { Image } from "../../../../prisma/client";
+import { Image, prismaClient } from "../../../../prisma/prismaClient";
 
 const getImage = async (id: number) => {
   const image = await prismaClient.image.findFirst({

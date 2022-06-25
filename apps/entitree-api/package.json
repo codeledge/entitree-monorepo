@@ -10,18 +10,18 @@
   },
   "dependencies": {
     "@entitree/helper": "workspace:*",
-    "next": "12.0.8",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "next": "12.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^17.0.12",
-    "@types/react": "17.0.37",
+    "@types/node": "^18.0.0",
+    "@types/react": "18.0.14",
     "config": "workspace:*",
-    "eslint": "7.32.0",
+    "eslint": "8.18.0",
     "next-transpile-modules": "9.0.0",
     "tsconfig": "workspace:*",
-    "typescript": "^4.5.3"
+    "typescript": "^4.7.4"
   }
 }
