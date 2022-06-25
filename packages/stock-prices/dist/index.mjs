@@ -9,10 +9,6 @@ var SERVICES = {
     companies: "https://www.idx.co.id/umbraco/Surface/ListedCompany/GetCompanyProfiles?start=0&length=3&search[value]=&search[regex]=false"
   }
 };
-var getIdxCompanies = (req) => {
-  let url = SERVICES.IDX.companies;
-  return axios.get(url);
-};
 var getNepseTodaysPrice = (date) => {
   let url = SERVICES.NPSE.todaysPrice.replace("$1", date);
   console.log(url);
@@ -24,6 +20,5 @@ var getNepseTodaysPrice = (date) => {
 };
 export {
   SERVICES,
-  getIdxCompanies,
   getNepseTodaysPrice
 };

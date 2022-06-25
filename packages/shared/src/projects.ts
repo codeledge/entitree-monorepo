@@ -17,7 +17,7 @@ export const projects: {
   },
   {
     key: "entitree",
-    name: Number("Entitree"),
+    name: "Entitree",
     description: "Tree diagrams for Wikidata",
     link: "https://entitree.com/",
     image:

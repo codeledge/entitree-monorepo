@@ -288,6 +288,7 @@ importers:
       '@emotion/react': ^11.9.3
       '@emotion/styled': ^11.9.3
       '@entitree/helper': workspace:*
+      '@entitree/shared': workspace:*
       '@mui/icons-material': ^5.8.4
       '@mui/material': ^5.8.4
       '@mui/styles': ^5.8.4
@@ -324,6 +325,7 @@ importers:
       '@emotion/react': 11.9.3_5d30e9718ea38d687b3bb00a1dc49c11
       '@emotion/styled': 11.9.3_64cccac00810f582db41e578ed4a4145
       '@entitree/helper': link:../../packages/entitree-helper
+      '@entitree/shared': link:../../packages/shared
       '@mui/icons-material': 5.8.4_c53b207239262d2dac5a6e480ed16463
       '@mui/material': 5.8.4_3ea9e06dc8acf0e155372289fb8aab28
       '@mui/styles': 5.8.4_5d30e9718ea38d687b3bb00a1dc49c11
@@ -406,6 +408,18 @@ importers:
       tsconfig: link:../tsconfig
       tsup: 6.0.1_typescript@4.7.2
       typescript: 4.7.2
+
+  packages/shared:
+    specifiers:
+      config: workspace:*
+      tsconfig: workspace:*
+      tsup: ^6.0.1
+      typescript: ^4.7.2
+    devDependencies:
+      config: link:../config
+      tsconfig: link:../tsconfig
+      tsup: 6.0.1_typescript@4.7.4
+      typescript: 4.7.4
 
   packages/stock-prices:
     specifiers:
@@ -10406,6 +10420,42 @@ packages:
       sucrase: 3.21.0
       tree-kill: 1.2.2
       typescript: 4.7.2
+    transitivePeerDependencies:
+      - supports-color
+      - ts-node
+    dev: true
+
+  /tsup/6.0.1_typescript@4.7.4:
+    resolution: {integrity: sha512-2Pl1YkEEvzfg4aYgwUILaHV0wwZQKO7mNHMQChyzdCNlQqf11eug7gWk86XCb3CvRofCXBX87x73BTGjyS3cOQ==}
+    engines: {node: '>=14'}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': ^1
+      postcss: ^8.4.12
+      typescript: ^4.1.0
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      postcss:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      bundle-require: 3.0.4_esbuild@0.14.41
+      cac: 6.7.12
+      chokidar: 3.5.3
+      debug: 4.3.4
+      esbuild: 0.14.41
+      execa: 5.1.1
+      globby: 11.1.0
+      joycon: 3.1.1
+      postcss-load-config: 3.1.4
+      resolve-from: 5.0.0
+      rollup: 2.75.0
+      source-map: 0.8.0-beta.0
+      sucrase: 3.21.0
+      tree-kill: 1.2.2
+      typescript: 4.7.4
     transitivePeerDependencies:
       - supports-color
       - ts-node

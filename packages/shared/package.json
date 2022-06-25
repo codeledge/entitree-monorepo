@@ -1,9 +1,14 @@
 {
-  "name": "@monorepo/shared",
+  "name": "@entitree/shared",
   "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "sideEffects": false,
   "license": "MIT",
-  "main": "index.ts",
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --dts",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
@@ -11,5 +16,14 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "prepublish": "pnpm build",
     "test": "jest"
+  },
+  "devDependencies": {
+    "config": "workspace:*",
+    "tsconfig": "workspace:*",
+    "tsup": "^6.0.1",
+    "typescript": "^4.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
