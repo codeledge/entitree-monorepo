@@ -19,6 +19,8 @@ export const projects: {
     description: "",
     link: "https://wikidata-table.vercel.app/",
     software: ["react-admin"],
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Wikidata_Table_Screenshot_2022-06-26.png/1024px-Wikidata_Table_Screenshot_2022-06-26.png",
     start: 2022,
     github:
       "https://github.com/codeledge/entitree-monorepo/tree/main/apps/wikidata-table",
@@ -39,7 +41,7 @@ export const projects: {
     name: "Wikidata charts",
     description:
       "Wikidata Charts using SPARQL and React to draw line charts of properties or queries",
-    link: "https://wikidata-charts.vercel.app/",
+    link: "https://wikidata-charts.vercel.app/chart",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/8/80/Wikidata_Charts_-_Screenshot_of_employees_of_tech_companies.png",
     software: ["recharts", "react-admin"],
@@ -54,13 +56,16 @@ export const projects: {
       "Show chords and edit them. Better alternative to UltimateGuitar.",
     link: "https://chordstop.vercel.app/",
     start: 2022,
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Chordstop_Screenshot_2022-06-26.png/651px-Chordstop_Screenshot_2022-06-26.png",
     github:
       "https://github.com/codeledge/entitree-monorepo/tree/main/apps/chordstop",
   },
   {
     key: "images",
     name: "Entitree images",
-    description: "",
+    description:
+      "Users can upload images of people which are then processed into different types of photos, zoomed into the face using GoogleVision and with the background removed. It offers a public API that can be queried using a Wikidata ID.",
     link: "https://images.entitree.com/",
     software: ["react-admin"],
     image:
@@ -90,7 +95,13 @@ export const projects: {
   },
 ];
 
-export const packages = [
+export const packages: {
+  package: string;
+  npmjs: string;
+  github: string;
+  description: string;
+  internal?: boolean;
+}[] = [
   {
     package: "@entitree/helper",
     npmjs: "https://www.npmjs.com/package/@entitree/helper",
@@ -98,6 +109,14 @@ export const packages = [
       "https://github.com/codeledge/entitree-monorepo/tree/main/packages/entitree-helper",
     description:
       "Super awesome helper function for Entitree projects. But anyone can use them",
+  },
+  {
+    package: "@entitree/shared",
+    npmjs: "https://www.npmjs.com/package/@entitree/shared",
+    github:
+      "https://github.com/codeledge/entitree-monorepo/tree/main/packages/shared",
+    description: "Shared functions for our projects",
+    internal: true,
   },
   {
     package: "ra-data-simple-prisma",
