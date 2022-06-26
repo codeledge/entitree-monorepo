@@ -32751,6 +32751,13 @@ declare type NIK_TYPE = {
     birthDate: string;
     district: DISTRICTS;
 };
+declare type DISTRICTS = {
+    item: string;
+    itemEnglish: string;
+    itemLabel: string;
+    code: string;
+    kabupatenLabel: string;
+};
 declare const getDataFromNIK: (nik: string) => NIK_TYPE | null;
 
 declare const md5: (str: string) => string;
