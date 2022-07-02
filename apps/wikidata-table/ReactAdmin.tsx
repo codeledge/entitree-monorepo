@@ -1,20 +1,10 @@
-import {
-  Admin,
-  CustomRoutes,
-  EditGuesser,
-  ListGuesser,
-  Resource,
-  ShowGuesser,
-} from "react-admin";
+import { Admin, CustomRoutes, Resource } from "react-admin";
 
 import Documentation from "./custom-pages/Documentation";
 import { Layout } from "./layout";
-import LoginPage from "./custom-pages/LoginPage";
+// import LoginPage from "./custom-pages/LoginPage";
 import Privacy from "./custom-pages/Privacy";
 import React from "react";
-import { authProvider } from "./providers/authProvider";
-// import { dataProvider } from "./providers/dataProvider";
-// import { useSession } from "next-auth/react";
 import { Route } from "react-router";
 import { dataProvider } from "./ra-data-wikidata";
 import { WikidataPageArray, WikidataPages } from "./lib/data/page";
@@ -32,13 +22,11 @@ const ReactAdmin = () => {
   return (
     <Admin
       disableTelemetry
-      // authProvider={authProvider(session)}
       dashboard={Dashboard}
       dataProvider={dataProvider("/api/")}
-      // i18nProvider={i18nProvider}
       layout={Layout}
       theme={myTheme}
-      loginPage={LoginPage}
+      // loginPage={LoginPage}
     >
       <CustomRoutes>
         <Route key="key" path="/documentation" element={<Documentation />} />

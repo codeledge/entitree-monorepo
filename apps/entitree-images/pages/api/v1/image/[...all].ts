@@ -13,7 +13,7 @@ import {
 
 import NextCors from "nextjs-cors";
 import { getSession } from "next-auth/react";
-import { prismaClient } from "../../../../prisma/prismaClient";
+import { Image, prismaClient } from "../../../../prisma/prismaClient";
 
 const getImage = async (id: number) => {
   const image = await prismaClient.image.findFirst({
@@ -39,7 +39,8 @@ const imageInfo = async (id: number) => {
     },
   });
 
-  return images.map((image: any) => {
+  type ApiImage = Image & { url: { [key: string]: string } };
+  return images.map((image: ApiImage) => {
     image.faceDetectionGoogleVision = undefined;
     image.url = {};
     for (let i in ImageType) {
