@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@entitree/helper": "workspace:*",
-    "next": "12.1.6",
+    "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "ui": "workspace:*"
@@ -19,7 +19,7 @@
     "@types/node": "^18.0.0",
     "@types/react": "18.0.14",
     "config": "workspace:*",
-    "eslint": "8.18.0",
+    "eslint": "8.19.0",
     "next-transpile-modules": "9.0.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.7.4"

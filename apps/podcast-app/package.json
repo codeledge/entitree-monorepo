@@ -12,10 +12,10 @@
     "@entitree/helper": "workspace:*",
     "@types/luxon": "^2.3.2",
     "axios": "^0.27.2",
-    "fs": "^0.0.1-security",
+    "fs": "0.0.1-security",
     "locutus": "^2.0.16",
     "luxon": "^2.4.0",
-    "next": "12.1.6",
+    "next": "12.2.0",
     "podcast": "^2.0.0",
     "podparse": "^1.5.1",
     "react": "18.2.0",
@@ -27,8 +27,8 @@
   "devDependencies": {
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
-    "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6",
+    "eslint": "8.19.0",
+    "eslint-config-next": "12.2.0",
     "typescript": "4.7.4"
   }
 }
