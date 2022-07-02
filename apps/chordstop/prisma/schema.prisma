@@ -75,6 +75,9 @@ model User {
   emailVerified DateTime?
   image         String?
   role          String?
+  created_at    DateTime  @default(now())
+  updated_at    DateTime? @updatedAt
+  deleted_at    DateTime?
   accounts      Account[]
   sessions      Session[]
 }
