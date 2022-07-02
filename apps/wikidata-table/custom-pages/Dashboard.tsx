@@ -32,6 +32,9 @@ const Dashboard = () => {
         <SimpleAccordion />
         <Divider />
         <Box mt={4} />
+        <Typography variant="h4" gutterBottom>
+          Our other projects:
+        </Typography>
         <Projects />
       </Box>
     </Card>
