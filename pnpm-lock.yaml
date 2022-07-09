@@ -312,6 +312,7 @@ importers:
       react-admin: 4.2.0
       react-dom: 18.2.0
       react-hook-form: ^7.33.1
+      react-query: ^3.39.1
       react-router: ^6.3.0
       react-router-dom: ^6.3.0
       schema-dts: ^1.1.0
@@ -341,6 +342,7 @@ importers:
       react-admin: 4.2.0_twyhzqqpkwvvgrmyeapdo6i4my
       react-dom: 18.2.0_react@18.2.0
       react-hook-form: 7.33.1_react@18.2.0
+      react-query: 3.39.1_biqbaboplfbrettd7655fr4n2y
       react-router: 6.3.0_react@18.2.0
       react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
       schema-dts: 1.1.0_typescript@4.7.4

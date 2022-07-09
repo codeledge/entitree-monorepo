@@ -33,7 +33,7 @@ export const getListHandler = async <
     transform?: (data: any) => any;
   }
 ) => {
-  const { pagination, sort, filter } = req.body.params;
+  let { pagination, sort, filter } = req.body.params;
   const resource = req.body.resource;
 
   const where = extractWhere(req);
@@ -45,6 +45,11 @@ export const getListHandler = async <
     return;
   }
   let query = sparqlQueryCreate(table);
+
+  //Add filter from page data
+  if (table.filter) {
+    filter = { ...filter, ...table.filter };
+  }
 
   let queryFilter = "";
   if (filter) {
@@ -66,27 +71,30 @@ export const getListHandler = async <
     sort.field = sort.field.split(".")[0];
     if (sort.field === "id") {
       sort.field = "item";
+    } else {
+      orderBy = sort.field ? `${sort.order}(?${sort.field}_)` : "";
     }
-    orderBy = sort.field ? `${sort.order}(?${sort.field})` : "";
   }
-
-  // let totalQuery = await sparql({
-  //   select: "?item",
-  //   where: `${table.where}
-  //   ${queryFilter}`,
-  // });
 
   let data: any = await sparql({
     select: "?item",
     where: `${table.where}
-    ${sort.field ? `OPTIONAL { ?item wdt:${sort.field} ?${sort.field}_. }` : ""}
+    ${
+      sort.field && sort.field !== "item"
+        ? `OPTIONAL { ?item wdt:${sort.field} ?${sort.field}_. }`
+        : ""
+    }
     ${queryFilter}`,
-    take,
+    take: take + 1,
     skip,
     orderBy,
   });
 
-  let searchIds: string[] = data.map((d) => d.item);
+  let hasNextPage = false;
+  if (data.length > take) {
+    hasNextPage = true;
+  }
+  let searchIds: string[] = data.slice(0, take).map((d) => d.item);
 
   if (searchIds.length) {
     data = await sparql({
@@ -120,12 +128,13 @@ export const getListHandler = async <
     return row;
   });
 
-  const total = 1000; //totalQuery.length;
-  // console.log(data);
   // await options?.transform?.(data);
 
   res.json({
     data,
-    total,
+    pageInfo: {
+      hasPreviousPage: skip > 0,
+      hasNextPage,
+    },
   });
 };

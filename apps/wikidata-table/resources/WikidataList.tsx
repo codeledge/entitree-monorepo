@@ -1,77 +1,87 @@
 import {
-  AutocompleteInput,
   Datagrid,
-  DateField,
-  EmailField,
-  ImageField,
   List,
   Pagination,
-  SearchInput,
   ShowButton,
   TextField,
   TextInput,
+  CreateButton,
+  ExportButton,
+  FilterButton,
+  TopToolbar,
 } from "react-admin";
-
+import { useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
-import {
-  WD_COUNTRY,
-  WD_PART_OF_THE_SERIES,
-  WIKIDATA_LABELS_EN,
-} from "@entitree/helper";
+import { WIKIDATA_LABELS_EN } from "@entitree/helper";
 import { Column, Page } from "../lib/data/types";
 import { CountryInput } from "../fields/CountryInput";
 import { WikidataLabelField } from "../fields/WikidataLabelField";
-import { DESCRIPTIONS } from "../lib/data/podcastDescriptions";
+import { useListView } from "../views/ListViewButton";
+import { DesktopGrid } from "../views/DesktopGrid";
 
-//rowClick="show"
 export const WikidataList = (page: Page) => {
+  const theme = useTheme();
+  const isXsmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+
+  const [view] = useListView(page.id);
+
   const header = page.header;
   let filters = [
     <TextInput key="item" label="Search" source="item" resettable alwaysOn />,
     <CountryInput key="Country" source="P17" />,
   ];
-  if (page.id === "podcast_episodes") {
-    filters.push(
-      <AutocompleteInput
-        key={WD_PART_OF_THE_SERIES}
-        source={WD_PART_OF_THE_SERIES}
-        label="part of"
-        choices={DESCRIPTIONS.map((d) => ({
-          id: d.id,
-          name: d.title,
-        }))}
-        alwaysOn
-      />
-    );
+  if (page.filterButtons) {
+    filters = filters.concat(page.filterButtons);
   }
   return (
     <List
       filters={filters}
       pagination={<Pagination rowsPerPageOptions={[10, 25, 50, 100]} />}
+      actions={
+        <TopToolbar>
+          {isSmall ? <FilterButton /> : null}
+          <CreateButton />
+          <ExportButton />
+          {/* <ListViewButton table={page.id} /> */}
+        </TopToolbar>
+      }
     >
-      <Datagrid>
-        <TextField source="id"></TextField>
-        <WikidataLabelField source="item.label" />
-        {/*<TextField source={WD_COUNTRY + ".label"}></TextField> */}
-        {header &&
-          header.map(
-            (col) =>
-              col.property !== "P18" &&
-              col.list !== false &&
-              col.visible !== false && (
-                <TextField
-                  key={col.property}
-                  source={
-                    col.property +
-                    (col.propertyType === "WikibaseItem" ? ".label" : "")
-                  }
-                  label={WIKIDATA_LABELS_EN[col.property]}
-                  sortable={col.propertyType !== "WikibaseItem"}
-                />
-              )
-          )}
-        <ShowButton />
-      </Datagrid>
+      <WikidataDatagrid header={header} />
+      {/* {isXsmall ? (
+        // <MobileGrid />
+        <span>Not available yet on mobile</span>
+      ) : view === "grid" ? (
+        <DesktopGrid header={header} />
+      ) : (
+        <WikidataDatagrid header={header} />
+      )} */}
     </List>
   );
 };
+
+const WikidataDatagrid = ({ header }: { header: Column[] }) => (
+  <Datagrid optimized bulkActionButtons={false}>
+    <TextField source="id"></TextField>
+    <WikidataLabelField source="item.label" />
+    {/*<TextField source={WD_COUNTRY + ".label"}></TextField> */}
+    {header &&
+      header.map(
+        (col) =>
+          col.property !== "P18" &&
+          col.list !== false &&
+          col.visible !== false && (
+            <TextField
+              key={col.property}
+              source={
+                col.property +
+                (col.propertyType === "WikibaseItem" ? ".label" : "")
+              }
+              label={WIKIDATA_LABELS_EN[col.property]}
+              sortable={col.propertyType !== "WikibaseItem"}
+            />
+          )
+      )}
+    <ShowButton />
+  </Datagrid>
+);

@@ -19,6 +19,7 @@ import {
   WD_YOUTUBE_VIDEO_ID,
 } from "@entitree/helper";
 import { Column, Page } from "../types";
+import { podcastFilter } from "./podcastFilter";
 
 export const publicationProps: Column[] = [
   {
@@ -48,6 +49,7 @@ export const podcasts: Page = {
 export const podcast_episodes: Page = {
   represents: WDQ_PODCAST_EPISODE,
   category: "podcast",
+  filterButtons: podcastFilter,
   refine: WD_PART_OF_THE_SERIES,
   header: [
     ...publicationProps,
