@@ -106227,13 +106227,20 @@ var getDataFromNIK = (nik) => {
     return null;
   }
   let districtCode = nik.slice(0, 2) + "." + nik.slice(2, 4) + "." + nik.slice(4, 6);
-  let district = all_districts_default.find((entry) => entry.code === districtCode);
-  let birthdateString = nik.slice(6, 12);
-  let birthDate = birthdateString.replace(/(\d{2})(\d{2})(\d{2})/, "$3-$2-$1");
+  let district = all_districts_default.filter((entry) => entry.code === districtCode)[0];
+  if (!district) {
+    return null;
+  }
+  let birthDay = parseInt(nik.slice(6, 8));
+  const gender = birthDay < 40 ? "male" : "female";
+  const birthYear = parseInt(nik.slice(10, 12));
+  const birthDate = (birthYear < Number(new Date().getFullYear().toString().slice(-2)) ? "20" : "19") + (birthYear < 10 ? "0" : "") + birthYear + "-" + nik.slice(8, 10) + "-" + birthDay % 40;
   return {
+    nik,
     district,
     birthDate,
-    gender: parseInt(nik.slice(6, 7)) < 5 ? "male" : "female"
+    gender,
+    suffix: nik.slice(12, 16)
   };
 };
 

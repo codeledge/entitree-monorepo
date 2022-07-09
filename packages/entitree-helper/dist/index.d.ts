@@ -32747,9 +32747,11 @@ declare const abbreviateNumber: (value: number) => any;
 
 declare const isValidNIK: (nik: string) => boolean;
 declare type NIK_TYPE = {
+    nik: string;
     gender: "male" | "female";
     birthDate: string;
     district: DISTRICTS;
+    suffix: string;
 };
 declare type DISTRICTS = {
     item: string;
