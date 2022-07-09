@@ -1,4 +1,9 @@
-import { Admin, CustomRoutes, Resource } from "react-admin";
+import {
+  Admin,
+  CustomRoutes,
+  Resource,
+  StoreContextProvider,
+} from "react-admin";
 
 import Documentation from "./custom-pages/Documentation";
 import { Layout } from "./layout";
@@ -13,12 +18,20 @@ import { WikidataShow } from "./resources/WikidataShow";
 import { muiIcons } from "./lib/data/muiIcons";
 import Dashboard from "./custom-pages/Dashboard";
 import { myTheme } from "./layout/theme";
+import { QueryClient } from "react-query";
 
 const ReactAdmin = () => {
   // const { data: session, status } = useSession();
   // const loading = status === "loading";
 
   // if (loading) return null;
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 15 * 60 * 1000, // 15 minutes
+      },
+    },
+  });
   return (
     <Admin
       disableTelemetry
@@ -26,6 +39,8 @@ const ReactAdmin = () => {
       dataProvider={dataProvider("/api/")}
       layout={Layout}
       theme={myTheme}
+      queryClient={queryClient}
+
       // loginPage={LoginPage}
     >
       <CustomRoutes>

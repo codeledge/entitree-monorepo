@@ -8,19 +8,20 @@ export const PageCategories = [
   "aviation",
   "education",
   "medicine",
-  // "science",
   "technology",
   "entertainment",
   "finance",
   "other",
   "traveling",
   "podcast",
-];
+  "politics",
+] as const;
 
 export type Page = {
   id?: string;
   query?: string;
   where?: string;
+  filter?: Record<string, string>;
   header?: Column[];
   dataset?: any;
   parent?: string;
@@ -31,17 +32,8 @@ export type Page = {
   emoji?: string;
   muiEmoji?: string;
   refine?: string;
-  category:
-    | "aviation"
-    | "education"
-    | "medicine"
-    // | "science"
-    | "technology"
-    | "entertainment"
-    | "finance"
-    | "other"
-    | "traveling"
-    | "podcast";
+  filterButtons?: any[];
+  category: typeof PageCategories[number];
 };
 
 export type Column = {

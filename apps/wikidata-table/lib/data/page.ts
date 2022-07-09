@@ -4,16 +4,13 @@ import { drones, gps_tracker } from "./pages/gadgets";
 import { hotels } from "./pages/hotels";
 import { hospitals, pharmaceutical_companies } from "./pages/medicine";
 import { podcasts, podcast_episodes } from "./pages/podcast";
+import { politicians } from "./pages/politics";
 import { universities } from "./pages/universities";
 import { Pages } from "./types";
 
 export const WikidataPages: Pages = {
-  // properties: {
-  //   represents: null,
-  //   query: "SELECT ?item WHERE {\n ?item a wikibase:Property .\n}",
-  //   header: [{ name: "name", property: "label", url: "item" }],
-  // },
   drones,
+  politicians,
   mobile_network_operators: {
     represents: "Q1941618",
     category: "technology",
