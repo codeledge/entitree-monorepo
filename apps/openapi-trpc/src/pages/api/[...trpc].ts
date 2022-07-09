@@ -6,4 +6,4 @@ import { appRouter } from "../../server/router";
 export default createOpenApiNextHandler({
   router: appRouter,
   createContext,
-});
+}) as any;

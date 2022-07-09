@@ -15,7 +15,7 @@
     "fs": "0.0.1-security",
     "locutus": "^2.0.16",
     "luxon": "^2.4.0",
-    "next": "12.2.0",
+    "next": "12.2.2",
     "podcast": "^2.0.0",
     "podparse": "^1.5.1",
     "react": "18.2.0",
@@ -25,10 +25,10 @@
     "youtube-mp3-downloader": "^0.7.10"
   },
   "devDependencies": {
-    "@types/node": "18.0.0",
-    "@types/react": "18.0.14",
+    "@types/node": "18.0.3",
+    "@types/react": "18.0.15",
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.0",
+    "eslint-config-next": "12.2.2",
     "typescript": "4.7.4"
   }
 }

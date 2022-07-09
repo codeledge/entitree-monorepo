@@ -37,3 +37,4 @@ entitree-images*
 
 # vercel
 .vercel
+tsconfig.tsbuildinfo
