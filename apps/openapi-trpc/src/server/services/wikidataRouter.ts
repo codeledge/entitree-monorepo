@@ -6,7 +6,7 @@ import {
   WIKIDATA_LABELS_EN,
   WIKIDATA_REGEX,
 } from "@entitree/helper";
-import { createRouter } from "./createRouter";
+import { createRouter } from "../createRouter";
 
 export const wikidataRouter = createRouter()
   .query("getEnLabels", {

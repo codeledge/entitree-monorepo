@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { getDataFromNIK } from "@entitree/helper";
-import { createRouter } from "./createRouter";
+import { createRouter } from "../createRouter";
 
 export const documentRouter = createRouter().query("parseNIK", {
   meta: {
