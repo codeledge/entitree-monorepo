@@ -1,0 +1,43 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+  output          = "./generated/client"
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model TwitterAccount {
+  id                 Int                    @id @default(autoincrement())
+  accountId          BigInt                 @unique
+  username           String
+  account_created_at DateTime?
+  created_at         DateTime               @default(now())
+  public_metrics     TwitterPublicMetrics[]
+  images             TwitterImage[]
+}
+
+model TwitterPublicMetrics {
+  id              Int            @id @default(autoincrement())
+  accountId       Int
+  account         TwitterAccount @relation(fields: [accountId], references: [id])
+  followers_count Int
+  following_count Int
+  tweet_count     Int
+  listed_count    Int
+  created_at      DateTime       @default(now())
+}
+
+model TwitterImage {
+  id         Int            @id @default(autoincrement())
+  start      DateTime?
+  end        DateTime?
+  url        String         @unique
+  created_at DateTime       @default(now())
+  accountId  Int
+  source     String?        @db.LongText
+  account    TwitterAccount @relation(fields: [accountId], references: [id])
+}

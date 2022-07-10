@@ -251,6 +251,7 @@ importers:
   apps/twitter-image:
     specifiers:
       '@entitree/helper': workspace:*
+      '@prisma/client': ^4.0.0
       '@trpc/server': ^9.25.3
       '@types/jsonwebtoken': ^8.5.8
       '@types/node': 18.0.3
@@ -264,6 +265,7 @@ importers:
       eslint-config-next: 12.2.1
       jsonwebtoken: ^8.5.1
       next: 12.2.0
+      prisma: ^4.0.0
       react: 18.2.0
       react-dom: 18.2.0
       swagger-ui-react: ^4.12.0
@@ -276,6 +278,7 @@ importers:
       zod: ^3.17.3
     dependencies:
       '@entitree/helper': link:../../packages/entitree-helper
+      '@prisma/client': 4.0.0_prisma@4.0.0
       '@trpc/server': 9.25.3
       axios: 0.27.2
       jsonwebtoken: 8.5.1
@@ -298,6 +301,7 @@ importers:
       config: link:../../packages/config
       eslint: 8.19.0
       eslint-config-next: 12.2.1_4x5o4skxv6sl53vpwefgt23khm
+      prisma: 4.0.0
       tsconfig: link:../../packages/tsconfig
       typescript: 4.7.4
 
