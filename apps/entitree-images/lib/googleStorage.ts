@@ -2,7 +2,13 @@ import { Storage } from "@google-cloud/storage";
 import { get } from "lodash";
 
 // Instantiate a storage client with credentials
-const storage = new Storage();
+const storage = new Storage({
+  credentials: {
+    client_email: process.env.GCLOUD_SERVICE_ACCOUNT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY,
+  },
+});
+
 const BUCKET_NAME = process.env.GC_BUCKET!;
 
 export const BUCKET_BASE = "gs://" + BUCKET_NAME + "/";
