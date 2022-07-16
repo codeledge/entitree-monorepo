@@ -5,6 +5,7 @@
     "composite": false,
     "declaration": true,
     "declarationMap": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,

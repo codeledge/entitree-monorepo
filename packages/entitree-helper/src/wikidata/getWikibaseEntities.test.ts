@@ -1,15 +1,20 @@
 import { getWikibaseEntities } from "./getWikibaseEntities";
+import { getWikidataEntities } from "./getWikidataEntities";
+import { WD_SIGNIFICANT_EVENT } from "./properties";
 
 describe("getWikibaseEntities", () => {
   describe("wikidata", () => {
     test("it should get universe", async () => {
       const id = "Q1";
-      const res = await getWikibaseEntities({
-        ids: [id],
-        dataSource: "wikidata",
-      });
+      const res = await getWikidataEntities([id]);
       expect(res[id].id).toBe(id);
       expect(res["123"]).toBeUndefined();
+      const event = res[id].claims?.[WD_SIGNIFICANT_EVENT];
+      const BigBang = "Q323";
+      const claimsMatched = event?.filter(
+        (claim) => claim.mainsnak.datavalue?.value.id === BigBang
+      );
+      expect(claimsMatched?.length).toBeGreaterThan(0);
     });
 
     test("it should get languaged", async () => {

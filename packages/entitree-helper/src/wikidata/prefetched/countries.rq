@@ -1,7 +1,9 @@
 #Countries
-SELECT ?item ?itemLabel 
+SELECT ?item ?itemLabel ?code
 WHERE 
 {
   ?item wdt:P31 wd:Q3624078.
+  OPTIONAL { ?item wdt:P297 ?code . }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
+ORDER BY (xsd:integer(substr(str(?item),33)))

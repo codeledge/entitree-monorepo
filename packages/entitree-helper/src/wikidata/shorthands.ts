@@ -10,6 +10,7 @@ export const WDQ_ANIMAL_MALE = "Q44148";
 export const WDQ_HUMAN_FEMALE = "Q6581072";
 export const WDQ_ANIMAL_FEMALE = "Q43445";
 export const WDQ_ENGLISH = "Q1860";
+export const WDQ_GOOGLE_MAPS = "Q12013";
 
 // qualifiers
 export const WDQ_CIRCA = "Q5727902";

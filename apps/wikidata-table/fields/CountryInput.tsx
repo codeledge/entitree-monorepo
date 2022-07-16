@@ -1,7 +1,8 @@
+import { COUNTRIES } from "@entitree/helper";
 import { AutocompleteInput, SelectInput } from "react-admin";
-import { WIKIDATA_COUNTRIES } from "../lib/data/countries";
+// import { WIKIDATA_COUNTRIES } from "../lib/data/countries";
 
-const countries = WIKIDATA_COUNTRIES.map((country) => ({
+const countries = COUNTRIES.map((country) => ({
   id: country.item.split("entity/")[1],
   name: country.itemLabel,
 })).sort((a, b) => a.name.localeCompare(b.name));

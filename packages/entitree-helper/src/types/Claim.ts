@@ -1,5 +1,6 @@
 export declare type ClaimRank = "normal" | "preferred" | "deprecated";
-export interface Claim {
+
+export type Claim = {
   id: string;
   mainsnak: ClaimSnak;
   rank: ClaimRank;
@@ -7,26 +8,28 @@ export interface Claim {
   qualifiers?: Record<string, ClaimSnak[]>;
   "qualifiers-order"?: string[];
   references?: ClaimReference[];
-}
-export interface ClaimSnak {
+};
+
+export type ClaimSnak = {
   datatype: string;
   datavalue?: ClaimSnakValue;
   hash: string;
   property: string;
   snaktype: string;
-}
+};
+
 export declare type ClaimSnakValue =
   | ClaimSnakTimeValue
   | ClaimSnakEntityValue
   | ClaimSnakTextValue;
-export interface ClaimSnakTextValue {
+export type ClaimSnakTextValue = {
   type: "monolingualtext";
   value: {
     text: string;
     language: string;
   };
-}
-export interface ClaimSnakTimeValue {
+};
+export type ClaimSnakTimeValue = {
   type: "time";
   value: {
     after: number;
@@ -36,7 +39,7 @@ export interface ClaimSnakTimeValue {
     time: string;
     timezone: number;
   };
-}
+};
 export interface ClaimSnakEntityValue {
   type: "wikibase-entityid";
   value: {
