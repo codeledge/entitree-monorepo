@@ -1,6 +1,5 @@
 import { COUNTRIES } from "@entitree/helper";
-import { AutocompleteInput, SelectInput } from "react-admin";
-// import { WIKIDATA_COUNTRIES } from "../lib/data/countries";
+import { AutocompleteInput } from "react-admin";
 
 const countries = COUNTRIES.map((country) => ({
   id: country.item.split("entity/")[1],
