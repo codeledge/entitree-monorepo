@@ -1,22 +1,12 @@
 import { List, ListItem, Typography } from "@mui/material";
-
 import { Artist } from "../prisma/prismaClient";
-import { Chord } from "chordsheetjs";
-import Head from "next/head";
-import Header from "../components/Header";
 import Layout from "../components/Layout";
 import Link from "next/link";
-import type { NextPage } from "next";
 import { prismaClient } from "../prisma/prismaClient";
 
 export async function getServerSideProps() {
-  // const chord = await prismaClient.chord.groupBy({
-  //   by: ["artistLabel"],
-  //   _sum: {
-  //     hits: true,
-  //   },
-  // });
   const artists = await prismaClient.artist.findMany();
+  console.log(artists);
   return {
     props: { artists },
   };
