@@ -93,6 +93,14 @@ var projects = [
     link: "https://streetview.nothispute.com/",
     show: false,
     start: 2022
+  },
+  {
+    key: "openapi",
+    show: false,
+    name: "OpenAPI Endpoints",
+    link: "https://entitree-openapi.vercel.app/",
+    description: "Generate OpenAPI endpoints from Wikidata",
+    start: 2022
   }
 ];
 var packages = [
