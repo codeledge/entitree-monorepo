@@ -6,7 +6,7 @@ import { getBestClaim, getBestClaimValue } from "./getBestClaim";
 import { DEFAULT_LANG_CODE } from "../prefetched/langs";
 import { DateTime } from "luxon";
 import { LangCode } from "../../types/Lang";
-import { WD_SOURCING_CIRCUMSTANCES } from "../properties";
+import { WD_SOURCING_CIRCUMSTANCES } from "../properties/properties";
 import ordinalize from "ordinalize";
 import wbk from "wikidata-sdk";
 

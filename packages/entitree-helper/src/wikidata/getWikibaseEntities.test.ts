@@ -1,6 +1,6 @@
 import { getWikibaseEntities } from "./getWikibaseEntities";
 import { getWikidataEntities } from "./getWikidataEntities";
-import { WD_SIGNIFICANT_EVENT } from "./properties";
+import { WD_SIGNIFICANT_EVENT } from "./properties/properties";
 
 describe("getWikibaseEntities", () => {
   describe("wikidata", () => {

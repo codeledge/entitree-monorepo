@@ -1,4 +1,4 @@
-import { WikidataPropertyTypesConstants } from "../types/PropertyType";
+import { WikidataPropertyTypesConstants } from "../../types/PropertyType";
 export const WIKIDATA_TYPE: WikidataPropertyTypesConstants = {
   P6: "WikibaseItem",
   P10: "CommonsMedia",

@@ -2,7 +2,7 @@ import fs from "fs";
 import { getWikidataSparql } from "../getWikibaseSparql";
 import latinize from "latinize";
 import path from "path";
-import { WD_ICON } from "../properties";
+import { WD_ICON } from "../properties/properties";
 import { getCommonsUrlByFile } from "../../wikimedia-commons";
 interface IProperty {
   p: {
@@ -58,7 +58,7 @@ export async function createConstants() {
 
   fs.writeFileSync(
     path.resolve(__dirname, "../propertiesTypes.ts"),
-    `import { WikidataPropertyTypesConstants } from "../types/PropertyType";
+    `import { WikidataPropertyTypesConstants } from "../../types/PropertyType";
      export const WIKIDATA_TYPE: WikidataPropertyTypesConstants = ` +
       JSON.stringify(types)
   );
