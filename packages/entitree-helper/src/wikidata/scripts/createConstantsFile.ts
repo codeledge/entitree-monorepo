@@ -24,6 +24,10 @@ async function getSortedWikidataSparql(query: string): Promise<IProperty[]> {
 
 type KeyVal = { [key: string]: string };
 
+const getFile = (name: string) => {
+  return path.resolve(__dirname, "../properties/properties" + name + ".ts");
+};
+
 export async function createConstants() {
   const query = `SELECT ?p ?pt ?pLabel  WHERE {
       ?p wikibase:propertyType ?pt .
@@ -49,24 +53,21 @@ export async function createConstants() {
     types[item.p.value] = item.pt.split("#")[1];
   });
 
-  fs.writeFileSync(path.resolve(__dirname, "../properties.ts"), output);
+  fs.writeFileSync(getFile(""), output);
 
   fs.writeFileSync(
-    path.resolve(__dirname, "../propertiesLabelsEn.ts"),
+    getFile("LabelsEn"),
     `export const WIKIDATA_LABELS_EN = ` + JSON.stringify(labels)
   );
 
   fs.writeFileSync(
-    path.resolve(__dirname, "../propertiesTypes.ts"),
+    getFile("Types"),
     `import { WikidataPropertyTypesConstants } from "../../types/PropertyType";
      export const WIKIDATA_TYPE: WikidataPropertyTypesConstants = ` +
       JSON.stringify(types)
   );
 
-  fs.writeFileSync(
-    path.resolve(__dirname, "../types/PropertyClaims.ts"),
-    createPropertyTypes(types)
-  );
+  fs.writeFileSync(getFile("Claims"), createPropertyTypes(types));
 }
 
 const createPropertyTypes = (types: KeyVal) => {
@@ -121,7 +122,7 @@ export async function createRegex() {
     json[item.p.value] = item.regex;
   });
   const output = `export const WIKIDATA_REGEX = ` + JSON.stringify(json);
-  fs.writeFileSync(path.resolve(__dirname, "../propertiesRegex.ts"), output);
+  fs.writeFileSync(getFile("Regex"), output);
 }
 
 export async function createFormatter() {
@@ -141,10 +142,7 @@ export async function createFormatter() {
     }
   });
   const output = `export const WIKIDATA_URL = ` + JSON.stringify(json);
-  fs.writeFileSync(
-    path.resolve(__dirname, "../propertiesFormatter.ts"),
-    output
-  );
+  fs.writeFileSync(getFile("Formatter"), output);
 }
 
 export async function createIcon() {
@@ -166,7 +164,7 @@ export async function createIcon() {
     }
   });
   const output = `export const WIKIDATA_ICON = ` + JSON.stringify(json);
-  fs.writeFileSync(path.resolve(__dirname, "../propertiesIcon.ts"), output);
+  fs.writeFileSync(getFile("Icon"), output);
 }
 
 createConstants();

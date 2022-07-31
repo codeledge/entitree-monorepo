@@ -10,7 +10,6 @@ export const WIKIDATA_ICON = {
   P496: "https://upload.wikimedia.org/wikipedia/commons/0/06/ORCID_iD.svg",
   P535: "https://upload.wikimedia.org/wikipedia/commons/8/87/Find-a-Grave_mask_icon.svg",
   P600: "https://upload.wikimedia.org/wikipedia/commons/5/51/WINE-Logo.svg",
-  P818: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Cib-arxiv_(CoreUI_Icons_v1.0.0).svg",
   P820: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Cib-arxiv_(CoreUI_Icons_v1.0.0).svg",
   P827: "https://upload.wikimedia.org/wikipedia/commons/6/65/BBC_logo_(1997-2021).svg",
   P888: "https://upload.wikimedia.org/wikipedia/commons/b/b9/JSTOR_icon.jpg",
@@ -347,7 +346,7 @@ export const WIKIDATA_ICON = {
   P8052:
     "https://upload.wikimedia.org/wikipedia/commons/9/9a/MusicBrainz_Logo_Icon_(2016).svg",
   P8057:
-    "https://upload.wikimedia.org/wikipedia/commons/7/7e/Apache_Feather_Logo.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/f4/Apache_Small_Logo.svg",
   P8176:
     "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cib-itch-io_(CoreUI_Icons_v1.0.0).svg",
   P8205:
@@ -411,5 +410,7 @@ export const WIKIDATA_ICON = {
   P10533:
     "https://upload.wikimedia.org/wikipedia/commons/b/b0/Agoda_Logo_2022.svg",
   P10583: "https://upload.wikimedia.org/wikipedia/commons/2/21/SRSLY.jpg",
-  P10716: "https://upload.wikimedia.org/wikipedia/commons/3/31/Fanvue_Logo.png",
+  P10716: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Fanvue_Logo.svg",
+  P10884:
+    "https://upload.wikimedia.org/wikipedia/commons/a/a4/Logo_gitee_g_red.svg",
 };
