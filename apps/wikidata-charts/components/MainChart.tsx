@@ -16,7 +16,7 @@ import {
   IndicatorInfo,
   SparqlResult,
 } from "../src/sparql/queries";
-import React, { memo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   WikidataSearchResult,
   abbreviateNumber,
@@ -152,6 +152,7 @@ export const MainChart: React.FC = () => {
 
   useEffect(() => {
     plot();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [indicator, items]);
 
   return (

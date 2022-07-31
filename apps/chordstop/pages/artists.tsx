@@ -6,7 +6,6 @@ import { prismaClient } from "../prisma/prismaClient";
 
 export async function getServerSideProps() {
   const artists = await prismaClient.artist.findMany();
-  console.log(artists);
   return {
     props: { artists },
   };

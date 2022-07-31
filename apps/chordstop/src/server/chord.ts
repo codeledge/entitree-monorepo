@@ -20,41 +20,34 @@ export const chordRouter = t.router({
     }));
     return chords;
   }),
-  byId: t.procedure
-    .input(
-      z.object({
-        id: z.string(),
-      })
-    )
-    .query(async ({ input }) => {
-      const { id } = input;
-      const chord = await prismaClient.chord.findUnique({
-        where: { id },
-        include: {
-          artist: true,
-        },
+  byId: t.procedure.input(z.number()).query(async ({ input: id }) => {
+    const chord = await prismaClient.chord.findUnique({
+      where: { id },
+      include: {
+        artist: true,
+      },
+    });
+    if (!chord) {
+      throw new TRPCError({
+        code: "NOT_FOUND",
+        message: `No chord with id '${id}'`,
       });
-      if (!chord) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: `No chord with id '${id}'`,
-        });
-      }
+    }
 
-      let html: string;
-      try {
-        html = formatSong(chord.body);
-      } catch (er) {
-        html = "Couldn't parse this song";
-        console.log(er);
-      }
+    let html: string;
+    try {
+      html = formatSong(chord.body);
+    } catch (er) {
+      html = "Couldn't parse this song";
+      console.log(er);
+    }
 
-      // console.log(chord);
+    // console.log(chord);
 
-      return {
-        chord,
-        body: chord ? html : "",
-        text: chord.body,
-      };
-    }),
+    return {
+      chord,
+      body: chord ? html : "",
+      text: chord.body,
+    };
+  }),
 });
