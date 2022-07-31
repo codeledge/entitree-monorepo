@@ -21,6 +21,7 @@
     "axios": "^0.27.2",
     "css-mediaquery": "^0.1.2",
     "lodash": "^4.17.21",
+    "next-auth": "^4.10.1",
     "next": "12.2.3",
     "nextjs-cors": "^2.1.1",
     "node-fetch": "^3.2.9",

@@ -10,8 +10,7 @@ export const drones: Page = {
   represents: "Q484000",
   category: "technology",
   header: [
-    { name: "label" },
-    { name: WD_PUBLICATION_DATE },
+    { property: WD_PUBLICATION_DATE },
     { property: WD_MASS },
     { property: WD_PRICE },
     { property: WD_MANUFACTURER },

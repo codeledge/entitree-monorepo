@@ -7,7 +7,6 @@ import {
 
 import Documentation from "./custom-pages/Documentation";
 import { Layout } from "./layout";
-// import LoginPage from "./custom-pages/LoginPage";
 import Privacy from "./custom-pages/Privacy";
 import React from "react";
 import { Route } from "react-router";
@@ -19,9 +18,13 @@ import { muiIcons } from "./lib/data/muiIcons";
 import Dashboard from "./custom-pages/Dashboard";
 import { myTheme } from "./layout/theme";
 import { QueryClient } from "react-query";
+import LoginPage from "./custom-pages/LoginPage";
+import { useSession } from "next-auth/react";
+import { authProvider } from "./providers/authProvider";
+import SettingsPage from "./custom-pages/Settings";
 
 const ReactAdmin = () => {
-  // const { data: session, status } = useSession();
+  const { data: session, status } = useSession();
   // const loading = status === "loading";
 
   // if (loading) return null;
@@ -40,12 +43,13 @@ const ReactAdmin = () => {
       layout={Layout}
       theme={myTheme}
       queryClient={queryClient}
-
-      // loginPage={LoginPage}
+      loginPage={LoginPage}
+      authProvider={authProvider(session)}
     >
       <CustomRoutes>
         <Route key="key" path="/documentation" element={<Documentation />} />
         <Route key="key" path="/privacy" element={<Privacy />} />,
+        <Route key="key" path="/settings" element={<SettingsPage />} />,
       </CustomRoutes>
 
       {WikidataPageArray.map((page) =>
