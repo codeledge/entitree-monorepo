@@ -1,3 +1,4 @@
+//Wikidata-specific entity types
 import { PropertyClaims } from "./PropertyClaims";
 
 export interface Sitelink {
