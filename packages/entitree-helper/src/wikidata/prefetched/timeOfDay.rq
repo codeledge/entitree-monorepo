@@ -1,0 +1,13 @@
+#Time of day
+SELECT ?item ?itemLabel ?timeIndex ?notation
+WHERE 
+{
+  ?item wdt:P31 wd:Q1260524.
+  ?item wdt:P1552 wd:Q7727.
+  ?item wdt:P4895 ?timeIndex.
+  ?item p:P1813 ?short.
+  ?short ps:P1813 ?notation.
+  ?short pq:P1013 wd:Q55314555.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+ORDER BY ?timeIndex

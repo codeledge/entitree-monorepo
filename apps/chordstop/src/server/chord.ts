@@ -49,7 +49,7 @@ export const chordRouter = t.router({
         console.log(er);
       }
 
-      console.log(chord);
+      // console.log(chord);
 
       return {
         chord,

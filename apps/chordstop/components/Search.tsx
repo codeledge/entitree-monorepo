@@ -20,10 +20,10 @@ export default function SearchInput() {
         disablePortal
         id="autocomplete-chord"
         options={chordList.data}
-        getOptionLabel={(option) => option.label}
+        getOptionLabel={(option: { id: string; label: string }) => option.label}
         sx={{ width: 300 }}
         size="small"
-        onChange={(event, value) => {
+        onChange={(event, value: { id: string; label: string }) => {
           router.push("/chord/" + value.id);
         }}
         style={{ marginLeft: "3rem", color: "white" }}
