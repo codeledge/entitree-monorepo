@@ -9,7 +9,7 @@ import { getCommonsUrlByFile } from "@entitree/helper";
 
 type ArtistAndChords = Artist & { chords: Chord[] };
 
-async function findArtist(id: string): Promise<Artist> {
+async function findArtist(id: number): Promise<Artist> {
   return await prismaClient.artist.findUnique({
     where: { id },
     include: {
@@ -18,7 +18,7 @@ async function findArtist(id: string): Promise<Artist> {
   });
 }
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context) {
   const { id } = context.query;
   if (id.substring(0, 1) == "Q") {
     const dbId = await prismaClient.artist.findFirst({
@@ -34,7 +34,8 @@ export async function getServerSideProps(context: any) {
       };
     }
   }
-  const artist = await findArtist(id);
+
+  const artist = await findArtist(parseInt(id));
   // TODO
   if (!artist) {
     return {

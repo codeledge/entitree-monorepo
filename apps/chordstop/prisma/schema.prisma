@@ -7,12 +7,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
-  url      = env("MONGODB_URI")
+  provider = "postgres"
+  url      = env("POSTGRES_URI")
 }
 
 model Chord {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  id         Int     @id @default(autoincrement())
   numericId  Int?    @unique
   title      String
   lastedit   String?
@@ -21,13 +21,13 @@ model Chord {
   body       String
   open       Int?
   artist     Artist? @relation(fields: [artistId], references: [id])
-  artistId   String?
+  artistId   Int?
   wikidataId String?
   duration   Int?
 }
 
 model Artist {
-  id               String  @id @default(auto()) @map("_id") @db.ObjectId
+  id               Int     @id @default(autoincrement())
   numericId        Int?    @unique
   label            String  @unique
   wikidataId       String  @unique
@@ -42,8 +42,7 @@ model Artist {
 
 //https://next-auth.js.org/adapters/prisma
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String
+  id                Int     @id @default(autoincrement())
   type              String
   provider          String
   providerAccountId String
@@ -54,36 +53,36 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            Int
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
 
 model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           Int      @id @default(autoincrement())
   sessionToken String   @unique
-  userId       String
+  userId       Int
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            Int       @id @default(autoincrement())
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
   role          String?
-  created_at    DateTime  @default(now())
-  updated_at    DateTime? @updatedAt
-  deleted_at    DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+  deletedAt     DateTime?
   accounts      Account[]
   sessions      Session[]
 }
 
 model VerificationToken {
-  id         String   @id @default(cuid()) @map("_id")
+  id         Int      @id @default(autoincrement())
   identifier String
   token      String   @unique
   expires    DateTime

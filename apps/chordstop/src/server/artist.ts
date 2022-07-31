@@ -11,7 +11,7 @@ export const artistRouter = t.router({
   byId: t.procedure
     .input(
       z.object({
-        id: z.string(),
+        id: z.number(),
       })
     )
     .query(async ({ input }) => {
