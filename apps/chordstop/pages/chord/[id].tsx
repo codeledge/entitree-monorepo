@@ -9,40 +9,35 @@ import { trpc } from "../../src/utils/trpc";
 import { useRouter } from "next/router";
 
 const ChordPage = () => {
-  const id = useRouter().query.id as string;
-  const chordQuery = trpc.proxy.chord.byId.useQuery({ id });
+  const id = parseInt(useRouter().query.id as string);
+  const chordQuery = trpc.proxy.chord.byId.useQuery(id);
   const [downloadLink, setDownloadLink] = useState("");
 
-  useEffect(() => {
-    if (chordQuery.data?.text) {
-      const data = new Blob([chordQuery.data.text], { type: "text/plain" });
-      if (downloadLink !== "") window.URL.revokeObjectURL(downloadLink);
-      setDownloadLink(window.URL.createObjectURL(data));
-    }
-  }, [downloadLink, chordQuery.data?.text]);
+  // useEffect(() => {
+  //   if (chordQuery.data?.text) {
+  //     const data = new Blob([chordQuery.data.text], { type: "text/plain" });
+  //     if (downloadLink !== "") window.URL.revokeObjectURL(downloadLink);
+  //     setDownloadLink(window.URL.createObjectURL(data));
+  //   }
+  // }, [downloadLink, chordQuery]);
 
-  if (chordQuery.status !== "success") {
-    return <>Loading...</>;
-  }
-
-  const chord = chordQuery.data.chord;
-  const body = chordQuery.data.body;
+  const chord = chordQuery.data?.chord;
+  const body = chordQuery.data?.body;
 
   return (
     <Layout>
       <Typography variant="h4">
-        <Link href="/artist/[id]" as={`/artist/${chord.artist.id}`}>
-          <MUILink underline="none">{chord.artist.label}</MUILink>
-        </Link>
+        {chord && (
+          <Link href="/artist/[id]" as={`/artist/${chord.artist.id}`}>
+            <MUILink underline="none">{chord.artist.label}</MUILink>
+          </Link>
+        )}
       </Typography>
       <Typography variant="h2" component="h2">
-        {chord.title}
+        {chord && chord.title}
       </Typography>
       <Box>
-        <Link
-          href="/admin#/chord/[id]/edit"
-          as={`/admin#/chord/${chord.id}/edit`}
-        >
+        <Link href="/admin#/chord/[id]/edit" as={`/admin#/chord/${id}/edit`}>
           <IconButton>
             <Tooltip title="Suggest an edit" placement="top">
               <EditIcon />
@@ -57,13 +52,14 @@ const ChordPage = () => {
           </a>
         </IconButton>
       </Box>
-      {/* <pre>{disp}</pre> */}
-      <Box
-        dangerouslySetInnerHTML={{ __html: body }}
-        style={{
-          fontFamily: "Arial",
-        }}
-      />
+      {body && (
+        <Box
+          dangerouslySetInnerHTML={{ __html: body }}
+          style={{
+            fontFamily: "Arial",
+          }}
+        />
+      )}
     </Layout>
   );
 };

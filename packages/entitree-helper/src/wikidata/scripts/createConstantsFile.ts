@@ -22,6 +22,8 @@ async function getSortedWikidataSparql(query: string): Promise<IProperty[]> {
   return data;
 }
 
+type KeyVal = { [key: string]: string };
+
 export async function createConstants() {
   const query = `SELECT ?p ?pt ?pLabel  WHERE {
       ?p wikibase:propertyType ?pt .
@@ -32,8 +34,8 @@ export async function createConstants() {
     }}
 `;
   let data = await getSortedWikidataSparql(query);
-  let labels: any = {};
-  let types: any = {};
+  let labels: KeyVal = {};
+  let types: KeyVal = {};
   let output = "";
   data.forEach((item) => {
     output += `export const WD_${latinize(item.p.label)
@@ -60,7 +62,49 @@ export async function createConstants() {
      export const WIKIDATA_TYPE: WikidataPropertyTypesConstants = ` +
       JSON.stringify(types)
   );
+
+  fs.writeFileSync(
+    path.resolve(__dirname, "../types/PropertyClaims.ts"),
+    createPropertyTypes(types)
+  );
 }
+
+const createPropertyTypes = (types: KeyVal) => {
+  let print = `
+  import {
+  Claim,
+  ClaimSnak,
+  ClaimSnakCommonsMedia,
+  ClaimSnakExternalId,
+  ClaimSnakGeoShape,
+  ClaimSnakGlobeCoordinate,
+  ClaimSnakMath,
+  ClaimSnakMonolingualtext,
+  ClaimSnakMusicalNotation,
+  ClaimSnakQuantity,
+  ClaimSnakString,
+  ClaimSnakTabularData,
+  ClaimSnakTime,
+  ClaimSnakUrl,
+  ClaimSnakWikibaseForm,
+  ClaimSnakWikibaseItem,
+  ClaimSnakWikibaseLexeme,
+  ClaimSnakWikibaseProperty,
+  ClaimSnakWikibaseSense,
+} from "./Claim";
+  export type PropertyClaims = {`;
+  for (let key in types) {
+    print += `${key}?: Claim<ClaimSnak${types[key]}>[];\n`;
+  }
+  print += `};
+  
+  export type PropertySnacks = {`;
+  for (let key in types) {
+    print += `${key}?: ClaimSnak<ClaimSnak${types[key]}>[];\n`;
+  }
+  print += `};`;
+  return print;
+};
 
 export async function createRegex() {
   const query = `SELECT ?p ?pt ?pLabel ?regex WHERE {

@@ -12,7 +12,7 @@ export default function SearchInput() {
   const chordList = trpc.proxy.chord.list.useQuery();
 
   if (chordList.isLoading) {
-    return <Box>Loading...</Box>;
+    return;
   }
   if (chordList.data) {
     return (
@@ -20,10 +20,11 @@ export default function SearchInput() {
         disablePortal
         id="autocomplete-chord"
         options={chordList.data}
-        getOptionLabel={(option) => option.label}
+        getOptionLabel={(option: { id: number; label: string }) => option.label}
         sx={{ width: 300 }}
         size="small"
-        onChange={(event, value) => {
+        onChange={(event, value: { id: number; label: string }) => {
+          if (!value?.id) return;
           router.push("/chord/" + value.id);
         }}
         style={{ marginLeft: "3rem", color: "white" }}
