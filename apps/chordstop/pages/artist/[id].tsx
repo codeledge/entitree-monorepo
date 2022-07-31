@@ -1,10 +1,7 @@
 import { Artist, Chord } from "../../prisma/prismaClient";
-
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Head from "next/head";
 import Layout from "../../components/Layout";
 import Link from "next/link";
-import type { NextPage } from "next";
 import { prismaClient } from "../../prisma/prismaClient";
 import { ArtistSocialMedia } from "../../components/ArtistSocialMedia";
 import Image from "next/image";
@@ -39,16 +36,25 @@ export async function getServerSideProps(context: any) {
   }
   const artist = await findArtist(id);
   // TODO
-  // if (!artist) {
-  //   return {
-  //     error: 404,
-  //   };
-  // }
+  if (!artist) {
+    return {
+      status: 404,
+    };
+  }
   return {
-    props: { artist },
+    props: { artist, status: 200 },
   };
 }
-const ArtistPage = ({ artist }: { artist: ArtistAndChords }) => {
+const ArtistPage = ({
+  status,
+  artist,
+}: {
+  status: number;
+  artist: ArtistAndChords;
+}) => {
+  if (status !== 200) {
+    return <Layout>Not Found</Layout>;
+  }
   return (
     <Layout>
       {artist.imageCommons && (

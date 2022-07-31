@@ -93,6 +93,14 @@ export const projects: {
     show: false,
     start: 2022,
   },
+  {
+    key: "openapi",
+    show: false,
+    name: "OpenAPI Endpoints",
+    link: "https://entitree-openapi.vercel.app/",
+    description: "Generate OpenAPI endpoints from Wikidata",
+    start: 2022,
+  },
 ];
 
 export const packages: {

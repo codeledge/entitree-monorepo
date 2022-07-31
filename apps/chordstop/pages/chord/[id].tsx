@@ -1,54 +1,32 @@
-import { Artist, Chord } from "../../prisma/prismaClient";
 import EditIcon from "@mui/icons-material/Edit";
 import Layout from "../../components/Layout";
 import Link from "next/link";
-import type { NextPage } from "next";
-import { IconButton, Tooltip, Typography } from "@mui/material";
-import { formatSong } from "../../lib/formatSong";
-import { prismaClient } from "../../prisma/prismaClient";
+import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import React, { useEffect, useState } from "react";
 import { Link as MUILink } from "@mui/material";
+import { trpc } from "../../src/utils/trpc";
+import { useRouter } from "next/router";
 
-export async function getServerSideProps(context: any) {
-  const { id } = context.query;
-  const chord = await prismaClient.chord.findUnique({
-    where: {
-      id,
-    },
-    include: {
-      artist: true,
-    },
-  });
-  let html: string;
-  try {
-    html = formatSong(chord.body);
-  } catch (er) {
-    html = "Couldn't parse this song";
-    console.log(er);
-  }
-
-  return {
-    props: {
-      chord,
-      body: chord ? html : "",
-      text: chord.body,
-    },
-  };
-}
-
-const ChordPage: NextPage<{
-  chord: Chord & { artist: Artist };
-  body: string;
-  text: string;
-}> = ({ chord, body, text }) => {
+const ChordPage = () => {
+  const id = useRouter().query.id as string;
+  const chordQuery = trpc.proxy.chord.byId.useQuery({ id });
   const [downloadLink, setDownloadLink] = useState("");
 
   useEffect(() => {
-    const data = new Blob([text], { type: "text/plain" });
-    if (downloadLink !== "") window.URL.revokeObjectURL(downloadLink);
-    setDownloadLink(window.URL.createObjectURL(data));
-  }, []);
+    if (chordQuery.data?.text) {
+      const data = new Blob([chordQuery.data.text], { type: "text/plain" });
+      if (downloadLink !== "") window.URL.revokeObjectURL(downloadLink);
+      setDownloadLink(window.URL.createObjectURL(data));
+    }
+  }, [downloadLink, chordQuery.data?.text]);
+
+  if (chordQuery.status !== "success") {
+    return <>Loading...</>;
+  }
+
+  const chord = chordQuery.data.chord;
+  const body = chordQuery.data.body;
 
   return (
     <Layout>
@@ -60,7 +38,7 @@ const ChordPage: NextPage<{
       <Typography variant="h2" component="h2">
         {chord.title}
       </Typography>
-      <div>
+      <Box>
         <Link
           href="/admin#/chord/[id]/edit"
           as={`/admin#/chord/${chord.id}/edit`}
@@ -78,9 +56,9 @@ const ChordPage: NextPage<{
             </Tooltip>
           </a>
         </IconButton>
-      </div>
+      </Box>
       {/* <pre>{disp}</pre> */}
-      <div
+      <Box
         dangerouslySetInnerHTML={{ __html: body }}
         style={{
           fontFamily: "Arial",

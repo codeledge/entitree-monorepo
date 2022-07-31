@@ -20,7 +20,7 @@ import SearchInput from "../components/Search";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import artists from "../lib/wikidata/artists_selected.json";
+import artists from "../src/lib/wikidata/artists_selected.json";
 import { getCommonsUrlByFile } from "@entitree/helper";
 
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];

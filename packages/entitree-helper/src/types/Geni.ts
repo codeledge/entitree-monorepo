@@ -5,82 +5,95 @@ export type GeniProfile = {
   public: boolean;
   guid: string;
   first_name: string;
-  middle_name: string;
-  maiden_name: string;
-  last_name: string;
+  middle_name?: string;
+  maiden_name?: string;
+  title?: string;
+  suffix?: string;
+  nicknames?: string[];
+  last_name?: string;
   name: string;
   is_alive: boolean;
   gender: string;
   occupation?: string;
-  // current_residence: {
-  // city: "Houston",
-  // state: "Texas",
-  // country: "United States",
-  // country_code: "US",
-  // latitude: 29.76047,
-  // longitude: -95.36982,
-  // formatted_location: "Houston, Texas, United States"
-  // },
-  // created_by: "https://www.geni.com/api/profile-101",
-  // big_tree: true,
-  // claimed: false,
-  mugshot_urls: {
-    large?: string;
-    medium: string;
-    small: string;
-    thumb: string;
-    print: string;
-    thumb2: string;
-    url: string;
-  };
-  // unions: [
-  // "https://www.geni.com/api/union-322",
-  // "https://www.geni.com/api/union-200"
-  // ],
-  // marriage_orders: {
-  // 4025682641820010303: 1
-  // },
-  // birth_order: 2,
-  // living: false,
-  // creator: "https://www.geni.com/api/user-1",
-  birth: GeniEvent;
-  death: GeniEvent;
-  location: GeniLocation;
-  // photo_urls: {
-  // medium: "https://photos.geni.com/p10/1092/4345/53444837f974770e/yip94wig_medium.jpg",
-  // small: "https://photos.geni.com/p10/1092/4345/53444837f974770e/yip94wig_small.jpg",
-  // thumb: "https://photos.geni.com/p10/1092/4345/53444837f974770e/yip94wig_t.jpg",
-  // print: "https://photos.geni.com/p10/1092/4345/53444837f974770e/yip94wig_print.jpg",
-  // thumb2: "https://photos.geni.com/p10/1092/4345/53444837f974770e/yip94wig_t2.jpg",
-  // url: "https://www.geni.com/api/photo_crop-6000000008809903886"
-  // },
-  // created_at: "1166895284",
-  // updated_at: "1573975321",
-  // deleted: false
-  //add custom fields
-  birthYear: string;
-  deahtYear: string;
+  created_by?: string;
+  display_name?: string;
+  claimed?: boolean;
+  curator?: string;
+  current_residence?: GeniLocation;
+  big_tree?: boolean;
+  mugshot_urls?: GeniPhoto;
+  unions?: string[];
+  marriage_orders?: { [key: string]: number };
+  birth_order?: number;
+  living?: boolean;
+  creator?: string;
+  birth?: GeniEvent;
+  baptism?: GeniEvent;
+  death?: GeniEvent;
+  burial?: GeniEvent;
+  location?: GeniLocation;
+  photo_urls?: GeniPhoto;
+  created_at: string;
+  updated_at: string;
+  deleted: boolean;
+  names?: { [key: string]: GeniName };
+  project_ids?: string[];
+  merge_note?: string;
+  language?: string;
+  account_type?: "basic";
+  is_curator?: boolean;
+  cause_of_death?: string;
+  relationship?: string; //from api_key owner ex. great grandmother
+};
+
+type GeniName = {
+  first_name?: string;
+  last_name?: string;
+  middle_name?: string;
+  maiden_name?: string;
+  display_name?: string;
+  suffix?: string;
+  title?: string;
+  nicknames?: string;
+};
+
+export type GeniPhoto = {
+  large?: string;
+  medium: string;
+  small: string;
+  thumb: string;
+  print: string;
+  thumb2: string;
+  url: string;
+  original?: string;
 };
 
 type GeniLocation = {
-  city: string;
-  state: string;
-  country: string;
-  country_code: string;
-  latitude: number;
-  longitude: number;
+  city?: string;
+  state?: string;
+  county?: string;
+  country?: string;
+  country_code?: string;
+  postal_code?: string;
+  street_address1?: string;
+  street_address2?: string;
+  street_address3?: string;
+  latitude?: number;
+  longitude?: number;
   formatted_location: string;
+  place_name?: string;
 };
 
 type GeniEvent = {
-  date: {
-    day: number;
-    month: number;
+  date?: {
+    day?: number;
+    month?: number;
     year: number;
+    range?: "after" | "before";
     formatted_date: string;
-    circa: boolean;
+    circa?: boolean;
   };
-  location: GeniLocation;
+  location?: GeniLocation;
 };
 
 export type GeniProfileResults = {
