@@ -17,7 +17,7 @@ import { WikidataShow } from "./resources/WikidataShow";
 import { muiIcons } from "./lib/data/muiIcons";
 import Dashboard from "./custom-pages/Dashboard";
 import { myTheme } from "./layout/theme";
-import { QueryClient } from "react-query";
+// import { QueryClient } from "react-query";
 import LoginPage from "./custom-pages/LoginPage";
 import { useSession } from "next-auth/react";
 import { authProvider } from "./providers/authProvider";
@@ -28,13 +28,13 @@ const ReactAdmin = () => {
   // const loading = status === "loading";
 
   // if (loading) return null;
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 15 * 60 * 1000, // 15 minutes
-      },
-    },
-  });
+  // const queryClient = new QueryClient({
+  //   defaultOptions: {
+  //     queries: {
+  //       staleTime: 15 * 60 * 1000, // 15 minutes
+  //     },
+  //   },
+  // });
   return (
     <Admin
       disableTelemetry
@@ -42,7 +42,7 @@ const ReactAdmin = () => {
       dataProvider={dataProvider("/api/")}
       layout={Layout}
       theme={myTheme}
-      queryClient={queryClient}
+      // queryClient={queryClient}
       loginPage={LoginPage}
       authProvider={authProvider(session)}
     >
