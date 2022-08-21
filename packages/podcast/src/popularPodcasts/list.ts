@@ -1,33 +1,10 @@
-import { WD_RECORDED_AT_STUDIO_OR_VENUE } from "@entitree/helper";
+import {
+  WD_COUNTRY_OF_ORIGIN,
+  WD_RECORDED_AT_STUDIO_OR_VENUE,
+} from "@entitree/helper";
+import { PodcastParse } from "./types";
 
-type DESCRIPTION_TYPE = {
-  id?: string;
-  img?: string;
-  title: string;
-  description?: string;
-  prefix?: string;
-  remove?: string[];
-  guestMatch?: string;
-  guestMatchIndex?: number;
-  episodeMatch?: string;
-  presenter?: boolean;
-  presenterId?: string;
-  addClaims?: any;
-  spotifyShowId?: string;
-  itunesShowId?: number;
-  seasons?: any; //{ number: string };
-  download?: boolean;
-  languageCode?: string;
-};
-
-export const DESCRIPTIONS_DEFAULT: DESCRIPTION_TYPE = {
-  presenter: false,
-  guestMatchIndex: 2,
-  languageCode: "en",
-  title: "",
-};
-
-export const DESCRIPTIONS: DESCRIPTION_TYPE[] = [
+export const POPULAR_PODCASTS: PodcastParse[] = [
   {
     id: "Q66141312",
     prefix: "The Ben Shapiro Show - ",
@@ -50,10 +27,10 @@ export const DESCRIPTIONS: DESCRIPTION_TYPE[] = [
     episodeMatch: "#(\\d{3,4}) ",
     addClaims: {
       [WD_RECORDED_AT_STUDIO_OR_VENUE]: "Q109352672",
+      [WD_COUNTRY_OF_ORIGIN]: "Q30",
     },
     img: "https://podcast.nothispute.com/images/jre1500.jpg",
     title: "The Joe Rogan Experience",
-    description: `*Please be patient, episodes might take up to a minute to load* <br /><br />The Joe Rogan Experience is a podcast about the life of comedian Joe Rogan and the people he interviews, this feed contains old episodes from 2009 until 2019. `,
   },
   {
     id: "Q109238858",

@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.9.3",
     "@entitree/helper": "workspace:*",
     "@entitree/shared": "workspace:*",
+    "@codeledge/podcast": "workspace:*",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.2",
     "@mui/styles": "^5.9.2",

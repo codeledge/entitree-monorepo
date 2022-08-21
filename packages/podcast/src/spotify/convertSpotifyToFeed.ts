@@ -1,7 +1,5 @@
-import { SpotifyEpisodeObject } from "@codeledge/podcast";
-import { Episode, EpisodeType } from "podparse";
-
-import { EpisodeExtended } from "../import/readFeed";
+import { SpotifyEpisodeObject } from "./types";
+import { EpisodeExtended, EpisodeType } from "../feed/types";
 
 export function convertSpotifyToFeed(
   episodes: SpotifyEpisodeObject[]
@@ -18,11 +16,10 @@ export function convertSpotifyToFeed(
       guid: item.href,
       episodeType: EpisodeType.Full, //doublecheck
       spotifyId: item.href.split("episodes/")[1],
-      image: item.images[0].url,
+      image: { url: item.images[0].url },
       author: "",
       summary: "",
       enclosure: { url: "" },
-      // episodeType: EpisodeType.Full,//error check
       lastBuildDate: "",
     };
     items.push(itemFeed);

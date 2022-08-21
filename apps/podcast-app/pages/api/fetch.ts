@@ -13,7 +13,6 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { id } = req.query;
-  // const JordanPeterson = "Q109238858";
   const podcastId = id as string;
   let limit = 0;
   if (req.query.limit) {

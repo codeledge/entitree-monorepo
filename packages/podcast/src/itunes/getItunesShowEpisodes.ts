@@ -1,7 +1,8 @@
-//itunes.apple.com/lookup?id=1251196416&country=US&media=podcast&entity=podcastEpisode&limit=100
 import axios from "axios";
+import { itunesExample } from "./example";
 
 export async function getItunesShowEpisodes(itunesId: number): Promise<any[]> {
+  return itunesExample;
   const results = (
     await axios.get(
       "https://itunes.apple.com/lookup?id=" +
