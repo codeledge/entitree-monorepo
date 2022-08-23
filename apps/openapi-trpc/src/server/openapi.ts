@@ -9,5 +9,5 @@ export const openApiDocument: any = generateOpenApiDocument(appRouter, {
   version: "1.0.0",
   baseUrl: "/api",
   docsUrl: "https://github.com/codeledge",
-  tags: [],
+  tags: ["wikidata", "indonesia", "apple"],
 });

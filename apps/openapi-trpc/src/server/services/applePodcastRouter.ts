@@ -39,7 +39,7 @@ export const applePodcastRouter = createRouter().query(
         enabled: true,
         method: "GET",
         path: "/getItunesShowEpisodes",
-        tag: "apple",
+        tags: ["apple"],
         summary: "Get all episodes of a podcast",
       },
     },

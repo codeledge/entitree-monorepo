@@ -8,7 +8,7 @@ export const documentRouter = createRouter().query("parseNIK", {
       enabled: true,
       method: "GET",
       path: "/parseNIK",
-      tag: "indonesia",
+      tags: ["indonesia"],
       summary: "Get data from NIK",
     },
   },
