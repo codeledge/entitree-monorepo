@@ -189,10 +189,11 @@ importers:
       eslint-config-next: 12.2.3
       jsonwebtoken: ^8.5.1
       next: 12.2.3
+      nextjs-cors: ^2.1.1
       react: 18.2.0
       react-dom: 18.2.0
       swagger-ui-react: ^4.13.0
-      trpc-openapi: 0.4.0
+      trpc-openapi: 0.6.1
       tsconfig: workspace:*
       typescript: 4.7.4
       uuid: ^8.3.2
@@ -202,10 +203,11 @@ importers:
       '@trpc/server': 9.26.2
       jsonwebtoken: 8.5.1
       next: 12.2.3_biqbaboplfbrettd7655fr4n2y
+      nextjs-cors: 2.1.1_next@12.2.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       swagger-ui-react: 4.13.0_biqbaboplfbrettd7655fr4n2y
-      trpc-openapi: 0.4.0_u6txcls6cokwy6np74pywrhdga
+      trpc-openapi: 0.6.1_u6txcls6cokwy6np74pywrhdga
       uuid: 8.3.2
       zod: 3.17.10
     devDependencies:
@@ -6673,7 +6675,7 @@ packages:
     dev: false
 
   /media-typer/0.3.0:
-    resolution: {integrity: sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=}
+    resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
     dev: false
 
@@ -9443,8 +9445,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /trpc-openapi/0.4.0_u6txcls6cokwy6np74pywrhdga:
-    resolution: {integrity: sha512-a3/JuEoAhvN9Q73hx9vthjAm85JpEKQ9OiDgqsUZHUm0SFvqUK9WPkTradfepzJ1EbPdL2hEbwSIWZ2M/+WNOQ==}
+  /trpc-openapi/0.6.1_u6txcls6cokwy6np74pywrhdga:
+    resolution: {integrity: sha512-KH2+GQQbUdSqgQx9gh6+1J6gT09HCY7Dxme9Q9CQwB98c4xA7vt7N01hUG1yAjXQe5tf4MMsXB7iuJmVHwhNdA==}
     peerDependencies:
       '@trpc/server': ^9.23.0
       zod: ^3.14.4
@@ -9454,7 +9456,7 @@ packages:
       lodash.clonedeep: 4.5.0
       openapi-types: 12.0.0
       zod: 3.17.10
-      zod-to-json-schema: 3.17.0_zod@3.17.10
+      zod-to-json-schema: 3.17.1_zod@3.17.10
     dev: false
 
   /truncate-utf8-bytes/1.0.2:
@@ -10166,10 +10168,10 @@ packages:
     resolution: {integrity: sha512-jEA1znR7b4C/NnaycInCU6h/d15ZzCd1jmsruqOKnZP6WXQSMH3W2GL+OXbkruslU4h+Tzuos0HdswzRUk/Vgg==}
     dev: false
 
-  /zod-to-json-schema/3.17.0_zod@3.17.10:
-    resolution: {integrity: sha512-Ioxmh41HTo4xAip7DPy79ysvGibPnDxzGoPNcNT+1dxwLjeXf/BruRnj7sRJAe2p4z8vTx6d62CXigEPTz6DqQ==}
+  /zod-to-json-schema/3.17.1_zod@3.17.10:
+    resolution: {integrity: sha512-h1WLfvkdwM6lcRt5q09ytNh2OKcU13vY9D0FetN/7Erdd7lVraIiMkEnObg3KELm5EQlMqvi0r5nzMa0EA+8qw==}
     peerDependencies:
-      zod: ^3.14.4
+      zod: ^3.17.10
     dependencies:
       zod: 3.17.10
     dev: false
