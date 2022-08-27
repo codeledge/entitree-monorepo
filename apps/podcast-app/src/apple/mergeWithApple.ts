@@ -1,5 +1,5 @@
 import { EpisodeExtended } from "../import/readFeed";
-import { getItunesShowEpisodes } from "@entitree/helper";
+import { getItunesShowEpisodes } from "@codeledge/podcast";
 
 export async function mergeWithApple(
   episodes: EpisodeExtended[],

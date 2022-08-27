@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
 import { READ_FEED } from "./readFeed";
 import { convertSpotifyToFeed } from "../spotify/getEpisodes";
-import { getSpotifyShowEpisodes } from "@entitree/helper";
+import { getSpotifyShowEpisodes } from "@codeledge/podcast";
 import { getWikidataEditObject } from "./getWikidataEditObject";
 import { latestEpisode } from "../wikidata/getEpisodes";
 

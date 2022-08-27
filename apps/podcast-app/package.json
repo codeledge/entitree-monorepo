@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@entitree/helper": "workspace:*",
+    "@codeledge/podcast": "workspace:*",
+    "@trpc/client": "^9.27.0",
+    "@trpc/next": "^9.27.0",
+    "@trpc/react": "^9.27.0",
+    "@trpc/server": "^9.27.0",
     "@types/luxon": "^3.0.0",
     "axios": "^0.27.2",
     "fs": "0.0.1-security",
@@ -20,9 +25,11 @@
     "podparse": "^1.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-query": "3",
     "wikibase-edit": "^5.0.3",
     "wikidata-sdk": "^8.0.0",
-    "youtube-mp3-downloader": "^0.7.10"
+    "youtube-mp3-downloader": "^0.7.10",
+    "zod": "^3.17.10"
   },
   "devDependencies": {
     "@types/node": "18.6.3",

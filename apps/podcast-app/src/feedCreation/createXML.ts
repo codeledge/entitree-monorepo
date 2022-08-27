@@ -6,7 +6,6 @@ import {
   getWikipediaDescription,
 } from "@entitree/helper";
 import path, { dirname } from "path";
-
 import { Podcast } from "podcast";
 import fs from "fs";
 import { getEpisodesById } from "../wikidata/getEpisodes";
@@ -41,8 +40,8 @@ export async function createXML(
   // }
   let imageUrl =
     "https://upload.wikimedia.org/wikipedia/commons/2/27/Square%2C_Inc_-_Square_Logo.jpg";
-  if (podcastInfo[0].logo) {
-    imageUrl = podcastInfo[0].logo;
+  if (podcastInfo.logo) {
+    imageUrl = podcastInfo.logo;
   }
   let podcastArray = DESCRIPTIONS.find((d: any) => d.id === podcastId);
   podcastArray = { ...DESCRIPTIONS_DEFAULT, ...podcastArray };
@@ -56,7 +55,7 @@ export async function createXML(
     title: podcast.labels[podcastArray.languageCode!],
     description:
       descr +
-      `<br /><br />This podcast is auto-generated.<br>Language: ${podcastInfo[0].language?.label}`,
+      `<br /><br />This podcast is auto-generated.<br>Language: ${podcastInfo.language?.label}`,
     feedUrl: "https://podcast.nothispute.com/api/feed/" + podcastId + "",
     siteUrl: claims.P856?.[0].value,
     imageUrl: imageUrl,
@@ -65,9 +64,9 @@ export async function createXML(
     // managingEditor: "Dylan Greene",
     // webMaster: "Dylan Greene",
     // copyright: "2013 Dylan Greene",
-    language: podcastInfo[0].language?.code || "en",
+    language: podcastInfo.language?.code || "en",
     // categories: ["Category 1", "Category 2", "Category 3"],
-    pubDate: claims.P580?.[0].value,
+    pubDate: claims.P580?.value,
     ttl: 60,
     // itunesAuthor: "Max Nowack",
     // itunesSubtitle: "I am a sub title",
@@ -110,15 +109,15 @@ export async function createXML(
       let formattedDate = episode.recordingDate.substring(0, 10);
       desc += `<br />Recorded: ${formattedDate}`;
     }
-    if (episode.wikipedia) {
-      let wikipediaGuests = episode.wikipedia.split("|");
-      desc +=
-        `<br />` +
-        (await getWikipediaDescription(
-          wikipediaGuests,
-          podcastArray.languageCode!
-        ));
-    }
+    // if (episode.wikipedia) {
+    //   let wikipediaGuests = episode.wikipedia.split("|");
+    //   desc +=
+    //     `<br />` +
+    //     (await getWikipediaDescription(
+    //       wikipediaGuests,
+    //       podcastArray.languageCode!
+    //     ));
+    // }
     if (!episode.url && episode.youtube && podcastArray.download) {
       const file =
         process.env.PROJECT_ROOT + "/public/yt/" + episode.youtube + ".mp3";

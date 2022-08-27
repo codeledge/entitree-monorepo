@@ -1,4 +1,4 @@
-const strtotime = require("locutus/php/datetime/strtotime");
+import { strtotime } from "locutus/php/datetime/strtotime";
 
 export function extractGuests(text: string, regex: string, matchIndex: number) {
   try {

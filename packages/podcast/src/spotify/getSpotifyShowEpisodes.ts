@@ -10,16 +10,12 @@ interface SpotifyResponse {
 export async function getSpotifyShowEpisodes(
   playlistId: string,
   access_token: string,
-  afterDate: DateTime
+  afterDate?: DateTime
 ): Promise<SpotifyEpisodeObject[]> {
   let items: any[] = [];
   let offset = 0;
   let nextPageToken = "start";
   do {
-    // console.log(
-    //   "getting next page",
-    //   "https://api.spotify.com/v1/shows/" + playlistId + "/episodes"
-    // );
     const page: SpotifyResponse = (
       await axios.get(
         "https://api.spotify.com/v1/shows/" + playlistId + "/episodes",
@@ -36,7 +32,6 @@ export async function getSpotifyShowEpisodes(
         }
       )
     ).data;
-    // console.log(page);
     offset += 50;
     nextPageToken = page.next;
     for (const item of page.items) {
@@ -44,7 +39,8 @@ export async function getSpotifyShowEpisodes(
     }
   } while (
     nextPageToken &&
-    DateTime.fromISO(items[items.length - 1].pubDate) > afterDate
+    (!afterDate ||
+      DateTime.fromISO(items[items.length - 1].pubDate) > afterDate)
   );
   return items;
 }
