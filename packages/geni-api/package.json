@@ -1,0 +1,33 @@
+{
+  "name": "geni-api",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "lint": "TIMING=1 eslint src --fix",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "prepublish": "pnpm build",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.3",
+    "config": "workspace:*",
+    "tsconfig": "workspace:*",
+    "tsup": "^6.2.1",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

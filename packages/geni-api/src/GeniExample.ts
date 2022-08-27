@@ -1,4 +1,4 @@
-import { GeniProfile } from "./Geni";
+import { GeniProfile } from "./GeniTypes";
 
 export const GENI_EXAMPLE: GeniProfile[] = [
   {
