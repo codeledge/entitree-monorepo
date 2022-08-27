@@ -1,7 +1,17 @@
-# Podcast helper
+# GENI.com API
 
-Spotify and apple support
+Comes with all types
 
-# Example URLs
+# Usage
 
-//itunes.apple.com/lookup?id=1251196416&country=US&media=podcast&entity=podcastEpisode&limit=100
+```ts
+const profile = await getGeniProfiles("600012322333", access_token);
+```
+
+# Disclaimer
+
+This API is not official, please help me improve it.
+
+# License
+
+MIT
