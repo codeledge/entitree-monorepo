@@ -68,7 +68,7 @@ export type GeniPhoto = {
   original?: string;
 };
 
-type GeniLocation = {
+export type GeniLocation = {
   city?: string;
   state?: string;
   county?: string;
@@ -84,7 +84,7 @@ type GeniLocation = {
   place_name?: string;
 };
 
-type GeniEvent = {
+export type GeniEvent = {
   date?: {
     day?: number;
     month?: number;
