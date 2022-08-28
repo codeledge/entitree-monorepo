@@ -7,7 +7,11 @@ import { prismaClient } from "../../prisma/prismaClient";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    return defaultHandler(req, res, prismaClient);
+    return defaultHandler(req, res, prismaClient, {
+      getList: {
+        filterMode: "insensitive",
+      },
+    });
   } catch (error) {
     res.status(500).send(error);
   }
