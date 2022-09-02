@@ -2,6 +2,8 @@
 
 Comes with all types
 
+Code is available on [Github](https://github.com/codeledge/entitree-monorepo/tree/main/packages/geni-api)
+
 # Usage
 
 ```ts
