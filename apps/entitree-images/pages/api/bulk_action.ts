@@ -70,7 +70,7 @@ export default async function handler(
       console.log("Cropping", image.id);
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const result = await process3_cropFaces(
-        image.imageId,
+        image.id,
         image.faceDetectionGoogleVision[0].faceAnnotations
       );
       // result.push("ImageCropped");

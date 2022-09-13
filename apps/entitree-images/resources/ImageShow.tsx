@@ -33,7 +33,7 @@ export const ImageShow = (props) => (
   // ImageShowActions permissions={permissions}
   <Show title="Image view" actions={<ImageShowActions {...props} />} {...props}>
     <SimpleShowLayout>
-      <TextField source="imageId" />
+      <TextField source="id" />
       {/* <NumberField source="fileSize" /> */}
       {/* <TextField source="wikidataLabel" /> */}
       <TextField source="wikidataEntity" />
@@ -41,7 +41,7 @@ export const ImageShow = (props) => (
       <TextField source="comment" />
       <WikidataLinkField source="wikidataEntity" />
       <FaceInfoField source="faceDetectionGoogleVision" />
-      <ImageAllField source="imageId" title="image" label="image" />
+      <ImageAllField source="id" title="image" label="image" />
     </SimpleShowLayout>
   </Show>
 );

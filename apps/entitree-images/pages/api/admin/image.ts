@@ -3,7 +3,7 @@ import {
   defaultHandler,
   deleteHandler,
 } from "ra-data-simple-prisma";
-import { prismaClient } from "../../../prisma/prismaClient";
+import { prismaClient, Prisma } from "../../../prisma/prismaClient";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getNumericId, isEntityId } from "wikidata-sdk";
 import axios from "axios";
@@ -16,7 +16,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const session = await getSession({ req });
-  const userId = session?.userId as string;
+  const userId = session?.userId as number;
   const role = session?.role;
   console.log(session);
 
@@ -61,12 +61,6 @@ export default async function handler(
         };
       }
 
-      const lastImageId = (
-        await prismaClient.image.findFirst({
-          orderBy: { id: "desc" },
-        })
-      ).imageId;
-
       if (!userId) {
         res.status(400).json({
           message: "Error",
@@ -74,8 +68,8 @@ export default async function handler(
         return;
       }
 
-      let imageCreate = {
-        imageId: lastImageId + 1,
+      let imageCreate: Prisma.ImageCreateInput = {
+        internalFileName: "temp" + new Date().valueOf(),
         wikidataEntity: parseInt(getNumericId(data.wikidataEntity)),
         wikidataLabel: data.wikidataLabel,
         originalFilename: image.title,
@@ -89,11 +83,7 @@ export default async function handler(
           },
         },
       };
-      // await prismaClient.image.create({
-      //   data,
-      // });
-
-      const originalFile = `uploads/original/${imageCreate.imageId}`;
+      const originalFile = `uploads/original/${imageCreate.internalFileName}`;
 
       const publicFile = await uploadAndGetPublicFile(
         originalFile,
@@ -102,9 +92,7 @@ export default async function handler(
       console.log(imageCreate, publicFile);
       req.body.params.data = imageCreate;
       console.log(req.body.params);
-      return createHandler(req, res, prismaClient.image, {
-        connect: {},
-      });
+      return createHandler(req, res, prismaClient.image);
       break;
     case "delete":
       if (role !== "admin") {
