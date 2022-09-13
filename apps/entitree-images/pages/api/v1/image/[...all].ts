@@ -81,7 +81,7 @@ export default async function handler(
     imageType === "recrop"
   ) {
     // if (role !== "admin") {
-    //   console.log("admine");
+    //   console.log("admin");
     //   return res.status(401).json({ message: "This is admin only" });
     // }
 
