@@ -4,10 +4,14 @@ import { z } from "zod";
 import { prismaClient } from "../../prisma/prismaClient";
 
 export const artistRouter = t.router({
-  list: t.procedure.query(async () => {
-    const artists = await prismaClient.artist.findMany();
-    return artists;
-  }),
+  list: t.procedure
+    .input(z.object({}))
+    .output(z.any())
+    .meta({ openapi: { method: "GET", path: "/listArtists" } })
+    .query(async () => {
+      const artists = await prismaClient.artist.findMany();
+      return artists;
+    }),
   byId: t.procedure
     .input(
       z.object({

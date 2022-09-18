@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 
 const ChordPage = () => {
   const id = parseInt(useRouter().query.id as string);
-  const chordQuery = trpc.proxy.chord.byId.useQuery(id);
+  const chordQuery = trpc.chord.byId.useQuery({ id });
   const [downloadLink, setDownloadLink] = useState("");
 
   // useEffect(() => {

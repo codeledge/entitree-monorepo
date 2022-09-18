@@ -9,7 +9,7 @@ import { Box } from "@mui/material";
 export default function SearchInput() {
   const router = useRouter();
 
-  const chordList = trpc.proxy.chord.list.useQuery();
+  const chordList = trpc.chord.list.useQuery();
 
   if (chordList.isLoading) {
     return;
