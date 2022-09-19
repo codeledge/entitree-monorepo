@@ -1724,8 +1724,8 @@ async function getPodcastInfo(podcast) {
 WHERE 
 {
   VALUES ?item {wd:${podcast}}
-  #OPTIONAL { ?item wdt:P407 ?language.
-  #?language wdt:P218 ?languageCode . }
+  OPTIONAL { ?item wdt:P407 ?language.
+  ?language wdt:P218 ?languageCode . }
   OPTIONAL { ?item wdt:P136 ?genre. }  
   OPTIONAL { ?item wdt:P495 ?country. }  
   OPTIONAL { ?item wdt:P162 ?producer. }  
@@ -1742,6 +1742,8 @@ WHERE
   return {
     id: info.item,
     genre: info.genre,
+    language: info.language,
+    languageCode: info.languageCode,
     producer: info.producer,
     presenter: info.presenter,
     spotifyId: info.spotifyId,

@@ -3,9 +3,8 @@ import {
   DESCRIPTIONS_DEFAULT,
 } from "../../../src/podcastDescriptions";
 import type { NextApiRequest, NextApiResponse } from "next";
-
-import { getPodcastFeed } from "../../../src/wikidata/getPodcastInfo";
 import { readFeed } from "../../../src/import/readFeed";
+import { getPodcastFeed } from "@codeledge/podcast";
 
 export default async function handler(
   req: NextApiRequest,

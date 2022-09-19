@@ -1,5 +1,4 @@
 import axios from "axios";
-import https from "https";
 
 export const SERVICES = {
   NPSE: {
@@ -23,9 +22,5 @@ export const SERVICES = {
 export const getNepseTodaysPrice = (date: string) => {
   let url = SERVICES.NPSE.todaysPrice.replace("$1", date);
   console.log(url);
-  return axios.get(url, {
-    httpsAgent: new https.Agent({
-      rejectUnauthorized: false,
-    }),
-  });
+  return axios.get(url);
 };

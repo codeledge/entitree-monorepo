@@ -9,7 +9,7 @@ import path, { dirname } from "path";
 import { Podcast } from "podcast";
 import fs from "fs";
 import { getEpisodesById } from "../wikidata/getEpisodes";
-import { getPodcastInfo } from "../wikidata/getPodcastInfo";
+import { getPodcastInfo } from "@codeledge/podcast";
 
 export async function createXML(
   podcastId: string,

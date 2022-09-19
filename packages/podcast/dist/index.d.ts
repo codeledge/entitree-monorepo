@@ -227,6 +227,14 @@ declare type PodcastInfo = {
         value: string;
         label: string;
     };
+    language?: {
+        value: string;
+        label: string;
+    };
+    languageCode?: {
+        value: string;
+        label: string;
+    };
     spotifyId?: string;
     appleId?: string;
 };

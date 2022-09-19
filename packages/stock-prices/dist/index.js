@@ -17,7 +17,10 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.ts
@@ -30,7 +33,6 @@ module.exports = __toCommonJS(src_exports);
 
 // src/stock.ts
 var import_axios = __toESM(require("axios"));
-var import_https = __toESM(require("https"));
 var SERVICES = {
   NPSE: {
     todaysPrice: "https://newweb.nepalstock.com/api/nots/market/export/todays-price/$1"
@@ -42,11 +44,7 @@ var SERVICES = {
 var getNepseTodaysPrice = (date) => {
   let url = SERVICES.NPSE.todaysPrice.replace("$1", date);
   console.log(url);
-  return import_axios.default.get(url, {
-    httpsAgent: new import_https.default.Agent({
-      rejectUnauthorized: false
-    })
-  });
+  return import_axios.default.get(url);
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

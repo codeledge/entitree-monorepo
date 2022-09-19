@@ -13,12 +13,12 @@ import {
   WD_REVIEW_SCORE_BY,
   WD_STREET_ADDRESS,
   COUNTRIES,
-} from "../wikidata";
+} from "@entitree/helper/src/wikidata";
 import { getPlace } from "./places";
 import { PLACE_TYPE_MAPPING } from "./placeWikidataMapping";
 
-export const getWikidataFromGoogle = async (input: string) => {
-  const place = await getPlace(input);
+export const getWikidataFromGoogle = async (key: string, input: string) => {
+  const place = await getPlace(key, input);
   const result: any = {};
 
   const types = place.types;
