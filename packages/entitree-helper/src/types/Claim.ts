@@ -21,7 +21,8 @@ export type ClaimSnak = {
 export declare type ClaimSnakValue =
   | ClaimSnakTimeValue
   | ClaimSnakEntityValue
-  | ClaimSnakTextValue;
+  | ClaimSnakTextValue
+  | ClaimSnakExternalIDValue;
 export type ClaimSnakTextValue = {
   type: "monolingualtext";
   value: {
@@ -47,6 +48,10 @@ export interface ClaimSnakEntityValue {
     "numeric-id": number;
     "entity-type": string;
   };
+}
+export interface ClaimSnakExternalIDValue {
+  type: "string";
+  value: string;
 }
 export interface ClaimReference {
   hash: string;
