@@ -28,7 +28,7 @@ export const ImageList = (props) => {
   return (
     <List {...props} filters={imageFilters}>
       <Datagrid rowClick="show">
-        <ImageDbField source="imageId" title="wikidataLabel" label="image" />
+        <ImageDbField source="id" title="wikidataLabel" label="image" />
         <TextField source="wikidataLabel" />
         <TextField source="wikidataEntity" label="Wikidata id" />
         {/* <TextField source="viewCount" /> */}
@@ -42,11 +42,11 @@ export const ImageList = (props) => {
           </ReferenceField>
         )}
         {permissions === "admin" && (
-          <AdminActionField label="Action" source="imageId" />
+          <AdminActionField label="Action" source="id" />
         )}
         <DateField source="createdAt" />
         <DateField source="updatedAt" />
-        <TextField source="imageId" />
+        <TextField source="id" />
       </Datagrid>
     </List>
   );

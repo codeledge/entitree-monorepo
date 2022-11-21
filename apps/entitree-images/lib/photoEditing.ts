@@ -6,17 +6,17 @@ import { cropFacesAndSave, detectFaces } from "./faceDetection";
 import removePhotoBackground from "./removePhotoBackground";
 import { prismaClient } from "../prisma/prismaClient";
 
-export async function process1_removeBackground(imageId: number) {
+export async function process1_removeBackground(id: number) {
   await prismaClient.image.update({
-    where: { imageId },
+    where: { id },
     data: {
       statusBackgroundRemoval: "ActiveActionStatus",
     },
   });
-  const success = await removePhotoBackground(imageId);
+  const success = await removePhotoBackground(id);
   await updateMetric(Metric.backgroundRemoval);
   return await prismaClient.image.update({
-    where: { imageId },
+    where: { id },
     data: {
       statusBackgroundRemoval: success
         ? "CompletedActionStatus"
@@ -25,9 +25,9 @@ export async function process1_removeBackground(imageId: number) {
   });
 }
 
-export async function process2_detectFaces(imageId: number) {
+export async function process2_detectFaces(id: number) {
   const googleVisionObject = await detectFaces(
-    createFilePath(ImageType.without_bg, imageId)
+    createFilePath(ImageType.without_bg, id)
   );
   const faceAnnotations = googleVisionObject[0].faceAnnotations;
   console.log(googleVisionObject);
@@ -35,7 +35,7 @@ export async function process2_detectFaces(imageId: number) {
   const faceDetectionGoogleVision: any = googleVisionObject;
 
   await prismaClient.image.update({
-    where: { imageId },
+    where: { id },
     data: {
       faceDetectionGoogleVision,
       statusGoogleFaceDetection:
@@ -50,11 +50,11 @@ export async function process2_detectFaces(imageId: number) {
 }
 
 export async function process3_cropFaces(
-  imageId: number,
+  id: number,
   faceAnnotations: FaceAnnotations
 ) {
   console.log("Start Cropping");
-  const cropStatus = await cropFacesAndSave(imageId, faceAnnotations);
+  const cropStatus = await cropFacesAndSave(id, faceAnnotations);
   // const cropExists = await BUCKET.file(
   //   createFilePath(ImageType.transparent_head, id)
   // ).exists();
@@ -74,7 +74,7 @@ export async function process3_cropFaces(
   //   );
   // }
   await prismaClient.image.update({
-    where: { imageId },
+    where: { id },
     data: {
       statusImageCropping: !!cropStatus //&& cropExists[0]
         ? "CompletedActionStatus"

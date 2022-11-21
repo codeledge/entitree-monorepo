@@ -62,7 +62,7 @@ export enum ImageType {
 
 export function createFilePath(
   imageType: ImageType,
-  id: number,
+  id: number | string,
   publicURL = false
 ) {
   const reqFile = `uploads/${imageType}/${id.toString()}${

@@ -17,7 +17,7 @@ export default async function auth(req, res) {
       async session({ session, token, user }) {
         const userDoc = await prismaClient.user.findFirst({
           where: {
-            id: user.id,
+            id: parseInt(user.id),
           },
         });
         session.userId = user.id;

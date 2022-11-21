@@ -2,7 +2,6 @@ import { Box, Typography } from "@mui/material";
 
 import { ActionStatusTypeEmoji } from "../lib/consts";
 import { getEmojiByLikelihood } from "../lib/faceDetectionExpression";
-/* eslint-disable @next/next/no-img-element */
 import { useRecordContext } from "react-admin";
 
 export const FaceInfoField = (props: {
@@ -47,7 +46,7 @@ export const FaceInfoField = (props: {
           <a
             target={"_blank"}
             rel={"noreferrer"}
-            href={`/api/v1/image/process/id/${record["imageId"]}`}
+            href={`/api/v1/image/process/id/${record["id"]}`}
           >
             Process pictures
           </a>

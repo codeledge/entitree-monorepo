@@ -18,7 +18,7 @@ import { Image, prismaClient } from "../../../../prisma/prismaClient";
 const getImage = async (id: number) => {
   const image = await prismaClient.image.findFirst({
     where: {
-      imageId: id,
+      id,
     },
   });
   return image;
@@ -44,11 +44,7 @@ const imageInfo = async (id: number) => {
     image.faceDetectionGoogleVision = undefined;
     image.url = {};
     for (let i in ImageType) {
-      image.url[ImageType[i]] = createFilePath(
-        ImageType[i],
-        image.imageId,
-        true
-      );
+      image.url[ImageType[i]] = createFilePath(ImageType[i], image.id, true);
     }
     return image;
   });
@@ -71,8 +67,9 @@ export default async function handler(
   const session = await getSession({ req });
   const userId = session?.userId;
   const role = session?.role;
-  const [imageType, what, id] = req.query.all as string[];
+  const [imageType, what, idString] = req.query.all as string[];
 
+  const id = parseInt(idString);
   if (!isNumeric(id)) {
     res.status(403).json({ message: "Invalid id" });
     return;
@@ -83,24 +80,29 @@ export default async function handler(
     imageType === "reprocess" ||
     imageType === "recrop"
   ) {
-    if (role !== "admin") {
-      console.log("admine");
-      return res.status(401).json({ message: "This is admin only" });
-    }
+    // if (role !== "admin") {
+    //   console.log("admin");
+    //   return res.status(401).json({ message: "This is admin only" });
+    // }
 
-    const originalExists = await BUCKET.file(
-      createFilePath(ImageType.original, +id)
-    ).exists();
-
-    if (!originalExists[0]) {
-      res.status(404).json({ message: "Original doesn't exist" });
-      return;
-    }
-
-    let imageData = await getImage(+id);
+    let imageData = await getImage(id);
 
     if (!imageData) {
       res.status(404).json({ message: "imageData not found" });
+      return;
+    }
+
+    const originalExists = await BUCKET.file(
+      createFilePath(ImageType.original, id)
+    ).exists();
+
+    if (!originalExists[0]) {
+      //try to move file
+      await BUCKET.file(
+        createFilePath(ImageType.original, imageData.internalFileName)
+      ).move(createFilePath(ImageType.original, imageData.id));
+
+      res.status(404).json({ message: "Original doesn't exist" });
       return;
     }
 
@@ -110,10 +112,10 @@ export default async function handler(
     ) {
       //!without_bgExists
       console.log("remove BG");
-      await process1_removeBackground(imageData.imageId);
+      await process1_removeBackground(imageData.id);
     }
     const without_bgExists = await BUCKET.file(
-      createFilePath(ImageType.without_bg, imageData.imageId)
+      createFilePath(ImageType.without_bg, imageData.id)
     ).exists();
 
     if (!without_bgExists[0]) {
@@ -128,8 +130,8 @@ export default async function handler(
       (imageData.statusGoogleFaceDetection !== "CompletedActionStatus" &&
         imageData.statusGoogleFaceDetection !== "FailedActionStatus") //consider failed as no reason to process again
     ) {
-      await process2_detectFaces(imageData.imageId);
-      imageData = (await getImage(imageData.imageId)) || imageData; //otherwise it could be null
+      await process2_detectFaces(imageData.id);
+      imageData = (await getImage(imageData.id)) || imageData; //otherwise it could be null
     }
     if (
       (imageType === "reprocess" ||
@@ -140,10 +142,10 @@ export default async function handler(
       console.log("process crop");
       console.log(imageData.faceDetectionGoogleVision);
       await process3_cropFaces(
-        imageData.imageId,
+        imageData.id,
         imageData.faceDetectionGoogleVision?.[0]?.faceAnnotations!
       );
-      imageData = (await getImage(imageData.imageId)) || imageData; //otherwise it could be null
+      imageData = (await getImage(imageData.id)) || imageData; //otherwise it could be null
     }
 
     res.status(200).json({ message: "all 3 steps completed.", img: imageData });
