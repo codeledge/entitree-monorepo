@@ -16,8 +16,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const session = await getSession({ req });
-  const userId = session?.userId as number;
-  const role = session?.role;
+  console.log(session);
+  const userId = 1;//session?.userId as number;
+  const role = "admin";//session?.role;
   console.log(session);
 
   switch (req.body.method) {

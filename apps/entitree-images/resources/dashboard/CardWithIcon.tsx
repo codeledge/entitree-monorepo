@@ -1,8 +1,6 @@
 import * as React from "react";
-
 import { Box, Card, Divider, Typography } from "@mui/material";
 import { FC, createElement } from "react";
-
 import { Link } from "react-router-dom";
 import { ReactNode } from "react";
 import cartouche from "./cartouche.png";
@@ -59,9 +57,9 @@ const CardWithIcon = (props: Props) => {
   const { icon, title, subtitle, to, children } = props; //icon
 
   return (
-    <StyledCard className={classes.card}>
+    <StyledCard className={classes.card} >
       {/* <Link to={to}> */}
-      <div className={classes.main}>
+      <Box className={classes.main} p={2}>
         <Box width="3em" className="icon">
           {createElement(icon, { fontSize: "large" })}
         </Box>
@@ -73,7 +71,7 @@ const CardWithIcon = (props: Props) => {
             {subtitle || " "}
           </Typography>
         </Box>
-      </div>
+      </Box>
       {/* </Link> */}
       {children && <Divider />}
       {children}

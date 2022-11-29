@@ -2,11 +2,9 @@ import {
   Admin,
   CustomRoutes,
   EditGuesser,
-  ListGuesser,
   Resource,
   ShowGuesser,
 } from "react-admin";
-
 import Dashboard from "./resources/dashboard/Dashboard";
 import Documentation from "./custom-pages/Documentation";
 import { ImageCreate } from "./resources/ImageCreate";
@@ -19,7 +17,6 @@ import Privacy from "./custom-pages/Privacy";
 import React from "react";
 import { UserList } from "./resources/UserList";
 import { authProvider } from "./providers/authProvider";
-// import { dataProvider } from "./providers/dataProvider";
 import { i18nProvider } from "./providers/i18nProvider";
 import { useSession } from "next-auth/react";
 import { Route } from "react-router";
@@ -35,7 +32,9 @@ const ReactAdmin = () => {
       disableTelemetry
       authProvider={authProvider(session)}
       dashboard={Dashboard}
-      dataProvider={dataProvider("/api/admin")}
+      dataProvider={dataProvider("/api/admin",{
+        
+      })}
       i18nProvider={i18nProvider}
       layout={Layout}
       loginPage={LoginPage}

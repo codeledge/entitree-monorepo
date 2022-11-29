@@ -17,7 +17,8 @@ export const sparql = async ({
   skip?: number;
   orderBy?: string;
 }) => {
-  let query = `#wikidata-table query v1
+  //#wikidata-table query v1
+  let query = `
   SELECT ${select}
   WHERE
   {
@@ -28,6 +29,8 @@ export const sparql = async ({
   ${take ? `LIMIT ${take}\n` : ""}
   ${skip ? `OFFSET ${skip}\n` : ""}
   `;
+
+  console.log("final query:")
   console.log(query);
 
   let data: any = await getWikidataSparql(query);

@@ -1,6 +1,4 @@
-// @ts-nocheck
 import * as React from "react";
-
 import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import CardWithIcon from "./CardWithIcon";
 import ImageIcon from "@mui/icons-material/Image";
@@ -8,12 +6,9 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import axios from "axios";
 import { useTranslate } from "react-admin";
 
-interface Props {
-  // value?: string;
-}
 const Spacer = () => <span style={{ width: "1em" }} />;
 
-const NumberStats = (props: Props) => {
+const NumberStats = (props) => {
   // const { value } = props;
   const translate = useTranslate();
   const [total, setTotal] = React.useState(null);
