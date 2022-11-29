@@ -1,6 +1,5 @@
 // src/stock.ts
 import axios from "axios";
-import https from "https";
 var SERVICES = {
   NPSE: {
     todaysPrice: "https://newweb.nepalstock.com/api/nots/market/export/todays-price/$1"
@@ -12,11 +11,7 @@ var SERVICES = {
 var getNepseTodaysPrice = (date) => {
   let url = SERVICES.NPSE.todaysPrice.replace("$1", date);
   console.log(url);
-  return axios.get(url, {
-    httpsAgent: new https.Agent({
-      rejectUnauthorized: false
-    })
-  });
+  return axios.get(url);
 };
 export {
   SERVICES,

@@ -114887,9 +114887,9 @@ var getDataFromNIK = (nik) => {
 };
 
 // src/formatters/md5.ts
-var import_md5 = require("ts-md5/dist/md5");
+var import_ts_md5 = require("ts-md5");
 var md5 = (str) => {
-  return import_md5.Md5.hashStr(str);
+  return import_ts_md5.Md5.hashStr(str);
 };
 
 // src/wikimedia-commons/getImageUrl.ts

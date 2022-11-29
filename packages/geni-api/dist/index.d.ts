@@ -1,4 +1,4 @@
-declare type GeniProfile = {
+type GeniProfile = {
     id: string;
     url: string;
     profile_url: string;
@@ -49,7 +49,7 @@ declare type GeniProfile = {
     cause_of_death?: string;
     relationship?: string;
 };
-declare type GeniName = {
+type GeniName = {
     first_name?: string;
     last_name?: string;
     middle_name?: string;
@@ -59,7 +59,7 @@ declare type GeniName = {
     title?: string;
     nicknames?: string;
 };
-declare type GeniPhoto = {
+type GeniPhoto = {
     large?: string;
     medium: string;
     small: string;
@@ -69,7 +69,7 @@ declare type GeniPhoto = {
     url: string;
     original?: string;
 };
-declare type GeniLocation = {
+type GeniLocation = {
     city?: string;
     state?: string;
     county?: string;
@@ -84,7 +84,7 @@ declare type GeniLocation = {
     formatted_location: string;
     place_name?: string;
 };
-declare type GeniEvent = {
+type GeniEvent = {
     date?: {
         day?: number;
         month?: number;
@@ -95,24 +95,24 @@ declare type GeniEvent = {
     };
     location?: GeniLocation;
 };
-declare type GeniProfileResults = {
+type GeniProfileResults = {
     results: GeniProfile[];
 };
-declare type GeniImmediateFamilyResults = {
+type GeniImmediateFamilyResults = {
     results: GeniImmediateFamily[];
 };
-declare type GeniImmediateFamily = {
+type GeniImmediateFamily = {
     focus: GeniProfile;
     nodes: Record<string, GeniNode>;
 };
-declare type GeniRelType = "child" | "partner";
-declare type GeniEdge = {
+type GeniRelType = "child" | "partner";
+type GeniEdge = {
     rel: GeniRelType;
 };
-declare type GeniNode = GeniProfile & {
+type GeniNode = GeniProfile & {
     edges: Record<string, GeniEdge>;
 };
-declare type GeniUnion = {
+type GeniUnion = {
     id: string;
     url: string;
     guid: string;

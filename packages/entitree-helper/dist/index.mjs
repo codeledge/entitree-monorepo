@@ -104700,7 +104700,7 @@ var getDataFromNIK = (nik) => {
 };
 
 // src/formatters/md5.ts
-import { Md5 } from "ts-md5/dist/md5";
+import { Md5 } from "ts-md5";
 var md5 = (str) => {
   return Md5.hashStr(str);
 };

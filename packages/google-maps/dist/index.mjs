@@ -36,7 +36,7 @@ var directionGMaps = async (key) => {
     params: {
       key,
       origin: "Ngurah Rai International Airport",
-      destination: "Ubud Studio"
+      destination: "Ubud Palace"
     }
   });
   console.log("data", place);

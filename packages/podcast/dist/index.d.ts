@@ -2,7 +2,7 @@ import { DateTime } from 'luxon';
 import { Episode } from 'podparse';
 import { z } from 'zod';
 
-declare type SpotifyEpisodeObject = {
+type SpotifyEpisodeObject = {
     audio_preview_url: string;
     description: string;
     duration_ms: number;
@@ -142,11 +142,11 @@ declare const ItunesEpisodeSchema: z.ZodObject<{
     }[];
     episodeGuid: string;
 }>;
-declare type ItunesEpisodeObject = z.infer<typeof ItunesEpisodeSchema>;
+type ItunesEpisodeObject = z.infer<typeof ItunesEpisodeSchema>;
 
 declare function convertItunesToFeed(episodes: ItunesEpisodeObject[]): EpisodeExtended[];
 
-declare type PodcastParse = {
+type PodcastParse = {
     id?: string;
     img?: string;
     title: string;
@@ -210,7 +210,7 @@ declare function convertFeedToWikidata(episodes: EpisodeExtended[], podcast?: Po
 
 declare function renameClaimIdtoLabel(episodes: any[]): Promise<any[]>;
 
-declare type PodcastInfo = {
+type PodcastInfo = {
     id: {
         value: string;
         label: string;

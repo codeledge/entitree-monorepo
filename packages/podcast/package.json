@@ -18,21 +18,21 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@types/node": "^18.6.3",
+    "@types/node": "^18.11.9",
     "config": "workspace:*",
     "tsconfig": "workspace:*",
-    "tsup": "^6.2.1",
-    "typescript": "^4.7.4"
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@changesets/cli": "^2.24.1",
+    "@changesets/cli": "^2.25.2",
     "@entitree/helper": "workspace:*",
-    "@types/luxon": "^3.0.0",
-    "axios": "^0.27.2",
+    "@types/luxon": "^3.1.0",
+    "axios": "^1.2.0",
     "locutus": "^2.0.16",
-    "luxon": "^3.0.1",
+    "luxon": "^3.1.1",
     "podparse": "^1.5.1",
-    "zod": "^3.17.10"
+    "zod": "^3.19.1"
   },
   "publishConfig": {
     "access": "public"
