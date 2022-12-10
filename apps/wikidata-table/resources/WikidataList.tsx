@@ -1,5 +1,4 @@
 import {
-  Datagrid,
   List,
   Pagination,
   ShowButton,
@@ -9,6 +8,8 @@ import {
   ExportButton,
   FilterButton,
   TopToolbar,
+  SelectColumnsButton,
+  DatagridConfigurable,
 } from "react-admin";
 import { useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
@@ -28,8 +29,17 @@ export const WikidataList = (page: Page) => {
 
   const header = page.header;
   let filters = [
-    <TextInput key="item" label="Search" source="item" resettable alwaysOn />,
-    <CountryInput key="Country" source="P17" />,
+    <TextInput
+      key="item"
+      label="Search"
+      source="item"
+      resettable
+      alwaysOn
+    />,
+    <CountryInput
+      key="Country"
+      source="P17"
+    />,
   ];
   if (page.filterButtons) {
     filters = filters.concat(page.filterButtons);
@@ -44,6 +54,7 @@ export const WikidataList = (page: Page) => {
           {isSmall ? <FilterButton /> : null}
           <CreateButton />
           <ExportButton />
+          <SelectColumnsButton />
           {/* <ListViewButton table={page.id} /> */}
         </TopToolbar>
       }
@@ -62,7 +73,10 @@ export const WikidataList = (page: Page) => {
 };
 
 const WikidataDatagrid = ({ header }: { header: Column[] }) => (
-  <Datagrid optimized bulkActionButtons={false}>
+  <DatagridConfigurable
+    // optimized //NOT SUPPORTED ANYMORE
+    bulkActionButtons={false}
+  >
     <TextField source="id"></TextField>
     <WikidataLabelField source="item.label" />
     {/*<TextField source={WD_COUNTRY + ".label"}></TextField> */}
@@ -84,5 +98,5 @@ const WikidataDatagrid = ({ header }: { header: Column[] }) => (
           )
       )}
     <ShowButton />
-  </Datagrid>
+  </DatagridConfigurable>
 );

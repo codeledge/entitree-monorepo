@@ -18,18 +18,18 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.11.12",
     "config": "workspace:*",
     "tsconfig": "workspace:*",
     "tsup": "^6.5.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "@changesets/cli": "^2.25.2",
     "@entitree/helper": "workspace:*",
     "@googlemaps/google-maps-services-js": "^3.3.16",
     "@types/luxon": "^3.1.0",
-    "axios": "^1.2.0",
+    "axios": "^1.2.1",
     "locutus": "^2.0.16",
     "luxon": "^3.1.1",
     "zod": "^3.19.1"
