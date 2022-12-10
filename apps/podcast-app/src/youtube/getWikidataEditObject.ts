@@ -20,7 +20,7 @@ import {
   WD_YOUTUBE_CHANNEL_ID,
   WD_YOUTUBE_VIDEO_ID,
   durationToSeconds,
-  WD_NUMBER_OF_VIEWERS,
+  WD_NUMBER_OF_VIEWERS_LISTENERS,
 } from "@entitree/helper";
 
 import { GoogleApiYouTubeVideoResource } from "./types";
@@ -119,7 +119,7 @@ export function getWikidataEditObject(
     [WD_NUMBER_OF_COMMENTS]: [
       { value: video.statistics.commentCount, qualifiers: statisticsQualifier },
     ],
-    [WD_NUMBER_OF_VIEWERS]: [
+    [WD_NUMBER_OF_VIEWERS_LISTENERS]: [
       { value: video.statistics.viewCount, qualifiers: statisticsQualifier },
     ],
     [WD_COPYRIGHT_LICENSE]: [
