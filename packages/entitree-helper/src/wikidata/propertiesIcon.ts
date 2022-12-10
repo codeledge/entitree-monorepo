@@ -465,6 +465,8 @@ export const WIKIDATA_ICON = {
     "https://upload.wikimedia.org/wikipedia/commons/b/b3/Famous_Birthdays_2014_icon.svg",
   P11216:
     "https://upload.wikimedia.org/wikipedia/commons/8/8b/Best_Western_Hotels_%26_Resorts_icon.svg",
+  P11219:
+    "https://upload.wikimedia.org/wikipedia/commons/2/28/TravelWeekly_Icon_2022.jpg",
   P11222:
     "https://upload.wikimedia.org/wikipedia/commons/d/d9/Accor_Logo_2020.png",
 };

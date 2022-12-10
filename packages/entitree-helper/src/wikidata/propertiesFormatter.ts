@@ -66,11 +66,11 @@ export const WIKIDATA_URL = {
   P465: "https://encycolorpedia.com/$1",
   P476: "https://eur-lex.europa.eu/legal-content/ALL/?uri=CELEX:$1",
   P477: "http://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=$1",
-  P480: "https://www.filmaffinity.com/en/film$1.html",
+  P480: "https://www.filmaffinity.com/es/film$1.html",
   P481: "https://www.pop.culture.gouv.fr/notice/palissy/$1",
   P486: "https://meshb.nlm.nih.gov/record/ui?ui=$1",
   P487: "https://util.unicode.org/UnicodeJsps/character.jsp?a=$1",
-  P492: "https://omim.org/entry/$1",
+  P492: "https://omim.org/OMIM:$1",
   P493: "http://www.icd9data.com/getICD9Code.ashx?icd9=$1",
   P494: "https://icd.who.int/browse10/2019/en#/$1",
   P496: "https://orcid.org/$1",
@@ -4755,7 +4755,7 @@ export const WIKIDATA_URL = {
   P7625:
     "https://msi.nga.mil/queryBreakout?publications/world-port-index?indexNumber=$1&output=html",
   P7626:
-    "https://www.nve.no/energi/energisystem/vindkraft/utbygde-vindkraftverk/vindkraftverk/?id=$1",
+    "https://www.nve.no/energi/energisystem/vannkraft/vannkraftdatabase/vannkraftverk/?id=$1",
   P7627: "http://kg.artsdata.ca/resource/$1",
   P7630: "http://www.scottisharchitects.org.uk/building_full.php?id=$1",
   P7631: "https://mppda.flinders.edu.au/films/$1",
@@ -6752,7 +6752,7 @@ export const WIKIDATA_URL = {
   P9898: "https://dataportal.arc.gov.au/NCGP/Web/Grant/Grant/$1",
   P9900: "http://gdt.oqlf.gouv.qc.ca/ficheOqlf.aspx?Id_Fiche=$1",
   P9902: "https://materialsproject.org/materials/$1/",
-  P9903: "https://all.rugby/player/$1",
+  P9903: "https://www.allrugby.com/joueurs/$1",
   P9906: "https://commons.wikimedia.org/wiki/File:$1",
   P9907: "https://swisscovery.slsp.ch/permalink/41SLSP_NETWORK/1ufb5t2/alma$1",
   P9909: "https://geoloogia.info/locality/$1/",
@@ -7248,7 +7248,8 @@ export const WIKIDATA_URL = {
   P10425: "https://www.trip.com/hotels/_-hotel-detail-$1",
   P10426: "https://www.tiket.com/hotel/$1",
   P10427: "https://www.pegipegi.com/hotel/_/__$1/",
-  P10428: "https://members.parliament.uk/member/$1/career",
+  P10428:
+    "https://hansard.parliament.uk/search/MemberContributions?memberId=$1",
   P10429: "https://www.rodi-db.de/player.php?id=$1",
   P10430: "https://www.hockeyslovakia.sk/en/players/detail/$1",
   P10431:
