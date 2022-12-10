@@ -68,8 +68,8 @@ just type WD\_ in your code editor to get suggestions.
 ### getWikipediaArticle
 
 ```ts
-let artice = getWikipediaArticle("Germany", "en");
-console.log(artice);
+let article = getWikipediaArticle("Germany", "en");
+console.log(article);
 ```
 
 ## Notes
