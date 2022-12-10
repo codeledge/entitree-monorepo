@@ -119,6 +119,7 @@ export const getListHandler = async <
     if (row.P18.label) {
       // d.P18.label = getCommonsUrlByFile(d.P18.label, 400);
     }
+    if (row.P569) row.P569 = row.P569.split("T")[0];
     // row.map((column) => {
     //   if (column.label) {
     //     column.label = column.label.split(SPARQL_SEPARATOR).join(", ");

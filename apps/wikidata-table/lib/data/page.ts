@@ -5,12 +5,14 @@ import { hotels } from "./pages/hotels";
 import { hospitals, pharmaceutical_companies } from "./pages/medicine";
 import { podcasts, podcast_episodes } from "./pages/podcast";
 import { politicians } from "./pages/politics";
+import { forumAttendes } from "./pages/socialites";
 import { universities } from "./pages/universities";
 import { Pages } from "./types";
 
 export const WikidataPages: Pages = {
   drones,
   politicians,
+  forumAttendes,
   mobile_network_operators: {
     represents: "Q1941618",
     category: "technology",
@@ -26,7 +28,7 @@ export const WikidataPages: Pages = {
       { property: "P3744" },
     ],
   },
-  hotels: hotels,
+  hotels,
   smartphones: {
     represents: "Q19723451",
     category: "technology",
@@ -372,10 +374,7 @@ export const WikidataPages: Pages = {
     query:
       'SELECT ?item ?itemLabel WHERE\n{\n ?item wdt:P31 wd:Q13479982.\n SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }\n}',
   },
-  isostandarts: {
-    represents: "Q15087423",
-    category: "other",
-  },
+  // isostandards,
   banks: {
     represents: "Q730038",
     category: "finance",

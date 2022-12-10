@@ -52,7 +52,6 @@ export const WikidataList = (page: Page) => {
       actions={
         <TopToolbar>
           {isSmall ? <FilterButton /> : null}
-          <CreateButton />
           <ExportButton />
           <SelectColumnsButton />
           {/* <ListViewButton table={page.id} /> */}
