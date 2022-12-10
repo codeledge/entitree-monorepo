@@ -1,16 +1,8 @@
 import type { AppProps } from "next/app";
-import { withTRPC } from "@trpc/next";
-import { AppRouter } from "../server/router";
+import { trpc } from "../utils/trpc";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }
 
-export default withTRPC<AppRouter>({
-  config() {
-    return {
-      url: `/api/trpc`,
-    };
-  },
-  ssr: false,
-})(MyApp);
+export default trpc.withTRPC(MyApp);

@@ -6,29 +6,31 @@ import {
   getPodcastInfo,
   POPULAR_PODCASTS,
 } from "@codeledge/podcast";
-import { createRouter } from "../createRouter";
 import { DateTime } from "luxon";
 import { z } from "zod";
+import { t } from "../trpc";
 
 const bearer = "";
 
-export const spotifyPodcastRouter = createRouter()
-  .query("getEpisodes", {
-    meta: {
+export const spotifyPodcastRouter = t.router({
+  getEpisodes: t.procedure
+    .input(
+      z.object({
+        spotify_token: z.string().default(""),
+        id: z.string(),
+      })
+    )
+    .output(z.any())
+    .meta({
       openapi: {
         enabled: true,
         method: "GET",
         path: "/spotify/getEpisodes",
-        tag: "spotify",
+        tags: ["spotify"],
         summary: "Get all episodes of a podcast",
       },
-    },
-    input: z.object({
-      spotify_token: z.string().default(""),
-      id: z.string(),
-    }),
-    output: z.any(),
-    resolve: async ({ input: { id, spotify_token } }) => {
+    })
+    .query(async ({ input: { id, spotify_token } }) => {
       const output = await getSpotifyShowEpisodes(
         id,
         spotify_token,
@@ -36,24 +38,25 @@ export const spotifyPodcastRouter = createRouter()
       );
       console.log(output);
       return output;
-    },
-  })
-  .query("getEpisodesInWikidata", {
-    meta: {
+    }),
+  getEpisodesInWikidata: t.procedure
+    .input(
+      z.object({
+        spotify_token: z.string().default(bearer),
+        id: z.string(),
+      })
+    )
+    .output(z.any())
+    .meta({
       openapi: {
         enabled: true,
         method: "GET",
         path: "/spotify/getEpisodesInWikidata",
-        tag: "spotify",
+        tags: ["spotify"],
         summary: "Get all episodes of a podcast",
       },
-    },
-    input: z.object({
-      spotify_token: z.string().default(bearer),
-      id: z.string(),
-    }),
-    output: z.any(),
-    resolve: async ({ input: { id, spotify_token } }) => {
+    })
+    .query(async ({ input: { id, spotify_token } }) => {
       const wikidata = await getPodcastInfo(id);
       if (!wikidata.spotifyId) {
         throw new Error("No spotify show id found on Wikidata item");
@@ -78,5 +81,5 @@ export const spotifyPodcastRouter = createRouter()
         wikidata,
         podcast,
       };
-    },
-  });
+    }),
+});

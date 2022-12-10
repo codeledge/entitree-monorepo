@@ -6,11 +6,11 @@ import {
   WIKIDATA_LABELS_EN,
   WIKIDATA_REGEX,
 } from "@entitree/helper";
-import { createRouter } from "../createRouter";
+import { t } from "../trpc";
 
-export const wikidataRouter = createRouter()
-  .query("getEnLabels", {
-    meta: {
+export const wikidataRouter = t.router({
+  getEnLabels: t.procedure
+    .meta({
       openapi: {
         enabled: true,
         method: "GET",
@@ -18,18 +18,19 @@ export const wikidataRouter = createRouter()
         tags: ["wikidata"],
         summary: "Get Wikidata labels of every property",
       },
-    },
-    input: z.void(),
-    output: z.object({
-      labels: z.record(z.string(), z.string()),
-    }),
-    resolve: () => {
+    })
+    .input(z.void())
+    .output(
+      z.object({
+        labels: z.record(z.string(), z.string()),
+      })
+    )
+    .query(() => {
       const labels = WIKIDATA_LABELS_EN;
       return { labels };
-    },
-  })
-  .query("getProperty", {
-    meta: {
+    }),
+  getProperty: t.procedure
+    .meta({
       openapi: {
         enabled: true,
         method: "GET",
@@ -37,39 +38,46 @@ export const wikidataRouter = createRouter()
         tags: ["wikidata"],
         summary: "Get Wikidata labels of every property",
       },
-    },
-    input: z.object({
-      property: z.string().regex(/^P/),
-    }),
-    output: z.object({
-      label: z.string().nullable(),
-      icon: z.string().nullable(),
-      regex: z.string().nullable(),
-    }),
-    resolve: ({ input: { property } }) => {
+    })
+    .input(
+      z.object({
+        property: z.string().regex(/^P/),
+      })
+    )
+    .output(
+      z.object({
+        label: z.string().nullable(),
+        icon: z.string().nullable(),
+        regex: z.string().nullable(),
+      })
+    )
+    .query(({ input: { property } }) => {
       const output = {
         label: WIKIDATA_LABELS_EN[property] ?? null,
         icon: WIKIDATA_ICON[property] ?? null,
         regex: WIKIDATA_REGEX[property] ?? null,
       };
       return output;
-    },
-  })
-  .query("getAirlineByIATACode", {
-    meta: {
+    }),
+  getAirportByIATACode: t.procedure
+    .meta({
       openapi: {
         enabled: true,
         method: "GET",
-        path: "/getAirlineByIATACode",
+        path: "/getAirportByIATACode",
         tags: ["wikidata"],
-        summary: "Get Airline info based on IATA Code",
+        summary: "Get Airport info based on IATA Code",
       },
-    },
-    input: z.object({
-      code: z.string().regex(new RegExp(WIKIDATA_REGEX[WD_IATA_AIRPORT_CODE])),
-    }),
-    output: z.any(),
-    resolve: async ({ input: { code } }) => {
+    })
+    .input(
+      z.object({
+        code: z
+          .string()
+          .regex(new RegExp(WIKIDATA_REGEX[WD_IATA_AIRPORT_CODE])),
+      })
+    )
+    .output(z.any())
+    .query(async ({ input: { code } }) => {
       const query = await getWikidataSparql(`
         SELECT ?wikipedia ?item ?itemLabel (group_concat(DISTINCT ?P239_;separator=", ") as ?P239 ) (group_concat(DISTINCT ?P238_;separator=", ") as ?P238 ) (group_concat(DISTINCT ?P17_;separator=", ") as ?P17 ) (group_concat(DISTINCT ?P17Label_;separator=", ") as ?P17Label ) 
 (group_concat(DISTINCT ?P931_;separator=", ") as ?P931 ) (group_concat(DISTINCT ?P931Label_;separator=", ") as ?P931Label ) 
@@ -101,5 +109,5 @@ OPTIONAL { ?item wdt:P18 ?P18_. }
 
       `);
       return query[0];
-    },
-  });
+    }),
+});
