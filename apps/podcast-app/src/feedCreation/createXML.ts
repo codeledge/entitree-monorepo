@@ -40,9 +40,9 @@ export async function createXML(
   // }
   let imageUrl =
     "https://upload.wikimedia.org/wikipedia/commons/2/27/Square%2C_Inc_-_Square_Logo.jpg";
-  if (podcastInfo.logo) {
-    imageUrl = podcastInfo.logo;
-  }
+  // if (podcastInfo.logo) {
+  //   imageUrl = podcastInfo.logo;
+  // }
   let podcastArray = DESCRIPTIONS.find((d: any) => d.id === podcastId);
   podcastArray = { ...DESCRIPTIONS_DEFAULT, ...podcastArray };
   if (podcastArray) {
@@ -64,7 +64,7 @@ export async function createXML(
     // managingEditor: "Dylan Greene",
     // webMaster: "Dylan Greene",
     // copyright: "2013 Dylan Greene",
-    language: podcastInfo.language?.code || "en",
+    language: podcastInfo.language?.value || "en",
     // categories: ["Category 1", "Category 2", "Category 3"],
     pubDate: claims.P580?.value,
     ttl: 60,

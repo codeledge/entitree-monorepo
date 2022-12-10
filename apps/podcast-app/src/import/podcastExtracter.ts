@@ -1,3 +1,4 @@
+//@ts-ignore
 import { strtotime } from "locutus/php/datetime/strtotime";
 
 export function extractGuests(text: string, regex: string, matchIndex: number) {
