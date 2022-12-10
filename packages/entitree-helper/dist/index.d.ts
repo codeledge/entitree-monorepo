@@ -44721,6 +44721,7 @@ declare const WIKIDATA_ICON: {
     P11150: string;
     P11194: string;
     P11216: string;
+    P11219: string;
     P11222: string;
 };
 
