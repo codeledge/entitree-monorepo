@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import {
+  DateField,
   DeleteButton,
   EditButton,
   Show,
@@ -23,7 +24,10 @@ const ImageShowActions = ({
     <TopToolbar>
       <EditButton record={data} />
       {/* {permissions === "admin" && ( */}
-      <DeleteButton record={data} resource={resource} />
+      <DeleteButton
+        record={data}
+        resource={resource}
+      />
       {/* )} */}
     </TopToolbar>
   );
@@ -31,17 +35,26 @@ const ImageShowActions = ({
 
 export const ImageShow = (props) => (
   // ImageShowActions permissions={permissions}
-  <Show title="Image view" actions={<ImageShowActions {...props} />} {...props}>
+  <Show
+    title="Image view"
+    actions={<ImageShowActions {...props} />}
+    {...props}
+  >
     <SimpleShowLayout>
       <TextField source="id" />
       {/* <NumberField source="fileSize" /> */}
       {/* <TextField source="wikidataLabel" /> */}
+      <DateField source="createdAt" />
       <TextField source="wikidataEntity" />
       <TextField source="sourceUrl" />
       <TextField source="comment" />
       <WikidataLinkField source="wikidataEntity" />
       <FaceInfoField source="faceDetectionGoogleVision" />
-      <ImageAllField source="id" title="image" label="image" />
+      <ImageAllField
+        source="id"
+        title="image"
+        label="image"
+      />
     </SimpleShowLayout>
   </Show>
 );

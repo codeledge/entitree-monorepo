@@ -20,7 +20,7 @@ export default async function auth(req, res) {
             id: parseInt(user.id),
           },
         });
-        session.userId = user.id;
+        session.userId = parseInt(user.id);
         session.role = userDoc?.role;
         return session;
       },

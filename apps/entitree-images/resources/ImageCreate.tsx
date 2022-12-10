@@ -68,17 +68,28 @@ export const ImageCreate = (props) => {
   );
   return (
     <Create {...props}>
-      <SimpleForm toolbar={<ImageCreateToolbar />} redirect="show">
+      <SimpleForm toolbar={<ImageCreateToolbar />}>
         <Typography variant="h3">Upload a new Image</Typography>
 
         {params?.wikidataEntity ? (
           <>
-            <TextInput source="wikidataLabel" disabled value={item?.label} />
-            <TextInput source="wikidataEntity" disabled value={item?.id} />
+            <TextInput
+              source="wikidataLabel"
+              disabled
+              value={item?.label}
+            />
+            <TextInput
+              source="wikidataEntity"
+              disabled
+              value={item?.id}
+            />
           </>
         ) : (
           <>
-            <WikidataSearchField onSelect={setItem} item={item} />
+            <WikidataSearchField
+              onSelect={setItem}
+              item={item}
+            />
             <ControlledField
               source="wikidataLabel"
               disabled
@@ -97,7 +108,10 @@ export const ImageCreate = (props) => {
           accept="image/*"
           // isRequired={true}
         >
-          <ImageField source="src" title="title" />
+          <ImageField
+            source="src"
+            title="title"
+          />
         </ImageInput>
         <TextInput
           title="Either provide a link to an image file or upload the image above, do need fill out both."
@@ -113,7 +127,11 @@ export const ImageCreate = (props) => {
           // inputProps={{ value: sourceUrl }}
         />
 
-        <TextInput title="comment" fullWidth source="comment" />
+        <TextInput
+          title="comment"
+          fullWidth
+          source="comment"
+        />
 
         {/* <CheckboxGroupInput
           source="remove"

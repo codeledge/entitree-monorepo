@@ -33,7 +33,7 @@ export default async function auth(req, res) {
       },
       async session({ session, token, user }) {
         console.log({ session, user });
-        // session.role = "user"; TODO broke in new next-auth version
+        session.role = "user";
         return session;
       },
     },
