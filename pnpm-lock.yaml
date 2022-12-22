@@ -385,6 +385,7 @@ importers:
       react: 18.2.0
       react-admin: 4.6.1
       react-dom: 18.2.0
+      react-ga4: ^1.4.1
       react-hook-form: ^7.40.0
       react-query: ^3.39.2
       react-router: ^6.4.5
@@ -417,6 +418,7 @@ importers:
       react: 18.2.0
       react-admin: 4.6.1_ib3m5ricvtkl2cll7qpr2f6lvq
       react-dom: 18.2.0_react@18.2.0
+      react-ga4: 1.4.1
       react-hook-form: 7.40.0_react@18.2.0
       react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
       react-router: 6.4.5_react@18.2.0
@@ -2186,8 +2188,8 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.20.6
-      '@emotion/react': 11.10.5_xl5my4wapvq2ctl7qwehtbgorq
-      '@emotion/styled': 11.10.5_3djhvnr4jirfvebjqpipo7gthy
+      '@emotion/react': 11.10.5_kzbn2opkn2327fwg5yzwzya5o4
+      '@emotion/styled': 11.10.5_qvatmowesywn4ye42qoh247szu
       '@mui/base': 5.0.0-alpha.109_ib3m5ricvtkl2cll7qpr2f6lvq
       '@mui/core-downloads-tracker': 5.10.17
       '@mui/system': 5.10.17_ogriz7mfahdh34qnfautfro5yu
@@ -2236,8 +2238,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.6
       '@emotion/cache': 11.10.5
-      '@emotion/react': 11.10.5_xl5my4wapvq2ctl7qwehtbgorq
-      '@emotion/styled': 11.10.5_3djhvnr4jirfvebjqpipo7gthy
+      '@emotion/react': 11.10.5_kzbn2opkn2327fwg5yzwzya5o4
+      '@emotion/styled': 11.10.5_qvatmowesywn4ye42qoh247szu
       csstype: 3.1.1
       prop-types: 15.8.1
       react: 18.2.0
@@ -2339,8 +2341,8 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.20.6
-      '@emotion/react': 11.10.5_xl5my4wapvq2ctl7qwehtbgorq
-      '@emotion/styled': 11.10.5_3djhvnr4jirfvebjqpipo7gthy
+      '@emotion/react': 11.10.5_kzbn2opkn2327fwg5yzwzya5o4
+      '@emotion/styled': 11.10.5_qvatmowesywn4ye42qoh247szu
       '@mui/private-theming': 5.10.16_kzbn2opkn2327fwg5yzwzya5o4
       '@mui/styled-engine': 5.10.16_dovxhg2tvkkxkdnqyoum6wzcxm
       '@mui/types': 7.2.2_@types+react@18.0.26
@@ -7749,7 +7751,7 @@ packages:
       '@panva/hkdf': 1.0.2
       cookie: 0.5.0
       jose: 4.11.1
-      next: 13.0.6_672uxklweod7ene3nqtsh262ca
+      next: 13.0.6_biqbaboplfbrettd7655fr4n2y
       oauth: 0.9.15
       openid-client: 5.3.1
       preact: 10.11.3
@@ -7895,7 +7897,7 @@ packages:
       next: ^8.1.1-canary.54 || ^9.0.0 || ^10.0.0-0 || ^11.0.0 || ^12.0.0 || ^13.0.0
     dependencies:
       cors: 2.8.5
-      next: 13.0.6_672uxklweod7ene3nqtsh262ca
+      next: 13.0.6_biqbaboplfbrettd7655fr4n2y
     dev: false
 
   /nice-try/1.0.5:
