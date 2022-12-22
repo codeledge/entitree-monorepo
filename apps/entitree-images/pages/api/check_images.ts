@@ -1,11 +1,5 @@
-import { BUCKET, ImageType, createFilePath } from "../../lib/googleStorage";
+import { BUCKET } from "../../lib/googleStorage";
 import type { NextApiRequest, NextApiResponse } from "next";
-import {
-  process1_removeBackground,
-  process2_detectFaces,
-  process3_cropFaces,
-} from "../../lib/photoEditing";
-
 import { getSession } from "next-auth/react";
 import { prismaClient } from "../../prisma/prismaClient";
 

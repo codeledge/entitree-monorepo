@@ -10,10 +10,9 @@ import {
   process2_detectFaces,
   process3_cropFaces,
 } from "../../../../lib/photoEditing";
-
 import NextCors from "nextjs-cors";
 import { getSession } from "next-auth/react";
-import { Image, prismaClient } from "../../../../prisma/prismaClient";
+import { prismaClient } from "../../../../prisma/prismaClient";
 
 const getImage = async (id: number) => {
   const image = await prismaClient.image.findFirst({
@@ -39,13 +38,8 @@ const imageInfo = async (id: number) => {
     },
   });
 
-  type ApiImage = Image & { url: { [key: string]: string } };
-  return images.map((image: ApiImage) => {
+  return images.map((image) => {
     image.faceDetectionGoogleVision = undefined;
-    image.url = {};
-    for (let i in ImageType) {
-      image.url[ImageType[i]] = createFilePath(ImageType[i], image.id, true);
-    }
     return image;
   });
 };

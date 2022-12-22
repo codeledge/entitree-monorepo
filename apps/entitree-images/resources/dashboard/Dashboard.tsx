@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React, { CSSProperties } from "react";
 
 import NumberStats from "./NumberStats";

@@ -19,6 +19,7 @@ import { CountryInput } from "../fields/CountryInput";
 import { WikidataLabelField } from "../fields/WikidataLabelField";
 import { useListView } from "../views/ListViewButton";
 import { DesktopGrid } from "../views/DesktopGrid";
+import { WikidataShow } from "./WikidataShow";
 
 export const WikidataList = (page: Page) => {
   const theme = useTheme();
@@ -53,6 +54,7 @@ export const WikidataList = (page: Page) => {
         <TopToolbar>
           {isSmall ? <FilterButton /> : null}
           <ExportButton />
+          <FilterButton />
           <SelectColumnsButton />
           {/* <ListViewButton table={page.id} /> */}
         </TopToolbar>
@@ -75,6 +77,7 @@ const WikidataDatagrid = ({ header }: { header: Column[] }) => (
   <DatagridConfigurable
     // optimized //NOT SUPPORTED ANYMORE
     bulkActionButtons={false}
+    expand={WikidataShow(header)}
   >
     <TextField source="id"></TextField>
     <WikidataLabelField source="item.label" />
