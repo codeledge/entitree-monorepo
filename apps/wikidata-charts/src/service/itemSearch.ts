@@ -1,5 +1,4 @@
 import { WikidataSearchResult, wikidataSearchEntities } from "@entitree/helper";
-
 import { IndicatorInfo } from "../sparql/queries";
 //@ts-ignore
 import wbk from "wikidata-sdk";

@@ -1,11 +1,14 @@
 import {
   WDQ_PODCAST_EPISODE,
+  WD_CANDIDACY_IN_ELECTION,
   WD_CAST_MEMBER,
   WD_COUNTRY,
   WD_COUNTRY_OF_ORIGIN,
+  WD_PARTICIPANT_IN,
   WD_PART_OF_THE_SERIES,
   WD_POINT_IN_TIME,
   WD_POLITICAL_IDEOLOGY,
+  WD_POSITION_HELD,
   WD_PUBLICATION_DATE,
   WD_SEX_OR_GENDER,
   WD_START_TIME,
@@ -87,16 +90,27 @@ let newIdea = [
 ];
 let queries: IndicatorInfo[] = [
   {
-    code: "AGE_BY_PARLIAMENT",
-    name: "Parliament age distribution by term",
+    code: "AGE_BY_EVENT",
+    name: "Participant age distribution by event",
     props: {
-      query:
-        "?item p:P39 ?position. ?position pq:P2937 ?search. #parliamentiary term",
-      s: "P3602",
+      query: `?item wdt:$s ?search. `,
+      s: WD_PARTICIPANT_IN,
       eventDate: WD_START_TIME,
     },
     time: "age",
-    query: superQueries.ageByEvent,
+    query: superQueries.ageByElection,
+    group: "politics",
+  },
+  {
+    code: "AGE_BY_PARLIAMENT",
+    name: "Parliament age distribution by term",
+    props: {
+      query: `?item p:${WD_POSITION_HELD} ?position. ?position pq:P2937 ?search. #parliamentiary term`,
+      s: WD_CANDIDACY_IN_ELECTION,
+      eventDate: WD_START_TIME,
+    },
+    time: "age",
+    query: superQueries.ageByElection,
     group: "politics",
   },
   {
@@ -104,11 +118,11 @@ let queries: IndicatorInfo[] = [
     name: "Candidate Age by election",
     props: {
       query: "?item wdt:$s ?search.",
-      s: "P3602",
+      s: WD_CANDIDACY_IN_ELECTION,
       eventDate: WD_POINT_IN_TIME,
     },
     time: "age",
-    query: superQueries.ageByEvent,
+    query: superQueries.ageByElection,
     group: "politics",
   },
   {
@@ -118,7 +132,7 @@ let queries: IndicatorInfo[] = [
       "The number of employees per prisoner, only datapoints for coexising data (both employee & prisoner count)",
     props: {
       // query: "?item wdt:$s ?search.",
-      // s: "P3602",
+      // s: WD_CANDIDACY_IN_ELECTION,
       // eventDate: POINT_IN_TIME,
     },
     time: "time",
@@ -131,7 +145,7 @@ let queries: IndicatorInfo[] = [
     props: {
       p: WD_UNMARRIED_PARTNER,
       // query: "?item wdt:$s ?search.",
-      // s: "P3602",
+      // s: WD_CANDIDACY_IN_ELECTION,
       // eventDate: POINT_IN_TIME,
     },
     time: "partner_age",
@@ -143,7 +157,7 @@ let queries: IndicatorInfo[] = [
     name: "Candidate parties by elections",
     props: {
       // query: "?item wdt:$s ?search.",
-      // s: "P3602",
+      // s: WD_CANDIDACY_IN_ELECTION,
       // eventDate: POINT_IN_TIME,
     },
     time: "year",
