@@ -1,4 +1,3 @@
-//@ts-nocheck
 import {
   Bar,
   BarChart,
@@ -284,7 +283,11 @@ export const MainChart: React.FC = () => {
             {/* <ul> */}
             {items.map((item) => (
               <span key={item.id}>
-                <a href={item.url} target="_blank" rel="noreferrer">
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {item.label}
                 </a>
                 ;
@@ -296,7 +299,11 @@ export const MainChart: React.FC = () => {
             <>
               <dt>Query Link</dt>
               <dd>
-                <a href={querySource} target="_blank" rel="noreferrer">
+                <a
+                  href={querySource}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Query
                 </a>
               </dd>

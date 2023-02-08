@@ -50,7 +50,7 @@ GROUP BY ?party ?partyLabel ?eventDate ?search ?searchLabel`,
              pq:$d ?time.`,
     "?value ?time"
   ),
-  ageByEvent: basicQuery(
+  ageByElection: basicQuery(
     `$query
 
   ?item p:P569/psv:P569 ?birth_date_node .
