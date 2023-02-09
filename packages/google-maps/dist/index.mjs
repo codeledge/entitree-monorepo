@@ -16,6 +16,7 @@ var searchPlace = async (key, input) => {
       input,
       inputtype: PlaceInputType.textQuery,
       language: Language.en,
+      // fields: ["formatted_address", "geometry"],
       key
     }
   };

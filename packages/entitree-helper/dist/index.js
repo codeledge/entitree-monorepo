@@ -18,6 +18,10 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
@@ -10656,6 +10660,7 @@ var import_axios = __toESM(require("axios"));
 async function getWikipediaArticle(wikipediaSlug, langCode = "en") {
   const { data } = await import_axios.default.get(
     `https://${langCode}.wikipedia.org/api/rest_v1/page/summary/${wikipediaSlug}`
+    //encodeURIComponent
   );
   return data;
 }
@@ -56755,6 +56760,7 @@ var ALL_LANGS = {
   aln: "Gheg Albanian",
   am: "Amharic",
   an: "Aragonese",
+  // ang: "Old English",
   anp: "Angika",
   ar: "Arabic",
   arc: "Aramaic",
@@ -56823,6 +56829,7 @@ var ALL_LANGS = {
   de: "German",
   "de-at": "Austrian German",
   "de-ch": "Swiss High German",
+  // "de-formal": "German (formal address)",
   din: "Dinka",
   diq: "Zazaki",
   dsb: "Lower Sorbian",
@@ -56839,6 +56846,7 @@ var ALL_LANGS = {
   "en-gb": "British English",
   eo: "Esperanto",
   es: "Spanish",
+  // "es-formal": "español (formal)‎",
   et: "Estonian",
   eu: "Basque",
   ext: "Extremaduran",
@@ -56886,6 +56894,7 @@ var ALL_LANGS = {
   hsb: "Upper Sorbian",
   ht: "Haitian Creole",
   hu: "Hungarian",
+  // "hu-formal": "magyar (formal)‎",
   hy: "Armenian",
   hyw: "Western Armenian",
   ia: "Interlingua",
@@ -57001,6 +57010,7 @@ var ALL_LANGS = {
   new: "Newari",
   niu: "Niuean",
   nl: "Dutch",
+  // "nl-informal": "Nederlands (informeel)‎",
   nn: "Norwegian Nynorsk",
   nov: "Novial",
   nqo: "N\u2019Ko",
@@ -117510,7 +117520,7 @@ var getDataFromNIK = (nik) => {
   let birthDay = parseInt(nik.slice(6, 8));
   const gender = birthDay < 40 ? "male" : "female";
   const birthYear = parseInt(nik.slice(10, 12));
-  const birthDate = (birthYear < Number(new Date().getFullYear().toString().slice(-2)) ? "20" : "19") + (birthYear < 10 ? "0" : "") + birthYear + "-" + nik.slice(8, 10) + "-" + birthDay % 40;
+  const birthDate = (birthYear < Number((/* @__PURE__ */ new Date()).getFullYear().toString().slice(-2)) ? "20" : "19") + (birthYear < 10 ? "0" : "") + birthYear + "-" + nik.slice(8, 10) + "-" + birthDay % 40;
   return {
     nik,
     district,
