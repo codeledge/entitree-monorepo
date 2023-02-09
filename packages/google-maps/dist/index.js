@@ -45,6 +45,7 @@ var searchPlace = async (key, input) => {
       input,
       inputtype: import_common.PlaceInputType.textQuery,
       language: import_google_maps_services_js.Language.en,
+      // fields: ["formatted_address", "geometry"],
       key
     }
   };

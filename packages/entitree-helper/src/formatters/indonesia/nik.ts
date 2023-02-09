@@ -1,6 +1,6 @@
 import districts from "./all_districts.json";
 
-export const isValidNIK = (nik: string): boolean => {
+export const isValidNIK = (nik: string) => {
   if (nik.length !== 16) {
     return false;
   }

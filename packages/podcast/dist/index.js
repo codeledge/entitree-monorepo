@@ -18,6 +18,10 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
@@ -80,6 +84,7 @@ function convertSpotifyToFeed(episodes) {
   let items = [];
   for (const item of episodes) {
     let itemFeed = {
+      //https://developer.spotify.com/documentation/web-api/reference/#/operations/get-an-episode
       title: item.name,
       duration: item.duration_ms / 1e3,
       pubDate: item.release_date,
@@ -87,6 +92,7 @@ function convertSpotifyToFeed(episodes) {
       description: item.description,
       guid: item.href,
       episodeType: "full" /* Full */,
+      //doublecheck
       spotifyId: item.href.split("episodes/")[1],
       image: { url: item.images[0].url },
       author: "",
@@ -1345,9 +1351,11 @@ function convertItunesToFeed(episodes) {
       duration: item.trackTimeMillis / 1e3,
       pubDate: item.releaseDate,
       explicit: false,
+      //TODO
       description: item.description,
       guid: item.episodeGuid,
       episodeType: "full" /* Full */,
+      //doublecheck
       itunesId: item.trackId,
       image: { url: item.artworkUrl600 },
       author: "",
@@ -1402,6 +1410,7 @@ var POPULAR_PODCASTS = [
     title: "The Jordan B. Peterson Podcast",
     guestMatch: `\\|(.[^\\|]*)`,
     guestMatchIndex: 1,
+    // seasons: { 4: "Q109265421" },
     description: `Join intellectual phenomenon Dr. Jordan Peterson and his daughter Mikhaila for enlightening discourse that will change the way you think. This podcast breaks down the dichotomy of life through interviews and lectures that explain how individuals and culture are shaped by values, music, religion, and beyond. It will give you a new perspective and a modern understanding of your creativity, competence, and personality.`
   },
   {
@@ -1411,6 +1420,7 @@ var POPULAR_PODCASTS = [
     episodeMatch: "#(\\d{3,4}) ",
     presenter: true,
     guestMatchIndex: 1,
+    // guestMatch: `\\d{2,4}. (([A-Z][\\p{L}.]{1,20} ){1,4})`,
     guestMatch: `\\d{2,4}\\. (.*?) (about|on|-|\u2014)`
   },
   {
@@ -1435,6 +1445,7 @@ var POPULAR_PODCASTS = [
     presenter: true,
     episodeMatch: "^(\\d{2,4}) ",
     guestMatch: `((with|ft\\.) (.*))`
+    //TODO 283 - Joe Rogan
   },
   {
     id: "Q109892507",
@@ -1572,7 +1583,7 @@ async function convertFeedEpisodeToWikidata(episode, podcast) {
   if (podcast == null ? void 0 : podcast.remove) {
     cleanTitle = cleanTitle.replace(podcast.remove[0], "");
   }
-  let today = new Date().toJSON().slice(0, 10);
+  let today = (/* @__PURE__ */ new Date()).toJSON().slice(0, 10);
   const reference = null;
   let claims = {
     [import_helper2.WD_INSTANCE_OF]: [import_helper2.WDQ_PODCAST_EPISODE],
@@ -1580,6 +1591,7 @@ async function convertFeedEpisodeToWikidata(episode, podcast) {
     [import_helper2.WD_PART_OF_THE_SERIES]: [podcast == null ? void 0 : podcast.id],
     [import_helper2.WD_PODCAST_LOGO_URL]: [(_a = episode.image) == null ? void 0 : _a.url],
     [import_helper2.WD_STATED_AS]: episode.description,
+    //TODO delete
     [import_helper2.WD_DURATION]: [{ amount: Math.floor(episode.duration), unit: import_helper2.WDQ_SECOND }],
     [import_helper2.WD_PUBLICATION_DATE]: [
       {
@@ -1607,6 +1619,7 @@ async function convertFeedEpisodeToWikidata(episode, podcast) {
         qualifiers: {
           [import_helper2.WD_SERIES_ORDINAL]: (_b = episode.episode) == null ? void 0 : _b.toString()
         }
+        // references: [reference],
       }
     ];
   }
@@ -1742,10 +1755,14 @@ WHERE
   return {
     id: info.item,
     genre: info.genre,
+    // country: info.country,
     language: info.language,
     languageCode: info.languageCode,
     producer: info.producer,
     presenter: info.presenter,
+    // itunesGenre: info.itunesGenre,
+    // itunesGenreId: info.itunesGenreId,
+    // logo: info.logo,
     spotifyId: info.spotifyId,
     appleId: info.appleId
   };
