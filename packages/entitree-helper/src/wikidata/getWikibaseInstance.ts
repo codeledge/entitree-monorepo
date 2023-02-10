@@ -1,28 +1,17 @@
-import wbk from "wikibase-sdk";
-import wdk from "wikidata-sdk";
+import { WBK } from "wikibase-sdk";
+import { Wbk } from "wikibase-sdk/dist/types/wbk";
 
 export type DataSource = "wikidata" | "factgrid" | "geni";
 
-export function getWikibaseInstance(alias: DataSource) {
-  let wikibaseInstance: any;
-  if (alias === "factgrid") {
-    wikibaseInstance = wbk({
-      instance: "https://database.factgrid.de",
-      sparqlEndpoint: "https://database.factgrid.de/sparql",
-    });
-  } else {
-    wikibaseInstance = wdk;
-  }
-  return wikibaseInstance;
-}
+const wikibaseInstances: Record< "wikidata" | "factgrid", Wbk> = {
+  wikidata: WBK({
+    instance: "https://www.wikidata.org",
+    sparqlEndpoint: "https://query.wikidata.org/sparql",
+  }),
+  factgrid: WBK({
+    instance: "https://database.factgrid.de",
+    sparqlEndpoint: "https://database.factgrid.de/sparql",
+  }),
+};
 
-export function getWikidataInstance() {
-  return wdk;
-}
-
-export function getWikibaseURL(alias: DataSource) {
-  if (alias === "factgrid") {
-    return "https://database.factgrid.de";
-  }
-  return "https://www.wikidata.org";
-}
+export const wdk = wikibaseInstances.wikidata;

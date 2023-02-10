@@ -1,13 +1,14 @@
-import { DataSource, getWikibaseInstance } from "./getWikibaseInstance";
-
+import { DataSource } from "./getWikibaseInstance";
 import { WikibaseEntity } from "../types/Entity";
 import axios from "axios";
+import wdk from "wikibase-sdk/dist/wellknown/wikidata.org";
+import { Wbk } from "wikibase-sdk/dist/types/wbk";
 
 type GetWikibaseEntitiesProps = {
   ids: string[]; // ['Q1', 'Q2', 'Q3', ..., 'Q123']
   languages?: string[]; // ['en', 'fr', 'de']
   props?: string[]; // ['info', 'claims']
-  dataSource: DataSource;
+  wbk?: Wbk;
 };
 
 type WikibaseEntityMap = Record<WikibaseEntity["id"], WikibaseEntity>;
@@ -16,20 +17,18 @@ export async function getWikibaseEntities({
   ids,
   languages = ["en"],
   props = ["labels", "descriptions", "claims", "sitelinks/urls"],
-  dataSource,
+  wbk = wdk,
 }: GetWikibaseEntitiesProps): Promise<WikibaseEntityMap> {
   if (ids.length === 0) {
     return {};
   }
-  const wikibaseInstance = getWikibaseInstance(dataSource);
-
   ids = ids.filter((id) => !!id); // delete undefined values
 
   // 1 url for every 50 items
   const urls: string[] = await new Promise((resolve, reject) => {
     try {
       resolve(
-        wikibaseInstance.getManyEntities({
+        wbk.getManyEntities({
           ids,
           languages,
           props,

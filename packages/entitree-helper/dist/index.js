@@ -10675,22 +10675,21 @@ async function getWikipediaDescription(wikipediaSlug, langCode = "en") {
 var import_axios2 = __toESM(require("axios"));
 
 // src/wikidata/getWikibaseInstance.ts
-var import_wikibase_sdk = __toESM(require("wikibase-sdk"));
-var import_wikidata_sdk = __toESM(require("wikidata-sdk"));
+var import_wikibase_sdk = require("wikibase-sdk");
 function getWikibaseInstance(alias) {
   let wikibaseInstance;
   if (alias === "factgrid") {
-    wikibaseInstance = (0, import_wikibase_sdk.default)({
+    wikibaseInstance = (0, import_wikibase_sdk.WBK)({
       instance: "https://database.factgrid.de",
       sparqlEndpoint: "https://database.factgrid.de/sparql"
     });
   } else {
-    wikibaseInstance = import_wikidata_sdk.default;
+    wikibaseInstance = (0, import_wikibase_sdk.WBK)({});
   }
   return wikibaseInstance;
 }
 function getWikidataInstance() {
-  return import_wikidata_sdk.default;
+  return (0, import_wikibase_sdk.WBK)({});
 }
 function getWikibaseURL(alias) {
   if (alias === "factgrid") {
@@ -10797,7 +10796,11 @@ async function getWikidataSparql(query) {
 var import_axios5 = __toESM(require("axios"));
 async function getWikibaseSourceIds(entityId, propId, dataSource) {
   const wikibaseInstance = getWikibaseInstance(dataSource);
-  const url = wikibaseInstance.getReverseClaims(propId, entityId);
+  const url = wikibaseInstance.getReverseClaims({
+    properties: propId,
+    values: entityId
+    //TODO check if correct
+  });
   const { data } = await import_axios5.default.get(url);
   const ids = wikibaseInstance.simplify.sparqlResults(data).map(({ subject }) => subject);
   return ids;
@@ -67366,27 +67369,27 @@ function getBestClaimValueText(claims) {
 
 // src/wikidata/format/formatDateClaim.ts
 var import_luxon = require("luxon");
-var import_ordinalize = __toESM(require("ordinalize"));
-var import_wikidata_sdk2 = __toESM(require("wikidata-sdk"));
+var import_wikibase_sdk2 = require("wikibase-sdk");
 var getDateClaimISO = (dateClaim) => {
   const bestClaimValue = getBestClaimValue(
     dateClaim
   );
   if (bestClaimValue)
-    return import_wikidata_sdk2.default.wikibaseTimeToISOString(bestClaimValue.time);
+    return (0, import_wikibase_sdk2.wikibaseTimeToISOString)(bestClaimValue.time);
 };
 var formatDateClaim = (claims, languageCode, yearOnly = false) => {
-  var _a, _b, _c, _d, _e;
+  var _a, _b, _c, _d;
   const dateClaim = getBestClaim(claims);
   const value = getBestClaimValue(claims);
   if (!value)
     return "";
-  const sourcingCircumstances = (_e = (_d = (_c = (_b = (_a = dateClaim == null ? void 0 : dateClaim.qualifiers) == null ? void 0 : _a[WD_SOURCING_CIRCUMSTANCES]) == null ? void 0 : _b[0]) == null ? void 0 : _c.datavalue) == null ? void 0 : _d.value) == null ? void 0 : _e.id;
+  const sourcingQualifier = (_b = (_a = dateClaim == null ? void 0 : dateClaim.qualifiers) == null ? void 0 : _a[WD_SOURCING_CIRCUMSTANCES]) == null ? void 0 : _b[0];
+  const sourcingCircumstances = (_d = (_c = sourcingQualifier == null ? void 0 : sourcingQualifier.datavalue) == null ? void 0 : _c.value) == null ? void 0 : _d.id;
   return parseDate(value, languageCode, yearOnly, sourcingCircumstances);
 };
 function parseDate(wikidatatime, languageCode = DEFAULT_LANG_CODE, yearOnly = false, sourcingCircumstances = null) {
   let { precision, time } = wikidatatime;
-  const dateISOString = import_wikidata_sdk2.default.wikibaseTimeToISOString(time);
+  const dateISOString = (0, import_wikibase_sdk2.wikibaseTimeToISOString)(time);
   const dateOnly = dateISOString.split("T")[0];
   const parsedDate = import_luxon.DateTime.fromISO(dateOnly);
   const { year } = parsedDate;
@@ -67429,11 +67432,11 @@ function parseDate(wikidatatime, languageCode = DEFAULT_LANG_CODE, yearOnly = fa
     case 6: {
       const millenniumIndex = Math.abs(Math.floor(year / 1e3));
       const millenniumNumber = year > 0 ? millenniumIndex + 1 : millenniumIndex;
-      return (0, import_ordinalize.default)(millenniumNumber) + " mill." + eraSuffix;
+      return ordinal(millenniumNumber) + " mill." + eraSuffix;
     }
     case 7: {
       const centuryNumber = year > 0 ? Math.ceil(year / 100) : Math.abs(Math.floor(year / 100));
-      return (0, import_ordinalize.default)(centuryNumber) + " cent." + eraSuffix;
+      return ordinal(centuryNumber) + " cent." + eraSuffix;
     }
     case 8:
       return Math.floor(year / 10) + "0s" + eraSuffix;
@@ -67445,8 +67448,13 @@ function parseDate(wikidatatime, languageCode = DEFAULT_LANG_CODE, yearOnly = fa
       return parsedDate.setLocale(languageCode).toFormat("d MMM y") + eraSuffix;
     }
     default:
-      return import_wikidata_sdk2.default.wikibaseTimeToSimpleDay(wikidatatime);
+      return (0, import_wikibase_sdk2.wikibaseTimeToSimpleDay)(wikidatatime);
   }
+}
+function ordinal(n) {
+  var s = ["th", "st", "nd", "rd"];
+  var v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
 // src/wikidata/format/getClaimIds.ts

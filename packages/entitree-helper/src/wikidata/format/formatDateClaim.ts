@@ -1,20 +1,17 @@
-//@ts-nocheck
 import { Claim, ClaimSnakTimeValue } from "../../types/Claim";
 import { WDQ_CIRCA, WDQ_PRESUMABLY } from "../shorthands";
 import { getBestClaim, getBestClaimValue } from "./getBestClaim";
-
 import { DEFAULT_LANG_CODE } from "../prefetched/langs";
 import { DateTime } from "luxon";
 import { LangCode } from "../../types/Lang";
 import { WD_SOURCING_CIRCUMSTANCES } from "../properties";
-import ordinalize from "ordinalize";
-import wbk from "wikidata-sdk";
+import { wikibaseTimeToISOString, wikibaseTimeToSimpleDay } from "wikibase-sdk";
 
 export const getDateClaimISO = (dateClaim: any): string | undefined => {
   const bestClaimValue = getBestClaimValue(
     dateClaim
   ) as ClaimSnakTimeValue["value"];
-  if (bestClaimValue) return wbk.wikibaseTimeToISOString(bestClaimValue.time);
+  if (bestClaimValue) return wikibaseTimeToISOString(bestClaimValue.time);
 };
 
 export const formatDateClaim = (
@@ -26,9 +23,11 @@ export const formatDateClaim = (
   const value = getBestClaimValue(claims) as ClaimSnakTimeValue["value"];
   if (!value) return "";
 
-  const sourcingCircumstances =
-    dateClaim?.qualifiers?.[WD_SOURCING_CIRCUMSTANCES]?.[0]?.datavalue?.value
-      ?.id;
+  const sourcingQualifier =
+    dateClaim?.qualifiers?.[WD_SOURCING_CIRCUMSTANCES]?.[0];
+
+  //@ts-ignore
+  const sourcingCircumstances = sourcingQualifier?.datavalue?.value?.id;
   return parseDate(value, languageCode, yearOnly, sourcingCircumstances);
 };
 
@@ -61,7 +60,7 @@ function parseDate(
   let { precision, time } = wikidatatime;
 
   // for precision < 6 this doesn't make sense
-  const dateISOString: string = wbk.wikibaseTimeToISOString(time);
+  const dateISOString: string = wikibaseTimeToISOString(time);
   const dateOnly = dateISOString.split("T")[0];
   const parsedDate = DateTime.fromISO(dateOnly);
   const { year } = parsedDate;
@@ -107,12 +106,12 @@ function parseDate(
     case 6: {
       const millenniumIndex = Math.abs(Math.floor(year / 1000));
       const millenniumNumber = year > 0 ? millenniumIndex + 1 : millenniumIndex;
-      return ordinalize(millenniumNumber) + " mill." + eraSuffix;
+      return ordinal(millenniumNumber) + " mill." + eraSuffix;
     }
     case 7: {
       const centuryNumber =
         year > 0 ? Math.ceil(year / 100) : Math.abs(Math.floor(year / 100));
-      return ordinalize(centuryNumber) + " cent." + eraSuffix;
+      return ordinal(centuryNumber) + " cent." + eraSuffix;
     }
     case 8:
       return Math.floor(year / 10) + "0s" + eraSuffix;
@@ -130,6 +129,12 @@ function parseDate(
       );
     }
     default:
-      return wbk.wikibaseTimeToSimpleDay(wikidatatime);
+      return wikibaseTimeToSimpleDay(wikidatatime);
   }
+}
+
+function ordinal(n: number) {
+  var s = ["th", "st", "nd", "rd"];
+  var v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }

@@ -1,4 +1,5 @@
-import { getWikibaseEntities, getWikidataInstance } from ".";
+import { getWikibaseEntities } from "./getWikibaseEntities";
+import { wdk } from "./getWikibaseInstance";
 import { WikidataEntity } from "./types/Entity";
 type WikidataEntityMap = Record<WikidataEntity["id"], WikidataEntity>;
 
@@ -11,7 +12,6 @@ export async function getWikidataEntities(
     ids,
     languages,
     props,
-    dataSource: "wikidata",
   });
 }
 
@@ -21,7 +21,8 @@ export async function getSimplifiedWikidataEntities(
   props = ["labels", "descriptions", "claims", "sitelinks/urls"]
 ) {
   const entities = await getWikidataEntities(ids, languages, props);
-  return getWikidataInstance().simplify.entities(entities, {
+  //@ts-ignore //TODO wait for next version
+  return wdk.simplify.entities(entities, {
     keepQualifiers: true,
     addUrl: true,
   });

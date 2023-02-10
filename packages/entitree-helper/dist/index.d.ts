@@ -1,3 +1,4 @@
+import { Wbk } from 'wikibase-sdk/dist/types/wbk';
 import * as axios from 'axios';
 
 interface Lang extends SecondLabel {
@@ -56,8 +57,8 @@ declare function getWikipediaDescription(wikipediaSlug: string, langCode?: LangC
 declare function getEntityIdFromSlug(slug: string, langCode: LangCode): Promise<string>;
 
 type DataSource = "wikidata" | "factgrid" | "geni";
-declare function getWikibaseInstance(alias: DataSource): any;
-declare function getWikidataInstance(): any;
+declare function getWikibaseInstance(alias: DataSource): Wbk;
+declare function getWikidataInstance(): Wbk;
 declare function getWikibaseURL(alias: DataSource): "https://database.factgrid.de" | "https://www.wikidata.org";
 
 declare type ClaimRank$1 = "normal" | "preferred" | "deprecated";
@@ -21338,7 +21339,7 @@ interface WikidataEntity {
 
 type WikidataEntityMap = Record<WikidataEntity["id"], WikidataEntity>;
 declare function getWikidataEntities(ids: string[], languages?: string[], props?: string[]): Promise<WikidataEntityMap>;
-declare function getSimplifiedWikidataEntities(ids: string[], languages?: string[], props?: string[]): Promise<any>;
+declare function getSimplifiedWikidataEntities(ids: string[], languages?: string[], props?: string[]): Promise<SimplifiedEntities>;
 
 declare function getWikibaseSparql(query: string, dataSource: DataSource): Promise<any>;
 declare function getWikidataSparql(query: string): Promise<any>;
