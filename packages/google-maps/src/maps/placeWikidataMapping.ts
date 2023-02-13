@@ -136,4 +136,7 @@ export const PLACE_TYPE_MAPPING: Record<AddressType, string> = {
   sublocality_level_5: "",
   subpremise: "",
   town_square: "",
+  drugstore: "",
+  light_rail_station: "",
+  university: "",
 };
