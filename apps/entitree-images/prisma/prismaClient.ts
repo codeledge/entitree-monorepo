@@ -1,5 +1,6 @@
 import { createFilePath, ImageType } from "../lib/googleStorage";
-import { PrismaClient } from "./generated/client";
+import { GoogleImageResponse } from "../types/Image";
+import { PrismaClient, Image as PrismaImage } from "./generated/client";
 
 export const prismaClient = new PrismaClient().$extends({
   result: {
@@ -18,4 +19,8 @@ export const prismaClient = new PrismaClient().$extends({
   },
 });
 
-export { Metric, type Image, ActionStatus, Prisma } from "./generated/client";
+export { Metric, ActionStatus, Prisma } from "./generated/client";
+
+export type Image = PrismaImage & {
+  faceDetectionGoogleVision: GoogleImageResponse;
+};

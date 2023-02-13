@@ -1,6 +1,4 @@
-// @ts-nocheck
 import * as React from "react";
-
 import {
   DashboardMenuItem,
   MenuItemLink,
@@ -8,7 +6,6 @@ import {
   usePermissions,
   useTranslate,
 } from "react-admin";
-
 import ImageIcon from "@mui/icons-material/Image";
 import LabelIcon from "@mui/icons-material/Label";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
