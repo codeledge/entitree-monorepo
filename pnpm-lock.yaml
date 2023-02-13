@@ -396,8 +396,6 @@ importers:
       stream: ^0.0.2
       tsconfig: workspace:*
       typescript: 4.9.5
-      wikibase-sdk: ^8.1.0
-      wikidata-sdk: ^8.1.0
     dependencies:
       '@codeledge/podcast': link:../../packages/podcast
       '@emotion/react': 11.10.5_3stiutgnnbnfnf3uowm5cip22i
@@ -427,8 +425,6 @@ importers:
       set-value: 4.1.0
       sharp: 0.31.3
       stream: 0.0.2
-      wikibase-sdk: 8.1.1
-      wikidata-sdk: 8.1.1
     devDependencies:
       '@types/jest': 29.4.0
       '@types/node': 18.13.0

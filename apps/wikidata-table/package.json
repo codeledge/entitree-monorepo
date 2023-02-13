@@ -38,9 +38,7 @@
     "schema-dts": "^1.1.0",
     "set-value": "^4.1.0",
     "sharp": "^0.31.3",
-    "stream": "^0.0.2",
-    "wikibase-sdk": "^8.1.0",
-    "wikidata-sdk": "^8.1.0"
+    "stream": "^0.0.2"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
