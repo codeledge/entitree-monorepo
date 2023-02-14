@@ -3,15 +3,16 @@ import { Box, Typography } from "@mui/material";
 import { ActionStatusTypeEmoji } from "../lib/consts";
 import { getEmojiByLikelihood } from "../lib/faceDetectionExpression";
 import { useRecordContext } from "react-admin";
+import { Image } from "../prisma/prismaClient";
 
 export const FaceInfoField = (props: {
   label?: string;
   title?: string;
   record?: {};
-  source: string;
+  source: "faceDetectionGoogleVision";
 }) => {
   const { source, title } = props;
-  const record = useRecordContext(props);
+  const record = useRecordContext(props) as Image;
   const getEmoji = (field) => {
     return (
       <li>
@@ -38,7 +39,9 @@ export const FaceInfoField = (props: {
           </Typography>
           <Typography>
             Emotion:{" "}
-            {getEmojiByLikelihood(record[source][0].faceAnnotations[0])}
+            {getEmojiByLikelihood(
+              record[source][0].faceAnnotations[0] as string
+            )}
           </Typography>
         </>
       ) : (
