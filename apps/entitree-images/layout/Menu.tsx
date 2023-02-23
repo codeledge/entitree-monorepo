@@ -8,43 +8,20 @@ import {
 } from "react-admin";
 import ImageIcon from "@mui/icons-material/Image";
 import LabelIcon from "@mui/icons-material/Label";
+import SettingsIcon from "@mui/icons-material/Settings";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PeopleIcon from "@mui/icons-material/People";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import { makeStyles } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
 
-const PREFIX = "Menu";
-
-const classes = {
-  root: `${PREFIX}-root`,
-};
-
-const Root = styled("div")(({ theme }) => ({
-  [`&.${classes.root}`]: {
-    marginTop: theme.spacing(1),
-  },
-}));
-
-type MenuName = "menuCatalog" | "menuSales" | "menuCustomers";
-
 const Menu = ({ dense = false }: MenuProps) => {
-  const [state, setState] = useState({
-    menuCatalog: true,
-    menuSales: true,
-    menuCustomers: true,
-  });
   const translate = useTranslate();
-
-  const handleToggle = (menu: MenuName) => {
-    setState((state) => ({ ...state, [menu]: !state[menu] }));
-  };
 
   const { permissions } = usePermissions();
 
   return (
-    <Root className={classes.root}>
+    <div>
       <DashboardMenuItem />
       {permissions === "admin" && (
         <MenuItemLink
@@ -80,7 +57,15 @@ const Menu = ({ dense = false }: MenuProps) => {
         leftIcon={<VerifiedUserIcon />}
         dense={dense}
       />
-    </Root>
+      <MenuItemLink
+        to={`/account`}
+        primaryText={translate(`pos.configuration`, {
+          smart_count: 2,
+        })}
+        leftIcon={<SettingsIcon />}
+        dense={dense}
+      />
+    </div>
   );
 };
 

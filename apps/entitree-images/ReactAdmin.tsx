@@ -21,6 +21,7 @@ import { i18nProvider } from "./providers/i18nProvider";
 import { useSession } from "next-auth/react";
 import { Route } from "react-router";
 import { dataProvider } from "ra-data-simple-prisma";
+import { MyAccount } from "./custom-pages/MyAccount";
 
 const ReactAdmin = () => {
   const { data: session, status } = useSession();
@@ -32,16 +33,27 @@ const ReactAdmin = () => {
       disableTelemetry
       authProvider={authProvider(session)}
       dashboard={Dashboard}
-      dataProvider={dataProvider("/api/admin",{
-        
-      })}
+      dataProvider={dataProvider("/api/admin", {})}
       i18nProvider={i18nProvider}
       layout={Layout}
       loginPage={LoginPage}
     >
       <CustomRoutes>
-        <Route key="key" path="/documentation" element={<Documentation />} />
-        <Route key="key" path="/privacy" element={<Privacy />} />,
+        <Route
+          key="key"
+          path="/documentation"
+          element={<Documentation />}
+        />
+        <Route
+          key="key"
+          path="/privacy"
+          element={<Privacy />}
+        />
+        ,
+        <Route
+          path="/account"
+          element={<MyAccount />}
+        />
       </CustomRoutes>
       <Resource
         name="image"

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -17,7 +16,10 @@ const theme = createTheme();
 const LoginPage = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -30,10 +32,17 @@ const LoginPage = () => {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography
+            component="h1"
+            variant="h5"
+          >
             Sign in
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <Button
               // type="submit"
               fullWidth
@@ -44,7 +53,10 @@ const LoginPage = () => {
               Sign In with Google
             </Button>
             <Grid container>
-              <Grid item xs>
+              <Grid
+                item
+                xs
+              >
                 built by Entitree
               </Grid>
               {/* <Grid item>
