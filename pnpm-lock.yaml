@@ -464,13 +464,12 @@ importers:
       config: workspace:*
       latinize: ^0.5.0
       luxon: ^3.2.1
-      ordinalize: ^1.0.2
       ts-md5: ^1.3.1
       tsconfig: workspace:*
       tsup: ^6.6.0
       typescript: ^4.9.5
       wikibase-edit: ^5.3.0
-      wikibase-sdk: ^9.0.3
+      wikibase-sdk: ^9.0.5
     dependencies:
       '@changesets/cli': 2.26.0
       '@types/latinize': 0.2.15
@@ -478,10 +477,9 @@ importers:
       axios: 1.3.2
       latinize: 0.5.0
       luxon: 3.2.1
-      ordinalize: 1.0.2
       ts-md5: 1.3.1
       wikibase-edit: 5.3.0
-      wikibase-sdk: 9.0.3
+      wikibase-sdk: 9.0.5
     devDependencies:
       '@types/node': 18.13.0
       config: link:../config
@@ -8028,10 +8026,6 @@ packages:
       type-check: 0.4.0
       word-wrap: 1.2.3
 
-  /ordinalize/1.0.2:
-    resolution: {integrity: sha512-X9rR5EbZNAXFAruuNJPbsiylMjDRbt4/wSWyI4DPsMsuGFWwjEfbLHT2rDqf/NFhwz0wbohGY2H4j5ZFph1hcQ==}
-    dev: false
-
   /os-tmpdir/1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
@@ -10739,8 +10733,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: false
 
-  /wikibase-sdk/9.0.3:
-    resolution: {integrity: sha512-wOgep67U2bKpr2f8Op0qD2Ro9yyHNpXtJV8TZIroAY3eVZLlIJToEGyxpPgAy/RB6VvTsfeThdm1KtqvQpL5xg==}
+  /wikibase-sdk/9.0.5:
+    resolution: {integrity: sha512-ri6j9Fn5+72GcNuCgHw9me3QSRdrKuY66T8oL/lAqNx5Yu0VAgzBHfCTje3wzASZcDQ7K1SFmA+xPTDccvepvg==}
     engines: {node: '>= 12.0.0'}
     dev: false
 

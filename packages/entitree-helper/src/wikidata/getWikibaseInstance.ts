@@ -1,9 +1,10 @@
-import { WBK } from "wikibase-sdk";
-import { Wbk } from "wikibase-sdk/dist/types/wbk";
+// import { Wbk, WBK } from "wikibase-sdk";
+
+import { Wbk, WBK } from "wikibase-sdk/dist/wikibase-sdk";
 
 export type DataSource = "wikidata" | "factgrid" | "geni";
 
-const wikibaseInstances: Record< "wikidata" | "factgrid", Wbk> = {
+const wikibaseInstances: Record<"wikidata" | "factgrid", Wbk> = {
   wikidata: WBK({
     instance: "https://www.wikidata.org",
     sparqlEndpoint: "https://query.wikidata.org/sparql",

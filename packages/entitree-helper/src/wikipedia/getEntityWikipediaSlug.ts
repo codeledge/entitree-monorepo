@@ -1,16 +1,13 @@
-import { DataSource, getWikibaseInstance } from "../wikidata";
-
-import { LangCode } from "../types";
+import { wdk } from "../wikidata";
 import axios from "axios";
+import { EntityId, Wbk, WmLanguageCode } from "wikibase-sdk";
 
 export async function getEntityWikipediaSlug(
-  id: string,
-  langCode: LangCode,
-  dataSource: DataSource
+  id: EntityId,
+  langCode: WmLanguageCode,
+  wbk: Wbk = wdk
 ) {
-  const wikibaseInstance = getWikibaseInstance(dataSource);
-
-  const url = wikibaseInstance.getEntities({
+  const url = wbk.getEntities({
     ids: [id],
     languages: [langCode],
     props: ["sitelinks/urls"],

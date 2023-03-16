@@ -10630,12 +10630,9 @@ __export(src_exports, {
   getSimpleClaimValue: () => getSimpleClaimValue,
   getSimplifiedWikidataEntities: () => getSimplifiedWikidataEntities,
   getWikibaseEntities: () => getWikibaseEntities,
-  getWikibaseInstance: () => getWikibaseInstance,
   getWikibaseSourceIds: () => getWikibaseSourceIds,
   getWikibaseSparql: () => getWikibaseSparql,
-  getWikibaseURL: () => getWikibaseURL,
   getWikidataEntities: () => getWikidataEntities,
-  getWikidataInstance: () => getWikidataInstance,
   getWikidataSparql: () => getWikidataSparql,
   getWikipediaArticle: () => getWikipediaArticle,
   getWikipediaDescription: () => getWikipediaDescription,
@@ -10648,6 +10645,7 @@ __export(src_exports, {
   md5: () => md5,
   searchImage: () => searchImage,
   simplifyYoutubeItem: () => simplifyYoutubeItem,
+  wdk: () => wdk,
   wikibaseSearchEntities: () => wikibaseSearchEntities,
   wikidataSearchEntities: () => wikidataSearchEntities,
   wikimediaSearchImages: () => wikimediaSearchImages,
@@ -10676,31 +10674,20 @@ var import_axios2 = __toESM(require("axios"));
 
 // src/wikidata/getWikibaseInstance.ts
 var import_wikibase_sdk = require("wikibase-sdk");
-function getWikibaseInstance(alias) {
-  let wikibaseInstance;
-  if (alias === "factgrid") {
-    wikibaseInstance = (0, import_wikibase_sdk.WBK)({
-      instance: "https://database.factgrid.de",
-      sparqlEndpoint: "https://database.factgrid.de/sparql"
-    });
-  } else {
-    wikibaseInstance = (0, import_wikibase_sdk.WBK)({});
-  }
-  return wikibaseInstance;
-}
-function getWikidataInstance() {
-  return (0, import_wikibase_sdk.WBK)({});
-}
-function getWikibaseURL(alias) {
-  if (alias === "factgrid") {
-    return "https://database.factgrid.de";
-  }
-  return "https://www.wikidata.org";
-}
+var wikibaseInstances = {
+  wikidata: (0, import_wikibase_sdk.WBK)({
+    instance: "https://www.wikidata.org",
+    sparqlEndpoint: "https://query.wikidata.org/sparql"
+  }),
+  factgrid: (0, import_wikibase_sdk.WBK)({
+    instance: "https://database.factgrid.de",
+    sparqlEndpoint: "https://database.factgrid.de/sparql"
+  })
+};
+var wdk = wikibaseInstances.wikidata;
 
 // src/wikidata/getEntityIdFromSlug.ts
 async function getEntityIdFromSlug(slug, langCode) {
-  const wikibaseInstance = getWikidataInstance();
   const url = await new Promise((resolve, reject) => {
     try {
       const query = `
@@ -10709,13 +10696,13 @@ async function getEntityIdFromSlug(slug, langCode) {
         schema:isPartOf <https://${langCode}.wikipedia.org/>;
         schema:name "${slug.replace(/_/g, " ")}"@${langCode}.
       }`.trim();
-      const url2 = wikibaseInstance.sparqlQuery(query);
+      const url2 = wdk.sparqlQuery(query);
       resolve(url2);
     } catch (error) {
       reject(error);
     }
   });
-  return import_axios2.default.get(url).then(({ data }) => wikibaseInstance.simplify.sparqlResults(data)).then((results) => {
+  return import_axios2.default.get(url).then(({ data }) => wdk.simplify.sparqlResults(data)).then((results) => {
     var _a;
     return (_a = results == null ? void 0 : results[0]) == null ? void 0 : _a.item;
   });
@@ -10723,21 +10710,21 @@ async function getEntityIdFromSlug(slug, langCode) {
 
 // src/wikidata/getWikibaseEntities.ts
 var import_axios3 = __toESM(require("axios"));
+var import_wikidata = __toESM(require("wikibase-sdk/dist/wellknown/wikidata.org"));
 async function getWikibaseEntities({
   ids,
   languages = ["en"],
   props = ["labels", "descriptions", "claims", "sitelinks/urls"],
-  dataSource
+  wbk = import_wikidata.default
 }) {
   if (ids.length === 0) {
     return {};
   }
-  const wikibaseInstance = getWikibaseInstance(dataSource);
   ids = ids.filter((id) => !!id);
   const urls = await new Promise((resolve, reject) => {
     try {
       resolve(
-        wikibaseInstance.getManyEntities({
+        wbk.getManyEntities({
           ids,
           languages,
           props
@@ -10767,13 +10754,12 @@ async function getWikidataEntities(ids, languages = ["en"], props = ["labels", "
   return await getWikibaseEntities({
     ids,
     languages,
-    props,
-    dataSource: "wikidata"
+    props
   });
 }
 async function getSimplifiedWikidataEntities(ids, languages = ["en"], props = ["labels", "descriptions", "claims", "sitelinks/urls"]) {
   const entities = await getWikidataEntities(ids, languages, props);
-  return getWikidataInstance().simplify.entities(entities, {
+  return wdk.simplify.entities(entities, {
     keepQualifiers: true,
     addUrl: true
   });
@@ -10781,28 +10767,26 @@ async function getSimplifiedWikidataEntities(ids, languages = ["en"], props = ["
 
 // src/wikidata/getWikibaseSparql.ts
 var import_axios4 = __toESM(require("axios"));
-async function getWikibaseSparql(query, dataSource) {
-  const wikibaseInstance = getWikibaseInstance(dataSource);
-  const [url, body] = wikibaseInstance.sparqlQuery(query).split("?", 2);
-  return import_axios4.default.post(url, body).then((res) => wikibaseInstance.simplify.sparqlResults(res.data)).then((results) => {
+async function getWikibaseSparql(query, wbk = wdk) {
+  const [url, body] = wbk.sparqlQuery(query).split("?", 2);
+  return import_axios4.default.post(url, body).then((res) => wbk.simplify.sparqlResults(res.data)).then((results) => {
     return results;
   });
 }
 async function getWikidataSparql(query) {
-  return await getWikibaseSparql(query, "wikidata");
+  return await getWikibaseSparql(query);
 }
 
 // src/wikidata/getWikibaseSourceIds.ts
 var import_axios5 = __toESM(require("axios"));
-async function getWikibaseSourceIds(entityId, propId, dataSource) {
-  const wikibaseInstance = getWikibaseInstance(dataSource);
-  const url = wikibaseInstance.getReverseClaims({
+async function getWikibaseSourceIds(entityId, propId, wbk = wdk) {
+  const url = wbk.getReverseClaims({
     properties: propId,
     values: entityId
     //TODO check if correct
   });
   const { data } = await import_axios5.default.get(url);
-  const ids = wikibaseInstance.simplify.sparqlResults(data).map(({ subject }) => subject);
+  const ids = wbk.simplify.sparqlResults(data).map(({ subject }) => subject);
   return ids;
 }
 
@@ -67500,10 +67484,9 @@ function formatUrl(propId, text) {
 
 // src/wikipedia/getEntityWikipediaSlug.ts
 var import_axios8 = __toESM(require("axios"));
-async function getEntityWikipediaSlug(id, langCode, dataSource) {
+async function getEntityWikipediaSlug(id, langCode, wbk = wdk) {
   var _a, _b, _c, _d;
-  const wikibaseInstance = getWikibaseInstance(dataSource);
-  const url = wikibaseInstance.getEntities({
+  const url = wbk.getEntities({
     ids: [id],
     languages: [langCode],
     props: ["sitelinks/urls"]
@@ -128172,12 +128155,9 @@ function getCommonsUrlByFile(file, width) {
   getSimpleClaimValue,
   getSimplifiedWikidataEntities,
   getWikibaseEntities,
-  getWikibaseInstance,
   getWikibaseSourceIds,
   getWikibaseSparql,
-  getWikibaseURL,
   getWikidataEntities,
-  getWikidataInstance,
   getWikidataSparql,
   getWikipediaArticle,
   getWikipediaDescription,
@@ -128190,6 +128170,7 @@ function getCommonsUrlByFile(file, width) {
   md5,
   searchImage,
   simplifyYoutubeItem,
+  wdk,
   wikibaseSearchEntities,
   wikidataSearchEntities,
   wikimediaSearchImages,

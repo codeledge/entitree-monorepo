@@ -1,6 +1,6 @@
 import axios from "axios";
-import { Wbk } from "wikibase-sdk/dist/types/wbk";
-import wdk from "wikibase-sdk/dist/wellknown/wikidata.org";
+import { Wbk } from "wikibase-sdk";
+import { wdk } from "./getWikibaseInstance";
 
 export async function getWikibaseSparql(query: string, wbk: Wbk = wdk) {
   const [url, body] = wbk.sparqlQuery(query).split("?", 2);
@@ -12,6 +12,6 @@ export async function getWikibaseSparql(query: string, wbk: Wbk = wdk) {
     });
 }
 
-export async function getWikidataSparql(query: string) {
+export async function getWikidataSparql(query: string): Promise<any> {
   return await getWikibaseSparql(query);
 }

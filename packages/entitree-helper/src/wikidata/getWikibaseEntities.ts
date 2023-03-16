@@ -1,13 +1,12 @@
-import { DataSource } from "./getWikibaseInstance";
 import { WikibaseEntity } from "../types/Entity";
 import axios from "axios";
-import wdk from "wikibase-sdk/dist/wellknown/wikidata.org";
-import { Wbk } from "wikibase-sdk/dist/types/wbk";
+import { EntityId, Props, Wbk, WmLanguageCode } from "wikibase-sdk";
+import { wdk } from "./getWikibaseInstance";
 
 type GetWikibaseEntitiesProps = {
-  ids: string[]; // ['Q1', 'Q2', 'Q3', ..., 'Q123']
-  languages?: string[]; // ['en', 'fr', 'de']
-  props?: string[]; // ['info', 'claims']
+  ids: EntityId[]; // ['Q1', 'Q2', 'Q3', ..., 'Q123']
+  languages?: WmLanguageCode[]; // ['en', 'fr', 'de']
+  props?: Props[]; // ['info', 'claims']
   wbk?: Wbk;
 };
 

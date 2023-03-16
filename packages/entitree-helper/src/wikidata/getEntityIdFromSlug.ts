@@ -27,7 +27,7 @@ export async function getEntityIdFromSlug(
     .get(url)
     .then(({ data }) => wdk.simplify.sparqlResults(data))
     .then((results) => {
-      return results?.[0]?.item;
+      return (results as any)?.[0]?.item;
     });
   // .catch(errorHandler);
 }

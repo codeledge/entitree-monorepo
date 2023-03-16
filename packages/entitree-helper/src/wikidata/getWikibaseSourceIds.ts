@@ -1,10 +1,10 @@
 import axios from "axios";
-import { Wbk } from "wikibase-sdk/dist/types/wbk";
-import wdk from "wikibase-sdk/dist/wellknown/wikidata.org";
+import { PropertyId, Wbk } from "wikibase-sdk";
+import { wdk } from "./getWikibaseInstance";
 
 export async function getWikibaseSourceIds(
   entityId: string,
-  propId: string,
+  propId: PropertyId,
   wbk: Wbk = wdk
 ): Promise<string[]> {
   const url = wbk.getReverseClaims({
@@ -14,7 +14,7 @@ export async function getWikibaseSourceIds(
   const { data } = await axios.get(url);
 
   //TODO: get ids directly without simplify
-  const ids = wbk.simplify
+  const ids = (wbk as any).simplify
     .sparqlResults(data)
     .map(({ subject }: { subject: any }) => subject);
 
