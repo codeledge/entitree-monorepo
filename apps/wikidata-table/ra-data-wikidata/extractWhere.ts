@@ -1,5 +1,6 @@
 import { GetListRequest, GetManyReferenceRequest } from "./Http";
 import setObjectProp from "set-value";
+import { WD_LOCATED_IN_THE_ADMINISTRATIVE_TERRITORIAL_ENTITY } from "@entitree/helper";
 
 const logicalOperators = ["gte", "lte", "lt", "gt"];
 

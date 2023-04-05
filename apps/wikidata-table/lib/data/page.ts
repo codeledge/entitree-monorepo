@@ -1,5 +1,9 @@
-import { WIKIDATA_TYPE } from "@entitree/helper";
+import {
+  WD_DISSOLVED_ABOLISHED_OR_DEMOLISHED_DATE,
+  WIKIDATA_TYPE,
+} from "@entitree/helper";
 import { PAGE_EMOJI, PAGE_MUI_EMOJI } from "../emojis";
+import { firstAdmLevel } from "./pages/firstAdmLevel";
 import { drones, gps_tracker } from "./pages/gadgets";
 import { hotels } from "./pages/hotels";
 import { hospitals, pharmaceutical_companies } from "./pages/medicine";
@@ -13,6 +17,7 @@ export const WikidataPages: Pages = {
   drones,
   politicians,
   forumAttendes,
+  firstAdmLevel,
   mobile_network_operators: {
     represents: "Q1941618",
     category: "technology",
@@ -1204,7 +1209,10 @@ export const WikidataPageArray = Object.keys(WikidataPages).map(function (key) {
   let page = WikidataPages[key];
   page.id = key;
   if (!page.where && page.represents) {
-    page.where = `?item wdt:P31 wd:${page.represents}.`;
+    page.where = `?item wdt:P31/wdt:P279* wd:${page.represents}.`;
+  }
+  if (page.excludeOld) {
+    page.where += `\nFILTER NOT EXISTS { ?item wdt:${WD_DISSOLVED_ABOLISHED_OR_DEMOLISHED_DATE} ?r1 }.`;
   }
   if (PAGE_EMOJI[page.represents]) {
     page.emoji = PAGE_EMOJI[page.represents];

@@ -10,7 +10,7 @@ import {
   WD_WORLD_ECONOMIC_FORUM_ID,
 } from "@entitree/helper";
 import { Column, Page } from "../types";
-import { eventFilter } from "./eventFilter";
+import { eventFilter } from "../filter/eventFilter";
 
 export const humanProps: Column[] = [
   {

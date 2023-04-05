@@ -12,8 +12,8 @@ export const CountryInput = (props: { record?: any; source: string }) => {
       source={props.source}
       choices={countries}
       label="Country"
-      alwaysOn
       title="Country"
+      alwaysOn
     />
   );
 };
