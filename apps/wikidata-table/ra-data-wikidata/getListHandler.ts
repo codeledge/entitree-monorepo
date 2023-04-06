@@ -2,11 +2,7 @@ import { extractSkipTake } from "./extractSkipTake";
 import { extractOrderBy } from "./extractOrderBy";
 import { extractWhere } from "./extractWhere";
 import { GetListRequest, Response } from "./Http";
-import {
-  getCommonsUrlByFile,
-  getWikibaseSparql,
-  getWikidataSparql,
-} from "@entitree/helper";
+import { WD_LOCATED_IN_THE_ADMINISTRATIVE_TERRITORIAL_ENTITY } from "@entitree/helper";
 import { Page } from "../lib/data/types";
 import { sparqlQueryCreate, sparql } from "./sparql";
 import { SPARQL_SEPARATOR } from "./const";
@@ -50,6 +46,9 @@ export const getListHandler = async <
   if (table.filter) {
     filter = { ...filter, ...table.filter };
   }
+  const filterAddSubclass = [
+    WD_LOCATED_IN_THE_ADMINISTRATIVE_TERRITORIAL_ENTITY,
+  ];
 
   let queryFilter = "";
   if (filter) {
@@ -60,7 +59,10 @@ export const getListHandler = async <
                              FILTER (lang(?itemLabel) = 'en')     
                              FILTER(contains(str(?itemLabel),'${filter[key]}' ))`;
         } else {
-          queryFilter += `?item wdt:${key} wd:${filter[key]}.\n`;
+          const subclass = filterAddSubclass.includes(key)
+            ? `/wdt:${key}*`
+            : ``;
+          queryFilter += `?item wdt:${key}${subclass} wd:${filter[key]}.\n`;
         }
       }
     }

@@ -1,8 +1,5 @@
 import { Page } from "../types";
 import {
-  WD_AGODA_HOTEL_NUMERIC_ID,
-  WD_APPLE_PODCASTS_PODCAST_ID,
-  WD_BOOKING_COM_HOTEL_ID,
   WD_CHECK_IN_TIME,
   WD_CHECK_OUT_TIME,
   WD_COUNTRY,
@@ -14,10 +11,14 @@ import {
   WD_POSTAL_CODE,
 } from "@entitree/helper";
 import { socialHotel } from "../addition";
+import { hotelRatingFilter } from "../filter/hotelRatingFilter";
+import { HotelFilterSidebar } from "../filter/hotelSidebar";
 
 export const hotels: Page = {
   represents: "Q27686",
   category: "traveling",
+  filterButtons: hotelRatingFilter,
+  sidebarJsx: <HotelFilterSidebar />,
   header: [
     { property: WD_COUNTRY },
     { property: WD_INCEPTION },
