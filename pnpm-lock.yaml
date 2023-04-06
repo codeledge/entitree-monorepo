@@ -207,8 +207,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0
       react-admin:
-        specifier: 4.7.4
-        version: 4.7.4(@babel/core@7.20.12)(@types/react@18.0.27)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.9.1
+        version: 4.9.1(@babel/core@7.20.12)(@types/react@18.0.27)(react-dom@18.2.0)(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
