@@ -1,4 +1,5 @@
 import { WikidataPropertyDatatype } from "@entitree/helper";
+import React from "react";
 
 export type Pages = {
   [key: string]: Page;
@@ -32,8 +33,10 @@ export type Page = {
   emoji?: string;
   muiEmoji?: string;
   refine?: string;
+  excludeOld?: boolean;
   filterButtons?: any[];
-  category: typeof PageCategories[number];
+  sidebarJsx?: JSX.Element;
+  category: (typeof PageCategories)[number];
 };
 
 export type Column = {

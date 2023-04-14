@@ -1,5 +1,4 @@
 import { ActionStatusTypeEmoji } from "../lib/consts";
-import { getEmojiByLikelihood } from "../lib/faceDetectionExpression";
 import { useRecordContext } from "react-admin";
 
 export const ActionTypeField = (props: {

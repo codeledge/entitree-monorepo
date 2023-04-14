@@ -1,5 +1,6 @@
 import * as wikibase_sdk from 'wikibase-sdk';
 import { EntityId, WmLanguageCode, Wbk, PropertyId, Props } from 'wikibase-sdk';
+import { Wbk as Wbk$1 } from 'wikibase-sdk/dist/wikibase-sdk';
 import { SearchResult } from 'wikibase-sdk/src/types/search';
 import * as axios from 'axios';
 
@@ -174,7 +175,7 @@ declare function getWikibaseSparql(query: string, wbk?: Wbk): Promise<Record<str
 declare function getWikidataSparql(query: string): Promise<any>;
 
 type DataSource = "wikidata" | "factgrid" | "geni";
-declare const wdk: Wbk;
+declare const wdk: Wbk$1;
 
 declare function getWikibaseSourceIds(entityId: string, propId: PropertyId, wbk?: Wbk): Promise<string[]>;
 

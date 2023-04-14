@@ -1,4 +1,6 @@
-const EMOTION_EMOJI = {
+import { IFaceAnnotation } from "../types/Image";
+
+const EMOTION_EMOJI: Partial<Record<keyof IFaceAnnotation, string>> = {
   joyLikelihood: "😃",
   angerLikelihood: "😠",
   surpriseLikelihood: "😲",

@@ -10673,7 +10673,7 @@ async function getWikipediaDescription(wikipediaSlug, langCode = "en") {
 var import_axios2 = __toESM(require("axios"));
 
 // src/wikidata/getWikibaseInstance.ts
-var import_wikibase_sdk = require("wikibase-sdk");
+var import_wikibase_sdk = require("wikibase-sdk/dist/wikibase-sdk");
 var wikibaseInstances = {
   wikidata: (0, import_wikibase_sdk.WBK)({
     instance: "https://www.wikidata.org",
@@ -10710,12 +10710,11 @@ async function getEntityIdFromSlug(slug, langCode) {
 
 // src/wikidata/getWikibaseEntities.ts
 var import_axios3 = __toESM(require("axios"));
-var import_wikidata = __toESM(require("wikibase-sdk/dist/wellknown/wikidata.org"));
 async function getWikibaseEntities({
   ids,
   languages = ["en"],
   props = ["labels", "descriptions", "claims", "sitelinks/urls"],
-  wbk = import_wikidata.default
+  wbk = wdk
 }) {
   if (ids.length === 0) {
     return {};

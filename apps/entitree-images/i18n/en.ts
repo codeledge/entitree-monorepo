@@ -5,7 +5,7 @@ const customEnglishMessages: TranslationMessages = {
   ...englishMessages,
   pos: {
     // search: 'Search',
-    // configuration: 'Configuration',
+    configuration: "My Account",
     // language: 'Language',
     // theme: {
     //     name: 'Theme',
@@ -50,10 +50,10 @@ const customEnglishMessages: TranslationMessages = {
       name: "Users",
     },
     documentation: {
-      name: "documentation",
+      name: "Documentation",
     },
     privacy: {
-      name: "privacy",
+      name: "Privacy",
     },
     // customers: {
     //     name: 'Customer |||| Customers',

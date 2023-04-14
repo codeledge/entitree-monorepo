@@ -10,6 +10,7 @@ export const trpc: any = createTRPCNext<AppRouter>({
           url: "/api/trpc",
         }),
       ],
+      transformer: null,
     };
   },
 });

@@ -8,7 +8,7 @@ import { makeStyles } from "@mui/material/styles";
 const Privacy = () => {
   const translate = useTranslate();
   return (
-    <Card>
+    <Card sx={{ p: 2 }}>
       <Title title={translate("resources.privacy.name", { smart_count: 2 })} />
       <div
         dangerouslySetInnerHTML={{

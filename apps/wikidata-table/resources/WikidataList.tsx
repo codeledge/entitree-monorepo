@@ -15,7 +15,6 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { WIKIDATA_LABELS_EN } from "@entitree/helper";
 import { Column, Page } from "../lib/data/types";
-import { CountryInput } from "../fields/CountryInput";
 import { WikidataLabelField } from "../fields/WikidataLabelField";
 import { useListView } from "../views/ListViewButton";
 import { DesktopGrid } from "../views/DesktopGrid";
@@ -37,18 +36,15 @@ export const WikidataList = (page: Page) => {
       resettable
       alwaysOn
     />,
-    <CountryInput
-      key="Country"
-      source="P17"
-    />,
   ];
   if (page.filterButtons) {
-    filters = filters.concat(page.filterButtons);
+    filters = filters.concat(...page.filterButtons);
   }
   return (
     <List
       disableAuthentication
       filters={filters}
+      aside={page.sidebarJsx}
       pagination={<Pagination rowsPerPageOptions={[10, 25, 50, 100]} />}
       actions={
         <TopToolbar>
