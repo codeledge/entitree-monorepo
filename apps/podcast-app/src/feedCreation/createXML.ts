@@ -12,10 +12,12 @@ import { getEpisodesById } from "../wikidata/getEpisodes";
 import { getPodcastInfo } from "@codeledge/podcast";
 
 export async function createXML(
-  podcastId: string,
+  podcastId: any,
   limit: number
 ): Promise<string | null> {
-  const podcast = (await getSimplifiedWikidataEntities([podcastId]))[podcastId];
+  const podcast: any = (await getSimplifiedWikidataEntities([podcastId]))[
+    podcastId
+  ];
   if (!podcast.claims) {
     return null;
   }
