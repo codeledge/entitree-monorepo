@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { Box, Typography } from "@mui/material";
-
+import { Box, IconButton, Typography } from "@mui/material";
 import { GC_BUCKET } from "../config/const";
 import React from "react";
 import { useRecordContext } from "react-admin";
+import { DownloadForOffline } from "@mui/icons-material";
 
 export const ImageAllField = (props: {
   label: string;
@@ -28,6 +28,13 @@ export const ImageAllField = (props: {
     record[source] +
     ".webp?" +
     Math.random();
+
+  const pngUrl =
+    "/api/v1/image/png/" +
+    record[source] +
+    "/" +
+    record["wikidataLabel"] +
+    ".png";
   return (
     <div>
       <img
@@ -37,7 +44,18 @@ export const ImageAllField = (props: {
         width={60}
       />
       <Box my={2}>
-        <Typography variant="h5">Without Bg Image</Typography>
+        <Typography variant="h5">
+          Without Bg Image
+          <a
+            href={pngUrl}
+            rel="noopener noreferrer"
+            // download
+          >
+            <IconButton onClick={() => window.open(pngUrl)}>
+              <DownloadForOffline />
+            </IconButton>
+          </a>
+        </Typography>
       </Box>
 
       <img
@@ -49,7 +67,12 @@ export const ImageAllField = (props: {
       <Box my={2}>
         <Typography variant="h5">Face Images</Typography>
       </Box>
-      <img alt="" src={url} title={title} width={200} />
+      <img
+        alt=""
+        src={url}
+        title={title}
+        width={200}
+      />
       <img
         alt=""
         src={url2}
