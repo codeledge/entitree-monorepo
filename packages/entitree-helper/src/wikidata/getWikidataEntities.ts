@@ -1,27 +1,27 @@
-import { getWikibaseEntities, getWikidataInstance } from ".";
-import { WikidataEntity } from "./types/Entity";
-type WikidataEntityMap = Record<WikidataEntity["id"], WikidataEntity>;
+import { EntityId, Props, WmLanguageCode } from "wikibase-sdk";
+import { getWikibaseEntities } from "./getWikibaseEntities";
+import { wdk } from "./getWikibaseInstance";
 
 export async function getWikidataEntities(
-  ids: string[],
-  languages = ["en"],
-  props = ["labels", "descriptions", "claims", "sitelinks/urls"]
-): Promise<WikidataEntityMap> {
+  ids: EntityId[],
+  languages: WmLanguageCode[] = ["en"],
+  props: Props[] = ["labels", "descriptions", "claims", "sitelinks/urls"]
+) {
   return await getWikibaseEntities({
     ids,
     languages,
     props,
-    dataSource: "wikidata",
   });
 }
 
 export async function getSimplifiedWikidataEntities(
-  ids: string[],
-  languages = ["en"],
-  props = ["labels", "descriptions", "claims", "sitelinks/urls"]
+  ids: EntityId[],
+  languages: WmLanguageCode[] = ["en"],
+  props: Props[] = ["labels", "descriptions", "claims", "sitelinks/urls"]
 ) {
   const entities = await getWikidataEntities(ids, languages, props);
-  return getWikidataInstance().simplify.entities(entities, {
+
+  return wdk.simplify.entities(entities as any, {
     keepQualifiers: true,
     addUrl: true,
   });

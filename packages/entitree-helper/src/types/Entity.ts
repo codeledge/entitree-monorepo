@@ -1,4 +1,5 @@
-import { Claim } from './Claim';
+import { PropertyId, WmLanguageCode } from "wikibase-sdk";
+import { Claim } from "./Claim";
 export interface Sitelink {
   site: string;
   title: string;
@@ -26,8 +27,8 @@ export interface WikibaseEntity {
     to: string;
   };
   aliases?: Record<string, LanguageEntry[]>;
-  claims?: Record<string, Claim[]>;
-  descriptions?: Record<string, LanguageEntry>;
+  claims?: Record<PropertyId, Claim[]>;
+  descriptions?: Record<WmLanguageCode, LanguageEntry>;
   labels?: Record<string, LanguageEntry>;
   sitelinks?: Record<string, Sitelink>;
 }
@@ -36,7 +37,7 @@ export type SimpleClaims = Record<string, SimpleClaim[]>;
 
 export type SimpleClaim = {
   value: string;
-  qualifiers: Record<PropId, string[]>;
+  qualifiers: Record<PropertyId, string[]>;
 };
 
 export type ExternalLink = {
@@ -45,5 +46,3 @@ export type ExternalLink = {
   alt: string;
   url: string;
 };
-
-export type PropId = string;

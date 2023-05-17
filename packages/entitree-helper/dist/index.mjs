@@ -18,33 +18,21 @@ async function getWikipediaDescription(wikipediaSlug, langCode = "en") {
 import axios2 from "axios";
 
 // src/wikidata/getWikibaseInstance.ts
-import wbk from "wikibase-sdk";
-import wdk from "wikidata-sdk";
-function getWikibaseInstance(alias) {
-  let wikibaseInstance;
-  if (alias === "factgrid") {
-    wikibaseInstance = wbk({
-      instance: "https://database.factgrid.de",
-      sparqlEndpoint: "https://database.factgrid.de/sparql"
-    });
-  } else {
-    wikibaseInstance = wdk;
-  }
-  return wikibaseInstance;
-}
-function getWikidataInstance() {
-  return wdk;
-}
-function getWikibaseURL(alias) {
-  if (alias === "factgrid") {
-    return "https://database.factgrid.de";
-  }
-  return "https://www.wikidata.org";
-}
+import { WBK } from "wikibase-sdk";
+var wikibaseInstances = {
+  wikidata: WBK({
+    instance: "https://www.wikidata.org",
+    sparqlEndpoint: "https://query.wikidata.org/sparql"
+  }),
+  factgrid: WBK({
+    instance: "https://database.factgrid.de",
+    sparqlEndpoint: "https://database.factgrid.de/sparql"
+  })
+};
+var wdk = wikibaseInstances.wikidata;
 
 // src/wikidata/getEntityIdFromSlug.ts
 async function getEntityIdFromSlug(slug, langCode) {
-  const wikibaseInstance = getWikidataInstance();
   const url = await new Promise((resolve, reject) => {
     try {
       const query = `
@@ -53,13 +41,13 @@ async function getEntityIdFromSlug(slug, langCode) {
         schema:isPartOf <https://${langCode}.wikipedia.org/>;
         schema:name "${slug.replace(/_/g, " ")}"@${langCode}.
       }`.trim();
-      const url2 = wikibaseInstance.sparqlQuery(query);
+      const url2 = wdk.sparqlQuery(query);
       resolve(url2);
     } catch (error) {
       reject(error);
     }
   });
-  return axios2.get(url).then(({ data }) => wikibaseInstance.simplify.sparqlResults(data)).then((results) => {
+  return axios2.get(url).then(({ data }) => wdk.simplify.sparqlResults(data)).then((results) => {
     var _a;
     return (_a = results == null ? void 0 : results[0]) == null ? void 0 : _a.item;
   });
@@ -71,17 +59,16 @@ async function getWikibaseEntities({
   ids,
   languages = ["en"],
   props = ["labels", "descriptions", "claims", "sitelinks/urls"],
-  dataSource
+  wbk = wdk
 }) {
   if (ids.length === 0) {
     return {};
   }
-  const wikibaseInstance = getWikibaseInstance(dataSource);
   ids = ids.filter((id) => !!id);
   const urls = await new Promise((resolve, reject) => {
     try {
       resolve(
-        wikibaseInstance.getManyEntities({
+        wbk.getManyEntities({
           ids,
           languages,
           props
@@ -111,13 +98,12 @@ async function getWikidataEntities(ids, languages = ["en"], props = ["labels", "
   return await getWikibaseEntities({
     ids,
     languages,
-    props,
-    dataSource: "wikidata"
+    props
   });
 }
 async function getSimplifiedWikidataEntities(ids, languages = ["en"], props = ["labels", "descriptions", "claims", "sitelinks/urls"]) {
   const entities = await getWikidataEntities(ids, languages, props);
-  return getWikidataInstance().simplify.entities(entities, {
+  return wdk.simplify.entities(entities, {
     keepQualifiers: true,
     addUrl: true
   });
@@ -125,24 +111,26 @@ async function getSimplifiedWikidataEntities(ids, languages = ["en"], props = ["
 
 // src/wikidata/getWikibaseSparql.ts
 import axios4 from "axios";
-async function getWikibaseSparql(query, dataSource) {
-  const wikibaseInstance = getWikibaseInstance(dataSource);
-  const [url, body] = wikibaseInstance.sparqlQuery(query).split("?", 2);
-  return axios4.post(url, body).then((res) => wikibaseInstance.simplify.sparqlResults(res.data)).then((results) => {
+async function getWikibaseSparql(query, wbk = wdk) {
+  const [url, body] = wbk.sparqlQuery(query).split("?", 2);
+  return axios4.post(url, body).then((res) => wbk.simplify.sparqlResults(res.data)).then((results) => {
     return results;
   });
 }
 async function getWikidataSparql(query) {
-  return await getWikibaseSparql(query, "wikidata");
+  return await getWikibaseSparql(query);
 }
 
 // src/wikidata/getWikibaseSourceIds.ts
 import axios5 from "axios";
-async function getWikibaseSourceIds(entityId, propId, dataSource) {
-  const wikibaseInstance = getWikibaseInstance(dataSource);
-  const url = wikibaseInstance.getReverseClaims(propId, entityId);
+async function getWikibaseSourceIds(entityId, propId, wbk = wdk) {
+  const url = wbk.getReverseClaims({
+    properties: propId,
+    values: entityId
+    //TODO check if correct
+  });
   const { data } = await axios5.get(url);
-  const ids = wikibaseInstance.simplify.sparqlResults(data).map(({ subject }) => subject);
+  const ids = wbk.simplify.sparqlResults(data).map(({ subject }) => subject);
   return ids;
 }
 
@@ -56709,27 +56697,27 @@ function getBestClaimValueText(claims) {
 
 // src/wikidata/format/formatDateClaim.ts
 import { DateTime } from "luxon";
-import ordinalize from "ordinalize";
-import wbk2 from "wikidata-sdk";
+import { wikibaseTimeToISOString, wikibaseTimeToSimpleDay } from "wikibase-sdk";
 var getDateClaimISO = (dateClaim) => {
   const bestClaimValue = getBestClaimValue(
     dateClaim
   );
   if (bestClaimValue)
-    return wbk2.wikibaseTimeToISOString(bestClaimValue.time);
+    return wikibaseTimeToISOString(bestClaimValue.time);
 };
 var formatDateClaim = (claims, languageCode, yearOnly = false) => {
-  var _a, _b, _c, _d, _e;
+  var _a, _b, _c, _d;
   const dateClaim = getBestClaim(claims);
   const value = getBestClaimValue(claims);
   if (!value)
     return "";
-  const sourcingCircumstances = (_e = (_d = (_c = (_b = (_a = dateClaim == null ? void 0 : dateClaim.qualifiers) == null ? void 0 : _a[WD_SOURCING_CIRCUMSTANCES]) == null ? void 0 : _b[0]) == null ? void 0 : _c.datavalue) == null ? void 0 : _d.value) == null ? void 0 : _e.id;
+  const sourcingQualifier = (_b = (_a = dateClaim == null ? void 0 : dateClaim.qualifiers) == null ? void 0 : _a[WD_SOURCING_CIRCUMSTANCES]) == null ? void 0 : _b[0];
+  const sourcingCircumstances = (_d = (_c = sourcingQualifier == null ? void 0 : sourcingQualifier.datavalue) == null ? void 0 : _c.value) == null ? void 0 : _d.id;
   return parseDate(value, languageCode, yearOnly, sourcingCircumstances);
 };
 function parseDate(wikidatatime, languageCode = DEFAULT_LANG_CODE, yearOnly = false, sourcingCircumstances = null) {
   let { precision, time } = wikidatatime;
-  const dateISOString = wbk2.wikibaseTimeToISOString(time);
+  const dateISOString = wikibaseTimeToISOString(time);
   const dateOnly = dateISOString.split("T")[0];
   const parsedDate = DateTime.fromISO(dateOnly);
   const { year } = parsedDate;
@@ -56772,11 +56760,11 @@ function parseDate(wikidatatime, languageCode = DEFAULT_LANG_CODE, yearOnly = fa
     case 6: {
       const millenniumIndex = Math.abs(Math.floor(year / 1e3));
       const millenniumNumber = year > 0 ? millenniumIndex + 1 : millenniumIndex;
-      return ordinalize(millenniumNumber) + " mill." + eraSuffix;
+      return ordinal(millenniumNumber) + " mill." + eraSuffix;
     }
     case 7: {
       const centuryNumber = year > 0 ? Math.ceil(year / 100) : Math.abs(Math.floor(year / 100));
-      return ordinalize(centuryNumber) + " cent." + eraSuffix;
+      return ordinal(centuryNumber) + " cent." + eraSuffix;
     }
     case 8:
       return Math.floor(year / 10) + "0s" + eraSuffix;
@@ -56788,8 +56776,13 @@ function parseDate(wikidatatime, languageCode = DEFAULT_LANG_CODE, yearOnly = fa
       return parsedDate.setLocale(languageCode).toFormat("d MMM y") + eraSuffix;
     }
     default:
-      return wbk2.wikibaseTimeToSimpleDay(wikidatatime);
+      return wikibaseTimeToSimpleDay(wikidatatime);
   }
+}
+function ordinal(n) {
+  var s = ["th", "st", "nd", "rd"];
+  var v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
 // src/wikidata/format/getClaimIds.ts
@@ -56835,10 +56828,9 @@ function formatUrl(propId, text) {
 
 // src/wikipedia/getEntityWikipediaSlug.ts
 import axios8 from "axios";
-async function getEntityWikipediaSlug(id, langCode, dataSource) {
+async function getEntityWikipediaSlug(id, langCode, wbk = wdk) {
   var _a, _b, _c, _d;
-  const wikibaseInstance = getWikibaseInstance(dataSource);
-  const url = wikibaseInstance.getEntities({
+  const url = wbk.getEntities({
     ids: [id],
     languages: [langCode],
     props: ["sitelinks/urls"]
@@ -117506,12 +117498,9 @@ export {
   getSimpleClaimValue,
   getSimplifiedWikidataEntities,
   getWikibaseEntities,
-  getWikibaseInstance,
   getWikibaseSourceIds,
   getWikibaseSparql,
-  getWikibaseURL,
   getWikidataEntities,
-  getWikidataInstance,
   getWikidataSparql,
   getWikipediaArticle,
   getWikipediaDescription,
@@ -117524,6 +117513,7 @@ export {
   md5,
   searchImage,
   simplifyYoutubeItem,
+  wdk,
   wikibaseSearchEntities,
   wikidataSearchEntities,
   wikimediaSearchImages,
