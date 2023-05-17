@@ -10673,7 +10673,7 @@ async function getWikipediaDescription(wikipediaSlug, langCode = "en") {
 var import_axios2 = __toESM(require("axios"));
 
 // src/wikidata/getWikibaseInstance.ts
-var import_wikibase_sdk = require("wikibase-sdk/dist/wikibase-sdk");
+var import_wikibase_sdk = require("wikibase-sdk");
 var wikibaseInstances = {
   wikidata: (0, import_wikibase_sdk.WBK)({
     instance: "https://www.wikidata.org",

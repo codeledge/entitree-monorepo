@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SearchResponse, SearchResult } from "wikibase-sdk/src/types/search";
+import { SearchResponse, SearchResult } from "wikibase-sdk";
 
 export type WikidataSearchResult = SearchResult;
 

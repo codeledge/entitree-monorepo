@@ -1,6 +1,4 @@
-// import { Wbk, WBK } from "wikibase-sdk";
-
-import { Wbk, WBK } from "wikibase-sdk/dist/wikibase-sdk";
+import { Wbk, WBK } from "wikibase-sdk";
 
 export type DataSource = "wikidata" | "factgrid" | "geni";
 

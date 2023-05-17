@@ -674,8 +674,8 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       wikibase-sdk:
-        specifier: ^9.0.5
-        version: 9.0.5
+        specifier: ^9.1.2
+        version: 9.1.2
     devDependencies:
       '@types/node':
         specifier: ^18.13.0
@@ -2481,7 +2481,7 @@ packages:
       next-auth: ^4
     dependencies:
       '@prisma/client': 4.10.0(prisma@4.10.0)
-      next-auth: 4.19.2(next@13.1.6)(react-dom@18.2.0)(react@18.2.0)
+      next-auth: 4.19.2(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /@next/env@13.1.6:
@@ -10807,8 +10807,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: false
 
-  /wikibase-sdk@9.0.5:
-    resolution: {integrity: sha512-ri6j9Fn5+72GcNuCgHw9me3QSRdrKuY66T8oL/lAqNx5Yu0VAgzBHfCTje3wzASZcDQ7K1SFmA+xPTDccvepvg==}
+  /wikibase-sdk@9.1.2:
+    resolution: {integrity: sha512-cRUvUxNBd/+a0t5mQ4/Os8Ds5ovvY1qzbEbu0oxImF1NQrNimLGGZJLSZDjQ73GYwNJeEtGxtqY1j4mVGfUB4Q==}
     engines: {node: '>= 12.0.0'}
     dev: false
 
